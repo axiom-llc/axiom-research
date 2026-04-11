@@ -1,4 +1,4 @@
-# Axiom Research
+# AXIOM Research
 
 Independent research in deterministic AI agent architecture, loop taxonomy,
 and computational self-reference. Published by Axiom LLC.
@@ -14,4 +14,4 @@ Computability-grounded exposition of self-referential optimization systems.
 Synthesises recursion theory, autopoiesis, and proto-agency.
 
 ---
-Axiom LLC · axiom-llc.github.io · MIT
+AXIOM LLC · axiom-llc.github.io · MIT

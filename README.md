@@ -1,7 +1,7 @@
 # AXIOM Research
 
 Independent research in deterministic AI agent architecture, loop taxonomy,
-and computational self-reference. Published by Axiom LLC.
+and computational self-reference. Published by AXIOM LLC.
 
 ## Papers
 

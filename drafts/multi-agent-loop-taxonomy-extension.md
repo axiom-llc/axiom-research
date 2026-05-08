@@ -1,4 +1,4 @@
-**Multi-Agent Loop Taxonomy Extension: Formal Classification of Orchestration Protocols, Composition Patterns, and Failure Modes for 2026 Production Multi-Agent Systems**
+# **Multi-Agent Loop Taxonomy Extension: Formal Classification of Orchestration Protocols, Composition Patterns, and Failure Modes for 2026 Production Multi-Agent Systems**
 
 **AXIOM Research Division**  
 **April 2026**

@@ -2,7 +2,7 @@
 
 ## Formal Methods, Agent Control Loop Taxonomies, and Self-Optimization Theory
 
-This repository houses the theoretical foundations, formal academic papers, and architectural taxonomies underpinning the AXIOM agentic execution ecosystem. The research preserved here outlines the formal computability bounds, safety-by-design mathematical constraints, and loop-control models implemented within the [Axiom Apex](https://github.com/axiom-llc/axiom-apex) deterministic execution runtime.
+This repository houses the theoretical foundations, formal academic papers, and architectural taxonomies underpinning the AXIOM agentic execution ecosystem. The research preserved here outlines the formal computability bounds, safety-by-design mathematical constraints, and loop-control models implemented within the [AXIOM Apex](https://github.com/axiom-llc/axiom-apex) deterministic execution runtime.
 
 ---
 

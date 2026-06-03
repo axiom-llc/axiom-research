@@ -41,7 +41,7 @@ This repository houses the theoretical foundations, formal academic papers, and 
 
 ## 2. Theoretical Invariants Realized in AXIOM Apex
 
-The formal theories in this repository serve as the direct blueprint for the [Axiom Apex](https://github.com/axiom-llc/axiom-apex) core execution engine:
+The formal theories in this repository serve as the direct blueprint for the [AXIOM Apex](https://github.com/axiom-llc/axiom-apex) core execution engine:
 
 *   **Information-Flow Separation**: Generation is probabilistic, but execution is structurally constrained. Probabilistic planners propose, structural schemas validate, and the stateless execution kernel runs.
 *   **The Correctness Gate**: Implemented natively in `apex/core/validator.py` and `apex/core/schema.py`, enforcing Pydantic validations, step ceilings, and blast-radius constraints before any tools are dispatched.

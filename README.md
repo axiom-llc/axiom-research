@@ -35,18 +35,20 @@ This repository houses the theoretical foundations, formal academic papers, and 
     *   **The Type-Confusion Model of Prompt Injection**: Characterizing prompt injection as a structural type-confusion failure over semantically untyped input-control channels (analogous to memory-unsafe control-flow corruption).
     *   **Correctness Envelopes**: Defining bounded, pre-execution verification gates that evaluate multi-step plans against structural safety rules.
     *   **RSI and BDSO Architecture**: Designing a Benchmark-Driven Self-Optimization (BDSO) loop that evaluates Gemini-generated codebase patches inside isolated subprocesses, scoring candidates against the `apex_score` fitness function.
-    *   **The Paranoid Exclusion Invariant**: Establishing the safety boundary wherein the plan auditor (`paranoid.py`) is permanently excluded from self-modification lists.
+    *   **The Paranoid Exclusion Invariant**: Establishing the safety boundary wherein the plan auditor (historically `paranoid.py`, currently `apex/core/safety.py`) is permanently excluded from self-modification lists.
 
 ---
 
 ## 2. Theoretical Invariants Realized in AXIOM Apex
 
-The formal theories in this repository serve as the direct blueprint for the [AXIOM Apex](https://github.com/axiom-llc/axiom-apex) core execution engine:
+The papers describe earlier architecture versions. The current implementation boundaries are:
 
 *   **Information-Flow Separation**: Generation is probabilistic, but execution is structurally constrained. Probabilistic planners propose, structural schemas validate, and the stateless execution kernel runs.
-*   **The Correctness Gate**: Implemented natively in `apex/core/validator.py` and `apex/core/schema.py`, enforcing Pydantic validations, step ceilings, and blast-radius constraints before any tools are dispatched.
+*   **The Correctness Gate**: `axiom-apex/apex/core/planner.py` validates plan structure, tool arguments, registry membership, and the step ceiling. `axiom-ason/ason/validator.py` owns policy and blast-radius checks. ASON submits an exact plan to APEX rather than asking the planner to reinterpret it.
 *   **SIGALRM Isolation**: Mitigates process hangs and tool-calling timeouts at the Unix syscall level using signal-interrupt handlers.
-*   **Self-Healing Recovery**: Implements the transactional rollback logic (`apex/core/rollback.py`) described in the paper to reverse physical side-effects on execution failures.
+*   **Rollback Boundary**: ASON contains an optional reversal-plan helper; automatic transactional rollback is not implemented. Deleting a written file cannot restore overwritten contents. Tool retries require explicit safety classification.
+*   **Shared Retrieval**: `axiom-rag` owns the retrieval implementation consumed by APEX. The dependency direction remains `axiom-ason → axiom-apex → axiom-rag`.
+*   **RSI Validation**: Candidate changes must pass regression tests before benchmark scoring. Git worktrees isolate source changes, not arbitrary code side effects; the manual merge gate remains in place.
 
 ---
 

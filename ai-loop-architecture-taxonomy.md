@@ -1,6 +1,6 @@
 ## Abstract
 
-This paper presents a taxonomy of AI loop architectures, classifying feedback and control structures across autonomous, iterative, human-involved, and generative systems. Loop types are characterized by autonomy level, iteration control, termination strategy, and failure mode profile. Selection criteria and composition patterns are provided to guide architecture decisions in production agent systems. The taxonomy is grounded in implementation experience and maps directly to deployed deterministic agent runtimes.
+This paper presents a taxonomy of AI loop architectures, classifying feedback and control structures across autonomous, iterative, human-involved, and generative systems. Loop types are characterized by autonomy level, iteration control, termination strategy, and failure mode profile. Selection criteria and composition patterns are provided to guide architecture decisions in production agent systems. The taxonomy is grounded in implementation experience and includes an explicit mapping to the AXIOM APEX deterministic execution model.
 
 ---
 # AI Loop Architecture Taxonomy
@@ -46,10 +46,10 @@ Recursive systems where the model consumes its own potentially malformed output 
 - Progressive refinement toward syntactically and semantically valid output
 - Preferential regeneration of failing segments only
 - Full regeneration only on catastrophic failure
-- Typical convergence: 3-10 iterations with 85-98% success rate
+- Measure convergence empirically for each workload; do not assume a universal iteration count or success rate
 
 **Infinite Loop Prevention:**
-- Default maximum: 10 iterations (configurable)
+- Set an explicit workload-specific iteration ceiling
 - Emergency timeout-based termination
 - Adaptive threshold tuning
 
@@ -66,9 +66,9 @@ Recursive systems where the model consumes its own potentially malformed output 
 
 #### Performance Metrics
 
-- **Convergence rate:** 3-10 iterations to success
-- **Success rate:** 85-98%
-- **Cost per iteration:** Function of token count, model size, complexity
+- **Convergence:** Measure iterations-to-valid-output for the target workload
+- **Success:** Measure pass rate against an explicit validation set
+- **Cost per iteration:** Measure token, latency, and compute cost for the deployed model and task
 
 ---
 
@@ -118,7 +118,7 @@ Systems that dynamically revise reasoning strategies, rule sets, or heuristics a
 
 #### Performance Metrics
 
-- **Heuristic effectiveness:** Success rate improvement per iteration (baseline → asymptotic optimal)
+- **Heuristic effectiveness:** Measure validated improvement relative to a fixed baseline; do not assume monotonic or asymptotic improvement
 - **Memory efficiency:** Rules per token of context (optimization goal: maximum compression)
 
 ---
@@ -238,7 +238,7 @@ System serves simultaneously as creator and evaluator in a single model call or 
 
 - **Specificity:** Tied to specific spans or elements (location + issue + suggestion)
 - **Actionability:** Concrete improvement guidance, no vague feedback
-- **Meta-cognition:** Reasoning about reasoning with visible thought process in logs
+- **Meta-cognition:** Record structured self-evaluation summaries and validation evidence rather than relying on unverifiable internal reasoning traces
 
 #### Applications
 
@@ -312,7 +312,7 @@ Human approves each step with high involvement and per-step approval requirement
 
 - **High-stakes content:** Legal documents, medical reports, financial statements (minimal error tolerance)
 - **Regulated industries:** Healthcare, finance, government (strict compliance, required audit trails)
-- **Safety-critical systems:** Autonomous vehicles, medical devices, air traffic control (mandatory human oversight, fail-safes)
+- **Safety-critical systems:** Use independent fail-safes and human oversight where required by the system and regulatory context
 
 ---
 
@@ -325,17 +325,17 @@ Human supervises but only intervenes when necessary based on exceptions.
 **Monitoring Dashboards:** Real-time metrics, activity logs, performance indicators, alert panels with graphs, tables, heatmaps.
 
 **Alerting Thresholds:**
-- **Confidence-based:** Trigger when confidence < threshold (typically 0.8)
-- **Error-based:** Trigger when error rate exceeds threshold (typically 0.05)
+- **Confidence-based:** Trigger below a workload-validated confidence threshold when the score is calibrated enough to support gating
+- **Error-based:** Trigger when a workload-specific error threshold is exceeded
 - **Anomaly-based:** Statistical anomaly detection via standard deviations or ML methods
 
 **Override Controls:** Emergency stop, parameter adjustment, task redirection for authorized personnel only.
 
 #### Applications
 
-- **Research/scraping/planning agents:** High autonomy, 5-10% intervention rate
-- **Autonomous optimization:** Hyperparameter tuning, resource allocation, workflow optimization with continuous monitoring
-- **Repetitive content generation:** Product descriptions, social media posts, reports with 90-95% automation, sampling-based review
+- **Research/scraping/planning agents:** Use exception-triggered human review where autonomous execution is appropriate
+- **Autonomous optimization:** Use continuous monitoring for hyperparameter tuning, resource allocation, and workflow optimization
+- **Repetitive content generation:** Use sampling or exception-based review when the workload and risk profile support it
 
 ---
 
@@ -644,9 +644,9 @@ Continuous tuning of parameters or outputs targeting quality, efficiency, cost.
 ### 9.1 Loop Selection Criteria
 
 **Task Complexity:**
-- Simple tasks: Minimal looping or single pass
-- Medium tasks: 3-5 iterations
-- Complex tasks: 10+ iterations or nested loops
+- Simple tasks: Prefer a single pass or the smallest loop that adds measurable value
+- Medium tasks: Use a bounded iterative loop with empirically chosen stopping criteria
+- Complex tasks: Use nested or parallel loops only when decomposition and validation justify the added cost
 
 **Quality Requirements:**
 - Draft quality: Minimal looping
@@ -709,10 +709,11 @@ Continuous tuning of parameters or outputs targeting quality, efficiency, cost.
 - **Loop interpretability:** Understanding why loops converge or fail
 - **Scalability:** Maintaining performance as loop complexity increases
 - **Safety:** Ensuring loops remain aligned with goals and values
+
 ## 11. Relationship to APEX
 
-APEX (the Axiom agent runtime) is a deterministic, schema-validated execution framework whose loop model draws from several architectures described in this taxonomy. Its primary execution cycle is a bounded Self-Consumption Loop (§1.1): natural language input is translated into a structured plan, each step is executed and validated against a schema, and failures trigger constrained re-planning up to a configured iteration ceiling — preventing unbounded recursion while preserving convergence.
+Treat APEX primarily as a bounded deterministic execution kernel beneath probabilistic planning rather than as a generic self-repair loop. A plan is validated before consequential execution, the execution surface is bounded by explicit tool and step contracts, and retry behavior must follow tool-specific safety classification rather than an unrestricted regenerate-and-retry cycle.
 
-APEX also exhibits properties of Goal-Directed Loops (§1.x): execution is plan-driven, not reactive, with each tool invocation evaluated against the original goal state. Human-in-the-loop checkpointing can be inserted at plan boundaries, placing APEX in the supervised iterative category (§2.x) when audit or approval gates are active.
+Map APEX to this taxonomy through **constraint-driven termination**, **goal-directed execution**, **verification loops**, and optional **human approval gates**. Do not classify ordinary APEX execution as recursive self-improvement merely because a planner may generate or revise a plan. Keep plan generation, policy approval, execution, replay, and self-optimization as distinct control loops with distinct safety properties.
 
-The `core/loop.py` module implements state transitions, tool dispatch, and termination logic. All loop exits — success, max-iterations, or validation failure — are explicit and logged, satisfying the auditability requirements identified in §8 (Failure Modes) as critical for production agentic systems.
+Use `apex-transactional-effects-research.md` for current source-grounded limits around effect durability, replay, and compensation. Revalidate live source before making implementation-specific claims because this taxonomy is an architectural classification, not the runtime specification.

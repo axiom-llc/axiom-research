@@ -1,77 +1,43 @@
 # AXIOM Research
 
-## Formal Methods, Agent Control Loop Taxonomies, and Self-Optimization Theory
+Use this repository as the canonical research workspace for the AXIOM execution ecosystem. Keep durable theory, source-grounded architecture research, and reusable research programs here; keep product code and transient implementation notes in their owning repositories.
 
-This repository houses the theoretical foundations, formal academic papers, and architectural taxonomies underpinning the AXIOM agentic execution ecosystem. The research preserved here outlines the formal computability bounds, safety-by-design mathematical constraints, and loop-control models implemented within the [AXIOM Apex](https://github.com/axiom-llc/axiom-apex) deterministic execution runtime.
+**Canonicalized:** 2026-09-11T08:08:11-04:00
 
----
+## Contents
 
-## 1. Repository Contents
+| File | Role | Authority |
+| --- | --- | --- |
+| `ai-loop-architecture-taxonomy.md` | Classify iterative, autonomous, human-supervised, and learning loop architectures. | Research taxonomy; validate workload-specific quantitative claims empirically. |
+| `apex-transactional-effects-research.md` | Record source-grounded APEX/ASON crash-gap findings and the saga-lite WAL design. | Implementation input tied to the repository snapshots named in the artifact; revalidate current source before coding. |
+| `j-space-research.md` | Preserve the J-space falsifiable research program and epistemic boundaries. | Research agenda and toy formalization; do not treat it as evidence about hidden model internals. |
+| `rag-crash-consistency-architecture.md` | Define the selected single-owner RAG lifecycle, journaling, recovery, and concurrency model. | Architecture proposal; do not claim power-loss atomicity or implementation completion without tests. |
+| `recursive-hyper-optimization.md` | Analyze computable recursive self-optimization and its limits. | Theory; treat APEX references as implementation mapping, not proof of stronger self-modification properties. |
+| `temporal-state-resolution.md` | Separate epistemic latency compression from physical time and dynamical evolution. | Conceptual synthesis grounded in cited physical/computational limits. |
+| `tacon2026-apex-deterministic-execution-contracts.md` | Preserve the June 2026 academic paper as a diffable historical transcript with original PDF provenance. | Historical publication; do not use it as the current implementation specification where later source-grounded research conflicts. |
 
-### A. Loop Architecture Taxonomy
-*   **File**: `ai-loop-architecture-taxonomy.md`
-*   **Abstract**: A comprehensive taxonomic classification of artificial intelligence feedback and control loop architectures, organizing systems by their autonomy level, human dependency, execution control, and failure modes.
-*   **Key Concepts**:
-    *   **Self-Consumption Loops (The "Ralph Wiggum" Loop)**: Systems that recursively process and repair their own potentially malformed outputs through parsing engines and error signal parsing.
-    *   **Self-Improving Loops (Heuristic Adaptation)**: Systems that dynamically rewrite context-embedded rules (e.g., rule tables, do-lists, and exception tables) without modifying model weights.
-    *   **Inner Loop Control**: Pre-execution validation pipelines executing invisible quality-control passes before emitting structured outputs.
-    *   **Prompting Iterative Refinement Loops**: Evaluation-guided rating loops and self-imposed critic loops that optimize outputs through structural feedback.
-    *   **Human Involvement Loops**: Human-in-the-loop (HITL) and human-on-the-loop (HOTL) gating mechanisms with alerting and override thresholds.
-    *   **Systems Learning Loop Families**: Feedback retraining pipelines (self-curated learning) and loop fusion optimizations designed to compress compute and latency.
+## Interpretation Rules
 
-### B. Recursive Hyper-Optimization
-*   **File**: `recursive-hyper-optimization.md`
-*   **Abstract**: A rigorous, computability-grounded formal analysis of recursive hyper-optimization—the process by which a computable system safely alters its own operational optimization structures through recursive meta-updates while maintaining monotonic performance improvements.
-*   **Key Concepts**:
-    *   **Formal Foundations**: Restricting self-modification entirely to recursive functions under Church-Turing limits to ensure system verifiability.
-    *   **Computational Self-Reference**: Utilizing Kleene's fixed-point recursion theorems to allow program self-modification without introducing semantic paradox or circular grounding.
-    *   **Computational Autopoiesis**: Conceptualizing self-improving agents as self-producing entities that maintain continuous functional reorganization within computationally defined boundaries.
-    *   **The Infinite Hierarchy Problem**: Resolving ascending meta-level regression (the infinite tower of self-improvers) through mathematical fixed-point collapse.
+1. Treat current repository source and passing tests in the owning project as authoritative for implemented behavior.
+2. Treat source-grounded research artifacts as authoritative only for the snapshots and evidence they explicitly identify.
+3. Treat architecture proposals as implementation inputs until code and tests demonstrate the claimed invariants.
+4. Treat the June 2026 APEX paper as historical where it describes rollback, validation ownership, replay, RAG embedding, or self-optimization behavior that later source inspection supersedes.
+5. Preserve unresolved boundaries explicitly. In particular, revalidate the current ASON-to-APEX authoritative-plan submission contract before implementing the transactional-effects WAL.
+6. Keep probabilistic planning and deterministic execution conceptually separate; do not infer execution guarantees from model behavior.
+7. Remove transient vendor/product reconnaissance after its durable architectural insight has been incorporated elsewhere.
 
-### C. Deterministic Execution Contracts for LLM Agent Systems
-*   **File**: `tacon2026_apex_deterministic_execution_contracts.pdf`
-*   **Abstract**: A formal academic publication presenting the concrete architecture, policy enforcement boundaries, and empirical evaluation of the AXIOM two-stage plan-deterministic execution model.
-*   **Key Concepts**:
-    *   **The Type-Confusion Model of Prompt Injection**: Characterizing prompt injection as a structural type-confusion failure over semantically untyped input-control channels (analogous to memory-unsafe control-flow corruption).
-    *   **Correctness Envelopes**: Defining bounded, pre-execution verification gates that evaluate multi-step plans against structural safety rules.
-    *   **RSI and BDSO Architecture**: Designing a Benchmark-Driven Self-Optimization (BDSO) loop that evaluates Gemini-generated codebase patches inside isolated subprocesses, scoring candidates against the `apex_score` fitness function.
-    *   **The Paranoid Exclusion Invariant**: Establishing the safety boundary wherein the plan auditor (historically `paranoid.py`, currently `apex/core/safety.py`) is permanently excluded from self-modification lists.
+## Current Research Priorities
 
----
+1. Verify the current ASON-to-APEX policy-to-execution contract before changing transactional semantics.
+2. Use `apex-transactional-effects-research.md` to close the pre-effect durability gap before adding broad rollback claims.
+3. Use `rag-crash-consistency-architecture.md` to implement single-owner RAG persistence and crash-injection tests without overstating Chroma durability guarantees.
+4. Keep speculative programs such as J-space and temporal-state resolution clearly separated from observed implementation facts.
 
-## 2. Theoretical Invariants Realized in AXIOM Apex
+## Ecosystem
 
-The papers describe earlier architecture versions. The current implementation boundaries are:
-
-*   **Information-Flow Separation**: Generation is probabilistic, but execution is structurally constrained. Probabilistic planners propose, structural schemas validate, and the stateless execution kernel runs.
-*   **The Correctness Gate**: `axiom-apex/apex/core/planner.py` validates plan structure, tool arguments, registry membership, and the step ceiling. `axiom-ason/ason/validator.py` owns policy and blast-radius checks. ASON submits an exact plan to APEX rather than asking the planner to reinterpret it.
-*   **SIGALRM Isolation**: Mitigates process hangs and tool-calling timeouts at the Unix syscall level using signal-interrupt handlers.
-*   **Rollback Boundary**: ASON contains an optional reversal-plan helper; automatic transactional rollback is not implemented. Deleting a written file cannot restore overwritten contents. Tool retries require explicit safety classification.
-*   **Shared Retrieval**: `axiom-rag` owns the retrieval implementation consumed by APEX. The dependency direction remains `axiom-ason → axiom-apex → axiom-rag`.
-*   **RSI Validation**: Candidate changes must pass regression tests before benchmark scoring. Git worktrees isolate source changes, not arbitrary code side effects; the manual merge gate remains in place.
-
----
-
-## 3. References
-
-The academic publications contained in this workspace cite and build upon the following foundational literature:
-
-*   Ahn, M., et al. (2022). *Do As I Can, Not As I Say: Grounding Language in Robotic Affordances*. arXiv:2204.01691.
-*   Bai, Y., et al. (2022). *Constitutional AI: Harmlessness from AI Feedback*. arXiv:2212.08073.
-*   Greshake, K., et al. (2023). *Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection*. arXiv:2302.12173.
-*   Perez, F., \& Ribeiro, I. (2022). *Ignore Previous Prompt: Attack Techniques For Language Models*. arXiv:2211.09527.
-*   Schick, T., et al. (2023). *Toolformer: Language Models Can Teach Themselves to Use Tools*. arXiv:2302.04761.
-*   Schmidhuber, J. (2003). *Gödel Machines: Self-Referential Universal Problem Solvers Making Provably Optimal Self-Improvements*. Technical Report IDSIA-19-03.
-*   Yao, S., et al. (2022). *ReAct: Synergizing Reasoning and Acting in Language Models*. arXiv:2210.03629.
-
----
-
-## 4. Official Ecosystem
-
-*   **AXIOM Apex (Core Engine)**: [github.com/axiom-llc/axiom-apex](https://github.com/axiom-llc/axiom-apex)
-*   **AXIOM Demos (Blueprints)**: [github.com/axiom-llc/axiom-demos](https://github.com/axiom-llc/axiom-demos)
-*   **AXIOM Research (Theory)**: [github.com/axiom-llc/axiom-research](https://github.com/axiom-llc/axiom-research)
-*   **AXIOM Portal (Web)**: [axiom-llc.github.io](https://axiom-llc.github.io)
-
----
-© 2026 AXIOM LLC. Built for deterministic autonomous execution.
+- [AXIOM Apex](https://github.com/axiom-llc/axiom-apex) - deterministic execution runtime.
+- [AXIOM RAG](https://github.com/axiom-llc/axiom-rag) - retrieval subsystem.
+- [AXIOM ASON](https://github.com/axiom-llc/axiom-ason) - policy/planning layer under active contract verification.
+- [AXIOM Demos](https://github.com/axiom-llc/axiom-demos) - deployable demonstrations and provider integrations.
+- [AXIOM Research](https://github.com/axiom-llc/axiom-research) - this research workspace.
+- [AXIOM Portal](https://axiom-llc.github.io/) - public project index.

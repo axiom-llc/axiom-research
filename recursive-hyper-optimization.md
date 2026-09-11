@@ -113,8 +113,19 @@ However, the formalism exposes tensions between fixed evaluation criteria and dy
 
 **Stability Under Self-Modification**: What prevents recursive hyper-optimization from optimizing away the very criteria defining improvement? Can formal guarantees ensure that self-modification preserves rather than subverts evaluative standards?
 
-These questions suggest recursive hyper-optimization marks a fertile intersection of computability theory, self-reference, and meta-cognition. The concept provides formal scaffolding for exploring how computational systems might improve their own improvement mechanisms while respecting fundamental theoretical constraints. Whether such systems constitute genuine agency or sophisticated mechanism remains an open question warranting both formal analysis and philosophical investigation.## Implementation Note: Relationship to APEX
+These questions suggest recursive hyper-optimization marks a fertile intersection of computability theory, self-reference, and meta-cognition. The concept provides formal scaffolding for exploring how computational systems might improve their own improvement mechanisms while respecting fundamental theoretical constraints. Whether such systems constitute genuine agency or sophisticated mechanism remains an open question warranting both formal analysis and philosophical investigation.
 
-APEX instantiates several properties of recursive hyper-optimization within a production-constrained execution model. The runtime's plan-validate-execute cycle mirrors the meta-update operator described in §Core Theoretical Framework: each execution modifies the agent's subsequent tool invocation strategy based on schema-validated feedback, producing monotonic convergence toward goal satisfaction under a fixed computable evaluation metric (schema compliance + termination criteria).
+## Implementation Note: Relationship to APEX
 
-APEX does not implement an infinite meta-update hierarchy — the Infinite Hierarchy Problem (§Critical Tensions) is resolved by design through a bounded iteration ceiling and explicit termination states. This maps to the recursion theorem's fixed-point collapse: the system's self-referential loop is grounded at a single meta-level, making it formally analyzable and auditable. The proto-teleological architecture described in §Radical Position — a system that chooses to become a better chooser — is approximated in APEX's adaptive re-planning on validation failure, where the agent revises its own execution strategy without external instruction.
+Do not treat ordinary APEX execution as recursive hyper-optimization. The production execution kernel separates probabilistic planning from bounded deterministic execution; executing a validated plan does not itself modify the optimizer or prove monotonic self-improvement.
+
+Map this theory instead to bounded self-optimization experiments in which candidate code changes are generated, isolated, tested, benchmarked, and accepted only through an explicit gate. Preserve security-critical exclusions and manual acceptance boundaries. Treat any Benchmark-Driven Self-Optimization (BDSO) mechanism as an empirical optimization loop whose monotonicity depends on the adequacy of its fitness function and regression suite, not as a theorem-backed guarantee of improvement.
+
+Keep the distinction explicit:
+
+```text
+ordinary APEX run: plan -> validate -> execute -> verify
+self-optimization experiment: baseline -> generate candidates -> isolate -> test/score -> accept or reject
+```
+
+Use `apex-transactional-effects-research.md` for source-grounded execution/recovery constraints. Revalidate the current APEX source before asserting file eligibility, planner behavior, rollback, or replay semantics.

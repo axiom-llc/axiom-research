@@ -1,6 +1,9 @@
 # RAG HTTP compatibility contract
 
-Date: 2026-09-11. **Runtime implementation: BLOCKED on the decisions in §5.**
+Date: 2026-09-11. **Historical audit gate: decisions in §5.** The 2026-09-12
+[decision-resolution supplement](rag-http-decision-resolution.md) now recommends
+one policy per group and unlocks scoped implementation specification. Runtime
+implementation remains unperformed; the supplement records explicit scope limits.
 This is a source-grounded compatibility contract and implementation gate, not an
 approved new wire API. No runtime change or CLI/APEX migration is made here.
 

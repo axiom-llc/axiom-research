@@ -85,10 +85,11 @@ Chroma fallback.
 Namespace authority, provider/configuration ownership, and raw-vector/identity
 transport decisions are resolved for the trusted-application scope.
 
-CLI and APEX storage adapters have not yet migrated to the new client. The next
-prerequisite is an explicit deployment mapping derived from live
-configuration—not invented URLs, ports, namespaces, credentials, or model
-settings.
+CLI/APEX storage adapters now use the HTTP client in the RAG 1.5.0 unreleased
+source, under the accepted explicit host-local mapping. Evaluators remain local;
+the earlier proposal to migrate their storage is excluded by owner direction.
+Migration validation covers separate-owner callers, caller parity and recovery.
+This does not establish publication, deployment or container connectivity.
 
 ## Interpretation rules
 
@@ -109,10 +110,10 @@ settings.
 
 ## Current priorities
 
-1. Resolve the concrete local deployment mapping required for HTTP-only RAG
-   storage migration.
-2. Migrate CLI/APEX storage adapters only after that mapping is explicit and
-   validate caller parity with separate-owner/no-fallback tests.
+1. Use the integrated CLI/APEX HTTP storage migration as the baseline for
+   any separately authorized release or deployment.
+2. Keep evaluators local and preserve the explicit mapping and single-owner
+   boundary; container deployment and evaluator HTTP migration remain separate scopes.
 3. Keep `write_file` compensation blocked until its authority, inverse/preimage,
    version-safety, and reconciliation contracts are approved.
 4. Continue research only when it provides a falsifiable experiment, a durable

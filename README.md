@@ -1,43 +1,140 @@
+
 # AXIOM Research
 
-Use this repository as the canonical research workspace for the AXIOM execution ecosystem. Keep durable theory, source-grounded architecture research, and reusable research programs here; keep product code and transient implementation notes in their owning repositories.
+Canonical research workspace for the AXIOM execution ecosystem.
 
-**Canonicalized:** 2026-09-11T08:08:11-04:00
+Keep durable theory, source-grounded implementation research, architecture
+decisions, and reusable research programs here. Product code and transient
+implementation notes belong in their owning repositories.
 
-## Contents
+## Research artifacts
 
-| File | Role | Authority |
-| --- | --- | --- |
-| `ai-loop-architecture-taxonomy.md` | Classify iterative, autonomous, human-supervised, and learning loop architectures. | Research taxonomy; validate workload-specific quantitative claims empirically. |
-| `apex-transactional-effects-research.md` | Record source-grounded APEX/ASON crash-gap findings and the saga-lite WAL design. | Implementation input tied to the repository snapshots named in the artifact; revalidate current source before coding. |
-| `j-space-research.md` | Preserve the J-space falsifiable research program and epistemic boundaries. | Research agenda and toy formalization; do not treat it as evidence about hidden model internals. |
-| `rag-crash-consistency-architecture.md` | Define the selected single-owner RAG lifecycle, journaling, recovery, and concurrency model. | Architecture proposal; do not claim power-loss atomicity or implementation completion without tests. |
-| `recursive-hyper-optimization.md` | Analyze computable recursive self-optimization and its limits. | Theory; treat APEX references as implementation mapping, not proof of stronger self-modification properties. |
-| `temporal-state-resolution.md` | Separate epistemic latency compression from physical time and dynamical evolution. | Conceptual synthesis grounded in cited physical/computational limits. |
-| `tacon2026-apex-deterministic-execution-contracts.md` | Preserve the June 2026 academic paper as a diffable historical transcript with original PDF provenance. | Historical publication; do not use it as the current implementation specification where later source-grounded research conflicts. |
+| File                                                   | Role                                                                                | Current interpretation                                                                                                              |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `ai-loop-architecture-taxonomy.md`                     | Taxonomy of iterative, autonomous, supervised, and learning control loops.          | Architectural taxonomy; workload-specific quantitative claims require empirical validation.                                         |
+| `apex-transactional-effects-research.md`               | Source-grounded APEX/ASON effect-durability and recovery research.                  | Historical design input; APEX now has a durable effect ledger, but broader compensation remains constrained.                        |
+| `write-file-compensation-readiness.md`                 | Audit of `write_file` compensation requirements.                                    | Automatic `write_file` compensation remains blocked pending authority, preimage, concurrency/version, and reconciliation contracts. |
+| `rag-crash-consistency-architecture.md`                | Single-owner RAG persistence, journaling, and recovery design.                      | Core process-crash design has been implemented in `axiom-rag`; host-power-loss guarantees remain explicitly out of scope.           |
+| `rag-http-compatibility-contract.md`                   | Caller/server compatibility analysis for HTTP-only RAG storage access.              | Defines the compatibility requirements that led to the versioned RAG HTTP surface.                                                  |
+| `rag-http-decision-resolution.md`                      | Resolution of namespace, provider/configuration, and raw-vector/identity authority. | Accepted decision input for the RAG 1.4 HTTP compatibility implementation.                                                          |
+| `j-space-research.md`                                  | Falsifiable J-space research program and epistemic boundaries.                      | Research agenda/toy formalization, not evidence about hidden model internals.                                                       |
+| `recursive-hyper-optimization.md`                      | Computability-grounded recursive self-optimization analysis.                        | Theory; ordinary APEX execution is not itself recursive hyper-optimization.                                                         |
+| `temporal-state-resolution.md`                         | Epistemic latency versus physical/dynamical time.                                   | Conceptual synthesis grounded in stated physical/computational constraints.                                                         |
+| `tacon2026-apex-deterministic-execution-contracts.md`  | Diffable transcript of the June 2026 APEX paper.                                    | Historical publication; later source-grounded findings override conflicting implementation descriptions.                            |
+| `tacon2026_apex_deterministic_execution_contracts.pdf` | Original June 2026 publication.                                                     | Historical source artifact.                                                                                                         |
 
-## Interpretation Rules
+## Validated implementation state represented by the research
 
-1. Treat current repository source and passing tests in the owning project as authoritative for implemented behavior.
-2. Treat source-grounded research artifacts as authoritative only for the snapshots and evidence they explicitly identify.
-3. Treat architecture proposals as implementation inputs until code and tests demonstrate the claimed invariants.
-4. Treat the June 2026 APEX paper as historical where it describes rollback, validation ownership, replay, RAG embedding, or self-optimization behavior that later source inspection supersedes.
-5. Preserve unresolved boundaries explicitly. In particular, revalidate the current ASON-to-APEX authoritative-plan submission contract before implementing the transactional-effects WAL.
-6. Keep probabilistic planning and deterministic execution conceptually separate; do not infer execution guarantees from model behavior.
-7. Remove transient vendor/product reconnaissance after its durable architectural insight has been incorporated elsewhere.
+### ASON → APEX
 
-## Current Research Priorities
+ASON validates caller-supplied plans against caller-supplied policy and submits
+the approved tool sequence to APEX without probabilistic replanning. APEX is the
+bounded deterministic execution substrate.
 
-1. Verify the current ASON-to-APEX policy-to-execution contract before changing transactional semantics.
-2. Use `apex-transactional-effects-research.md` to close the pre-effect durability gap before adding broad rollback claims.
-3. Use `rag-crash-consistency-architecture.md` to implement single-owner RAG persistence and crash-injection tests without overstating Chroma durability guarantees.
-4. Keep speculative programs such as J-space and temporal-state resolution clearly separated from observed implementation facts.
+The submission boundary is verified. Do not reopen that design question without
+contradictory live evidence.
+
+### APEX transactional effects
+
+APEX durably binds an accepted execution plan to its run and records effect
+intent before dispatch. Recovery reuses completed results and blocks ambiguous
+dispatch states rather than blindly repeating them.
+
+This is conservative process-crash recovery, not an exactly-once external-effect
+guarantee.
+
+Automatic `write_file` rollback now fails closed. Safe compensation still
+requires explicit owner-approved authority, durable preimage, version/concurrency
+safety, forward/inverse ambiguous-outcome reconciliation, and durable inverse
+execution.
+
+### RAG durability
+
+`axiom-rag` now implements:
+
+* one cooperating process owner per persistence root;
+* one retained Chroma client per root;
+* serialized supported access;
+* opaque versioned record identities;
+* durable replacement intents;
+* startup recovery;
+* finite-vector validation;
+* namespace/embedding-space provenance validation.
+
+These guarantees cover tested process crashes on local Linux filesystems. They
+do not establish host-power-loss atomicity across Chroma SQLite/HNSW or protect
+against non-cooperating direct Chroma access.
+
+### RAG HTTP compatibility
+
+RAG 1.4.0 adds a server-owned versioned compatibility surface:
+
+```text
+/v1/inspect
+/v1/create
+/v1/ingest
+/v1/replace
+/v1/fetch
+/v1/query
+/v1/delete
+```
+
+and a bounded `rag.http_client.Client` with no retries, redirects, or direct
+Chroma fallback.
+
+Namespace authority, provider/configuration ownership, and raw-vector/identity
+transport decisions are resolved for the trusted-application scope.
+
+CLI and APEX storage adapters have not yet migrated to the new client. The next
+prerequisite is an explicit deployment mapping derived from live
+configuration—not invented URLs, ports, namespaces, credentials, or model
+settings.
+
+## Interpretation rules
+
+1. Current source and passing tests in the owning repository outrank research
+   descriptions of implemented behavior.
+2. Source-grounded research is authoritative only for the snapshots/evidence it
+   identifies.
+3. Architecture proposals remain implementation inputs until code and tests
+   demonstrate their invariants.
+4. Do not infer deterministic model behavior from deterministic execution
+   boundaries.
+5. Do not claim exactly-once effects, host-power-loss atomicity, or distributed
+   recovery without direct evidence.
+6. Preserve unresolved owner decisions explicitly rather than silently choosing
+   semantics.
+7. Keep speculative research clearly separated from observed implementation
+   facts.
+
+## Current priorities
+
+1. Resolve the concrete local deployment mapping required for HTTP-only RAG
+   storage migration.
+2. Migrate CLI/APEX storage adapters only after that mapping is explicit and
+   validate caller parity with separate-owner/no-fallback tests.
+3. Keep `write_file` compensation blocked until its authority, inverse/preimage,
+   version-safety, and reconciliation contracts are approved.
+4. Continue research only when it provides a falsifiable experiment, a durable
+   architectural decision, or implementation-relevant evidence.
+
+## Validation
+
+Research Markdown should remain internally consistent and whitespace-clean:
+
+```bash
+git diff --check
+```
+
+Any implementation claim should additionally be revalidated in its owning
+runtime repository.
 
 ## Ecosystem
 
-- [AXIOM Apex](https://github.com/axiom-llc/axiom-apex) - deterministic execution runtime.
-- [AXIOM RAG](https://github.com/axiom-llc/axiom-rag) - retrieval subsystem.
-- [AXIOM ASON](https://github.com/axiom-llc/axiom-ason) - policy/planning layer under active contract verification.
-- [AXIOM Demos](https://github.com/axiom-llc/axiom-demos) - deployable demonstrations and provider integrations.
-- [AXIOM Research](https://github.com/axiom-llc/axiom-research) - this research workspace.
-- [AXIOM Portal](https://axiom-llc.github.io/) - public project index.
+* [AXIOM APEX](https://github.com/axiom-llc/axiom-apex) — deterministic execution runtime.
+* [AXIOM ASON](https://github.com/axiom-llc/axiom-ason) — pre-execution policy layer.
+* [AXIOM RAG](https://github.com/axiom-llc/axiom-rag) — retrieval/storage subsystem.
+* [AXIOM Infra](https://github.com/axiom-llc/axiom-infra) — local integration and portfolio CI.
+* [AXIOM Demos](https://github.com/axiom-llc/axiom-demos) — applied integrations.
+* [AXIOM API](https://github.com/axiom-llc/axiom-api) — reusable HTTP client base.
+* [AXIOM LLC](https://axiom-llc.github.io/) — public project site.

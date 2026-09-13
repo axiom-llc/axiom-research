@@ -67,7 +67,7 @@ against non-cooperating direct Chroma access.
 
 ### RAG HTTP compatibility
 
-RAG 1.4.0 adds a server-owned versioned compatibility surface:
+RAG 1.5.0 unreleased source provides a server-owned versioned compatibility surface:
 
 ```text
 /v1/inspect
@@ -85,11 +85,14 @@ Chroma fallback.
 Namespace authority, provider/configuration ownership, and raw-vector/identity
 transport decisions are resolved for the trusted-application scope.
 
-CLI/APEX storage adapters now use the HTTP client in the RAG 1.5.0 unreleased
-source, under the accepted explicit host-local mapping. Evaluators remain local;
-the earlier proposal to migrate their storage is excluded by owner direction.
-Migration validation covers separate-owner callers, caller parity and recovery.
-This does not establish publication, deployment or container connectivity.
+CLI/APEX storage adapters use the HTTP client in the RAG 1.5.0 unreleased source,
+under the accepted explicit host-local mapping. Evaluators remain local; the
+earlier proposal to migrate their storage is excluded by owner direction.
+Validation covers separate-owner callers, caller parity, recovery, and local
+Docker Compose RAG/APEX connectivity: service ownership, authentication, HTTP
+routing, restart persistence, and portfolio CI. The Compose evidence used dummy
+credentials; it does not validate live provider-backed ingest/query, publication,
+or a production deployment.
 
 ## Interpretation rules
 
@@ -113,7 +116,8 @@ This does not establish publication, deployment or container connectivity.
 1. Use the integrated CLI/APEX HTTP storage migration as the baseline for
    any separately authorized release or deployment.
 2. Keep evaluators local and preserve the explicit mapping and single-owner
-   boundary; container deployment and evaluator HTTP migration remain separate scopes.
+   boundary; evaluator HTTP migration remains a separate scope. Treat the local
+   Compose integration as validated, not as a production deployment.
 3. Keep `write_file` compensation blocked until its authority, inverse/preimage,
    version-safety, and reconciliation contracts are approved.
 4. Continue research only when it provides a falsifiable experiment, a durable

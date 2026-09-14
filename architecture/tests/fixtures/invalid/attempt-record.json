@@ -1,0 +1,17 @@
+{
+  "attempt_id": "a-1",
+  "task_id": "t-1",
+  "resource_id": "r-1",
+  "lease_id": null,
+  "context_pack_hash": "sha256:example",
+  "executor_run_ref": null,
+  "authorization_refs": [],
+  "outcome": "ACCEPTED",
+  "result_ref": "res-1",
+  "evidence_refs": [
+    "e-1"
+  ],
+  "retry_safe": "yes",
+  "started_at": "2026-09-14T00:00:00-04:00",
+  "completed_at": "2026-09-14T00:01:00-04:00"
+}

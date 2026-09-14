@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CompletionReceipt",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "result_ref": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact_hashes": {
+      "type": "object",
+      "additionalProperties": {},
+      "$comment": "Values are normative digests; encoding/algorithm is not yet specified."
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "executor": {
+      "type": "string"
+    },
+    "attempt_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "committed_at": {
+      "$comment": "Normative type is timestamp; JSON timestamp representation/format is not yet specified."
+    }
+  },
+  "required": [
+    "task_id",
+    "result_ref",
+    "evidence_refs",
+    "artifact_hashes",
+    "limitations",
+    "executor",
+    "attempt_id",
+    "committed_at"
+  ]
+}

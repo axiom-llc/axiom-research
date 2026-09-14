@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AttemptRecord",
+  "type": "object",
+  "properties": {
+    "attempt_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "resource_id": {
+      "type": "string"
+    },
+    "lease_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "context_pack_hash": {
+      "$comment": "Normative type is digest; digest encoding/algorithm is not yet specified."
+    },
+    "executor_run_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authorization_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "FAILED",
+        "REJECTED",
+        "UNKNOWN",
+        "ACCEPTED"
+      ]
+    },
+    "result_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "retry_safe": {
+      "type": "boolean"
+    },
+    "started_at": {
+      "$comment": "Normative type is timestamp; JSON timestamp representation/format is not yet specified."
+    },
+    "completed_at": {
+      "$comment": "Normative type is timestamp | null; JSON timestamp representation/format is not yet specified."
+    }
+  },
+  "required": [
+    "attempt_id",
+    "task_id",
+    "resource_id",
+    "lease_id",
+    "context_pack_hash",
+    "executor_run_ref",
+    "authorization_refs",
+    "outcome",
+    "result_ref",
+    "evidence_refs",
+    "retry_safe",
+    "started_at",
+    "completed_at"
+  ]
+}

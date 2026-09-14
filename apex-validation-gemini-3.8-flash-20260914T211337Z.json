@@ -1,0 +1,63 @@
+{
+  "apex_revision": "0fa8ffc92d09d13821b4ae0d041ecebf7c94236d",
+  "provider": "gemini",
+  "model": "gemini-3.8-flash",
+  "endpoint_ref": "Google Gemini API",
+  "account_ref": "private configured Gemini account; identifier withheld from public repository",
+  "host_harness": "direct APEX CLI",
+  "config_digest": "sha256:5710e16102008fd2a659b96ae271a43a711f40d17eea857212a9bdf8b6743aad",
+  "workload_ref": "axiom-apex@0fa8ffc92d09d13821b4ae0d041ecebf7c94236d:benchmarks/tasks.json",
+  "command": "APEX_RUN_FULL_BENCH=1 ~/downloads/apex-gemini-validate.sh",
+  "pass_rate": 1.0,
+  "wall_time": {
+    "benchmark_seconds": 91.247,
+    "integration_tests_seconds": 14.68
+  },
+  "token_metrics": {
+    "benchmark_total": 21721,
+    "benchmark_average_per_task": 1810.0833333333333,
+    "provider_smoke": 128,
+    "direct_dry_run": 1454,
+    "direct_execution": 1036
+  },
+  "throughput_metrics": {
+    "tasks_per_minute": 7.890670926167983,
+    "apex_score": 0.983798,
+    "speed_factor": 1.0,
+    "token_efficiency": 0.9838
+  },
+  "resource_observations": {
+    "billing_tier": "Paid Tier 1",
+    "billing_plan": "Postpay until required Prepay migration",
+    "rate_limits": {
+      "rpm": 1000,
+      "input_tpm": 2000000,
+      "rpd": 10000
+    },
+    "observed_peaks_last_28_days": {
+      "rpm": 8,
+      "input_tpm": 3560,
+      "rpd": 22
+    },
+    "billing_period_gemini_api_cost_usd_sep_1_14_2026": 0.02,
+    "prepay_migration_deadline": "2026-10-12",
+    "python": "3.12.9",
+    "google_genai": "1.66.0",
+    "execution": "remote Gemini inference with local APEX tool execution",
+    "result_dir": "/home/u/apex-gemini-validation/20260914T211337Z"
+  },
+  "cash_cost": {
+    "exact_benchmark_cost": "not isolated from account billing",
+    "billing_period_gemini_api_cost_usd_sep_1_14_2026": 0.02
+  },
+  "failures": [],
+  "limitations": [
+    "Exact per-run cash cost is not isolated from account billing.",
+    "Account identifier and API credential are intentionally excluded from the public artifact.",
+    "Billing must migrate from Postpay to Prepay before 2026-10-12 to avoid paid Gemini API service interruption.",
+    "Acceptance applies to this exact APEX revision, Gemini model, SDK version, direct host harness, and 12-task workload; materially different profiles require separate validation.",
+    "Host-harness nesting through Codex, AGY, or OpenCode remains unmeasured."
+  ],
+  "result": "ACCEPT",
+  "verified_at": "2026-09-14T17:13:37-04:00"
+}

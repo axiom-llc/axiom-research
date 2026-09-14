@@ -2,15 +2,15 @@
 
 The supplied architecture and modification task were checked for ownership uniqueness, provider/account placement, control-plane duplication, spend enforcement, model/profile identity, nested-harness semantics, acceptance boundaries, and migration ordering.
 
-**Repository state:** the accessible APEX default branch remains at commit `0fa8ffc92d09d13821b4ae0d041ecebf7c94236d`. The published immutable `v3.1.1` release exists and contains the wheel/source/checksum artifacts, while the current README still calls the version unreleased; this is confirmed documentation drift rather than architectural uncertainty.  
+**Repository state:** the accessible APEX default branch remains at commit `0fa8ffc92d09d13821b4ae0d041ecebf7c94236d`. The published immutable `v3.1.1` release exists and contains the wheel/source/checksum artifacts, while the current README still calls the version unreleased; this is confirmed documentation drift rather than architectural uncertainty.
 
-**Provider implementation:** APEX currently supports exactly `gemini` and `ollama` through the configured provider abstraction. Ollama uses `OLLAMA_BASE_URL`, `OLLAMA_MODEL`, native `/api/generate`, non-streaming generation, temperature `0.2`, and a 300-second request timeout.  
+**Provider implementation:** APEX currently supports exactly `gemini` and `ollama` through the configured provider abstraction. Ollama uses `OLLAMA_BASE_URL`, `OLLAMA_MODEL`, native `/api/generate`, non-streaming generation, temperature `0.2`, and a 300-second request timeout.
 
 **Ollama protocol compatibility:** APEX consumes response fields that remain present in current Ollama documentation. Ollama exposes additional duration metrics sufficient to calculate detailed prompt/generation performance if the validation path chooses to capture them.
 
-**Current test gap:** the APEX provider tests validate Ollama's fail-closed, one-attempt, redacted-error path but do not perform a live successful Ollama provider test. 
+**Current test gap:** the APEX provider tests validate Ollama's fail-closed, one-attempt, redacted-error path but do not perform a live successful Ollama provider test.
 
-**Existing benchmark capability:** `apex.bench` already provides a suitable first production gate: real APEX subprocess execution, per-task wall duration, pass/fail results, token counts, aggregate pass rate, speed factor, token efficiency, and composite score. The supplied benchmark covers twelve file/shell/memory/HTTP/multi-step workloads.  
+**Existing benchmark capability:** `apex.bench` already provides a suitable first production gate: real APEX subprocess execution, per-task wall duration, pass/fail results, token counts, aggregate pass rate, speed factor, token efficiency, and composite score. The supplied benchmark covers twelve file/shell/memory/HTTP/multi-step workloads.
 
 **Codex/OpenCode:** current Ollama documentation explicitly supports both environments and recommends substantially larger contexts for these coding harnesses. Their availability therefore justifies experiments, not a presumption that the current local Gemma/Qwen profiles are suitable inside them.
 

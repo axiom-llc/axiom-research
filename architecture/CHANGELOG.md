@@ -12,4 +12,3 @@
 10. **Added explicit no-hidden-paid-fallback invariant.**
 11. **Moved local Gemma/Qwen validation and `gxy` audit ahead of speculative new providers or adapters.**
 12. **Preserved all prior authority, APEX/ASON, retry, recovery, acceptance, RAG, repository, and Harness-promotion boundaries required for correctness.**
-

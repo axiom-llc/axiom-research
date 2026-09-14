@@ -137,7 +137,7 @@ One fact has one authoritative owner. Higher layers hold references, summaries, 
 32. `INV-032` — Prefer direct APEX execution before adding nested host-harness orchestration.
 33. `INV-033` — Account-specific usage and pricing must be verified before assigning nonzero spend capacity.
 
-Current APEX already implements plan generation, schema validation, bounded execution, durable run/effect state, recovery/replay, tools, HTTP/MCP surfaces, and exact-plan execution; treating it merely as a consequential-effect endpoint would duplicate its implemented role. 
+Current APEX already implements plan generation, schema validation, bounded execution, durable run/effect state, recovery/replay, tools, HTTP/MCP surfaces, and exact-plan execution; treating it merely as a consequential-effect endpoint would duplicate its implemented role.
 
 ## Director
 
@@ -317,7 +317,7 @@ Availability never overrides authority, safety, or budget.
 
 ## APEX and ASON
 
-APEX is the canonical bounded machine execution substrate. Current implementation supports schema-validated plans, bounded execution, replay, persistent run/effect state, recovery, tool execution, CLI/HTTP/MCP interfaces, and orchestration. 
+APEX is the canonical bounded machine execution substrate. Current implementation supports schema-validated plans, bounded execution, replay, persistent run/effect state, recovery, tool execution, CLI/HTTP/MCP interfaces, and orchestration.
 
 ASON selectively governs exact plans before APEX execution.
 
@@ -357,7 +357,7 @@ APEX recovery remains conservative: ambiguous dispatch blocks replay; it does no
 
 ## APEX compute and provider architecture
 
-APEX currently exposes a provider abstraction with native `gemini` and `ollama` selection. Ollama uses the native `/api/generate` interface with configurable endpoint/model and a single 300-second request attempt. 
+APEX currently exposes a provider abstraction with native `gemini` and `ollama` selection. Ollama uses the native `/api/generate` interface with configurable endpoint/model and a single 300-second request attempt.
 
 Treat planning compute separately from execution authority:
 
@@ -424,9 +424,9 @@ stability across repeated runs
 
 Do not infer that Gemma or Qwen is APEX-capable from a successful raw completion alone.
 
-Current unit tests verify Ollama's single-attempt redacted failure behavior but do not provide a live Ollama success/compatibility test. 
+Current unit tests verify Ollama's single-attempt redacted failure behavior but do not provide a live Ollama success/compatibility test.
 
-The existing benchmark already executes real APEX tasks and records pass rate, wall time, token count, and a bounded composite score; its current workload contains file, shell, memory, HTTP, and multi-step cases.  
+The existing benchmark already executes real APEX tasks and records pass rate, wall time, token count, and a bounded composite score; its current workload contains file, shell, memory, HTTP, and multi-step cases.
 
 Canonical local validation:
 
@@ -487,7 +487,7 @@ automatic migration = prohibited
 unverified quota = unusable for routing
 ```
 
-No public or accessible repository evidence identifies `gxy` as an APEX-native configuration key; current APEX configuration exposes provider/model credentials and endpoints rather than named account profiles. 
+No public or accessible repository evidence identifies `gxy` as an APEX-native configuration key; current APEX configuration exposes provider/model credentials and endpoints rather than named account profiles.
 
 ## External host harnesses
 
@@ -875,4 +875,3 @@ update compact strategic state
   ↓
 continue
 ```
-

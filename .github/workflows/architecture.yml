@@ -8,9 +8,8 @@ on:
       - "architecture/**"
       - ".github/workflows/architecture.yml"
   pull_request:
-    paths:
-      - "architecture/**"
-      - ".github/workflows/architecture.yml"
+    branches:
+      - main
 
 permissions:
   contents: read

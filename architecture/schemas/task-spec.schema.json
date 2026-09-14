@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskSpec",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "$comment": "Immutability is a lifecycle invariant and cannot be enforced by static JSON Schema."
+    },
+    "intent_ref": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "priority_class": {
+      "type": "string",
+      "enum": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ]
+    },
+    "deadline": {
+      "$comment": "Normative type is timestamp | null; JSON timestamp representation/format is not yet specified."
+    },
+    "execution_window": {
+      "$comment": "Normative type is interval | null; JSON interval representation is not yet specified."
+    },
+    "autonomy_class": {
+      "type": "string",
+      "enum": [
+        "AUTO",
+        "AUTO_NOTIFY",
+        "APPROVAL_REQUIRED",
+        "HUMAN_ASSISTED",
+        "HUMAN_ONLY",
+        "MONITOR"
+      ]
+    },
+    "capability_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sensitivity_class": {
+      "$comment": "Policy-defined enum; values are intentionally unconstrained until the policy taxonomy is defined."
+    },
+    "mutation_class": {
+      "type": "string",
+      "enum": [
+        "M0",
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ]
+    },
+    "cash_ceiling": {
+      "type": "number",
+      "minimum": 0
+    },
+    "token_budget": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "context_budget": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "retry_budget": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "human_time_budget_minutes": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "context_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "acceptance_contract": {
+      "type": "object"
+    },
+    "dependency_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "task_id",
+    "intent_ref",
+    "domain",
+    "priority_class",
+    "deadline",
+    "execution_window",
+    "autonomy_class",
+    "capability_requirements",
+    "sensitivity_class",
+    "mutation_class",
+    "cash_ceiling",
+    "token_budget",
+    "context_budget",
+    "retry_budget",
+    "human_time_budget_minutes",
+    "context_refs",
+    "acceptance_contract",
+    "dependency_refs"
+  ],
+  "$comment": "Only constraints explicitly stated by the architecture are enforced. Timestamp, interval, and sensitivity serialization remain unresolved."
+}

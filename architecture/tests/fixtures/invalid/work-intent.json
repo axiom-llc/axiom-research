@@ -1,0 +1,11 @@
+{
+  "intent_id": "i-1",
+  "objective": "validate",
+  "priority_class": "P9",
+  "hard_constraints": {},
+  "required_outcome": "evidence",
+  "evidence_requirements": [
+    "receipt"
+  ],
+  "context_refs": []
+}

@@ -1,0 +1,11 @@
+{
+  "task_id": "t-1",
+  "objective": "validate",
+  "hard_constraints": [],
+  "acceptance_contract": {},
+  "authoritative_state": {},
+  "source_refs": [],
+  "required_source_excerpts": [],
+  "resource_constraints": {},
+  "prior_relevant_receipts": []
+}

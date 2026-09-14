@@ -1,0 +1,20 @@
+{
+  "task_id": "t-1",
+  "intent_ref": "i-1",
+  "domain": "research",
+  "priority_class": "P3",
+  "deadline": null,
+  "execution_window": null,
+  "autonomy_class": "AUTO",
+  "capability_requirements": [],
+  "sensitivity_class": "PUBLIC",
+  "mutation_class": "M0",
+  "cash_ceiling": -1,
+  "token_budget": null,
+  "context_budget": 1000,
+  "retry_budget": 0,
+  "human_time_budget_minutes": null,
+  "context_refs": [],
+  "acceptance_contract": {},
+  "dependency_refs": []
+}

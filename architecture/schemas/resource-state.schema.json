@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResourceState",
+  "type": "object",
+  "properties": {
+    "resource_id": {},
+    "availability": {},
+    "quota": {},
+    "rate_limits": {},
+    "free_allowance": {},
+    "current_usage": {},
+    "billing_period": {},
+    "hard_spend_ceiling": {},
+    "pricing_ref": {},
+    "cooldown": {},
+    "authentication_readiness": {},
+    "last_verification": {}
+  },
+  "required": [
+    "resource_id",
+    "availability",
+    "quota",
+    "rate_limits",
+    "free_allowance",
+    "current_usage",
+    "billing_period",
+    "hard_spend_ceiling",
+    "pricing_ref",
+    "cooldown",
+    "authentication_readiness",
+    "last_verification"
+  ],
+  "$comment": "Only field presence is enforced because the architecture does not yet define JSON representations for these operational facts."
+}

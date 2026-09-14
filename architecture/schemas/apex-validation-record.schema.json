@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ApexValidationRecord",
+  "type": "object",
+  "properties": {
+    "apex_revision": {},
+    "provider": {},
+    "model": {},
+    "endpoint_ref": {},
+    "account_ref": {},
+    "host_harness": {},
+    "config_digest": {},
+    "workload_ref": {},
+    "command": {},
+    "pass_rate": {},
+    "wall_time": {},
+    "token_metrics": {},
+    "throughput_metrics": {},
+    "resource_observations": {},
+    "cash_cost": {},
+    "failures": {},
+    "limitations": {},
+    "result": {
+      "type": "string",
+      "enum": [
+        "ACCEPT",
+        "REJECT",
+        "EXPERIMENTAL"
+      ]
+    },
+    "verified_at": {}
+  },
+  "required": [
+    "apex_revision",
+    "provider",
+    "model",
+    "endpoint_ref",
+    "account_ref",
+    "host_harness",
+    "config_digest",
+    "workload_ref",
+    "command",
+    "pass_rate",
+    "wall_time",
+    "token_metrics",
+    "throughput_metrics",
+    "resource_observations",
+    "cash_cost",
+    "failures",
+    "limitations",
+    "result",
+    "verified_at"
+  ],
+  "$comment": "Only field presence and the explicitly defined result enum are enforced; other field JSON types are not specified by the architecture."
+}

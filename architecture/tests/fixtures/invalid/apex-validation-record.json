@@ -1,0 +1,21 @@
+{
+  "apex_revision": "rev",
+  "provider": "ollama",
+  "model": "example",
+  "endpoint_ref": "local",
+  "account_ref": null,
+  "host_harness": null,
+  "config_digest": "digest",
+  "workload_ref": "bench",
+  "command": "apex bench",
+  "pass_rate": 1.0,
+  "wall_time": 1.0,
+  "token_metrics": {},
+  "throughput_metrics": {},
+  "resource_observations": {},
+  "cash_cost": 0,
+  "failures": [],
+  "limitations": [],
+  "result": "MAYBE",
+  "verified_at": "2026-09-14T00:00:00-04:00"
+}

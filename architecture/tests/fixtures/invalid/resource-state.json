@@ -1,0 +1,13 @@
+{
+  "resource_id": "local-ollama",
+  "availability": "available",
+  "quota": null,
+  "rate_limits": null,
+  "free_allowance": null,
+  "current_usage": null,
+  "billing_period": null,
+  "hard_spend_ceiling": 0,
+  "pricing_ref": null,
+  "cooldown": null,
+  "authentication_readiness": true
+}

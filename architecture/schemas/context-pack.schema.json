@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ContextPack",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hard_constraints": {
+      "type": "array",
+      "items": {}
+    },
+    "acceptance_contract": {
+      "type": "object"
+    },
+    "authoritative_state": {
+      "type": "object"
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_source_excerpts": {
+      "type": "array",
+      "items": {}
+    },
+    "resource_constraints": {
+      "type": "object"
+    },
+    "prior_relevant_receipts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "task_id",
+    "objective",
+    "hard_constraints",
+    "acceptance_contract",
+    "authoritative_state",
+    "source_refs",
+    "required_source_excerpts",
+    "resource_constraints",
+    "prior_relevant_receipts"
+  ],
+  "$comment": "constraint and source-excerpt element shapes are intentionally unconstrained because the architecture does not define them."
+}

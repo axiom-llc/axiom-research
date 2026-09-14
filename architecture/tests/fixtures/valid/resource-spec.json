@@ -1,0 +1,14 @@
+{
+  "resource_id": "local-ollama",
+  "capabilities": [
+    "planning"
+  ],
+  "maximum_mutation_class": "M0",
+  "cost_class": "local",
+  "hard_zero_spend_eligible": true,
+  "context_limits": {},
+  "reasoning_tiers": [],
+  "failure_semantics": {},
+  "timeout_behavior": {},
+  "account_ref": null
+}

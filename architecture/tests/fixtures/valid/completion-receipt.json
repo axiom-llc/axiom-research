@@ -1,0 +1,14 @@
+{
+  "task_id": "t-1",
+  "result_ref": "res-1",
+  "evidence_refs": [
+    "e-1"
+  ],
+  "artifact_hashes": {
+    "out": "sha256:example"
+  },
+  "limitations": [],
+  "executor": "deterministic",
+  "attempt_id": "a-1",
+  "committed_at": "2026-09-14T00:01:00-04:00"
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskState",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "BLOCKED",
+        "READY",
+        "LEASED",
+        "RUNNING",
+        "UNKNOWN",
+        "FAILED",
+        "COMMITTED",
+        "CANCELLED"
+      ]
+    },
+    "active_lease_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "canonical_result_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updated_at": {
+      "$comment": "Normative type is timestamp; JSON timestamp representation/format is not yet specified."
+    }
+  },
+  "required": [
+    "task_id",
+    "state",
+    "active_lease_ref",
+    "canonical_result_ref",
+    "updated_at"
+  ]
+}

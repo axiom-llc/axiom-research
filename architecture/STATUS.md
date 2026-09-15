@@ -1,72 +1,56 @@
 # 3. Validation performed and results
 
-The supplied architecture and current implementation state were checked for authority boundaries, durable authorization provenance, provider/account placement, execution-profile identity, workload acceptance, spend constraints, and cross-repository consistency.
+The canonical architecture remains version `1.0.0`; no contract or invariant changed during this synchronization. Live implementation, tests, and runtime evidence were reconciled against the architecture authority, recovery, provider, spend, and interoperability boundaries.
 
-**Repository state:** `axiom-apex/main` is at `372a272e99934b3cadf69f08be95de081bfb1de1` (APEX source version `3.2.0`) and `axiom-ason/main` is at `379c4833db012080aa016ac19c30f53f00e548b0` (ASON source version `0.3.0`). Their post-merge hosted CI completed successfully. Publication/release state remains separate from source validation.
+**Repository state:** `axiom-apex/main` is at `7adab4bcbcb9b4d5582f64de7d8ede514091d75a` (source version `3.2.0`) and `axiom-ason/main` is at `379c4833db012080aa016ac19c30f53f00e548b0` (source version `0.3.0`). Both working trees were clean and synchronized with `origin/main` at validation time.
 
-**Durable ASON→APEX authorization binding:** the prior approval-provenance gap is resolved at the trusted application boundary. ASON requires caller-supplied `authority_ref`, generates an authorization identity plus exact approved-plan and policy digests, and submits the exact plan through APEX `/authorized-run`. APEX validates the binding, atomically persists authorization provenance with the plan/effect ledger before tool dispatch, and re-validates the durable binding during recovery. Local cross-repository validation passed the authorization/recovery gate (`45 passed`), the APEX offline regression suite (`152 passed, 37 deselected`), and the complete ASON suite (`63 passed`). This does not establish cryptographic attestation of the upstream authority reference or exactly-once external effects.
+**ASON → APEX authorization and interoperability:** ASON remains policy authorization only. Caller-supplied `authority_ref`, exact approved-plan digest, policy identity, and authorization identity are bound before APEX dispatch. Current cross-repository validation passed `18/18` ASON/APEX integration tests and the full ASON suite (`63/63`). This remains trusted caller provenance, not cryptographic attestation or an exactly-once guarantee.
+
+**APEX recovery reliability:** current APEX additionally binds each new live effect-ledger run to a SHA-256 digest of the planner-visible tool-registry contract. Registry key/name, input/output type schemas, required arguments, and `retry_safe` participate; registry ordering, implementation code, environment, provider state, and remote-service semantics do not. Missing or changed registry binding blocks live recovery before dispatch. The current zero-provider offline gate passed `155` tests with `37` deselected.
 
 **Provider implementation:** APEX continues to expose native `gemini` and `ollama` provider selection. Planning compute remains distinct from execution authority.
 
-**Local Ollama workload evidence:** the measured `gemma3:1b` profile passed `2/12` benchmark tasks in each of two complete runs and is not production-routable. The `qwen3.5:0.8b` run produced four consecutive provider timeouts before the user aborted the suite; it is therefore incomplete and not accepted. Endpoint availability is not treated as workload compatibility.
+**Provider-backed Gemini evidence:** the last accepted live APEX → `gemini-3.8-flash` workload evidence remains tied exactly to APEX revision `372a272e99934b3cadf69f08be95de081bfb1de1`, Python `3.12.9`, and `google-genai 1.66.0`. That profile passed provider smoke, both live integration tests, valid halt-terminated planning, real write/read execution, and all `12/12` benchmark tasks; the canonical artifact is `../apex-validation-gemini-3.8-flash-20260914T224016Z.json`. It is historical acceptance evidence for that exact execution profile and is **not inherited** by current APEX revision `7adab4b...`. Canonicalization did not rerun provider work.
 
-**Gemini integration and workload acceptance:** direct APEX→`gemini-3.8-flash` on APEX revision `372a272e99934b3cadf69f08be95de081bfb1de1`, Python `3.12.9`, and `google-genai 1.66.0` passed the provider smoke (`132` tokens), both live integration tests (`2 passed in 12.16s`), valid halt-terminated dry-run planning (`1074` tokens), real write/read execution (`922` tokens), and all `12/12` benchmark tasks. The benchmark completed in `94.401s` with pass rate `1.0`, speed factor `1.0`, token efficiency `0.9862`, APEX score `0.98624`, and `20,256` benchmark tokens. The canonical validation artifact is `../apex-validation-gemini-3.8-flash-20260914T224016Z.json`. Result: `ACCEPT`.
+**Local Ollama evidence:** `gemma3:1b` remains measured at `2/12` benchmark tasks in two complete runs and is not production-routable. The `qwen3.5:0.8b` benchmark remains incomplete after four consecutive provider timeouts and is not accepted. Endpoint availability is not workload compatibility.
 
-**Comparison with the prior accepted Gemini profile:** the prior APEX revision completed the same benchmark in `91.247s` with `21,721` tokens, token efficiency `0.9838`, and APEX score `0.983798`. The new revision remains `12/12`; wall time is `3.46%` higher while benchmark token use is `6.74%` lower, token efficiency is `0.24%` higher, and APEX score is `0.25%` higher. These differences are treated as run-level variance/performance evidence, not as a change in the acceptance classification.
+**Harness state:** the validated generic operational slice was promoted into private `axiom-harness` version `0.1.0`; its standalone invariant suite passed `15/15`, while the reward-specific application remained separate and passed its reduced `48/48` suite after duplicate generic ownership was removed. Harness remains durable operational orchestration only when persistence has material value.
 
-**Gemini resource state:** Provider capacity was sufficient for the accepted validation run. Account identifiers, quota, usage, billing state, pricing, and other account-specific telemetry are retained outside the public repository. No public evidence record grants a spend allowance beyond an explicitly authorized cash ceiling.
+**Optional remote operator infrastructure:** Desktop Commander Remote MCP `0.2.50` was validated as an optional privileged host-access channel for explicit operator-authorized inspection, tests, diagnostics, and maintenance. It is not an AXIOM authority source, APEX target by default, Harness executor by default, CI dependency, or runtime requirement. Its live unrestricted filesystem scope and external beta-service/telemetry state prohibit unattended routing without separate hardening and validation.
 
-**Host-harness results:** no measured evidence yet establishes that Codex, AGY, or OpenCode improves accepted direct APEX execution enough to justify nesting or a bespoke adapter.
+**Account/resource evidence:** account-specific compute, billing, quota, and trial state remains private operational state owned by Director/runtime evidence rather than this public architecture status. Verified account evidence does not create a nonzero spend allowance; free-tier eligibility and enabled APIs are not equivalent to remaining quota or authorized spend.
 
 # 4. Remaining unresolved constraints or uncertainties
 
-1. Exact per-run Gemini cash cost remains unisolated from aggregate account billing.
-2. Account-specific provider quota, usage, billing, and identity remain private operational state rather than public architecture evidence.
-3. The historical provider-account alias has not been reconciled as a first-class APEX configuration abstraction.
-4. No measured comparison yet establishes whether Codex, AGY, or OpenCode improves APEX capability, reliability, automation, or total resource efficiency enough to justify nesting.
-5. The Qwen local benchmark is incomplete; the measured Gemma profile is rejected and neither current local profile is production-routable.
-6. The durable `authority_ref` binding is trusted caller provenance, not a cryptographic signature or independent proof of human/Harness authority.
-7. `reward-harness` remains unavailable for a defensible `PROMOTE`, `RETAIN`, or `SPLIT_LATER` decision.
-8. The exact `sensitivity_class` taxonomy remains policy-defined.
-9. Domain-specific acceptance contracts, retry evidence, event sources, and mutation rules remain domain concerns.
-10. No stronger host-power-loss, distributed recovery, compensation, or exactly-once external-effect guarantee is inferred.
-11. No materially different model/provider/context/host profile should be promoted without its own measured acceptance workload.
+1. Current APEX revision `7adab4b...` has no inherited provider-backed Gemini acceptance; any new provider/profile promotion requires its own measured workload.
+2. Exact per-run hosted-model cash cost remains unisolated from aggregate account billing.
+3. The Qwen local benchmark remains incomplete; measured Gemma remains rejected and neither local profile is production-routable.
+4. `authority_ref` remains trusted caller provenance rather than cryptographic proof of human/Harness authority.
+5. The exact `sensitivity_class` taxonomy and domain-specific acceptance/retry/event/mutation contracts remain policy/domain concerns.
+6. No stronger host-power-loss, distributed recovery, compensation, submission-deduplication, or exactly-once external-effect guarantee is inferred.
+7. Desktop Commander unattended routing remains blocked pending exact directory/tool scope, privacy/telemetry posture, authentication, failure semantics, and deterministic acceptance evidence.
+8. No host-harness nesting, provider abstraction, or additional control plane is justified without measured net-value evidence.
 
 # 5. Convergence rationale
 
-The intended architecture remains converged: no new repository, provider framework, scheduler, control plane, or generic adapter is required by the new evidence.
-
-Two previously material implementation uncertainties are now resolved:
+The intended architecture remains converged. Current evidence strengthens implementation reliability and operational channel knowledge without changing the normative authority path:
 
 ```text
-ASON authorization identity ↔ exact APEX plan/run
-direct APEX ↔ Gemini 3.8 Flash workload acceptance
+Owner/Operator
+→ Director
+→ WorkIntent
+→ Harness when durable orchestration has material value, otherwise authorized direct work
+→ ASON policy authorization where required
+→ APEX or another bounded executor
+→ evidence
+→ acceptance/commit
+→ CompletionReceipt / Director update
 ```
 
-The evidence supports the existing architecture rather than requiring a normative contract change. Therefore this update is confined to `STATUS.md` plus a Research validation artifact and requires no architecture `VERSION` bump.
+APEX registry-contract recovery binding, Harness promotion, account-resource discovery, trial activation, and optional Remote MCP access are implementation/status evidence. None requires a new architecture invariant, repository, scheduler, provider framework, or mandatory dependency. `architecture/VERSION` therefore remains `1.0.0`.
 
-The current accepted execution baseline is:
-
-```text
-direct APEX 3.2.0
-→ Gemini 3.8 Flash
-→ bounded APEX tools
-→ 12/12 accepted workload
-```
-
-and authorization-required exact plans now use:
-
-```text
-caller/Harness authority reference
-→ ASON 0.3.0 policy decision
-→ exact plan + durable authorization binding
-→ APEX 3.2.0 /authorized-run
-→ pre-dispatch ledger persistence
-→ bounded execution/recovery
-```
-
-Further architectural expansion remains unjustified without evidence. The next research action, if host-harness nesting is still strategically relevant, is one measured Codex→APEX comparison against the accepted direct baseline; it should be promoted only if it improves total expected value without weakening authority, spend, sensitivity, or recovery boundaries.
+The next substantive portfolio objective is not an architecture pass. Director owns the singleton Current Opportunity and currently selects productization of the validated reliability/control capability; this status file does not duplicate that queue.
 
 # 6. Estimated additional passes to convergence
 
-`0` additional architecture-contract passes are justified by current evidence. Empirical implementation validation remains ongoing as new execution profiles or host harnesses are proposed.
+`0` additional architecture-contract passes are justified by current evidence. Future status updates should be evidence-driven and must not generalize acceptance across materially different source, provider, model, context, host, tool-registry, or billing profiles.

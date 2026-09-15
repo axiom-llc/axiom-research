@@ -2,7 +2,7 @@
 
 The canonical architecture remains version `1.0.0`; no contract or invariant changed during this synchronization. Live implementation, tests, and runtime evidence were reconciled against the architecture authority, recovery, provider, spend, and interoperability boundaries.
 
-**Repository state:** `axiom-apex/main` is at `67696d661d5084cb2cb4aa641835e725dbb6f75f` (source version `3.2.0`) and `axiom-ason/main` is at `379c4833db012080aa016ac19c30f53f00e548b0` (source version `0.3.0`). Both working trees were clean and synchronized with `origin/main` at validation time.
+**Repository state:** `axiom-apex/main` is at `59e05e703d62cef24d08f52633a4bf6c70ad593b` (source version `3.2.0`) and `axiom-ason/main` is at `379c4833db012080aa016ac19c30f53f00e548b0` (source version `0.3.0`). Both working trees were clean and synchronized with `origin/main` at validation time. The APEX changes after accepted provider revision `67696d661d5084cb2cb4aa641835e725dbb6f75f` are release-metadata-only and do not rebind that exact-profile acceptance evidence.
 
 **ASON → APEX authorization and interoperability:** ASON remains policy authorization only. Caller-supplied `authority_ref`, exact approved-plan digest, policy identity, and authorization identity are bound before APEX dispatch. Current cross-repository validation passed `18/18` ASON/APEX integration tests and the full ASON suite (`63/63`). This remains trusted caller provenance, not cryptographic attestation or an exactly-once guarantee.
 

@@ -181,7 +181,7 @@ Classes outrank speculative numerical scoring. Within a class, rank by defensibl
 
 ## Harness
 
-Harness is a **logical operational boundary**, not presently a justified standalone repository.
+Harness is the **durable operational orchestration boundary**, implemented by the validated private `axiom-harness` repository when persistence has material value.
 
 It owns:
 
@@ -737,7 +737,7 @@ Preserve existing validated layouts until migration demonstrates greater net val
 | Repository | Canonical disposition |
 | --- | --- |
 | `axiom-director` | strategic control |
-| `axiom-harness` | logical boundary only; no repository without promotion evidence |
+| `axiom-harness` | private durable operational orchestration core; use only when persistence has material value |
 | `axiom-apex` | canonical bounded machine execution runtime |
 | `axiom-ason` | selective exact-plan pre-execution policy layer |
 | `axiom-rag` | canonical retrieval/storage subsystem |

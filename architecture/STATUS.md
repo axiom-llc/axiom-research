@@ -2,15 +2,15 @@
 
 The canonical architecture remains version `1.0.0`; no contract or invariant changed during this synchronization. Live implementation, tests, and runtime evidence were reconciled against the architecture authority, recovery, provider, spend, and interoperability boundaries.
 
-**Repository state:** `axiom-apex/main` is at `7adab4bcbcb9b4d5582f64de7d8ede514091d75a` (source version `3.2.0`) and `axiom-ason/main` is at `379c4833db012080aa016ac19c30f53f00e548b0` (source version `0.3.0`). Both working trees were clean and synchronized with `origin/main` at validation time.
+**Repository state:** `axiom-apex/main` is at `67696d661d5084cb2cb4aa641835e725dbb6f75f` (source version `3.2.0`) and `axiom-ason/main` is at `379c4833db012080aa016ac19c30f53f00e548b0` (source version `0.3.0`). Both working trees were clean and synchronized with `origin/main` at validation time.
 
 **ASON → APEX authorization and interoperability:** ASON remains policy authorization only. Caller-supplied `authority_ref`, exact approved-plan digest, policy identity, and authorization identity are bound before APEX dispatch. Current cross-repository validation passed `18/18` ASON/APEX integration tests and the full ASON suite (`63/63`). This remains trusted caller provenance, not cryptographic attestation or an exactly-once guarantee.
 
-**APEX recovery reliability:** current APEX additionally binds each new live effect-ledger run to a SHA-256 digest of the planner-visible tool-registry contract. Registry key/name, input/output type schemas, required arguments, and `retry_safe` participate; registry ordering, implementation code, environment, provider state, and remote-service semantics do not. Missing or changed registry binding blocks live recovery before dispatch. The current zero-provider offline gate passed `155` tests with `37` deselected.
+**APEX recovery reliability:** current APEX additionally binds each new live effect-ledger run to a SHA-256 digest of the planner-visible tool-registry contract. Registry key/name, input/output type schemas, required arguments, and `retry_safe` participate; registry ordering, implementation code, environment, provider state, and remote-service semantics do not. Missing or changed registry binding blocks live recovery before dispatch. The current zero-provider offline gate passed `159` tests with `37` deselected.
 
 **Provider implementation:** APEX continues to expose native `gemini` and `ollama` provider selection. Planning compute remains distinct from execution authority.
 
-**Provider-backed Gemini evidence:** the last accepted live APEX → `gemini-3.8-flash` workload evidence remains tied exactly to APEX revision `372a272e99934b3cadf69f08be95de081bfb1de1`, Python `3.12.9`, and `google-genai 1.66.0`. That profile passed provider smoke, both live integration tests, valid halt-terminated planning, real write/read execution, and all `12/12` benchmark tasks; the canonical artifact is `../apex-validation-gemini-3.8-flash-20260914T224016Z.json`. It is historical acceptance evidence for that exact execution profile and is **not inherited** by current APEX revision `7adab4b...`. Canonicalization did not rerun provider work.
+**Provider-backed Gemini evidence:** current APEX revision `67696d661d5084cb2cb4aa641835e725dbb6f75f` is accepted for the exact direct-host profile `gemini / gemini-3.8-flash`, Python `3.12.9`, `google-genai 1.66.0`, and execution-profile digest `430069bf67aaaf9aa1c45ac665a94d714213422de9a5c30e7431dfd2d262c3de`. Provider smoke, both live integration tests, valid halt-terminated planning, real write/read execution, and a clean `12/12` benchmark passed (`100.725s`, APEX score `0.98635`). One prior full attempt observed a redacted pre-planning provider failure on `multi_step_chain`; no tool effect was dispatched and the failure did not reproduce on the clean full rerun. Canonical evidence is `../apex-validation-gemini-3.8-flash-20260915T034212Z.json`. Acceptance is exact-profile evidence and does not generalize to changed source, provider, model, configuration digest, host harness, or workload.
 
 **Local Ollama evidence:** `gemma3:1b` remains measured at `2/12` benchmark tasks in two complete runs and is not production-routable. The `qwen3.5:0.8b` benchmark remains incomplete after four consecutive provider timeouts and is not accepted. Endpoint availability is not workload compatibility.
 
@@ -22,8 +22,8 @@ The canonical architecture remains version `1.0.0`; no contract or invariant cha
 
 # 4. Remaining unresolved constraints or uncertainties
 
-1. Current APEX revision `7adab4b...` has no inherited provider-backed Gemini acceptance; any new provider/profile promotion requires its own measured workload.
-2. Exact per-run hosted-model cash cost remains unisolated from aggregate account billing.
+1. Exact per-run hosted-model cash cost remains unisolated from aggregate account billing.
+2. Any materially changed APEX source/provider/model/configuration digest/host harness/workload requires its own measured provider-backed acceptance.
 3. The Qwen local benchmark remains incomplete; measured Gemma remains rejected and neither local profile is production-routable.
 4. `authority_ref` remains trusted caller provenance rather than cryptographic proof of human/Harness authority.
 5. The exact `sensitivity_class` taxonomy and domain-specific acceptance/retry/event/mutation contracts remain policy/domain concerns.

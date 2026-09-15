@@ -428,21 +428,7 @@ Current unit tests verify Ollama's single-attempt redacted failure behavior but 
 
 The existing benchmark already executes real APEX tasks and records pass rate, wall time, token count, and a bounded composite score; its current workload contains file, shell, memory, HTTP, and multi-step cases.
 
-Canonical local validation:
-
-```bash
-LLM_PROVIDER=ollama OLLAMA_MODEL=gemma3:1b \
-python -m apex.bench --tasks benchmarks/tasks.json \
-  --out /tmp/apex-gemma3-1b.json
-```
-
-```bash
-LLM_PROVIDER=ollama OLLAMA_MODEL=qwen3.5:0.8b \
-python -m apex.bench --tasks benchmarks/tasks.json \
-  --out /tmp/apex-qwen3.5-0.8b.json
-```
-
-These are validation commands, not claimed results.
+Model-specific live validation is operational evidence, not architecture. Record it in Research status/artifacts with the exact execution profile and authorization boundary. A rejected or unapproved profile must not be re-queued merely because the endpoint remains available; repeat testing requires a new material hypothesis and applicable explicit authorization.
 
 ## `gxy` account policy
 
@@ -827,23 +813,22 @@ APEX continues owning its own internal run/effect recovery.
 
 ```text
 0   preserve validated working paths
-1   repair APEX/RAG release-state documentation drift
+1   keep release/state documentation synchronized with live authoritative evidence
 2   retain architecture terminology: APEX = canonical machine execution runtime
-3   establish direct APEX local-Ollama baseline for Gemma and Qwen
-4   record reproducible ApexValidationRecord artifacts
-5   audit gxy account/service/quota/pricing/usage; retain $0 spend ceiling until verified
-6   compare validated local profiles with any verified zero-spend hosted capacity
-7   test Codex, AGY, and OpenCode only against the direct APEX baseline
+3   validate only authorized provider/model profiles against direct APEX before host-harness nesting
+4   record reproducible ApexValidationRecord artifacts for materially relevant profiles
+5   verify account/service/quota/pricing/usage before assigning nonzero spend capacity
+6   compare only accepted or explicitly authorized candidate profiles
+7   test external host harnesses only against an accepted direct APEX baseline
 8   add no host-harness adapter unless existing CLI/HTTP/MCP surfaces prove insufficient
-9   durably bind required ASON authorization identity to exact APEX plan/run
-10  inspect reward-harness; issue PROMOTE / RETAIN / SPLIT_LATER
-11  if PROMOTE, prove the minimal Harness scheduling/acceptance slice
-12  add ContextPack budgeting/cache only where measured
-13  add providers/executors only for demonstrated workloads
-14  move persistent operational scheduling out of Director where implementation proves overlap
-15  add high-value events/escalations
-16  expand reusable primitives only from repeated evidence
-17  measure and delete low-value machinery
+9   preserve durable ASON authorization binding to exact APEX plan/run
+10  use Harness only where durable orchestration has measured material value
+11  add ContextPack budgeting/cache only where measured
+12  add providers/executors only for demonstrated workloads
+13  move persistent operational scheduling out of Director only where implementation proves overlap
+14  add high-value events/escalations
+15  expand reusable primitives only from repeated evidence
+16  measure and delete low-value machinery
 ```
 
 Architecture purity never outranks continuity of a validated working path.

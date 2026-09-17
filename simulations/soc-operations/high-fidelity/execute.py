@@ -2,8 +2,8 @@
 from pathlib import Path
 import argparse,sys
 HERE=Path(__file__).resolve().parent
-sys.path.insert(0,str(HERE.parents[1]))
-from operational_fidelity.execute_day import execute
+SIM=HERE.parents[1]; sys.path.insert(0,str(SIM/'operational-fidelity'))
+from execute_day import execute
 PHASES=[('detect-triage', 1, 4, 'soc-desk'), ('contain-authorize', 5, 6, 'response-desk'), ('collect-recover', 7, 9, 'forensics-desk'), ('validate-close', 10, 12, 'incident-command')]
 def main(argv=None):
  ap=argparse.ArgumentParser(); ap.add_argument('--out-dir',type=Path,default=HERE/'evidence'/'latest'); a=ap.parse_args(argv)

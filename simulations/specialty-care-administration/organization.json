@@ -1,0 +1,100 @@
+{
+  "schema": "axiom-simulation/organization-model-v1",
+  "organization_id": "specialty-care-administration-org",
+  "name": "Synthetic Specialty Care Administration",
+  "domain": "specialty-care-administration",
+  "departments": [
+    {
+      "id": "referrals",
+      "name": "Referral Coordination"
+    },
+    {
+      "id": "benefits",
+      "name": "Benefits and Authorization"
+    },
+    {
+      "id": "scheduling",
+      "name": "Scheduling"
+    },
+    {
+      "id": "clinical",
+      "name": "Clinical Team"
+    }
+  ],
+  "actors": [
+    {
+      "id": "referral-coordinator",
+      "role": "Referral coordinator",
+      "department": "referrals",
+      "authority": []
+    },
+    {
+      "id": "auth-specialist",
+      "role": "Prior authorization specialist",
+      "department": "benefits",
+      "authority": [
+        "payer-submission"
+      ]
+    },
+    {
+      "id": "scheduler",
+      "role": "Scheduler",
+      "department": "scheduling",
+      "authority": []
+    },
+    {
+      "id": "clinician",
+      "role": "Licensed clinician",
+      "department": "clinical",
+      "authority": [
+        "clinical-readiness"
+      ]
+    },
+    {
+      "id": "ops-manager",
+      "role": "Clinical operations manager",
+      "department": "referrals",
+      "authority": [
+        "episode-close"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "referral-queue",
+      "kind": "queue",
+      "state": {
+        "open": 1
+      }
+    },
+    {
+      "id": "schedule",
+      "kind": "calendar",
+      "state": {
+        "slots": 2
+      }
+    },
+    {
+      "id": "records",
+      "kind": "document-set",
+      "state": {
+        "complete": false
+      }
+    }
+  ],
+  "policies": [
+    {
+      "id": "clinical-boundary",
+      "description": "Clinical judgment and readiness remain clinician-controlled",
+      "authority_required": true
+    },
+    {
+      "id": "payer-boundary",
+      "description": "Synthetic payer submission requires explicit administrative authority",
+      "authority_required": true
+    }
+  ],
+  "state_model": {
+    "phase": "referral-intake"
+  }
+}

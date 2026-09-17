@@ -1,0 +1,8 @@
+{
+  "primary": {
+    "status": "missed-pickup"
+  },
+  "alternate": {
+    "status": "available"
+  }
+}

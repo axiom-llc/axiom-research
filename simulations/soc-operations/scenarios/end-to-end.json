@@ -1,0 +1,199 @@
+{
+  "schema": "axiom-simulation/scenario-spec-v1",
+  "scenario_id": "soc-operations-e2e-001",
+  "domain": "cybersecurity-soc",
+  "classification": "VALIDATED_EXECUTABLE_DEMO",
+  "objective": "Coordinate a synthetic end-to-end synthetic security operations center workflow",
+  "organization_ref": "organization.json",
+  "fixture_ref": "fixture-manifest.json",
+  "steps": [
+    {
+      "id": "alert",
+      "kind": "observe",
+      "actor": "analyst",
+      "depends_on": [],
+      "inputs": {},
+      "expected_outputs": {
+        "alert": "received"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "triage",
+      "kind": "inspect",
+      "actor": "analyst",
+      "depends_on": [
+        "alert"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "severity": "high"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "enrich",
+      "kind": "retrieve",
+      "actor": "analyst",
+      "depends_on": [
+        "triage"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "context": "suspicious-process"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "escalate",
+      "kind": "escalate",
+      "actor": "analyst",
+      "depends_on": [
+        "enrich"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "tier": "response"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "contain-approve",
+      "kind": "approve",
+      "actor": "responder",
+      "depends_on": [
+        "escalate"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "approved": true
+      },
+      "approval_ref": "containment-action"
+    },
+    {
+      "id": "isolate",
+      "kind": "approve",
+      "actor": "it-operator",
+      "depends_on": [
+        "contain-approve"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "isolated": true
+      },
+      "approval_ref": "system-isolation"
+    },
+    {
+      "id": "collection-fail",
+      "kind": "test",
+      "actor": "responder",
+      "depends_on": [
+        "isolate"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "collection": "timeout"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "collection-retry",
+      "kind": "recover",
+      "actor": "responder",
+      "depends_on": [
+        "collection-fail"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "collection": "complete"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "eradicate-sim",
+      "kind": "produce",
+      "actor": "responder",
+      "depends_on": [
+        "collection-retry"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "eradication": "simulated"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "validate",
+      "kind": "test",
+      "actor": "analyst",
+      "depends_on": [
+        "eradicate-sim"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "indicators": "clear"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "restore-sim",
+      "kind": "handoff",
+      "actor": "it-operator",
+      "depends_on": [
+        "validate"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "restore": "simulated"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "close",
+      "kind": "approve",
+      "actor": "commander",
+      "depends_on": [
+        "restore-sim"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "closed": true
+      },
+      "approval_ref": "incident-close"
+    }
+  ],
+  "failure_injections": [
+    {
+      "id": "collection-timeout",
+      "target_step": "collection-fail",
+      "failure_class": "retry_safe",
+      "expected_behavior": "retry evidence collection without repeating containment"
+    },
+    {
+      "id": "containment-denied",
+      "target_step": "contain-approve",
+      "failure_class": "approval_denied",
+      "expected_behavior": "halt before isolation when authority is absent"
+    }
+  ],
+  "expected_terminal_state": {
+    "phase": "closed",
+    "containment": "simulated",
+    "evidence_collection": "complete",
+    "restoration": "simulated"
+  },
+  "acceptance_contract": {
+    "require_apex_success": true,
+    "require_authorization_binding": true,
+    "terminal_state_equals": {
+      "phase": "closed",
+      "containment": "simulated",
+      "evidence_collection": "complete",
+      "restoration": "simulated"
+    }
+  },
+  "evidence_requirements": [
+    "effect-ledger",
+    "authorization"
+  ]
+}

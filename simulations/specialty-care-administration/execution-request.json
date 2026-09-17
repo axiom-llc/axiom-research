@@ -1,0 +1,105 @@
+{
+  "plan": {
+    "steps": [
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/00-referral.json",
+          "content": "{\"status\": \"received\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/01-records-check.json",
+          "content": "{\"status\": \"missing\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/02-records-recovery.json",
+          "content": "{\"status\": \"complete\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/03-eligibility.json",
+          "content": "{\"status\": \"active\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/04-auth-submit.json",
+          "content": "{\"status\": \"submitted\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/05-auth-pending.json",
+          "content": "{\"status\": \"pending-info\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/06-auth-recovery.json",
+          "content": "{\"status\": \"approved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/07-schedule.json",
+          "content": "{\"status\": \"reserved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/08-clinical-readiness.json",
+          "content": "{\"status\": \"approved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/09-visit.json",
+          "content": "{\"status\": \"simulated\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/10-followup.json",
+          "content": "{\"status\": \"scheduled\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/terminal-state.json",
+          "content": "{\"authorization\": \"approved\", \"clinical_decision\": \"human-controlled\", \"phase\": \"closed\", \"visit\": \"simulated\"}"
+        }
+      },
+      {
+        "tool": "read_file",
+        "args": {
+          "path": "/tmp/axiom-specialty-care-administration-001/terminal-state.json"
+        }
+      }
+    ]
+  },
+  "policy": {
+    "max_steps": 32,
+    "allowed_tools": [
+      "write_file",
+      "read_file"
+    ],
+    "blast_radius": "local",
+    "rollback_on_failure": false
+  }
+}

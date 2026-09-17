@@ -1,0 +1,22 @@
+{
+  "schema": "axiom-simulation/fixture-manifest-v1",
+  "fixture_id": "software-development-fixtures-001",
+  "scenario_id": "software-development-e2e-001",
+  "synthetic": true,
+  "generation_method": "deterministic hand-authored synthetic fixture",
+  "seed": 1,
+  "source_refs": [
+    "NIST SP 800-218 Secure Software Development Framework (SSDF), https://csrc.nist.gov/pubs/sp/800/218/final"
+  ],
+  "assumptions": [
+    "Synthetic repository and CI only",
+    "No deployment to production",
+    "Human release authority remains explicit"
+  ],
+  "contains_private_data": false,
+  "artifact_hashes": {
+    "work-item.json": "031bf623534e400fc3ae7352ca9c1a298d5d224e517ee5c075372a23046da343",
+    "test-seed.json": "25f1537aa2912af5941a60e560b8320f4450ac31ad7f5fb86fcfb0346eac6c22",
+    "security-seed.json": "dd8a898cfeaafccf45133ebcc11cca2a8e89083c7f56f892a2ff8ebeca6b8874"
+  }
+}

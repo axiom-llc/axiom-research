@@ -1,0 +1,838 @@
+{
+  "schema": "axiom-simulation/evidence-v1",
+  "evidence_id": "soc-operations-e2e-001:run",
+  "scenario_id": "soc-operations-e2e-001",
+  "classification": "VALIDATED_EXECUTABLE_DEMO",
+  "status": "PASS",
+  "repository_revisions": {
+    "axiom-research": "8519fcbb3e9e9c299d854e009bd4daed8c17b4d9",
+    "axiom-ason": "0a5779af47db09dd69da4d4739ee963dc4519ae2",
+    "axiom-apex": "59e05e703d62cef24d08f52633a4bf6c70ad593b"
+  },
+  "scenario_sha256": "139e06edc91dc0e1273db509d018e6190e06e91a74d3523c59bdfb995087b329",
+  "fixture_sha256": "6f1660482e62f6dc2eff5f63e9d1905a4e636f2dd62677f3cf8459e9221cdf90",
+  "configuration": {
+    "execution_request_sha256": "476a3094fae7ac74a6dddcad8703419c472c2ef9f4bf04b43d5617f4525e3b15",
+    "apex_url": "http://127.0.0.1:59157",
+    "authority_ref": "incident-commander:synthetic-approved"
+  },
+  "axiom_components": [
+    "axiom-ason",
+    "axiom-apex"
+  ],
+  "run_refs": [
+    "apex:1"
+  ],
+  "authorization_refs": [
+    "b9ee4cdd-2cba-4a01-b320-d9a906b8a1bc"
+  ],
+  "effect_evidence": [
+    {
+      "result_json": "{\"bytes_written\":22}",
+      "state": "SUCCEEDED",
+      "step": 0
+    },
+    {
+      "result_json": "{\"bytes_written\":20}",
+      "state": "SUCCEEDED",
+      "step": 1
+    },
+    {
+      "result_json": "{\"bytes_written\":25}",
+      "state": "SUCCEEDED",
+      "step": 2
+    },
+    {
+      "result_json": "{\"bytes_written\":23}",
+      "state": "SUCCEEDED",
+      "step": 3
+    },
+    {
+      "result_json": "{\"bytes_written\":22}",
+      "state": "SUCCEEDED",
+      "step": 4
+    },
+    {
+      "result_json": "{\"bytes_written\":23}",
+      "state": "SUCCEEDED",
+      "step": 5
+    },
+    {
+      "result_json": "{\"bytes_written\":21}",
+      "state": "SUCCEEDED",
+      "step": 6
+    },
+    {
+      "result_json": "{\"bytes_written\":22}",
+      "state": "SUCCEEDED",
+      "step": 7
+    },
+    {
+      "result_json": "{\"bytes_written\":23}",
+      "state": "SUCCEEDED",
+      "step": 8
+    },
+    {
+      "result_json": "{\"bytes_written\":19}",
+      "state": "SUCCEEDED",
+      "step": 9
+    },
+    {
+      "result_json": "{\"bytes_written\":23}",
+      "state": "SUCCEEDED",
+      "step": 10
+    },
+    {
+      "result_json": "{\"bytes_written\":110}",
+      "state": "SUCCEEDED",
+      "step": 11
+    },
+    {
+      "result_json": "{\"content\":\"{\\\"containment\\\": \\\"simulated\\\", \\\"evidence_collection\\\": \\\"complete\\\", \\\"phase\\\": \\\"closed\\\", \\\"restoration\\\": \\\"simulated\\\"}\"}",
+      "state": "SUCCEEDED",
+      "step": 12
+    }
+  ],
+  "events": [
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/00-alert.json\",\"content\":\"{\\\"status\\\": \\\"received\\\"}\"}",
+      "id": 1,
+      "result_json": "{\"bytes_written\":22}",
+      "run_id": 1,
+      "step": 0,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/01-triage.json\",\"content\":\"{\\\"severity\\\": \\\"high\\\"}\"}",
+      "id": 2,
+      "result_json": "{\"bytes_written\":20}",
+      "run_id": 1,
+      "step": 1,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/02-enrichment.json\",\"content\":\"{\\\"context\\\": \\\"suspicious\\\"}\"}",
+      "id": 3,
+      "result_json": "{\"bytes_written\":25}",
+      "run_id": 1,
+      "step": 2,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/03-escalation.json\",\"content\":\"{\\\"status\\\": \\\"escalated\\\"}\"}",
+      "id": 4,
+      "result_json": "{\"bytes_written\":23}",
+      "run_id": 1,
+      "step": 3,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/04-containment.json\",\"content\":\"{\\\"status\\\": \\\"approved\\\"}\"}",
+      "id": 5,
+      "result_json": "{\"bytes_written\":22}",
+      "run_id": 1,
+      "step": 4,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/05-isolation.json\",\"content\":\"{\\\"status\\\": \\\"simulated\\\"}\"}",
+      "id": 6,
+      "result_json": "{\"bytes_written\":23}",
+      "run_id": 1,
+      "step": 5,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/06-collection-first.json\",\"content\":\"{\\\"status\\\": \\\"timeout\\\"}\"}",
+      "id": 7,
+      "result_json": "{\"bytes_written\":21}",
+      "run_id": 1,
+      "step": 6,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/07-collection-retry.json\",\"content\":\"{\\\"status\\\": \\\"complete\\\"}\"}",
+      "id": 8,
+      "result_json": "{\"bytes_written\":22}",
+      "run_id": 1,
+      "step": 7,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/08-eradication.json\",\"content\":\"{\\\"status\\\": \\\"simulated\\\"}\"}",
+      "id": 9,
+      "result_json": "{\"bytes_written\":23}",
+      "run_id": 1,
+      "step": 8,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/09-validation.json\",\"content\":\"{\\\"status\\\": \\\"clear\\\"}\"}",
+      "id": 10,
+      "result_json": "{\"bytes_written\":19}",
+      "run_id": 1,
+      "step": 9,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/10-restoration.json\",\"content\":\"{\\\"status\\\": \\\"simulated\\\"}\"}",
+      "id": 11,
+      "result_json": "{\"bytes_written\":23}",
+      "run_id": 1,
+      "step": 10,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/terminal-state.json\",\"content\":\"{\\\"containment\\\": \\\"simulated\\\", \\\"evidence_collection\\\": \\\"complete\\\", \\\"phase\\\": \\\"closed\\\", \\\"restoration\\\": \\\"simulated\\\"}\"}",
+      "id": 12,
+      "result_json": "{\"bytes_written\":110}",
+      "run_id": 1,
+      "step": 11,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/terminal-state.json\"}",
+      "id": 13,
+      "result_json": "{\"content\":\"{\\\"containment\\\": \\\"simulated\\\", \\\"evidence_collection\\\": \\\"complete\\\", \\\"phase\\\": \\\"closed\\\", \\\"restoration\\\": \\\"simulated\\\"}\"}",
+      "run_id": 1,
+      "step": 12,
+      "timestamp": "2026-09-17 02:15:00",
+      "tool": "read_file"
+    }
+  ],
+  "outputs": {
+    "ason_submission": {
+      "accepted": true,
+      "violations": [],
+      "authorization": {
+        "authorization_id": "b9ee4cdd-2cba-4a01-b320-d9a906b8a1bc",
+        "approved_plan_digest": "08df6a8189156e8ee3be29b83ccb3a53fd22a99d32dc249f5ee8116693d405dc",
+        "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009",
+        "authority_ref": "incident-commander:synthetic-approved",
+        "decision": true
+      },
+      "apex_response": {
+        "authorization": {
+          "approved_plan_digest": "08df6a8189156e8ee3be29b83ccb3a53fd22a99d32dc249f5ee8116693d405dc",
+          "authority_ref": "incident-commander:synthetic-approved",
+          "authorization_id": "b9ee4cdd-2cba-4a01-b320-d9a906b8a1bc",
+          "decision": true,
+          "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009"
+        },
+        "exit_code": 0,
+        "output": "Status: HALTED\nTokens: 0\n\nGoal: Execute ASON-approved plan\nSteps executed: 13\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 20}\n\n[write_file]\n  Success: {'bytes_written': 25}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 21}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 19}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 110}\n\n[read_file]\n  Success: {'content': '{\"containment\": \"simulated\", \"evidence_collection\": \"complete\", \"phase\": \"closed\", \"restoration\": \"simulated\"}'}",
+        "plan": {
+          "goal": "Execute ASON-approved plan",
+          "steps": [
+            {
+              "args": {
+                "content": "{\"status\": \"received\"}",
+                "path": "/tmp/axiom-soc-operations-001/00-alert.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"severity\": \"high\"}",
+                "path": "/tmp/axiom-soc-operations-001/01-triage.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"context\": \"suspicious\"}",
+                "path": "/tmp/axiom-soc-operations-001/02-enrichment.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"escalated\"}",
+                "path": "/tmp/axiom-soc-operations-001/03-escalation.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"approved\"}",
+                "path": "/tmp/axiom-soc-operations-001/04-containment.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"simulated\"}",
+                "path": "/tmp/axiom-soc-operations-001/05-isolation.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"timeout\"}",
+                "path": "/tmp/axiom-soc-operations-001/06-collection-first.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"complete\"}",
+                "path": "/tmp/axiom-soc-operations-001/07-collection-retry.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"simulated\"}",
+                "path": "/tmp/axiom-soc-operations-001/08-eradication.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"clear\"}",
+                "path": "/tmp/axiom-soc-operations-001/09-validation.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"simulated\"}",
+                "path": "/tmp/axiom-soc-operations-001/10-restoration.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"containment\": \"simulated\", \"evidence_collection\": \"complete\", \"phase\": \"closed\", \"restoration\": \"simulated\"}",
+                "path": "/tmp/axiom-soc-operations-001/terminal-state.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "path": "/tmp/axiom-soc-operations-001/terminal-state.json"
+              },
+              "name": "read_file",
+              "type": "tool"
+            },
+            {
+              "reason": "ASON-approved plan complete",
+              "type": "halt"
+            }
+          ]
+        },
+        "run_id": 1,
+        "status": "HALTED",
+        "step_count": 13,
+        "token_count": 0
+      }
+    },
+    "apex_response": {
+      "authorization": {
+        "approved_plan_digest": "08df6a8189156e8ee3be29b83ccb3a53fd22a99d32dc249f5ee8116693d405dc",
+        "authority_ref": "incident-commander:synthetic-approved",
+        "authorization_id": "b9ee4cdd-2cba-4a01-b320-d9a906b8a1bc",
+        "decision": true,
+        "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009"
+      },
+      "exit_code": 0,
+      "output": "Status: HALTED\nTokens: 0\n\nGoal: Execute ASON-approved plan\nSteps executed: 13\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 20}\n\n[write_file]\n  Success: {'bytes_written': 25}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 21}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 19}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 110}\n\n[read_file]\n  Success: {'content': '{\"containment\": \"simulated\", \"evidence_collection\": \"complete\", \"phase\": \"closed\", \"restoration\": \"simulated\"}'}",
+      "plan": {
+        "goal": "Execute ASON-approved plan",
+        "steps": [
+          {
+            "args": {
+              "content": "{\"status\": \"received\"}",
+              "path": "/tmp/axiom-soc-operations-001/00-alert.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"severity\": \"high\"}",
+              "path": "/tmp/axiom-soc-operations-001/01-triage.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"context\": \"suspicious\"}",
+              "path": "/tmp/axiom-soc-operations-001/02-enrichment.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"escalated\"}",
+              "path": "/tmp/axiom-soc-operations-001/03-escalation.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"approved\"}",
+              "path": "/tmp/axiom-soc-operations-001/04-containment.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"simulated\"}",
+              "path": "/tmp/axiom-soc-operations-001/05-isolation.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"timeout\"}",
+              "path": "/tmp/axiom-soc-operations-001/06-collection-first.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"complete\"}",
+              "path": "/tmp/axiom-soc-operations-001/07-collection-retry.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"simulated\"}",
+              "path": "/tmp/axiom-soc-operations-001/08-eradication.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"clear\"}",
+              "path": "/tmp/axiom-soc-operations-001/09-validation.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"simulated\"}",
+              "path": "/tmp/axiom-soc-operations-001/10-restoration.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"containment\": \"simulated\", \"evidence_collection\": \"complete\", \"phase\": \"closed\", \"restoration\": \"simulated\"}",
+              "path": "/tmp/axiom-soc-operations-001/terminal-state.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "path": "/tmp/axiom-soc-operations-001/terminal-state.json"
+            },
+            "name": "read_file",
+            "type": "tool"
+          },
+          {
+            "reason": "ASON-approved plan complete",
+            "type": "halt"
+          }
+        ]
+      },
+      "run_id": 1,
+      "status": "HALTED",
+      "step_count": 13,
+      "token_count": 0
+    },
+    "authorization": {
+      "authorization_id": "b9ee4cdd-2cba-4a01-b320-d9a906b8a1bc",
+      "approved_plan_digest": "08df6a8189156e8ee3be29b83ccb3a53fd22a99d32dc249f5ee8116693d405dc",
+      "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009",
+      "authority_ref": "incident-commander:synthetic-approved",
+      "decision": true
+    },
+    "apex_run_detail": {
+      "authorization": {
+        "approved_plan_digest": "08df6a8189156e8ee3be29b83ccb3a53fd22a99d32dc249f5ee8116693d405dc",
+        "authority_ref": "incident-commander:synthetic-approved",
+        "authorization_id": "b9ee4cdd-2cba-4a01-b320-d9a906b8a1bc",
+        "decision": true,
+        "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009"
+      },
+      "effects": [
+        {
+          "result_json": "{\"bytes_written\":22}",
+          "state": "SUCCEEDED",
+          "step": 0
+        },
+        {
+          "result_json": "{\"bytes_written\":20}",
+          "state": "SUCCEEDED",
+          "step": 1
+        },
+        {
+          "result_json": "{\"bytes_written\":25}",
+          "state": "SUCCEEDED",
+          "step": 2
+        },
+        {
+          "result_json": "{\"bytes_written\":23}",
+          "state": "SUCCEEDED",
+          "step": 3
+        },
+        {
+          "result_json": "{\"bytes_written\":22}",
+          "state": "SUCCEEDED",
+          "step": 4
+        },
+        {
+          "result_json": "{\"bytes_written\":23}",
+          "state": "SUCCEEDED",
+          "step": 5
+        },
+        {
+          "result_json": "{\"bytes_written\":21}",
+          "state": "SUCCEEDED",
+          "step": 6
+        },
+        {
+          "result_json": "{\"bytes_written\":22}",
+          "state": "SUCCEEDED",
+          "step": 7
+        },
+        {
+          "result_json": "{\"bytes_written\":23}",
+          "state": "SUCCEEDED",
+          "step": 8
+        },
+        {
+          "result_json": "{\"bytes_written\":19}",
+          "state": "SUCCEEDED",
+          "step": 9
+        },
+        {
+          "result_json": "{\"bytes_written\":23}",
+          "state": "SUCCEEDED",
+          "step": 10
+        },
+        {
+          "result_json": "{\"bytes_written\":110}",
+          "state": "SUCCEEDED",
+          "step": 11
+        },
+        {
+          "result_json": "{\"content\":\"{\\\"containment\\\": \\\"simulated\\\", \\\"evidence_collection\\\": \\\"complete\\\", \\\"phase\\\": \\\"closed\\\", \\\"restoration\\\": \\\"simulated\\\"}\"}",
+          "state": "SUCCEEDED",
+          "step": 12
+        }
+      ],
+      "events": [
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/00-alert.json\",\"content\":\"{\\\"status\\\": \\\"received\\\"}\"}",
+          "id": 1,
+          "result_json": "{\"bytes_written\":22}",
+          "run_id": 1,
+          "step": 0,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/01-triage.json\",\"content\":\"{\\\"severity\\\": \\\"high\\\"}\"}",
+          "id": 2,
+          "result_json": "{\"bytes_written\":20}",
+          "run_id": 1,
+          "step": 1,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/02-enrichment.json\",\"content\":\"{\\\"context\\\": \\\"suspicious\\\"}\"}",
+          "id": 3,
+          "result_json": "{\"bytes_written\":25}",
+          "run_id": 1,
+          "step": 2,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/03-escalation.json\",\"content\":\"{\\\"status\\\": \\\"escalated\\\"}\"}",
+          "id": 4,
+          "result_json": "{\"bytes_written\":23}",
+          "run_id": 1,
+          "step": 3,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/04-containment.json\",\"content\":\"{\\\"status\\\": \\\"approved\\\"}\"}",
+          "id": 5,
+          "result_json": "{\"bytes_written\":22}",
+          "run_id": 1,
+          "step": 4,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/05-isolation.json\",\"content\":\"{\\\"status\\\": \\\"simulated\\\"}\"}",
+          "id": 6,
+          "result_json": "{\"bytes_written\":23}",
+          "run_id": 1,
+          "step": 5,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/06-collection-first.json\",\"content\":\"{\\\"status\\\": \\\"timeout\\\"}\"}",
+          "id": 7,
+          "result_json": "{\"bytes_written\":21}",
+          "run_id": 1,
+          "step": 6,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/07-collection-retry.json\",\"content\":\"{\\\"status\\\": \\\"complete\\\"}\"}",
+          "id": 8,
+          "result_json": "{\"bytes_written\":22}",
+          "run_id": 1,
+          "step": 7,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/08-eradication.json\",\"content\":\"{\\\"status\\\": \\\"simulated\\\"}\"}",
+          "id": 9,
+          "result_json": "{\"bytes_written\":23}",
+          "run_id": 1,
+          "step": 8,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/09-validation.json\",\"content\":\"{\\\"status\\\": \\\"clear\\\"}\"}",
+          "id": 10,
+          "result_json": "{\"bytes_written\":19}",
+          "run_id": 1,
+          "step": 9,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/10-restoration.json\",\"content\":\"{\\\"status\\\": \\\"simulated\\\"}\"}",
+          "id": 11,
+          "result_json": "{\"bytes_written\":23}",
+          "run_id": 1,
+          "step": 10,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/terminal-state.json\",\"content\":\"{\\\"containment\\\": \\\"simulated\\\", \\\"evidence_collection\\\": \\\"complete\\\", \\\"phase\\\": \\\"closed\\\", \\\"restoration\\\": \\\"simulated\\\"}\"}",
+          "id": 12,
+          "result_json": "{\"bytes_written\":110}",
+          "run_id": 1,
+          "step": 11,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-soc-operations-001/terminal-state.json\"}",
+          "id": 13,
+          "result_json": "{\"content\":\"{\\\"containment\\\": \\\"simulated\\\", \\\"evidence_collection\\\": \\\"complete\\\", \\\"phase\\\": \\\"closed\\\", \\\"restoration\\\": \\\"simulated\\\"}\"}",
+          "run_id": 1,
+          "step": 12,
+          "timestamp": "2026-09-17 02:15:00",
+          "tool": "read_file"
+        }
+      ],
+      "exit_code": 0,
+      "id": 1,
+      "ledger": {
+        "plan_digest": "08df6a8189156e8ee3be29b83ccb3a53fd22a99d32dc249f5ee8116693d405dc",
+        "step_count": 14
+      },
+      "plan_json": {
+        "goal": "Execute ASON-approved plan",
+        "steps": [
+          {
+            "args": {
+              "content": "{\"status\": \"received\"}",
+              "path": "/tmp/axiom-soc-operations-001/00-alert.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"severity\": \"high\"}",
+              "path": "/tmp/axiom-soc-operations-001/01-triage.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"context\": \"suspicious\"}",
+              "path": "/tmp/axiom-soc-operations-001/02-enrichment.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"escalated\"}",
+              "path": "/tmp/axiom-soc-operations-001/03-escalation.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"approved\"}",
+              "path": "/tmp/axiom-soc-operations-001/04-containment.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"simulated\"}",
+              "path": "/tmp/axiom-soc-operations-001/05-isolation.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"timeout\"}",
+              "path": "/tmp/axiom-soc-operations-001/06-collection-first.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"complete\"}",
+              "path": "/tmp/axiom-soc-operations-001/07-collection-retry.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"simulated\"}",
+              "path": "/tmp/axiom-soc-operations-001/08-eradication.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"clear\"}",
+              "path": "/tmp/axiom-soc-operations-001/09-validation.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"simulated\"}",
+              "path": "/tmp/axiom-soc-operations-001/10-restoration.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"containment\": \"simulated\", \"evidence_collection\": \"complete\", \"phase\": \"closed\", \"restoration\": \"simulated\"}",
+              "path": "/tmp/axiom-soc-operations-001/terminal-state.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "path": "/tmp/axiom-soc-operations-001/terminal-state.json"
+            },
+            "name": "read_file",
+            "type": "tool"
+          },
+          {
+            "reason": "ASON-approved plan complete",
+            "type": "halt"
+          }
+        ]
+      },
+      "registry_binding": {
+        "contract_digest": "a1c01fee4fcb41cafe7cf647ba9111b9a40385e1c3c588419d1f897496108f59"
+      },
+      "task": "Execute ASON-approved plan",
+      "timestamp": "2026-09-17 02:15:00",
+      "token_count": 0,
+      "wall_seconds": 0.029
+    },
+    "authority_gate_negative_control": {
+      "accepted": true,
+      "violations": [],
+      "apex_response": null,
+      "error": "authority_ref is required for authorized APEX dispatch"
+    }
+  },
+  "terminal_state": {
+    "containment": "simulated",
+    "evidence_collection": "complete",
+    "phase": "closed",
+    "restoration": "simulated"
+  },
+  "failures": [],
+  "recovery": [
+    {
+      "mode": "live",
+      "run_ref": "apex:1",
+      "exit_code": 0,
+      "effect_files_unchanged": true,
+      "observed_file_count": 12,
+      "output_sha256": "98968eed155d98ac4bd940c2fd67e10ae10acc2a8ac7a60e07168410d8f31e54"
+    }
+  ],
+  "metrics": {
+    "modeled_steps": 12,
+    "effect_count": 13,
+    "event_count": 13
+  },
+  "limitations": []
+}

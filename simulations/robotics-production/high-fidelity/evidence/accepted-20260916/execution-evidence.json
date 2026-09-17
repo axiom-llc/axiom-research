@@ -1,0 +1,354 @@
+[
+  {
+    "phase": "engineering-procurement",
+    "run_id": 1,
+    "authorization": {
+      "authorization_id": "a4b9ec96-2c58-43ef-a2ac-d2216ed0661c",
+      "approved_plan_digest": "180050458c74209a600006d8f8da7066e93efc7f26f6f7382826762da57d2600",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "robotics-operations:engineering-procurement:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "180050458c74209a600006d8f8da7066e93efc7f26f6f7382826762da57d2600",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":1951}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":118}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":146}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"OP-001\\\",\\\"OP-002\\\",\\\"OP-003\\\",\\\"OP-004\\\",\\\"OP-005\\\",\\\"OP-006\\\",\\\"OP-007\\\",\\\"OP-008\\\"],\\\"phase\\\":\\\"engineering-procurement\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/engineering-procurement/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"OP-001\\\",\\n    \\\"at\\\": \\\"08:00\\\",\\n    \\\"actor_ref\\\": \\\"program-manager\\\",\\n    \\\"kind\\\": \\\"open-shift\\\",\\n    \\\"refs\\\": [\\n      \\\"shift-1\\\",\\n      \\\"EV-001\\\"\\n    ],\\n    \\\"causes\\\": [],\\n    \\\"result_ref\\\": \\\"ST-001\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-002\\\",\\n    \\\"at\\\": \\\"08:10\\\",\\n    \\\"actor_ref\\\": \\\"systems-lead\\\",\\n    \\\"kind\\\": \\\"baseline-requirements\\\",\\n    \\\"refs\\\": [\\n      \\\"REQ-SR1-A\\\",\\n      \\\"APP-001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-001\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-001\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-003\\\",\\n    \\\"at\\\": \\\"08:30\\\",\\n    \\\"actor_ref\\\": \\\"buyer\\\",\\n    \\\"kind\\\": \\\"review-supplier\\\",\\n    \\\"refs\\\": [\\n      \\\"PO-SR1-1001\\\",\\n      \\\"COM-001\\\",\\n      \\\"SIT-001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-002\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"DEC-001\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-004\\\",\\n    \\\"at\\\": \\\"08:40\\\",\\n    \\\"actor_ref\\\": \\\"program-manager\\\",\\n    \\\"kind\\\": \\\"decide-expedite\\\",\\n    \\\"refs\\\": [\\n      \\\"DEC-001\\\",\\n      \\\"COM-002\\\",\\n      \\\"TX-002\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-003\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-002\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-005\\\",\\n    \\\"at\\\": \\\"09:15\\\",\\n    \\\"actor_ref\\\": \\\"buyer\\\",\\n    \\\"kind\\\": \\\"place-order\\\",\\n    \\\"refs\\\": [\\n      \\\"PO-SR1-1001\\\",\\n      \\\"TX-001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-004\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"EV-002\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-006\\\",\\n    \\\"at\\\": \\\"10:00\\\",\\n    \\\"actor_ref\\\": \\\"quality-engineer\\\",\\n    \\\"kind\\\": \\\"receive-inspect\\\",\\n    \\\"refs\\\": [\\n      \\\"RCV-SR1-1001\\\",\\n      \\\"SIT-002\\\",\\n      \\\"INV-002\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-005\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"DEC-002\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-007\\\",\\n    \\\"at\\\": \\\"10:10\\\",\\n    \\\"actor_ref\\\": \\\"quality-engineer\\\",\\n    \\\"kind\\\": \\\"quarantine\\\",\\n    \\\"refs\\\": [\\n      \\\"DEC-002\\\",\\n      \\\"COM-003\\\",\\n      \\\"ISSUE-002\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-006\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-002\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-008\\\",\\n    \\\"at\\\": \\\"10:20\\\",\\n    \\\"actor_ref\\\": \\\"inventory-controller\\\",\\n    \\\"kind\\\": \\\"allocate-material\\\",\\n    \\\"refs\\\": [\\n      \\\"INV-001\\\",\\n      \\\"INV-003\\\",\\n      \\\"INV-004\\\",\\n      \\\"INV-005\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-007\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-003\\\"\\n  }\\n]\\n\"}",
+        "id": 1,
+        "result_json": "{\"bytes_written\":1951}",
+        "run_id": 1,
+        "step": 0,
+        "timestamp": "2026-09-17 02:40:30",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/engineering-procurement/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"engineering-procurement\\\",\\n  \\\"last_operation\\\": \\\"OP-008\\\",\\n  \\\"terminal_transition\\\": \\\"RELEASED_SYNTHETIC\\\"\\n}\\n\"}",
+        "id": 2,
+        "result_json": "{\"bytes_written\":118}",
+        "run_id": 1,
+        "step": 1,
+        "timestamp": "2026-09-17 02:40:30",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/engineering-procurement/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"OP-001\\\",\\\"OP-002\\\",\\\"OP-003\\\",\\\"OP-004\\\",\\\"OP-005\\\",\\\"OP-006\\\",\\\"OP-007\\\",\\\"OP-008\\\"],\\\"phase\\\":\\\"engineering-procurement\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 3,
+        "result_json": "{\"bytes_written\":146}",
+        "run_id": 1,
+        "step": 2,
+        "timestamp": "2026-09-17 02:40:30",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/engineering-procurement/result.json\"}",
+        "id": 4,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"OP-001\\\",\\\"OP-002\\\",\\\"OP-003\\\",\\\"OP-004\\\",\\\"OP-005\\\",\\\"OP-006\\\",\\\"OP-007\\\",\\\"OP-008\\\"],\\\"phase\\\":\\\"engineering-procurement\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 1,
+        "step": 3,
+        "timestamp": "2026-09-17 02:40:30",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "robotics-day:engineering-procurement",
+      "task_spec_hash": "dfde85983f56ab169fd8d9a4800edb47057178ce6488761a87b0627fa0477af0",
+      "attempt_id": "attempt-engineering-procurement",
+      "resource_id": "buyer-desk",
+      "context_hash": "58678d91ad1a62fa689e31f947f21e7a8486e87826d29e835f84cb3bdb96fe64",
+      "result_digest": "df67390ec6f09001ef03fe2e41657b4b0ad43bd18f397f1923a924a2787b5d37",
+      "result_ref": "/tmp/axiom-robotics-hifi-day-001/engineering-procurement/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 253
+    }
+  },
+  {
+    "phase": "production-test",
+    "run_id": 2,
+    "authorization": {
+      "authorization_id": "b45f281f-8509-4c65-96b9-5b93c4d3f966",
+      "approved_plan_digest": "02e67dd3a2caea4c406c546ce1f5af9bedc22e51adcf2faae4b265a3bafe39fb",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "robotics-operations:production-test:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "02e67dd3a2caea4c406c546ce1f5af9bedc22e51adcf2faae4b265a3bafe39fb",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":1909}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":111}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":138}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"OP-009\\\",\\\"OP-010\\\",\\\"OP-011\\\",\\\"OP-012\\\",\\\"OP-013\\\",\\\"OP-014\\\",\\\"OP-015\\\",\\\"OP-016\\\"],\\\"phase\\\":\\\"production-test\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/production-test/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"OP-009\\\",\\n    \\\"at\\\": \\\"10:30\\\",\\n    \\\"actor_ref\\\": \\\"production-planner\\\",\\n    \\\"kind\\\": \\\"schedule-build\\\",\\n    \\\"refs\\\": [\\n      \\\"build-slot\\\",\\n      \\\"build-queue\\\",\\n      \\\"APP-002\\\",\\n      \\\"WO-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-008\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"EV-004\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-010\\\",\\n    \\\"at\\\": \\\"11:00\\\",\\n    \\\"actor_ref\\\": \\\"assembler\\\",\\n    \\\"kind\\\": \\\"build-mechanical\\\",\\n    \\\"refs\\\": [\\n      \\\"build-cell\\\",\\n      \\\"WO-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-009\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-004\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-011\\\",\\n    \\\"at\\\": \\\"12:00\\\",\\n    \\\"actor_ref\\\": \\\"assembler\\\",\\n    \\\"kind\\\": \\\"build-electrical\\\",\\n    \\\"refs\\\": [\\n      \\\"build-cell\\\",\\n      \\\"WO-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-010\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-004\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-012\\\",\\n    \\\"at\\\": \\\"12:30\\\",\\n    \\\"actor_ref\\\": \\\"assembler\\\",\\n    \\\"kind\\\": \\\"book-labor\\\",\\n    \\\"refs\\\": [\\n      \\\"TX-003\\\",\\n      \\\"WO-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-011\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-004\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-013\\\",\\n    \\\"at\\\": \\\"13:00\\\",\\n    \\\"actor_ref\\\": \\\"test-engineer\\\",\\n    \\\"kind\\\": \\\"load-software\\\",\\n    \\\"refs\\\": [\\n      \\\"test-cell\\\",\\n      \\\"TR-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-012\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"EV-005\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-014\\\",\\n    \\\"at\\\": \\\"13:15\\\",\\n    \\\"actor_ref\\\": \\\"test-engineer\\\",\\n    \\\"kind\\\": \\\"functional-test\\\",\\n    \\\"refs\\\": [\\n      \\\"TR-SR1-1001\\\",\\n      \\\"SIT-003\\\",\\n      \\\"ISSUE-003\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-013\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-005\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-015\\\",\\n    \\\"at\\\": \\\"13:25\\\",\\n    \\\"actor_ref\\\": \\\"systems-lead\\\",\\n    \\\"kind\\\": \\\"authorize-reflash\\\",\\n    \\\"refs\\\": [\\n      \\\"ISSUE-003\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-014\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-005\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-016\\\",\\n    \\\"at\\\": \\\"13:35\\\",\\n    \\\"actor_ref\\\": \\\"test-engineer\\\",\\n    \\\"kind\\\": \\\"reflash-retest\\\",\\n    \\\"refs\\\": [\\n      \\\"TR-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-015\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-006\\\"\\n  }\\n]\\n\"}",
+        "id": 5,
+        "result_json": "{\"bytes_written\":1909}",
+        "run_id": 2,
+        "step": 0,
+        "timestamp": "2026-09-17 02:40:30",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/production-test/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"production-test\\\",\\n  \\\"last_operation\\\": \\\"OP-016\\\",\\n  \\\"terminal_transition\\\": \\\"FIELD_FEEDBACK_OPEN\\\"\\n}\\n\"}",
+        "id": 6,
+        "result_json": "{\"bytes_written\":111}",
+        "run_id": 2,
+        "step": 1,
+        "timestamp": "2026-09-17 02:40:30",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/production-test/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"OP-009\\\",\\\"OP-010\\\",\\\"OP-011\\\",\\\"OP-012\\\",\\\"OP-013\\\",\\\"OP-014\\\",\\\"OP-015\\\",\\\"OP-016\\\"],\\\"phase\\\":\\\"production-test\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 7,
+        "result_json": "{\"bytes_written\":138}",
+        "run_id": 2,
+        "step": 2,
+        "timestamp": "2026-09-17 02:40:30",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/production-test/result.json\"}",
+        "id": 8,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"OP-009\\\",\\\"OP-010\\\",\\\"OP-011\\\",\\\"OP-012\\\",\\\"OP-013\\\",\\\"OP-014\\\",\\\"OP-015\\\",\\\"OP-016\\\"],\\\"phase\\\":\\\"production-test\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 2,
+        "step": 3,
+        "timestamp": "2026-09-17 02:40:30",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "robotics-day:production-test",
+      "task_spec_hash": "9d95e3f60bce55ec3c3d7fa5e21cb9a595e9ddb974f8485fb0dfa831bd54a804",
+      "attempt_id": "attempt-production-test",
+      "resource_id": "build-cell",
+      "context_hash": "79cd68408c73b76cab6282162e86f56807692f859cfce4120863469fb154da84",
+      "result_digest": "1a5d6188ddf93ed28f31e2666ed7115dda5d21022ed12190bdb2db18d0cf9132",
+      "result_ref": "/tmp/axiom-robotics-hifi-day-001/production-test/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 261
+    }
+  },
+  {
+    "phase": "quality-release",
+    "run_id": 3,
+    "authorization": {
+      "authorization_id": "62def35d-fe8c-4593-8e71-03224e00ce71",
+      "approved_plan_digest": "144bd75cb8d1ae4ed9d691ff995f14b692f66d2f5d5bfd84155f3a1f59f6bca3",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "robotics-operations:quality-release:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "144bd75cb8d1ae4ed9d691ff995f14b692f66d2f5d5bfd84155f3a1f59f6bca3",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":1473}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":111}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":120}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"OP-017\\\",\\\"OP-018\\\",\\\"OP-019\\\",\\\"OP-020\\\",\\\"OP-021\\\",\\\"OP-022\\\"],\\\"phase\\\":\\\"quality-release\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/quality-release/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"OP-017\\\",\\n    \\\"at\\\": \\\"14:00\\\",\\n    \\\"actor_ref\\\": \\\"quality-engineer\\\",\\n    \\\"kind\\\": \\\"assembly-inspection\\\",\\n    \\\"refs\\\": [\\n      \\\"NCR-SR1-1001\\\",\\n      \\\"SIT-004\\\",\\n      \\\"COM-004\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-016\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"EV-006\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-018\\\",\\n    \\\"at\\\": \\\"14:10\\\",\\n    \\\"actor_ref\\\": \\\"quality-engineer\\\",\\n    \\\"kind\\\": \\\"disposition-ncr\\\",\\n    \\\"refs\\\": [\\n      \\\"APP-003\\\",\\n      \\\"ISSUE-004\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-017\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-006\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-019\\\",\\n    \\\"at\\\": \\\"14:20\\\",\\n    \\\"actor_ref\\\": \\\"assembler\\\",\\n    \\\"kind\\\": \\\"perform-rework\\\",\\n    \\\"refs\\\": [\\n      \\\"NCR-SR1-1001\\\",\\n      \\\"TX-004\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-018\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-006\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-020\\\",\\n    \\\"at\\\": \\\"14:45\\\",\\n    \\\"actor_ref\\\": \\\"test-engineer\\\",\\n    \\\"kind\\\": \\\"integrated-retest\\\",\\n    \\\"refs\\\": [\\n      \\\"TR-SR1-1001\\\",\\n      \\\"test-slot\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-019\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"EV-007\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-021\\\",\\n    \\\"at\\\": \\\"15:00\\\",\\n    \\\"actor_ref\\\": \\\"quality-engineer\\\",\\n    \\\"kind\\\": \\\"quality-release\\\",\\n    \\\"refs\\\": [\\n      \\\"APP-004\\\",\\n      \\\"TR-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-020\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-007\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-022\\\",\\n    \\\"at\\\": \\\"15:30\\\",\\n    \\\"actor_ref\\\": \\\"release-board\\\",\\n    \\\"kind\\\": \\\"deployment-release\\\",\\n    \\\"refs\\\": [\\n      \\\"APP-005\\\",\\n      \\\"REL-SR1-1001\\\",\\n      \\\"release-slot\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-021\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-008\\\"\\n  }\\n]\\n\"}",
+        "id": 9,
+        "result_json": "{\"bytes_written\":1473}",
+        "run_id": 3,
+        "step": 0,
+        "timestamp": "2026-09-17 02:40:31",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/quality-release/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"quality-release\\\",\\n  \\\"last_operation\\\": \\\"OP-022\\\",\\n  \\\"terminal_transition\\\": \\\"FIELD_FEEDBACK_OPEN\\\"\\n}\\n\"}",
+        "id": 10,
+        "result_json": "{\"bytes_written\":111}",
+        "run_id": 3,
+        "step": 1,
+        "timestamp": "2026-09-17 02:40:31",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/quality-release/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"OP-017\\\",\\\"OP-018\\\",\\\"OP-019\\\",\\\"OP-020\\\",\\\"OP-021\\\",\\\"OP-022\\\"],\\\"phase\\\":\\\"quality-release\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 11,
+        "result_json": "{\"bytes_written\":120}",
+        "run_id": 3,
+        "step": 2,
+        "timestamp": "2026-09-17 02:40:31",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/quality-release/result.json\"}",
+        "id": 12,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"OP-017\\\",\\\"OP-018\\\",\\\"OP-019\\\",\\\"OP-020\\\",\\\"OP-021\\\",\\\"OP-022\\\"],\\\"phase\\\":\\\"quality-release\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 3,
+        "step": 3,
+        "timestamp": "2026-09-17 02:40:31",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "robotics-day:quality-release",
+      "task_spec_hash": "eb32f25e8a86a901e786a904baf999097b09661dd872a6b6d9e76bc395e07ef3",
+      "attempt_id": "attempt-quality-release",
+      "resource_id": "quality-desk",
+      "context_hash": "ab11f5f4218385214ffb4471086c391df1d83caf125a2131297e3973299ea360",
+      "result_digest": "2309c3dde8a754beb90de164460a06183acf3ddfa8e67121493df84d1ab06b4b",
+      "result_ref": "/tmp/axiom-robotics-hifi-day-001/quality-release/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 269
+    }
+  },
+  {
+    "phase": "field-close",
+    "run_id": 4,
+    "authorization": {
+      "authorization_id": "867bd8fc-af53-43cd-9aa9-143bf1958d0b",
+      "approved_plan_digest": "b2e6cfa27718e8b4f245c3ce956897a11412e3c53288e98d049b0cfa08e97d32",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "robotics-operations:field-close:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "b2e6cfa27718e8b4f245c3ce956897a11412e3c53288e98d049b0cfa08e97d32",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":1452}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":107}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":116}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"OP-023\\\",\\\"OP-024\\\",\\\"OP-025\\\",\\\"OP-026\\\",\\\"OP-027\\\",\\\"OP-028\\\"],\\\"phase\\\":\\\"field-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/field-close/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"OP-023\\\",\\n    \\\"at\\\": \\\"15:45\\\",\\n    \\\"actor_ref\\\": \\\"field-operator\\\",\\n    \\\"kind\\\": \\\"deploy-synthetic\\\",\\n    \\\"refs\\\": [\\n      \\\"REL-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-022\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"OUT-001\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-024\\\",\\n    \\\"at\\\": \\\"16:10\\\",\\n    \\\"actor_ref\\\": \\\"field-operator\\\",\\n    \\\"kind\\\": \\\"observe-route\\\",\\n    \\\"refs\\\": [\\n      \\\"EV-009\\\",\\n      \\\"ISS-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-023\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ISSUE-005\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-025\\\",\\n    \\\"at\\\": \\\"16:20\\\",\\n    \\\"actor_ref\\\": \\\"field-operator\\\",\\n    \\\"kind\\\": \\\"communicate-issue\\\",\\n    \\\"refs\\\": [\\n      \\\"COM-005\\\",\\n      \\\"ISSUE-005\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-024\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"ST-009\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-026\\\",\\n    \\\"at\\\": \\\"16:30\\\",\\n    \\\"actor_ref\\\": \\\"systems-lead\\\",\\n    \\\"kind\\\": \\\"triage-feedback\\\",\\n    \\\"refs\\\": [\\n      \\\"ISS-SR1-1001\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-025\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"OUT-002\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-027\\\",\\n    \\\"at\\\": \\\"16:45\\\",\\n    \\\"actor_ref\\\": \\\"program-manager\\\",\\n    \\\"kind\\\": \\\"reconcile-costs\\\",\\n    \\\"refs\\\": [\\n      \\\"cash-ledger\\\",\\n      \\\"TX-001\\\",\\n      \\\"TX-002\\\",\\n      \\\"TX-003\\\",\\n      \\\"TX-004\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-026\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"OUT-002\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"OP-028\\\",\\n    \\\"at\\\": \\\"17:00\\\",\\n    \\\"actor_ref\\\": \\\"program-manager\\\",\\n    \\\"kind\\\": \\\"close-day\\\",\\n    \\\"refs\\\": [\\n      \\\"EV-001\\\",\\n      \\\"OUT-001\\\",\\n      \\\"OUT-002\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"OP-027\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"OUT-002\\\"\\n  }\\n]\\n\"}",
+        "id": 13,
+        "result_json": "{\"bytes_written\":1452}",
+        "run_id": 4,
+        "step": 0,
+        "timestamp": "2026-09-17 02:40:31",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/field-close/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"field-close\\\",\\n  \\\"last_operation\\\": \\\"OP-028\\\",\\n  \\\"terminal_transition\\\": \\\"FIELD_FEEDBACK_OPEN\\\"\\n}\\n\"}",
+        "id": 14,
+        "result_json": "{\"bytes_written\":107}",
+        "run_id": 4,
+        "step": 1,
+        "timestamp": "2026-09-17 02:40:31",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/field-close/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"OP-023\\\",\\\"OP-024\\\",\\\"OP-025\\\",\\\"OP-026\\\",\\\"OP-027\\\",\\\"OP-028\\\"],\\\"phase\\\":\\\"field-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 15,
+        "result_json": "{\"bytes_written\":116}",
+        "run_id": 4,
+        "step": 2,
+        "timestamp": "2026-09-17 02:40:31",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-robotics-hifi-day-001/field-close/result.json\"}",
+        "id": 16,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"OP-023\\\",\\\"OP-024\\\",\\\"OP-025\\\",\\\"OP-026\\\",\\\"OP-027\\\",\\\"OP-028\\\"],\\\"phase\\\":\\\"field-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 4,
+        "step": 3,
+        "timestamp": "2026-09-17 02:40:31",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "robotics-day:field-close",
+      "task_spec_hash": "44de41b571ec43b56bff0eb671d123705231b3874d699a19c0f4ebb0ff33ecd5",
+      "attempt_id": "attempt-field-close",
+      "resource_id": "field-ops",
+      "context_hash": "66ff2747c33d5caa94a51d0353a6a7d3dc2900b0b10e43b15df685a20ff2d72e",
+      "result_digest": "5107ec99066ef84ea307aeb8fcb074c8e0603a2f87cc5e8c2fec77d87e1432e1",
+      "result_ref": "/tmp/axiom-robotics-hifi-day-001/field-close/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 275
+    }
+  }
+]

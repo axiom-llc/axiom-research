@@ -1,0 +1,884 @@
+{
+  "schema": "axiom-simulation/operational-fidelity-v1",
+  "record_id": "robotics-production-sr1-day-001",
+  "scenario_id": "robotics-production-sr1-001",
+  "synthetic": true,
+  "clock": {
+    "start": "2026-09-16T08:00:00",
+    "end": "2026-09-16T17:00:00",
+    "timezone": "America/New_York"
+  },
+  "actors": [
+    {
+      "id": "program-manager",
+      "role": "program manager"
+    },
+    {
+      "id": "systems-lead",
+      "role": "systems lead"
+    },
+    {
+      "id": "buyer",
+      "role": "buyer"
+    },
+    {
+      "id": "inventory-controller",
+      "role": "inventory controller"
+    },
+    {
+      "id": "production-planner",
+      "role": "production planner"
+    },
+    {
+      "id": "assembler",
+      "role": "assembly technician"
+    },
+    {
+      "id": "test-engineer",
+      "role": "test engineer"
+    },
+    {
+      "id": "quality-engineer",
+      "role": "quality engineer"
+    },
+    {
+      "id": "release-board",
+      "role": "human release board"
+    },
+    {
+      "id": "field-operator",
+      "role": "field operator"
+    }
+  ],
+  "resources": [
+    {
+      "id": "build-cell",
+      "kind": "cell"
+    },
+    {
+      "id": "test-cell",
+      "kind": "cell"
+    },
+    {
+      "id": "buyer-desk",
+      "kind": "work-center"
+    },
+    {
+      "id": "quality-desk",
+      "kind": "work-center"
+    },
+    {
+      "id": "cash-ledger",
+      "kind": "synthetic-financial-ledger"
+    },
+    {
+      "id": "inventory-ledger",
+      "kind": "synthetic-inventory-ledger"
+    },
+    {
+      "id": "document-register",
+      "kind": "document-store"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "shift-1",
+      "start": "08:00",
+      "end": "17:00"
+    },
+    {
+      "id": "build-slot",
+      "start": "11:00",
+      "end": "13:00"
+    },
+    {
+      "id": "test-slot",
+      "start": "13:00",
+      "end": "15:00"
+    },
+    {
+      "id": "release-slot",
+      "start": "15:30",
+      "end": "16:00"
+    }
+  ],
+  "queues": [
+    {
+      "id": "procurement-queue",
+      "items": [
+        "PO-SR1-1001"
+      ]
+    },
+    {
+      "id": "build-queue",
+      "items": [
+        "WO-SR1-1001"
+      ]
+    },
+    {
+      "id": "quality-queue",
+      "items": [
+        "NCR-SR1-1001"
+      ]
+    },
+    {
+      "id": "field-issue-queue",
+      "items": [
+        "ISS-SR1-1001"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "decision": "expedite delayed lidar",
+      "actor": "program-manager"
+    },
+    {
+      "id": "DEC-002",
+      "decision": "quarantine wrong controller revision",
+      "actor": "quality-engineer"
+    },
+    {
+      "id": "DEC-003",
+      "decision": "authorize motor-mount rework",
+      "actor": "quality-engineer"
+    },
+    {
+      "id": "DEC-004",
+      "decision": "approve synthetic deployment",
+      "actor": "release-board"
+    }
+  ],
+  "communications": [
+    {
+      "id": "COM-001",
+      "from": "buyer",
+      "to": "program-manager",
+      "channel": "synthetic-email"
+    },
+    {
+      "id": "COM-002",
+      "from": "program-manager",
+      "to": "buyer",
+      "channel": "synthetic-email"
+    },
+    {
+      "id": "COM-003",
+      "from": "quality-engineer",
+      "to": "production-planner",
+      "channel": "synthetic-ticket"
+    },
+    {
+      "id": "COM-004",
+      "from": "test-engineer",
+      "to": "quality-engineer",
+      "channel": "synthetic-ticket"
+    },
+    {
+      "id": "COM-005",
+      "from": "field-operator",
+      "to": "systems-lead",
+      "channel": "synthetic-ticket"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TX-001",
+      "kind": "purchase-order",
+      "amount_usd": 18450.0
+    },
+    {
+      "id": "TX-002",
+      "kind": "expedite-fee",
+      "amount_usd": 600.0
+    },
+    {
+      "id": "TX-003",
+      "kind": "internal-labor-cost",
+      "amount_usd": 2160.0
+    },
+    {
+      "id": "TX-004",
+      "kind": "rework-cost",
+      "amount_usd": 180.0
+    }
+  ],
+  "inventory_movements": [
+    {
+      "id": "INV-001",
+      "sku": "LIDAR-01",
+      "lot": "L-LIDAR-C",
+      "from": "supplier",
+      "to": "receiving",
+      "quantity": 1
+    },
+    {
+      "id": "INV-002",
+      "sku": "CTRL-01",
+      "lot": "L-CTRL-B",
+      "from": "supplier",
+      "to": "quarantine",
+      "quantity": 1
+    },
+    {
+      "id": "INV-003",
+      "sku": "CTRL-01",
+      "lot": "L-CTRL-C",
+      "from": "stock",
+      "to": "build-kit",
+      "quantity": 1
+    },
+    {
+      "id": "INV-004",
+      "sku": "BAT-01",
+      "lot": "L-BAT-A",
+      "from": "stock",
+      "to": "build-kit",
+      "quantity": 1
+    },
+    {
+      "id": "INV-005",
+      "sku": "CHASSIS-01",
+      "lot": "L-CH-A",
+      "from": "stock",
+      "to": "build-kit",
+      "quantity": 1
+    }
+  ],
+  "documents": [
+    {
+      "id": "REQ-SR1-A",
+      "kind": "requirements"
+    },
+    {
+      "id": "BOM-SR1-A",
+      "kind": "bom"
+    },
+    {
+      "id": "PO-SR1-1001",
+      "kind": "purchase-order"
+    },
+    {
+      "id": "RCV-SR1-1001",
+      "kind": "receiving-record"
+    },
+    {
+      "id": "WO-SR1-1001",
+      "kind": "work-order"
+    },
+    {
+      "id": "TR-SR1-1001",
+      "kind": "test-record"
+    },
+    {
+      "id": "NCR-SR1-1001",
+      "kind": "nonconformance"
+    },
+    {
+      "id": "REL-SR1-1001",
+      "kind": "release-record"
+    },
+    {
+      "id": "ISS-SR1-1001",
+      "kind": "field-issue"
+    }
+  ],
+  "events": [
+    {
+      "id": "EV-001",
+      "type": "shift-open"
+    },
+    {
+      "id": "EV-002",
+      "type": "supplier-delay"
+    },
+    {
+      "id": "EV-003",
+      "type": "receiving-nonconformance"
+    },
+    {
+      "id": "EV-004",
+      "type": "build-start"
+    },
+    {
+      "id": "EV-005",
+      "type": "firmware-test-fail"
+    },
+    {
+      "id": "EV-006",
+      "type": "assembly-ncr"
+    },
+    {
+      "id": "EV-007",
+      "type": "retest-pass"
+    },
+    {
+      "id": "EV-008",
+      "type": "release"
+    },
+    {
+      "id": "EV-009",
+      "type": "field-issue"
+    }
+  ],
+  "situations": [
+    {
+      "id": "SIT-001",
+      "state": "supplier delayed"
+    },
+    {
+      "id": "SIT-002",
+      "state": "wrong controller revision received"
+    },
+    {
+      "id": "SIT-003",
+      "state": "firmware boot failed"
+    },
+    {
+      "id": "SIT-004",
+      "state": "motor mount torque out of range"
+    }
+  ],
+  "issues": [
+    {
+      "id": "ISSUE-001",
+      "kind": "supply",
+      "status": "resolved"
+    },
+    {
+      "id": "ISSUE-002",
+      "kind": "receiving",
+      "status": "resolved"
+    },
+    {
+      "id": "ISSUE-003",
+      "kind": "firmware",
+      "status": "resolved"
+    },
+    {
+      "id": "ISSUE-004",
+      "kind": "assembly",
+      "status": "resolved"
+    },
+    {
+      "id": "ISSUE-005",
+      "kind": "field",
+      "status": "open"
+    }
+  ],
+  "approvals": [
+    {
+      "id": "APP-001",
+      "authority": "requirements-baseline",
+      "actor": "systems-lead"
+    },
+    {
+      "id": "APP-002",
+      "authority": "production-order",
+      "actor": "production-planner"
+    },
+    {
+      "id": "APP-003",
+      "authority": "nonconformance-disposition",
+      "actor": "quality-engineer"
+    },
+    {
+      "id": "APP-004",
+      "authority": "quality-release",
+      "actor": "quality-engineer"
+    },
+    {
+      "id": "APP-005",
+      "authority": "deployment-release",
+      "actor": "release-board"
+    }
+  ],
+  "state_transitions": [
+    {
+      "id": "ST-001",
+      "entity": "SR1-SYN-0001",
+      "from": "NEW",
+      "to": "REQUIREMENTS_BASELINED"
+    },
+    {
+      "id": "ST-002",
+      "entity": "SR1-SYN-0001",
+      "from": "REQUIREMENTS_BASELINED",
+      "to": "MATERIAL_EXCEPTION"
+    },
+    {
+      "id": "ST-003",
+      "entity": "SR1-SYN-0001",
+      "from": "MATERIAL_EXCEPTION",
+      "to": "MATERIAL_READY"
+    },
+    {
+      "id": "ST-004",
+      "entity": "SR1-SYN-0001",
+      "from": "MATERIAL_READY",
+      "to": "BUILDING"
+    },
+    {
+      "id": "ST-005",
+      "entity": "SR1-SYN-0001",
+      "from": "BUILDING",
+      "to": "TEST_EXCEPTION"
+    },
+    {
+      "id": "ST-006",
+      "entity": "SR1-SYN-0001",
+      "from": "TEST_EXCEPTION",
+      "to": "REWORK"
+    },
+    {
+      "id": "ST-007",
+      "entity": "SR1-SYN-0001",
+      "from": "REWORK",
+      "to": "VERIFIED"
+    },
+    {
+      "id": "ST-008",
+      "entity": "SR1-SYN-0001",
+      "from": "VERIFIED",
+      "to": "RELEASED_SYNTHETIC"
+    },
+    {
+      "id": "ST-009",
+      "entity": "SR1-SYN-0001",
+      "from": "RELEASED_SYNTHETIC",
+      "to": "FIELD_FEEDBACK_OPEN"
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "OUT-001",
+      "result": "released synthetic unit"
+    },
+    {
+      "id": "OUT-002",
+      "result": "open next-revision field issue"
+    }
+  ],
+  "completeness": {
+    "actors": true,
+    "resources": true,
+    "schedules": true,
+    "queues": true,
+    "decisions": true,
+    "communications": true,
+    "transactions": true,
+    "inventory": true,
+    "documents": true,
+    "events": true,
+    "situations": true,
+    "issues": true,
+    "approvals": true,
+    "failures_recovery": true,
+    "state_transitions": true,
+    "outcomes": true
+  },
+  "operations": [
+    {
+      "id": "OP-001",
+      "at": "08:00",
+      "actor_ref": "program-manager",
+      "kind": "open-shift",
+      "refs": [
+        "shift-1",
+        "EV-001"
+      ],
+      "causes": [],
+      "result_ref": "ST-001"
+    },
+    {
+      "id": "OP-002",
+      "at": "08:10",
+      "actor_ref": "systems-lead",
+      "kind": "baseline-requirements",
+      "refs": [
+        "REQ-SR1-A",
+        "APP-001"
+      ],
+      "causes": [
+        "OP-001"
+      ],
+      "result_ref": "ST-001"
+    },
+    {
+      "id": "OP-003",
+      "at": "08:30",
+      "actor_ref": "buyer",
+      "kind": "review-supplier",
+      "refs": [
+        "PO-SR1-1001",
+        "COM-001",
+        "SIT-001"
+      ],
+      "causes": [
+        "OP-002"
+      ],
+      "result_ref": "DEC-001"
+    },
+    {
+      "id": "OP-004",
+      "at": "08:40",
+      "actor_ref": "program-manager",
+      "kind": "decide-expedite",
+      "refs": [
+        "DEC-001",
+        "COM-002",
+        "TX-002"
+      ],
+      "causes": [
+        "OP-003"
+      ],
+      "result_ref": "ST-002"
+    },
+    {
+      "id": "OP-005",
+      "at": "09:15",
+      "actor_ref": "buyer",
+      "kind": "place-order",
+      "refs": [
+        "PO-SR1-1001",
+        "TX-001"
+      ],
+      "causes": [
+        "OP-004"
+      ],
+      "result_ref": "EV-002"
+    },
+    {
+      "id": "OP-006",
+      "at": "10:00",
+      "actor_ref": "quality-engineer",
+      "kind": "receive-inspect",
+      "refs": [
+        "RCV-SR1-1001",
+        "SIT-002",
+        "INV-002"
+      ],
+      "causes": [
+        "OP-005"
+      ],
+      "result_ref": "DEC-002"
+    },
+    {
+      "id": "OP-007",
+      "at": "10:10",
+      "actor_ref": "quality-engineer",
+      "kind": "quarantine",
+      "refs": [
+        "DEC-002",
+        "COM-003",
+        "ISSUE-002"
+      ],
+      "causes": [
+        "OP-006"
+      ],
+      "result_ref": "ST-002"
+    },
+    {
+      "id": "OP-008",
+      "at": "10:20",
+      "actor_ref": "inventory-controller",
+      "kind": "allocate-material",
+      "refs": [
+        "INV-001",
+        "INV-003",
+        "INV-004",
+        "INV-005"
+      ],
+      "causes": [
+        "OP-007"
+      ],
+      "result_ref": "ST-003"
+    },
+    {
+      "id": "OP-009",
+      "at": "10:30",
+      "actor_ref": "production-planner",
+      "kind": "schedule-build",
+      "refs": [
+        "build-slot",
+        "build-queue",
+        "APP-002",
+        "WO-SR1-1001"
+      ],
+      "causes": [
+        "OP-008"
+      ],
+      "result_ref": "EV-004"
+    },
+    {
+      "id": "OP-010",
+      "at": "11:00",
+      "actor_ref": "assembler",
+      "kind": "build-mechanical",
+      "refs": [
+        "build-cell",
+        "WO-SR1-1001"
+      ],
+      "causes": [
+        "OP-009"
+      ],
+      "result_ref": "ST-004"
+    },
+    {
+      "id": "OP-011",
+      "at": "12:00",
+      "actor_ref": "assembler",
+      "kind": "build-electrical",
+      "refs": [
+        "build-cell",
+        "WO-SR1-1001"
+      ],
+      "causes": [
+        "OP-010"
+      ],
+      "result_ref": "ST-004"
+    },
+    {
+      "id": "OP-012",
+      "at": "12:30",
+      "actor_ref": "assembler",
+      "kind": "book-labor",
+      "refs": [
+        "TX-003",
+        "WO-SR1-1001"
+      ],
+      "causes": [
+        "OP-011"
+      ],
+      "result_ref": "ST-004"
+    },
+    {
+      "id": "OP-013",
+      "at": "13:00",
+      "actor_ref": "test-engineer",
+      "kind": "load-software",
+      "refs": [
+        "test-cell",
+        "TR-SR1-1001"
+      ],
+      "causes": [
+        "OP-012"
+      ],
+      "result_ref": "EV-005"
+    },
+    {
+      "id": "OP-014",
+      "at": "13:15",
+      "actor_ref": "test-engineer",
+      "kind": "functional-test",
+      "refs": [
+        "TR-SR1-1001",
+        "SIT-003",
+        "ISSUE-003"
+      ],
+      "causes": [
+        "OP-013"
+      ],
+      "result_ref": "ST-005"
+    },
+    {
+      "id": "OP-015",
+      "at": "13:25",
+      "actor_ref": "systems-lead",
+      "kind": "authorize-reflash",
+      "refs": [
+        "ISSUE-003"
+      ],
+      "causes": [
+        "OP-014"
+      ],
+      "result_ref": "ST-005"
+    },
+    {
+      "id": "OP-016",
+      "at": "13:35",
+      "actor_ref": "test-engineer",
+      "kind": "reflash-retest",
+      "refs": [
+        "TR-SR1-1001"
+      ],
+      "causes": [
+        "OP-015"
+      ],
+      "result_ref": "ST-006"
+    },
+    {
+      "id": "OP-017",
+      "at": "14:00",
+      "actor_ref": "quality-engineer",
+      "kind": "assembly-inspection",
+      "refs": [
+        "NCR-SR1-1001",
+        "SIT-004",
+        "COM-004"
+      ],
+      "causes": [
+        "OP-016"
+      ],
+      "result_ref": "EV-006"
+    },
+    {
+      "id": "OP-018",
+      "at": "14:10",
+      "actor_ref": "quality-engineer",
+      "kind": "disposition-ncr",
+      "refs": [
+        "APP-003",
+        "ISSUE-004"
+      ],
+      "causes": [
+        "OP-017"
+      ],
+      "result_ref": "ST-006"
+    },
+    {
+      "id": "OP-019",
+      "at": "14:20",
+      "actor_ref": "assembler",
+      "kind": "perform-rework",
+      "refs": [
+        "NCR-SR1-1001",
+        "TX-004"
+      ],
+      "causes": [
+        "OP-018"
+      ],
+      "result_ref": "ST-006"
+    },
+    {
+      "id": "OP-020",
+      "at": "14:45",
+      "actor_ref": "test-engineer",
+      "kind": "integrated-retest",
+      "refs": [
+        "TR-SR1-1001",
+        "test-slot"
+      ],
+      "causes": [
+        "OP-019"
+      ],
+      "result_ref": "EV-007"
+    },
+    {
+      "id": "OP-021",
+      "at": "15:00",
+      "actor_ref": "quality-engineer",
+      "kind": "quality-release",
+      "refs": [
+        "APP-004",
+        "TR-SR1-1001"
+      ],
+      "causes": [
+        "OP-020"
+      ],
+      "result_ref": "ST-007"
+    },
+    {
+      "id": "OP-022",
+      "at": "15:30",
+      "actor_ref": "release-board",
+      "kind": "deployment-release",
+      "refs": [
+        "APP-005",
+        "REL-SR1-1001",
+        "release-slot"
+      ],
+      "causes": [
+        "OP-021"
+      ],
+      "result_ref": "ST-008"
+    },
+    {
+      "id": "OP-023",
+      "at": "15:45",
+      "actor_ref": "field-operator",
+      "kind": "deploy-synthetic",
+      "refs": [
+        "REL-SR1-1001"
+      ],
+      "causes": [
+        "OP-022"
+      ],
+      "result_ref": "OUT-001"
+    },
+    {
+      "id": "OP-024",
+      "at": "16:10",
+      "actor_ref": "field-operator",
+      "kind": "observe-route",
+      "refs": [
+        "EV-009",
+        "ISS-SR1-1001"
+      ],
+      "causes": [
+        "OP-023"
+      ],
+      "result_ref": "ISSUE-005"
+    },
+    {
+      "id": "OP-025",
+      "at": "16:20",
+      "actor_ref": "field-operator",
+      "kind": "communicate-issue",
+      "refs": [
+        "COM-005",
+        "ISSUE-005"
+      ],
+      "causes": [
+        "OP-024"
+      ],
+      "result_ref": "ST-009"
+    },
+    {
+      "id": "OP-026",
+      "at": "16:30",
+      "actor_ref": "systems-lead",
+      "kind": "triage-feedback",
+      "refs": [
+        "ISS-SR1-1001"
+      ],
+      "causes": [
+        "OP-025"
+      ],
+      "result_ref": "OUT-002"
+    },
+    {
+      "id": "OP-027",
+      "at": "16:45",
+      "actor_ref": "program-manager",
+      "kind": "reconcile-costs",
+      "refs": [
+        "cash-ledger",
+        "TX-001",
+        "TX-002",
+        "TX-003",
+        "TX-004"
+      ],
+      "causes": [
+        "OP-026"
+      ],
+      "result_ref": "OUT-002"
+    },
+    {
+      "id": "OP-028",
+      "at": "17:00",
+      "actor_ref": "program-manager",
+      "kind": "close-day",
+      "refs": [
+        "EV-001",
+        "OUT-001",
+        "OUT-002"
+      ],
+      "causes": [
+        "OP-027"
+      ],
+      "result_ref": "OUT-002"
+    }
+  ]
+}

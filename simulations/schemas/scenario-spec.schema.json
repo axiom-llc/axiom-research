@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "ScenarioSpec",
+  "required": [
+    "schema",
+    "scenario_id",
+    "domain",
+    "classification",
+    "objective",
+    "organization_ref",
+    "fixture_ref",
+    "steps",
+    "failure_injections",
+    "expected_terminal_state",
+    "acceptance_contract",
+    "evidence_requirements"
+  ],
+  "properties": {
+    "schema": {
+      "const": "axiom-simulation/scenario-spec-v1"
+    },
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "classification": {
+      "enum": [
+        "SYNTHETIC_SIMULATION",
+        "VALIDATED_EXECUTABLE_DEMO"
+      ]
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "organization_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fixture_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "actor",
+          "depends_on",
+          "inputs",
+          "expected_outputs",
+          "approval_ref"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "observe",
+              "decide",
+              "approve",
+              "handoff",
+              "read",
+              "write",
+              "retrieve",
+              "schedule",
+              "allocate",
+              "produce",
+              "inspect",
+              "test",
+              "escalate",
+              "recover",
+              "close"
+            ]
+          },
+          "actor": {
+            "type": "string",
+            "minLength": 1
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "inputs": {
+            "type": "object"
+          },
+          "expected_outputs": {
+            "type": "object"
+          },
+          "approval_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "failure_injections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "target_step",
+          "failure_class",
+          "expected_behavior"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_step": {
+            "type": "string",
+            "minLength": 1
+          },
+          "failure_class": {
+            "enum": [
+              "retry_safe",
+              "non_retry_safe",
+              "ambiguous_dispatch",
+              "dependency_unavailable",
+              "approval_denied"
+            ]
+          },
+          "expected_behavior": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "expected_terminal_state": {
+      "type": "object"
+    },
+    "acceptance_contract": {
+      "type": "object"
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}

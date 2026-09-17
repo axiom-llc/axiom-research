@@ -7,6 +7,10 @@ Keep durable theory, source-grounded implementation research, architecture
 decisions, and reusable research programs here. Product code and transient
 implementation notes belong in their owning repositories.
 
+## Organizational simulation evidence program
+
+The approved [`simulations/`](./simulations/) program connects domain/process research to synthetic organization models, actual AXIOM execution evidence, deterministic evaluation, retained findings, executable demonstrations, and evidence-traceable public claims. Canonical evidence remains in Research; runtime authority remains in the owning AXIOM components. Simulations never imply production deployment or autonomous licensed/professional authority.
+
 ## Research artifacts
 
 | File                                                   | Role                                                                                | Current interpretation                                                                                                              |

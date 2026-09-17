@@ -1,0 +1,15 @@
+{
+  "claim_id": "claim-1",
+  "claim": "APEX coordinated this modeled workflow",
+  "scope": "robot-build-1",
+  "evidence_refs": [
+    "ev-1"
+  ],
+  "evidence_classification": "VALIDATED_EXECUTABLE_DEMO",
+  "limitations": [
+    "Synthetic simulation"
+  ],
+  "publication_surfaces": [
+    "research"
+  ]
+}

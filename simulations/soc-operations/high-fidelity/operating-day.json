@@ -1,0 +1,618 @@
+{
+  "schema": "axiom-simulation/operational-fidelity-v1",
+  "record_id": "soc-operations-day-001",
+  "scenario_id": "soc-operations-e2e-001",
+  "synthetic": true,
+  "clock": {
+    "start": "2026-09-17T07:00:00Z",
+    "end": "2026-09-17T15:00:00Z",
+    "timezone": "UTC"
+  },
+  "actors": [
+    {
+      "id": "analyst",
+      "role": "SOC analyst",
+      "authority": []
+    },
+    {
+      "id": "responder",
+      "role": "Incident responder",
+      "authority": [
+        "containment-action"
+      ]
+    },
+    {
+      "id": "it-operator",
+      "role": "IT operator",
+      "authority": [
+        "system-isolation"
+      ]
+    },
+    {
+      "id": "commander",
+      "role": "Incident commander",
+      "authority": [
+        "incident-close"
+      ]
+    },
+    {
+      "id": "synthetic-siem",
+      "role": "Synthetic SIEM",
+      "authority": []
+    }
+  ],
+  "resources": [
+    {
+      "id": "alert-queue",
+      "kind": "queue",
+      "state": {
+        "alerts": 3
+      }
+    },
+    {
+      "id": "case-store",
+      "kind": "case-system",
+      "state": {
+        "open": 1
+      }
+    },
+    {
+      "id": "synthetic-endpoint",
+      "kind": "synthetic-system",
+      "state": {
+        "host": "SYN-HOST-7",
+        "network": "simulated-connected"
+      }
+    },
+    {
+      "id": "evidence-store",
+      "kind": "synthetic-evidence",
+      "state": {
+        "items": 0
+      }
+    }
+  ],
+  "schedules": [
+    {
+      "id": "sched-analyst",
+      "owner": "analyst",
+      "start": "07:00Z",
+      "end": "15:00Z"
+    },
+    {
+      "id": "sched-responder",
+      "owner": "responder",
+      "start": "08:00Z",
+      "end": "16:00Z"
+    },
+    {
+      "id": "sched-change",
+      "owner": "it-operator",
+      "start": "09:00Z",
+      "end": "12:00Z"
+    }
+  ],
+  "queues": [
+    {
+      "id": "q-alert",
+      "kind": "alerts",
+      "items": [
+        "ALERT-001",
+        "ALERT-002",
+        "ALERT-003"
+      ]
+    },
+    {
+      "id": "q-response",
+      "kind": "incidents",
+      "items": []
+    },
+    {
+      "id": "q-change",
+      "kind": "synthetic-change",
+      "items": []
+    }
+  ],
+  "decisions": [
+    {
+      "id": "d-severity",
+      "actor": "analyst",
+      "decision": "classify synthetic alert high severity"
+    },
+    {
+      "id": "d-contain",
+      "actor": "responder",
+      "decision": "authorize simulated containment"
+    },
+    {
+      "id": "d-isolate",
+      "actor": "it-operator",
+      "decision": "authorize simulated isolation"
+    },
+    {
+      "id": "d-close",
+      "actor": "commander",
+      "decision": "close after synthetic recovery validation"
+    }
+  ],
+  "communications": [
+    {
+      "id": "c-escalate",
+      "from_actor": "analyst",
+      "to": [
+        "responder"
+      ],
+      "channel": "case",
+      "message": "synthetic high-severity alert escalated"
+    },
+    {
+      "id": "c-contain",
+      "from_actor": "responder",
+      "to": [
+        "it-operator"
+      ],
+      "channel": "case",
+      "message": "simulated containment approved"
+    },
+    {
+      "id": "c-timeout",
+      "from_actor": "responder",
+      "to": [
+        "commander"
+      ],
+      "channel": "case",
+      "message": "synthetic collection timeout; retry planned"
+    },
+    {
+      "id": "c-restore",
+      "from_actor": "it-operator",
+      "to": [
+        "analyst"
+      ],
+      "channel": "case",
+      "message": "simulated restoration complete"
+    },
+    {
+      "id": "c-close",
+      "from_actor": "commander",
+      "to": [
+        "response-team"
+      ],
+      "channel": "case",
+      "message": "synthetic incident closed"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "t-analyst",
+      "kind": "synthetic-labor",
+      "amount_usd": 180.0
+    },
+    {
+      "id": "t-responder",
+      "kind": "synthetic-labor",
+      "amount_usd": 260.0
+    },
+    {
+      "id": "t-it",
+      "kind": "synthetic-labor",
+      "amount_usd": 140.0
+    },
+    {
+      "id": "t-tools",
+      "kind": "synthetic-tooling",
+      "amount_usd": 35.0
+    }
+  ],
+  "inventory_movements": [
+    {
+      "id": "i-alert",
+      "sku": "synthetic-alert",
+      "lot": "ALERT-001",
+      "from": "q-alert",
+      "to": "case-store",
+      "quantity": 1
+    },
+    {
+      "id": "i-evidence1",
+      "sku": "synthetic-evidence",
+      "lot": "EV-001",
+      "from": "synthetic-endpoint",
+      "to": "evidence-store",
+      "quantity": 1
+    },
+    {
+      "id": "i-evidence2",
+      "sku": "synthetic-evidence",
+      "lot": "EV-002",
+      "from": "synthetic-endpoint",
+      "to": "evidence-store",
+      "quantity": 1
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc-alert",
+      "kind": "synthetic-alert"
+    },
+    {
+      "id": "doc-triage",
+      "kind": "triage-record"
+    },
+    {
+      "id": "doc-enrichment",
+      "kind": "synthetic-enrichment"
+    },
+    {
+      "id": "doc-containment",
+      "kind": "containment-approval"
+    },
+    {
+      "id": "doc-collection-fail",
+      "kind": "collection-log"
+    },
+    {
+      "id": "doc-collection-pass",
+      "kind": "collection-log"
+    },
+    {
+      "id": "doc-recovery",
+      "kind": "recovery-record"
+    },
+    {
+      "id": "doc-close",
+      "kind": "incident-close-record"
+    }
+  ],
+  "events": [
+    {
+      "id": "e-alert",
+      "kind": "alert-received"
+    },
+    {
+      "id": "e-escalate",
+      "kind": "incident-escalated"
+    },
+    {
+      "id": "e-isolate",
+      "kind": "simulated-isolation"
+    },
+    {
+      "id": "e-timeout",
+      "kind": "collection-timeout"
+    },
+    {
+      "id": "e-collected",
+      "kind": "collection-complete"
+    },
+    {
+      "id": "e-eradicate",
+      "kind": "simulated-eradication"
+    },
+    {
+      "id": "e-restore",
+      "kind": "simulated-restoration"
+    },
+    {
+      "id": "e-close",
+      "kind": "incident-close"
+    }
+  ],
+  "situations": [
+    {
+      "id": "sit-suspicious",
+      "status": "synthetic suspicious process indicator"
+    },
+    {
+      "id": "sit-timeout",
+      "status": "synthetic evidence collection timeout"
+    },
+    {
+      "id": "sit-boundary",
+      "status": "all endpoint/network effects simulated only"
+    }
+  ],
+  "issues": [
+    {
+      "id": "issue-timeout",
+      "status": "resolved",
+      "recovery": "retry synthetic evidence collection without repeating containment"
+    }
+  ],
+  "approvals": [
+    {
+      "id": "a-contain",
+      "actor": "responder",
+      "authority": "containment-action",
+      "decision": "APPROVED"
+    },
+    {
+      "id": "a-isolate",
+      "actor": "it-operator",
+      "authority": "system-isolation",
+      "decision": "APPROVED"
+    },
+    {
+      "id": "a-close",
+      "actor": "commander",
+      "authority": "incident-close",
+      "decision": "APPROVED"
+    }
+  ],
+  "state_transitions": [
+    {
+      "id": "st-01",
+      "from": "NEW",
+      "to": "ALERT_RECEIVED"
+    },
+    {
+      "id": "st-02",
+      "from": "ALERT_RECEIVED",
+      "to": "TRIAGED"
+    },
+    {
+      "id": "st-03",
+      "from": "TRIAGED",
+      "to": "ESCALATED"
+    },
+    {
+      "id": "st-04",
+      "from": "ESCALATED",
+      "to": "CONTAINMENT_APPROVED"
+    },
+    {
+      "id": "st-05",
+      "from": "CONTAINMENT_APPROVED",
+      "to": "ISOLATION_APPROVED"
+    },
+    {
+      "id": "st-06",
+      "from": "ISOLATION_APPROVED",
+      "to": "COLLECTION_FAILED"
+    },
+    {
+      "id": "st-07",
+      "from": "COLLECTION_FAILED",
+      "to": "COLLECTION_COMPLETE"
+    },
+    {
+      "id": "st-08",
+      "from": "COLLECTION_COMPLETE",
+      "to": "ERADICATED_SIMULATED"
+    },
+    {
+      "id": "st-09",
+      "from": "ERADICATED_SIMULATED",
+      "to": "VALIDATED_CLEAR"
+    },
+    {
+      "id": "st-10",
+      "from": "VALIDATED_CLEAR",
+      "to": "RESTORED_SIMULATED"
+    },
+    {
+      "id": "st-11",
+      "from": "RESTORED_SIMULATED",
+      "to": "CLOSED"
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "o-recovered",
+      "status": "RECOVERED_SIMULATED"
+    },
+    {
+      "id": "o-close",
+      "status": "CLOSED"
+    }
+  ],
+  "operations": [
+    {
+      "id": "op01",
+      "at": "07:10Z",
+      "actor_ref": "synthetic-siem",
+      "kind": "observe",
+      "refs": [
+        "q-alert",
+        "doc-alert",
+        "e-alert",
+        "i-alert"
+      ],
+      "causes": [],
+      "result_ref": "doc-alert"
+    },
+    {
+      "id": "op02",
+      "at": "07:20Z",
+      "actor_ref": "analyst",
+      "kind": "inspect",
+      "refs": [
+        "sched-analyst",
+        "doc-triage",
+        "d-severity"
+      ],
+      "causes": [
+        "op01"
+      ],
+      "result_ref": "doc-triage"
+    },
+    {
+      "id": "op03",
+      "at": "07:30Z",
+      "actor_ref": "analyst",
+      "kind": "retrieve",
+      "refs": [
+        "sit-suspicious",
+        "doc-enrichment",
+        "t-tools"
+      ],
+      "causes": [
+        "op02"
+      ],
+      "result_ref": "doc-enrichment"
+    },
+    {
+      "id": "op04",
+      "at": "07:45Z",
+      "actor_ref": "analyst",
+      "kind": "escalate",
+      "refs": [
+        "q-response",
+        "e-escalate",
+        "c-escalate"
+      ],
+      "causes": [
+        "op03"
+      ],
+      "result_ref": "c-escalate"
+    },
+    {
+      "id": "op05",
+      "at": "08:10Z",
+      "actor_ref": "responder",
+      "kind": "approve",
+      "refs": [
+        "sched-responder",
+        "d-contain",
+        "a-contain",
+        "doc-containment",
+        "t-responder"
+      ],
+      "causes": [
+        "op04"
+      ],
+      "result_ref": "a-contain"
+    },
+    {
+      "id": "op06",
+      "at": "09:00Z",
+      "actor_ref": "it-operator",
+      "kind": "approve",
+      "refs": [
+        "sched-change",
+        "d-isolate",
+        "a-isolate",
+        "q-change",
+        "e-isolate",
+        "c-contain",
+        "sit-boundary",
+        "t-it"
+      ],
+      "causes": [
+        "op05"
+      ],
+      "result_ref": "a-isolate"
+    },
+    {
+      "id": "op07",
+      "at": "09:30Z",
+      "actor_ref": "responder",
+      "kind": "test",
+      "refs": [
+        "sit-timeout",
+        "e-timeout",
+        "doc-collection-fail",
+        "issue-timeout",
+        "c-timeout"
+      ],
+      "causes": [
+        "op06"
+      ],
+      "result_ref": "doc-collection-fail"
+    },
+    {
+      "id": "op08",
+      "at": "10:00Z",
+      "actor_ref": "responder",
+      "kind": "recover",
+      "refs": [
+        "doc-collection-pass",
+        "e-collected",
+        "i-evidence1",
+        "i-evidence2"
+      ],
+      "causes": [
+        "op07"
+      ],
+      "result_ref": "doc-collection-pass"
+    },
+    {
+      "id": "op09",
+      "at": "10:30Z",
+      "actor_ref": "responder",
+      "kind": "produce",
+      "refs": [
+        "e-eradicate"
+      ],
+      "causes": [
+        "op08"
+      ],
+      "result_ref": "e-eradicate"
+    },
+    {
+      "id": "op10",
+      "at": "11:00Z",
+      "actor_ref": "analyst",
+      "kind": "test",
+      "refs": [
+        "doc-recovery",
+        "t-analyst"
+      ],
+      "causes": [
+        "op09"
+      ],
+      "result_ref": "doc-recovery"
+    },
+    {
+      "id": "op11",
+      "at": "11:30Z",
+      "actor_ref": "it-operator",
+      "kind": "handoff",
+      "refs": [
+        "e-restore",
+        "c-restore",
+        "o-recovered"
+      ],
+      "causes": [
+        "op10"
+      ],
+      "result_ref": "o-recovered"
+    },
+    {
+      "id": "op12",
+      "at": "12:00Z",
+      "actor_ref": "commander",
+      "kind": "approve",
+      "refs": [
+        "d-close",
+        "a-close",
+        "doc-close",
+        "e-close",
+        "c-close",
+        "o-close"
+      ],
+      "causes": [
+        "op11"
+      ],
+      "result_ref": "o-close"
+    }
+  ],
+  "completeness": {
+    "actors": true,
+    "resources": true,
+    "schedules": true,
+    "queues": true,
+    "decisions": true,
+    "communications": true,
+    "transactions": true,
+    "inventory": true,
+    "documents": true,
+    "events": true,
+    "situations": true,
+    "issues": true,
+    "approvals": true,
+    "failures_recovery": true,
+    "state_transitions": true,
+    "outcomes": true
+  }
+}

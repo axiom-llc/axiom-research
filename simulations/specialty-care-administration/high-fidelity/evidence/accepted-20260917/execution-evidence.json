@@ -1,0 +1,354 @@
+[
+  {
+    "phase": "referral-records",
+    "run_id": 1,
+    "authorization": {
+      "authorization_id": "561c6dac-7f63-4ae8-bbd8-7b3f5197fc80",
+      "approved_plan_digest": "edb30ec6543ff0982ccf4b7ae73b1b13e12f7284e5e410c05a215aabd1d1de2e",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "care-operations:referral-records:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "edb30ec6543ff0982ccf4b7ae73b1b13e12f7284e5e410c05a215aabd1d1de2e",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":1071}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":108}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":95}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"referral-records\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/referral-records/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op01\\\",\\n    \\\"at\\\": \\\"08:10Z\\\",\\n    \\\"actor_ref\\\": \\\"referral-coordinator\\\",\\n    \\\"kind\\\": \\\"observe\\\",\\n    \\\"refs\\\": [\\n      \\\"q-referral\\\",\\n      \\\"doc-referral\\\",\\n      \\\"e-referral\\\"\\n    ],\\n    \\\"causes\\\": [],\\n    \\\"result_ref\\\": \\\"doc-referral\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op02\\\",\\n    \\\"at\\\": \\\"08:25Z\\\",\\n    \\\"actor_ref\\\": \\\"referral-coordinator\\\",\\n    \\\"kind\\\": \\\"inspect\\\",\\n    \\\"refs\\\": [\\n      \\\"q-records\\\",\\n      \\\"sit-records\\\",\\n      \\\"e-missing\\\",\\n      \\\"d-records\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op01\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"sit-records\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op03\\\",\\n    \\\"at\\\": \\\"08:40Z\\\",\\n    \\\"actor_ref\\\": \\\"referral-coordinator\\\",\\n    \\\"kind\\\": \\\"communicate\\\",\\n    \\\"refs\\\": [\\n      \\\"c-record-request\\\",\\n      \\\"sched-referral\\\",\\n      \\\"issue-records\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op02\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"c-record-request\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op04\\\",\\n    \\\"at\\\": \\\"09:10Z\\\",\\n    \\\"actor_ref\\\": \\\"referral-coordinator\\\",\\n    \\\"kind\\\": \\\"recover\\\",\\n    \\\"refs\\\": [\\n      \\\"doc-imaging\\\",\\n      \\\"e-records-complete\\\",\\n      \\\"i-record\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op03\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-imaging\\\"\\n  }\\n]\\n\"}",
+        "id": 1,
+        "result_json": "{\"bytes_written\":1071}",
+        "run_id": 1,
+        "step": 0,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/referral-records/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"referral-records\\\",\\n  \\\"last_operation\\\": \\\"op04\\\",\\n  \\\"terminal_operation_result\\\": \\\"doc-imaging\\\"\\n}\\n\"}",
+        "id": 2,
+        "result_json": "{\"bytes_written\":108}",
+        "run_id": 1,
+        "step": 1,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/referral-records/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"referral-records\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 3,
+        "result_json": "{\"bytes_written\":95}",
+        "run_id": 1,
+        "step": 2,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/referral-records/result.json\"}",
+        "id": 4,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"referral-records\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 1,
+        "step": 3,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "specialty-care-administration-day-001:referral-records",
+      "task_spec_hash": "3e9e979bc895abdac32f108b0da5b222e040ce63b03933b8b1aadbcae364a983",
+      "attempt_id": "attempt-specialty-care-administration-day-001-referral-records",
+      "resource_id": "referral-desk",
+      "context_hash": "88b7a3548e235f22e02b5c94e8d8a70959b7839dad957fcda5aba9b846d9d0b0",
+      "result_digest": "183ae6775e2ef8b8cd0f87db49a9ba935902215134ea78bd8ef3e9c8cf2de619",
+      "result_ref": "/tmp/axiom-care-hifi-day-001/referral-records/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 253
+    }
+  },
+  {
+    "phase": "authorization",
+    "run_id": 2,
+    "authorization": {
+      "authorization_id": "b5892fb7-505a-4b56-b388-40f5417dd0cf",
+      "approved_plan_digest": "0a1d51798ab818586399dbf848877a22d6a609bde046b416cf1b96b5fa914ab9",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "care-operations:authorization:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "0a1d51798ab818586399dbf848877a22d6a609bde046b416cf1b96b5fa914ab9",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":1029}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":111}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":92}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\",\\\"op07\\\",\\\"op08\\\"],\\\"phase\\\":\\\"authorization\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/authorization/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op05\\\",\\n    \\\"at\\\": \\\"09:30Z\\\",\\n    \\\"actor_ref\\\": \\\"auth-specialist\\\",\\n    \\\"kind\\\": \\\"inspect\\\",\\n    \\\"refs\\\": [\\n      \\\"doc-eligibility\\\",\\n      \\\"t-auth-labor\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op04\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-eligibility\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op06\\\",\\n    \\\"at\\\": \\\"10:00Z\\\",\\n    \\\"actor_ref\\\": \\\"auth-specialist\\\",\\n    \\\"kind\\\": \\\"approve\\\",\\n    \\\"refs\\\": [\\n      \\\"d-auth\\\",\\n      \\\"a-auth\\\",\\n      \\\"doc-auth\\\",\\n      \\\"i-auth\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op05\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-auth\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op07\\\",\\n    \\\"at\\\": \\\"10:30Z\\\",\\n    \\\"actor_ref\\\": \\\"synthetic-payer\\\",\\n    \\\"kind\\\": \\\"handoff\\\",\\n    \\\"refs\\\": [\\n      \\\"sit-auth\\\",\\n      \\\"e-auth-pending\\\",\\n      \\\"c-auth-info\\\",\\n      \\\"issue-auth\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op06\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"sit-auth\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op08\\\",\\n    \\\"at\\\": \\\"11:00Z\\\",\\n    \\\"actor_ref\\\": \\\"auth-specialist\\\",\\n    \\\"kind\\\": \\\"recover\\\",\\n    \\\"refs\\\": [\\n      \\\"doc-auth-response\\\",\\n      \\\"e-auth-approved\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op07\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-auth-response\\\"\\n  }\\n]\\n\"}",
+        "id": 5,
+        "result_json": "{\"bytes_written\":1029}",
+        "run_id": 2,
+        "step": 0,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/authorization/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"authorization\\\",\\n  \\\"last_operation\\\": \\\"op08\\\",\\n  \\\"terminal_operation_result\\\": \\\"doc-auth-response\\\"\\n}\\n\"}",
+        "id": 6,
+        "result_json": "{\"bytes_written\":111}",
+        "run_id": 2,
+        "step": 1,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/authorization/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\",\\\"op07\\\",\\\"op08\\\"],\\\"phase\\\":\\\"authorization\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 7,
+        "result_json": "{\"bytes_written\":92}",
+        "run_id": 2,
+        "step": 2,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/authorization/result.json\"}",
+        "id": 8,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\",\\\"op07\\\",\\\"op08\\\"],\\\"phase\\\":\\\"authorization\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 2,
+        "step": 3,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "specialty-care-administration-day-001:authorization",
+      "task_spec_hash": "e922fe0ab49ee88d67e5d3d5e7d9295f1bec23642fa9f22d1376f520a5a87fe6",
+      "attempt_id": "attempt-specialty-care-administration-day-001-authorization",
+      "resource_id": "auth-desk",
+      "context_hash": "51ca8a1a0fad3c15137ed916e0c911e116ef16913af37020355afb6ad9221324",
+      "result_digest": "a59f07d9bef75bca0d5d5afe368fca10207835d442567e4640a1ccff87e94b93",
+      "result_ref": "/tmp/axiom-care-hifi-day-001/authorization/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    }
+  },
+  {
+    "phase": "scheduling-readiness",
+    "run_id": 3,
+    "authorization": {
+      "authorization_id": "d1a3cc47-561c-4ca5-95f4-cf172ba86420",
+      "approved_plan_digest": "74ca9ddcfdf6c08866e2512d1437b3ed50f49c1b51ad54f75800076670e92675",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "care-operations:scheduling-readiness:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "74ca9ddcfdf6c08866e2512d1437b3ed50f49c1b51ad54f75800076670e92675",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":883}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":108}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":92}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op09\\\",\\\"op10\\\",\\\"op11\\\"],\\\"phase\\\":\\\"scheduling-readiness\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/scheduling-readiness/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op09\\\",\\n    \\\"at\\\": \\\"11:30Z\\\",\\n    \\\"actor_ref\\\": \\\"scheduler\\\",\\n    \\\"kind\\\": \\\"schedule\\\",\\n    \\\"refs\\\": [\\n      \\\"q-schedule\\\",\\n      \\\"sched-referral\\\",\\n      \\\"doc-schedule\\\",\\n      \\\"i-slot\\\",\\n      \\\"t-scheduling\\\",\\n      \\\"c-schedule\\\",\\n      \\\"e-scheduled\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op08\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-schedule\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op10\\\",\\n    \\\"at\\\": \\\"13:30Z\\\",\\n    \\\"actor_ref\\\": \\\"clinician\\\",\\n    \\\"kind\\\": \\\"inspect\\\",\\n    \\\"refs\\\": [\\n      \\\"sched-clinician\\\",\\n      \\\"sit-clinical\\\",\\n      \\\"d-readiness\\\",\\n      \\\"doc-readiness\\\",\\n      \\\"t-clinical-admin\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op09\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-readiness\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op11\\\",\\n    \\\"at\\\": \\\"13:45Z\\\",\\n    \\\"actor_ref\\\": \\\"clinician\\\",\\n    \\\"kind\\\": \\\"approve\\\",\\n    \\\"refs\\\": [\\n      \\\"a-ready\\\",\\n      \\\"e-ready\\\",\\n      \\\"c-clinical\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op10\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-ready\\\"\\n  }\\n]\\n\"}",
+        "id": 9,
+        "result_json": "{\"bytes_written\":883}",
+        "run_id": 3,
+        "step": 0,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/scheduling-readiness/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"scheduling-readiness\\\",\\n  \\\"last_operation\\\": \\\"op11\\\",\\n  \\\"terminal_operation_result\\\": \\\"a-ready\\\"\\n}\\n\"}",
+        "id": 10,
+        "result_json": "{\"bytes_written\":108}",
+        "run_id": 3,
+        "step": 1,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/scheduling-readiness/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op09\\\",\\\"op10\\\",\\\"op11\\\"],\\\"phase\\\":\\\"scheduling-readiness\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 11,
+        "result_json": "{\"bytes_written\":92}",
+        "run_id": 3,
+        "step": 2,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/scheduling-readiness/result.json\"}",
+        "id": 12,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op09\\\",\\\"op10\\\",\\\"op11\\\"],\\\"phase\\\":\\\"scheduling-readiness\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 3,
+        "step": 3,
+        "timestamp": "2026-09-17 02:55:54",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "specialty-care-administration-day-001:scheduling-readiness",
+      "task_spec_hash": "0cb44595eaa7814af12e3c2b5f50d59c26537a3c8e8f2e459d2bd09c92fe6ea8",
+      "attempt_id": "attempt-specialty-care-administration-day-001-scheduling-readiness",
+      "resource_id": "clinical-admin-desk",
+      "context_hash": "8667722c07b5e9c195cf7926cf9e300c6ccfbfa49635a773ebdd5e2b4ebbfa21",
+      "result_digest": "374289ff2c261f9e5c23cfed4d82145e93490d70c16480b5368e3f907e125c78",
+      "result_ref": "/tmp/axiom-care-hifi-day-001/scheduling-readiness/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 261
+    }
+  },
+  {
+    "phase": "handoff-close",
+    "run_id": 4,
+    "authorization": {
+      "authorization_id": "da767d9f-361c-49a6-9c78-510ec24e48d7",
+      "approved_plan_digest": "4626f38269b5cef8c398205b1821af3161f5438d6306be25a75c9da0f164fcd3",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "care-operations:handoff-close:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "4626f38269b5cef8c398205b1821af3161f5438d6306be25a75c9da0f164fcd3",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":741}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":101}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":85}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op12\\\",\\\"op13\\\",\\\"op14\\\"],\\\"phase\\\":\\\"handoff-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/handoff-close/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op12\\\",\\n    \\\"at\\\": \\\"14:00Z\\\",\\n    \\\"actor_ref\\\": \\\"clinician\\\",\\n    \\\"kind\\\": \\\"handoff\\\",\\n    \\\"refs\\\": [\\n      \\\"o-admin-ready\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op11\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"o-admin-ready\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op13\\\",\\n    \\\"at\\\": \\\"14:30Z\\\",\\n    \\\"actor_ref\\\": \\\"scheduler\\\",\\n    \\\"kind\\\": \\\"schedule\\\",\\n    \\\"refs\\\": [\\n      \\\"doc-schedule\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op12\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-schedule\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op14\\\",\\n    \\\"at\\\": \\\"16:00Z\\\",\\n    \\\"actor_ref\\\": \\\"ops-manager\\\",\\n    \\\"kind\\\": \\\"approve\\\",\\n    \\\"refs\\\": [\\n      \\\"d-close\\\",\\n      \\\"a-close\\\",\\n      \\\"doc-close\\\",\\n      \\\"c-close\\\",\\n      \\\"t-admin-labor\\\",\\n      \\\"e-close\\\",\\n      \\\"o-close\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op13\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"o-close\\\"\\n  }\\n]\\n\"}",
+        "id": 13,
+        "result_json": "{\"bytes_written\":741}",
+        "run_id": 4,
+        "step": 0,
+        "timestamp": "2026-09-17 02:55:55",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/handoff-close/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"handoff-close\\\",\\n  \\\"last_operation\\\": \\\"op14\\\",\\n  \\\"terminal_operation_result\\\": \\\"o-close\\\"\\n}\\n\"}",
+        "id": 14,
+        "result_json": "{\"bytes_written\":101}",
+        "run_id": 4,
+        "step": 1,
+        "timestamp": "2026-09-17 02:55:55",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/handoff-close/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op12\\\",\\\"op13\\\",\\\"op14\\\"],\\\"phase\\\":\\\"handoff-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 15,
+        "result_json": "{\"bytes_written\":85}",
+        "run_id": 4,
+        "step": 2,
+        "timestamp": "2026-09-17 02:55:55",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-care-hifi-day-001/handoff-close/result.json\"}",
+        "id": 16,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op12\\\",\\\"op13\\\",\\\"op14\\\"],\\\"phase\\\":\\\"handoff-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 4,
+        "step": 3,
+        "timestamp": "2026-09-17 02:55:55",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "specialty-care-administration-day-001:handoff-close",
+      "task_spec_hash": "c9ac995515ca14c149d5941065b27fab0454fb99ae47548bd72c598eb3355f67",
+      "attempt_id": "attempt-specialty-care-administration-day-001-handoff-close",
+      "resource_id": "ops-desk",
+      "context_hash": "e7d1c66f43dcf4bf0614d6b0399758d5e66f943ec992f0404a1b09bc93c77cb3",
+      "result_digest": "2b6fa07f8583fcf365d624c0b6b326aba2632ff7686764862166ccdacd63478f",
+      "result_ref": "/tmp/axiom-care-hifi-day-001/handoff-close/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 264
+    }
+  }
+]

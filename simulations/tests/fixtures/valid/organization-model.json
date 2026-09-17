@@ -1,0 +1,41 @@
+{
+  "schema": "axiom-simulation/organization-model-v1",
+  "organization_id": "org-1",
+  "name": "Synthetic Robotics Works",
+  "domain": "robotics-production",
+  "departments": [
+    {
+      "id": "eng",
+      "name": "Engineering"
+    }
+  ],
+  "actors": [
+    {
+      "id": "lead",
+      "role": "Engineering lead",
+      "department": "eng",
+      "authority": [
+        "design-release"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "bom",
+      "kind": "inventory",
+      "state": {
+        "available": 3
+      }
+    }
+  ],
+  "policies": [
+    {
+      "id": "release",
+      "description": "Human release approval required",
+      "authority_required": true
+    }
+  ],
+  "state_model": {
+    "phase": "requirements"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "axiom-simulation/operational-reconstruction-v1",
+  "repository_revisions": {
+    "axiom-research": "1064b995aa3608aced786cdac3b8ebe8d8e61920",
+    "axiom-ason": "0a5779af47db09dd69da4d4739ee963dc4519ae2",
+    "axiom-apex": "59e05e703d62cef24d08f52633a4bf6c70ad593b",
+    "axiom-harness": "1a054f8b4addf9eb1445203d2e61588e20c7ef3a"
+  },
+  "authority_gate_ok": true,
+  "authorization_bindings_ok": true,
+  "record_id": "logistics-supply-chain-day-001",
+  "result": "ACCEPT",
+  "audit": {
+    "operations": 13,
+    "synthetic_cost_usd": 692.0,
+    "inventory_movements": 5,
+    "documents": 7,
+    "communications": 5,
+    "approvals": 3
+  },
+  "phase_count": 4,
+  "harness_receipts": [
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-day-001:order-allocation",
+      "task_spec_hash": "a5dd61fc775abf3a20a50bb41c6c32ebd5b0907f9066e7ccc414fe439885fa1d",
+      "attempt_id": "attempt-logistics-supply-chain-day-001-order-allocation",
+      "resource_id": "inventory-desk",
+      "context_hash": "3c5c18c88630dcc513477f665e155368bcd27198e106d0e3e3c52292e3ea1be0",
+      "result_digest": "3bc2d412b8b25c707831561a6a98bad8e0dfc9cee9d965c9d8c21b818ad1a6a0",
+      "result_ref": "/tmp/axiom-logistics-hifi-day-001/order-allocation/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 253
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-day-001:warehouse-booking",
+      "task_spec_hash": "3e839607b073dd083095bafea1bea160ed5c5bee33fe86901e58855c6aba7740",
+      "attempt_id": "attempt-logistics-supply-chain-day-001-warehouse-booking",
+      "resource_id": "warehouse-dock",
+      "context_hash": "c287b4507112d1b6abcef5f18d04409c2527e8e6ba522439839453c3d8c435d0",
+      "result_digest": "c1d51d483da9f98862421c62c9ad2a5b6487dec0d8106491f5dcdf59d0ba76ed",
+      "result_ref": "/tmp/axiom-logistics-hifi-day-001/warehouse-booking/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-day-001:exception-recovery",
+      "task_spec_hash": "186f9712e67fbbd1835360135631d248494747e43821ab8ca590e37e0e35af84",
+      "attempt_id": "attempt-logistics-supply-chain-day-001-exception-recovery",
+      "resource_id": "transport-desk",
+      "context_hash": "7546f30c44613c78f26081e655545a183ff74831c235ad4f402361b3e11193e8",
+      "result_digest": "611a9c1ad24cbf7fbf01db5a03b347dbbc99215e3ac60cda9e55bca03378d385",
+      "result_ref": "/tmp/axiom-logistics-hifi-day-001/exception-recovery/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 260
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-day-001:ship-close",
+      "task_spec_hash": "6ff60712b5d80eb2b29d32267b9efc44ad6f5ce3d056ef38cb8243e23b00567c",
+      "attempt_id": "attempt-logistics-supply-chain-day-001-ship-close",
+      "resource_id": "carrier-b",
+      "context_hash": "3e09bc8d5e883a8144b3f3f125bdb7e47468b56a6852e4760a43e9d984728f27",
+      "result_digest": "6e4cb83ae6d225f8a2e1d4c89730555b5589d1c7617592e7e097b97ff09d6400",
+      "result_ref": "/tmp/axiom-logistics-hifi-day-001/ship-close/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 263
+    }
+  ],
+  "apex_runs": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "effect_count": 16,
+  "event_count": 16,
+  "final_state": "CLOSED",
+  "source_sha256": "9f59fdf2adf49ac6c2a299594404a27d6cb3b14fd64adf501f423d18c1616944"
+}

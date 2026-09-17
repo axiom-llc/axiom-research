@@ -1,0 +1,14 @@
+{
+  "initial": [
+    "referral",
+    "labs"
+  ],
+  "missing": [
+    "imaging-report"
+  ],
+  "after_recovery": [
+    "referral",
+    "labs",
+    "imaging-report"
+  ]
+}

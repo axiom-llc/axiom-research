@@ -1,0 +1,23 @@
+{
+  "schema": "axiom-simulation/fixture-manifest-v1",
+  "fixture_id": "specialty-care-administration-fixtures-001",
+  "scenario_id": "specialty-care-administration-e2e-001",
+  "synthetic": true,
+  "generation_method": "deterministic hand-authored synthetic fixture",
+  "seed": 1,
+  "source_refs": [
+    "CMS Prior Authorization and Interoperability Final Rule overview, https://www.cms.gov/priorities/key-initiatives/burden-reduction/interoperability/final-rule-cms-0057-f"
+  ],
+  "assumptions": [
+    "Synthetic patient and payer data only",
+    "No diagnosis, treatment selection, prescribing, or real scheduling",
+    "Licensed clinician retains clinical authority"
+  ],
+  "contains_private_data": false,
+  "artifact_hashes": {
+    "referral.json": "62ecd7f0a7fcf707ae509d3e85d6fbe2c359ccf4252bf1fe35be8547a633bae6",
+    "records.json": "cea8b8a5431f00488c6330e869d5ebd4d6969f737538f8746bfe856795831a39",
+    "payer.json": "dfffb0c0cd47def48058151855b9c6fe1cd8829942d6f6cad7e8700b9838db6b",
+    "schedule.json": "3ac1e1ec0bc7a06a5e46b3288767089e68d4d8566f624f0af446eddff8a58c9f"
+  }
+}

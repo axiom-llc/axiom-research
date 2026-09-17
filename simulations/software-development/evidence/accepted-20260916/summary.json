@@ -1,0 +1,10 @@
+{
+  "result": "ACCEPT",
+  "run_id": 1,
+  "modeled_steps": 15,
+  "effects": 15,
+  "events": 15,
+  "authority_gate_ok": true,
+  "recovery_ok": true,
+  "out_dir": "simulations/software-development/evidence/accepted-20260916"
+}

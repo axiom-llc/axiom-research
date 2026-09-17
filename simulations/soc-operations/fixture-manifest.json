@@ -1,0 +1,22 @@
+{
+  "schema": "axiom-simulation/fixture-manifest-v1",
+  "fixture_id": "soc-operations-fixtures-001",
+  "scenario_id": "soc-operations-e2e-001",
+  "synthetic": true,
+  "generation_method": "deterministic hand-authored synthetic fixture",
+  "seed": 1,
+  "source_refs": [
+    "NIST SP 800-61 Rev. 3 Incident Response Recommendations and Considerations for Cybersecurity Risk Management, https://csrc.nist.gov/pubs/sp/800/61/r3/final"
+  ],
+  "assumptions": [
+    "Synthetic alerts and TEST-NET-style indicators only",
+    "No real endpoint isolation, eradication, blocking, or credential action",
+    "Human authority remains required for containment and closure"
+  ],
+  "contains_private_data": false,
+  "artifact_hashes": {
+    "alert.json": "439054546519e0c57a6095c690279ccb7de1142557abb615c5f962703a48adc6",
+    "telemetry.json": "762c5630b3b3047135bdd929103d9f63184ea02dc3ab4862519230ea9bdde610",
+    "collection.json": "c820db091f6c28c0ff40f6bb3c58a21ba9dc314ca88505e30ef7e2ba0e52816b"
+  }
+}

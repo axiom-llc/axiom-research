@@ -1,0 +1,145 @@
+{
+  "plan": {
+    "steps": [
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/01-requirements.json",
+          "content": "{\"phase\": \"requirements\", \"requirements_revision\": \"A\", \"status\": \"BASELINED\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/02-engineering.json",
+          "content": "{\"bom_revision\": \"A\", \"design_revision\": \"A\", \"phase\": \"engineering\", \"status\": \"RELEASED\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/03-procurement.json",
+          "content": "{\"lidar_delay_days\": 3, \"phase\": \"procurement\", \"response\": \"expedite-and-reschedule\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/04-inventory.json",
+          "content": "{\"kit\": \"RELEASED\", \"phase\": \"inventory\", \"wrong_controller_revision\": \"QUARANTINED\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/05-production-plan.json",
+          "content": "{\"cell\": \"build-cell\", \"phase\": \"planning\", \"production_order\": \"PO-SR1-001\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/06-assembly.json",
+          "content": "{\"electrical\": \"COMPLETE\", \"mechanical\": \"COMPLETE\", \"phase\": \"assembly\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/07-software-load.json",
+          "content": "{\"control_software\": \"ctrl-1.4.0\", \"firmware\": \"fw-0.9.3\", \"phase\": \"software-load\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/08-test-first-pass.json",
+          "content": "{\"drive_test\": \"PASS\", \"firmware_boot\": \"FAIL\", \"phase\": \"test\", \"safety_interlock\": \"PASS\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/09-firmware-recovery.json",
+          "content": "{\"action\": \"firmware-reflash\", \"firmware_boot\": \"PASS\", \"phase\": \"recovery\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/10-quality-nonconformance.json",
+          "content": "{\"disposition\": \"REWORK_AUTHORIZED\", \"motor_mount_torque\": \"OUT_OF_RANGE\", \"phase\": \"quality\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/11-rework-retest.json",
+          "content": "{\"integrated_retest\": \"PASS\", \"motor_mount_torque\": \"PASS\", \"phase\": \"retest\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/12-quality-release.json",
+          "content": "{\"phase\": \"quality-release\", \"quality\": \"ACCEPT\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/13-human-release.json",
+          "content": "{\"authority\": \"synthetic-release-board\", \"decision\": \"APPROVED\", \"phase\": \"release\", \"physical_effects\": \"NONE\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/14-deployment.json",
+          "content": "{\"mode\": \"SIMULATED\", \"phase\": \"deployment\", \"route\": \"simulated-indoor-route-01\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/15-field-feedback.json",
+          "content": "{\"disposition\": \"next-revision-B-candidate\", \"issue\": \"camera-exposure\", \"phase\": \"feedback\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/terminal-state.json",
+          "content": "{\"deployment\": {\"mode\": \"SIMULATED\", \"route\": \"simulated-indoor-route-01\"}, \"design_revision\": \"A\", \"exceptions_resolved\": [\"lidar-delay\", \"wrong-controller-revision\", \"firmware-boot-failure\", \"motor-mount-torque\"], \"feedback\": {\"disposition\": \"next-revision-B-candidate\", \"issue\": \"camera-exposure\"}, \"material_lot\": \"LOT-SR1-001\", \"release\": {\"authority\": \"synthetic-release-board\", \"decision\": \"APPROVED\", \"physical_effects\": \"NONE\"}, \"requirements_revision\": \"A\", \"scenario_id\": \"robotics-production-sr1-001\", \"status\": \"RELEASED_SYNTHETIC\", \"unit_serial\": \"SR1-SYN-0001\", \"verification\": {\"integrated_retest\": \"PASS\", \"quality\": \"ACCEPT\"}}"
+        }
+      },
+      {
+        "tool": "read_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/08-test-first-pass.json"
+        }
+      },
+      {
+        "tool": "read_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/13-human-release.json"
+        }
+      },
+      {
+        "tool": "read_file",
+        "args": {
+          "path": "/tmp/axiom-robotics-production-sr1-001/terminal-state.json"
+        }
+      }
+    ]
+  },
+  "policy": {
+    "max_steps": 32,
+    "allowed_tools": [
+      "write_file",
+      "read_file"
+    ],
+    "blast_radius": "local",
+    "rollback_on_failure": false
+  }
+}

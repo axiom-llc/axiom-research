@@ -1,0 +1,6 @@
+{
+  "deployment": "simulated-indoor-route-01",
+  "observation": "camera exposure oscillation under synthetic low light",
+  "severity": "minor",
+  "disposition": "open engineering issue for next revision; released unit remains accepted for synthetic demo"
+}

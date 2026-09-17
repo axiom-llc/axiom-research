@@ -1,0 +1,421 @@
+{
+  "schema": "axiom-simulation/scenario-spec-v1",
+  "scenario_id": "robotics-production-sr1-001",
+  "domain": "robotics-production",
+  "classification": "VALIDATED_EXECUTABLE_DEMO",
+  "objective": "Coordinate a synthetic SR-1 mobile inspection robot from requirements through engineering, procurement, inventory, production, assembly, software load, test, defect recovery, quality, human release, simulated deployment, and field feedback.",
+  "organization_ref": "organization.json",
+  "fixture_ref": "fixture-manifest.json",
+  "steps": [
+    {
+      "id": "requirements-baseline",
+      "kind": "observe",
+      "actor": "systems-lead",
+      "depends_on": [],
+      "inputs": {
+        "source": "requirements.json"
+      },
+      "expected_outputs": {
+        "baseline": "REQ-A"
+      },
+      "approval_ref": "requirements-baseline"
+    },
+    {
+      "id": "engineering-baseline",
+      "kind": "produce",
+      "actor": "mechanical-lead",
+      "depends_on": [
+        "requirements-baseline"
+      ],
+      "inputs": {
+        "bom": "bom.json"
+      },
+      "expected_outputs": {
+        "design_revision": "A"
+      },
+      "approval_ref": "mechanical-release"
+    },
+    {
+      "id": "procurement",
+      "kind": "allocate",
+      "actor": "buyer",
+      "depends_on": [
+        "engineering-baseline"
+      ],
+      "inputs": {
+        "suppliers": "suppliers.json"
+      },
+      "expected_outputs": {
+        "purchase_plan": "synthetic"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "supplier-delay",
+      "kind": "escalate",
+      "actor": "program-manager",
+      "depends_on": [
+        "procurement"
+      ],
+      "inputs": {
+        "part": "lidar",
+        "delay_days": 3
+      },
+      "expected_outputs": {
+        "action": "expedite-and-reschedule"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "receiving-inspection",
+      "kind": "inspect",
+      "actor": "quality-engineer",
+      "depends_on": [
+        "supplier-delay"
+      ],
+      "inputs": {
+        "inventory": "inventory.json"
+      },
+      "expected_outputs": {
+        "wrong_revision_quarantined": true
+      },
+      "approval_ref": "nonconformance-disposition"
+    },
+    {
+      "id": "inventory-allocation",
+      "kind": "allocate",
+      "actor": "inventory-controller",
+      "depends_on": [
+        "receiving-inspection"
+      ],
+      "inputs": {
+        "lot": "LOT-SR1-001"
+      },
+      "expected_outputs": {
+        "kit_released": true
+      },
+      "approval_ref": "material-release"
+    },
+    {
+      "id": "production-plan",
+      "kind": "schedule",
+      "actor": "production-planner",
+      "depends_on": [
+        "inventory-allocation"
+      ],
+      "inputs": {
+        "order": "PO-SR1-001"
+      },
+      "expected_outputs": {
+        "cell": "build-cell"
+      },
+      "approval_ref": "production-order"
+    },
+    {
+      "id": "mechanical-assembly",
+      "kind": "produce",
+      "actor": "assembler",
+      "depends_on": [
+        "production-plan"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "mechanical_complete": true
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "electrical-assembly",
+      "kind": "produce",
+      "actor": "assembler",
+      "depends_on": [
+        "mechanical-assembly"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "electrical_complete": true
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "software-load",
+      "kind": "write",
+      "actor": "firmware-lead",
+      "depends_on": [
+        "electrical-assembly"
+      ],
+      "inputs": {
+        "firmware": "fw-0.9.3",
+        "software": "ctrl-1.4.0"
+      },
+      "expected_outputs": {
+        "loaded": true
+      },
+      "approval_ref": "software-release"
+    },
+    {
+      "id": "functional-test-1",
+      "kind": "test",
+      "actor": "test-engineer",
+      "depends_on": [
+        "software-load"
+      ],
+      "inputs": {
+        "seed": "test-seed.json"
+      },
+      "expected_outputs": {
+        "firmware_boot": "FAIL"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "firmware-reflash",
+      "kind": "recover",
+      "actor": "firmware-lead",
+      "depends_on": [
+        "functional-test-1"
+      ],
+      "inputs": {
+        "action": "reflash"
+      },
+      "expected_outputs": {
+        "firmware_boot": "PASS"
+      },
+      "approval_ref": "software-release"
+    },
+    {
+      "id": "assembly-inspection",
+      "kind": "inspect",
+      "actor": "quality-engineer",
+      "depends_on": [
+        "firmware-reflash"
+      ],
+      "inputs": {
+        "seed": "test-seed.json"
+      },
+      "expected_outputs": {
+        "torque": "OUT_OF_RANGE"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "nonconformance-disposition",
+      "kind": "approve",
+      "actor": "quality-engineer",
+      "depends_on": [
+        "assembly-inspection"
+      ],
+      "inputs": {
+        "defect": "motor-mount-torque"
+      },
+      "expected_outputs": {
+        "disposition": "REWORK_AUTHORIZED"
+      },
+      "approval_ref": "nonconformance-disposition"
+    },
+    {
+      "id": "mechanical-rework",
+      "kind": "recover",
+      "actor": "assembler",
+      "depends_on": [
+        "nonconformance-disposition"
+      ],
+      "inputs": {
+        "action": "retorque"
+      },
+      "expected_outputs": {
+        "torque": "PASS"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "integrated-retest",
+      "kind": "test",
+      "actor": "test-engineer",
+      "depends_on": [
+        "mechanical-rework"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "all_tests": "PASS"
+      },
+      "approval_ref": "test-acceptance"
+    },
+    {
+      "id": "quality-release",
+      "kind": "approve",
+      "actor": "quality-engineer",
+      "depends_on": [
+        "integrated-retest"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "quality": "ACCEPT"
+      },
+      "approval_ref": "quality-release"
+    },
+    {
+      "id": "deployment-release",
+      "kind": "approve",
+      "actor": "release-board",
+      "depends_on": [
+        "quality-release"
+      ],
+      "inputs": {
+        "mode": "synthetic-only"
+      },
+      "expected_outputs": {
+        "approved": true
+      },
+      "approval_ref": "deployment-release"
+    },
+    {
+      "id": "deployment-simulation",
+      "kind": "produce",
+      "actor": "field-operator",
+      "depends_on": [
+        "deployment-release"
+      ],
+      "inputs": {
+        "route": "simulated-indoor-route-01"
+      },
+      "expected_outputs": {
+        "deployed": true
+      },
+      "approval_ref": "deployment-execution"
+    },
+    {
+      "id": "field-feedback",
+      "kind": "observe",
+      "actor": "field-operator",
+      "depends_on": [
+        "deployment-simulation"
+      ],
+      "inputs": {
+        "source": "field-feedback.json"
+      },
+      "expected_outputs": {
+        "issue_opened": true
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "engineering-feedback",
+      "kind": "handoff",
+      "actor": "systems-lead",
+      "depends_on": [
+        "field-feedback"
+      ],
+      "inputs": {
+        "issue": "camera-exposure"
+      },
+      "expected_outputs": {
+        "next_revision": "B-candidate"
+      },
+      "approval_ref": "engineering-change"
+    },
+    {
+      "id": "close",
+      "kind": "close",
+      "actor": "program-manager",
+      "depends_on": [
+        "engineering-feedback"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "unit_status": "RELEASED_SYNTHETIC"
+      },
+      "approval_ref": "program-baseline"
+    }
+  ],
+  "failure_injections": [
+    {
+      "id": "supplier-delay",
+      "target_step": "procurement",
+      "failure_class": "dependency_unavailable",
+      "expected_behavior": "escalate schedule impact and continue only after synthetic material availability is restored"
+    },
+    {
+      "id": "firmware-first-pass",
+      "target_step": "functional-test-1",
+      "failure_class": "non_retry_safe",
+      "expected_behavior": "record failure, perform explicit firmware reflash, then retest"
+    },
+    {
+      "id": "assembly-nonconformance",
+      "target_step": "assembly-inspection",
+      "failure_class": "non_retry_safe",
+      "expected_behavior": "quality disposition authorizes explicit rework before retest"
+    }
+  ],
+  "expected_terminal_state": {
+    "scenario_id": "robotics-production-sr1-001",
+    "unit_serial": "SR1-SYN-0001",
+    "status": "RELEASED_SYNTHETIC",
+    "requirements_revision": "A",
+    "design_revision": "A",
+    "material_lot": "LOT-SR1-001",
+    "exceptions_resolved": [
+      "lidar-delay",
+      "wrong-controller-revision",
+      "firmware-boot-failure",
+      "motor-mount-torque"
+    ],
+    "verification": {
+      "integrated_retest": "PASS",
+      "quality": "ACCEPT"
+    },
+    "release": {
+      "authority": "synthetic-release-board",
+      "decision": "APPROVED",
+      "physical_effects": "NONE"
+    },
+    "deployment": {
+      "mode": "SIMULATED",
+      "route": "simulated-indoor-route-01"
+    },
+    "feedback": {
+      "issue": "camera-exposure",
+      "disposition": "next-revision-B-candidate"
+    }
+  },
+  "acceptance_contract": {
+    "require_apex_success": true,
+    "require_authorization_binding": true,
+    "terminal_state_equals": {
+      "scenario_id": "robotics-production-sr1-001",
+      "unit_serial": "SR1-SYN-0001",
+      "status": "RELEASED_SYNTHETIC",
+      "requirements_revision": "A",
+      "design_revision": "A",
+      "material_lot": "LOT-SR1-001",
+      "exceptions_resolved": [
+        "lidar-delay",
+        "wrong-controller-revision",
+        "firmware-boot-failure",
+        "motor-mount-torque"
+      ],
+      "verification": {
+        "integrated_retest": "PASS",
+        "quality": "ACCEPT"
+      },
+      "release": {
+        "authority": "synthetic-release-board",
+        "decision": "APPROVED",
+        "physical_effects": "NONE"
+      },
+      "deployment": {
+        "mode": "SIMULATED",
+        "route": "simulated-indoor-route-01"
+      },
+      "feedback": {
+        "issue": "camera-exposure",
+        "disposition": "next-revision-B-candidate"
+      }
+    }
+  },
+  "evidence_requirements": [
+    "effect-ledger",
+    "authorization"
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "schema": "axiom-simulation/organization-model-v1",
+  "organization_id": "synthetic-robotics-works",
+  "name": "Synthetic Robotics Works",
+  "domain": "robotics-production",
+  "departments": [
+    {
+      "id": "program",
+      "name": "Program Management"
+    },
+    {
+      "id": "systems",
+      "name": "Systems Engineering"
+    },
+    {
+      "id": "mechanical",
+      "name": "Mechanical Engineering"
+    },
+    {
+      "id": "electrical",
+      "name": "Electrical Engineering"
+    },
+    {
+      "id": "firmware",
+      "name": "Firmware and Software"
+    },
+    {
+      "id": "procurement",
+      "name": "Procurement"
+    },
+    {
+      "id": "inventory",
+      "name": "Receiving and Inventory"
+    },
+    {
+      "id": "production",
+      "name": "Production Planning"
+    },
+    {
+      "id": "assembly",
+      "name": "Assembly"
+    },
+    {
+      "id": "test",
+      "name": "Test Engineering"
+    },
+    {
+      "id": "quality",
+      "name": "Quality"
+    },
+    {
+      "id": "release",
+      "name": "Release Authority"
+    },
+    {
+      "id": "field",
+      "name": "Field Operations"
+    }
+  ],
+  "actors": [
+    {
+      "id": "program-manager",
+      "role": "Program manager",
+      "department": "program",
+      "authority": [
+        "program-baseline"
+      ]
+    },
+    {
+      "id": "systems-lead",
+      "role": "Systems engineering lead",
+      "department": "systems",
+      "authority": [
+        "requirements-baseline",
+        "engineering-change"
+      ]
+    },
+    {
+      "id": "mechanical-lead",
+      "role": "Mechanical lead",
+      "department": "mechanical",
+      "authority": [
+        "mechanical-release"
+      ]
+    },
+    {
+      "id": "electrical-lead",
+      "role": "Electrical lead",
+      "department": "electrical",
+      "authority": [
+        "electrical-release"
+      ]
+    },
+    {
+      "id": "firmware-lead",
+      "role": "Firmware/software lead",
+      "department": "firmware",
+      "authority": [
+        "software-release"
+      ]
+    },
+    {
+      "id": "buyer",
+      "role": "Procurement specialist",
+      "department": "procurement",
+      "authority": []
+    },
+    {
+      "id": "inventory-controller",
+      "role": "Inventory controller",
+      "department": "inventory",
+      "authority": [
+        "material-release"
+      ]
+    },
+    {
+      "id": "production-planner",
+      "role": "Production planner",
+      "department": "production",
+      "authority": [
+        "production-order"
+      ]
+    },
+    {
+      "id": "assembler",
+      "role": "Assembly technician",
+      "department": "assembly",
+      "authority": []
+    },
+    {
+      "id": "test-engineer",
+      "role": "Test engineer",
+      "department": "test",
+      "authority": [
+        "test-acceptance"
+      ]
+    },
+    {
+      "id": "quality-engineer",
+      "role": "Quality engineer",
+      "department": "quality",
+      "authority": [
+        "nonconformance-disposition",
+        "quality-release"
+      ]
+    },
+    {
+      "id": "release-board",
+      "role": "Synthetic human release board",
+      "department": "release",
+      "authority": [
+        "deployment-release"
+      ]
+    },
+    {
+      "id": "field-operator",
+      "role": "Field operations specialist",
+      "department": "field",
+      "authority": [
+        "deployment-execution"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "sr1-bom",
+      "kind": "bill-of-materials",
+      "state": {
+        "revision": "A"
+      }
+    },
+    {
+      "id": "component-inventory",
+      "kind": "inventory",
+      "state": {
+        "lot": "LOT-SR1-001"
+      }
+    },
+    {
+      "id": "build-cell",
+      "kind": "production-cell",
+      "state": {
+        "available": true
+      }
+    },
+    {
+      "id": "test-cell",
+      "kind": "test-resource",
+      "state": {
+        "available": true
+      }
+    }
+  ],
+  "policies": [
+    {
+      "id": "release-gate",
+      "description": "Synthetic deployment requires explicit release-board authority after test and quality acceptance.",
+      "authority_required": true
+    },
+    {
+      "id": "nonconformance-gate",
+      "description": "Material or assembly nonconformance requires quality disposition before downstream release.",
+      "authority_required": true
+    },
+    {
+      "id": "physical-boundary",
+      "description": "All procurement, assembly, robot motion, and deployment effects are synthetic file-state transitions only.",
+      "authority_required": true
+    }
+  ],
+  "state_model": {
+    "lifecycle": [
+      "requirements",
+      "engineering",
+      "procurement",
+      "inventory",
+      "planning",
+      "assembly",
+      "software-load",
+      "test",
+      "quality",
+      "release",
+      "deployment",
+      "feedback"
+    ],
+    "physical_effects": "simulated-only"
+  }
+}

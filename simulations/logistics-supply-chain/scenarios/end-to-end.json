@@ -1,0 +1,212 @@
+{
+  "schema": "axiom-simulation/scenario-spec-v1",
+  "scenario_id": "logistics-supply-chain-e2e-001",
+  "domain": "logistics-supply-chain",
+  "classification": "VALIDATED_EXECUTABLE_DEMO",
+  "objective": "Coordinate a synthetic end-to-end synthetic logistics and supply chain operation workflow",
+  "organization_ref": "organization.json",
+  "fixture_ref": "fixture-manifest.json",
+  "steps": [
+    {
+      "id": "order",
+      "kind": "observe",
+      "actor": "order-coordinator",
+      "depends_on": [],
+      "inputs": {},
+      "expected_outputs": {
+        "order": "accepted"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "inventory-check",
+      "kind": "inspect",
+      "actor": "inventory-planner",
+      "depends_on": [
+        "order"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "SKU-A": "short"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "replenishment-delay",
+      "kind": "handoff",
+      "actor": "inventory-planner",
+      "depends_on": [
+        "inventory-check"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "inbound": "delayed"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "substitution",
+      "kind": "approve",
+      "actor": "inventory-planner",
+      "depends_on": [
+        "replenishment-delay"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "SKU-B": "approved"
+      },
+      "approval_ref": "substitution-approval"
+    },
+    {
+      "id": "allocate",
+      "kind": "allocate",
+      "actor": "inventory-planner",
+      "depends_on": [
+        "substitution"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "allocated": true
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "pick",
+      "kind": "produce",
+      "actor": "order-coordinator",
+      "depends_on": [
+        "allocate"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "picked": true
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "carrier-book",
+      "kind": "approve",
+      "actor": "transport-planner",
+      "depends_on": [
+        "pick"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "carrier": "booked"
+      },
+      "approval_ref": "carrier-booking"
+    },
+    {
+      "id": "carrier-fail",
+      "kind": "test",
+      "actor": "transport-planner",
+      "depends_on": [
+        "carrier-book"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "pickup": "missed"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "rebook",
+      "kind": "recover",
+      "actor": "transport-planner",
+      "depends_on": [
+        "carrier-fail"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "carrier": "alternate"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "exception-release",
+      "kind": "approve",
+      "actor": "ops-manager",
+      "depends_on": [
+        "rebook"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "released": true
+      },
+      "approval_ref": "exception-release"
+    },
+    {
+      "id": "ship-sim",
+      "kind": "handoff",
+      "actor": "transport-planner",
+      "depends_on": [
+        "exception-release"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "shipment": "simulated"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "delivery-sim",
+      "kind": "handoff",
+      "actor": "order-coordinator",
+      "depends_on": [
+        "ship-sim"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "delivery": "simulated"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "close",
+      "kind": "close",
+      "actor": "ops-manager",
+      "depends_on": [
+        "delivery-sim"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "order": "closed"
+      },
+      "approval_ref": null
+    }
+  ],
+  "failure_injections": [
+    {
+      "id": "stockout",
+      "target_step": "inventory-check",
+      "failure_class": "dependency_unavailable",
+      "expected_behavior": "evaluate approved substitution or wait for replenishment"
+    },
+    {
+      "id": "missed-pickup",
+      "target_step": "carrier-fail",
+      "failure_class": "retry_safe",
+      "expected_behavior": "rebook alternate synthetic carrier without duplicating allocation"
+    }
+  ],
+  "expected_terminal_state": {
+    "phase": "closed",
+    "order": "fulfilled-simulated",
+    "inventory_substitution": "approved",
+    "carrier": "alternate"
+  },
+  "acceptance_contract": {
+    "require_apex_success": true,
+    "require_authorization_binding": true,
+    "terminal_state_equals": {
+      "phase": "closed",
+      "order": "fulfilled-simulated",
+      "inventory_substitution": "approved",
+      "carrier": "alternate"
+    }
+  },
+  "evidence_requirements": [
+    "effect-ledger",
+    "authorization"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "plan": {
+    "steps": [
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/00-alert.json",
+          "content": "{\"status\": \"received\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/01-triage.json",
+          "content": "{\"severity\": \"high\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/02-enrichment.json",
+          "content": "{\"context\": \"suspicious\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/03-escalation.json",
+          "content": "{\"status\": \"escalated\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/04-containment.json",
+          "content": "{\"status\": \"approved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/05-isolation.json",
+          "content": "{\"status\": \"simulated\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/06-collection-first.json",
+          "content": "{\"status\": \"timeout\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/07-collection-retry.json",
+          "content": "{\"status\": \"complete\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/08-eradication.json",
+          "content": "{\"status\": \"simulated\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/09-validation.json",
+          "content": "{\"status\": \"clear\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/10-restoration.json",
+          "content": "{\"status\": \"simulated\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/terminal-state.json",
+          "content": "{\"containment\": \"simulated\", \"evidence_collection\": \"complete\", \"phase\": \"closed\", \"restoration\": \"simulated\"}"
+        }
+      },
+      {
+        "tool": "read_file",
+        "args": {
+          "path": "/tmp/axiom-soc-operations-001/terminal-state.json"
+        }
+      }
+    ]
+  },
+  "policy": {
+    "max_steps": 32,
+    "allowed_tools": [
+      "write_file",
+      "read_file"
+    ],
+    "blast_radius": "local",
+    "rollback_on_failure": false
+  }
+}

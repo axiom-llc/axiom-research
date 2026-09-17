@@ -1,0 +1,95 @@
+{
+  "schema": "axiom-simulation/organization-model-v1",
+  "organization_id": "logistics-supply-chain-org",
+  "name": "Synthetic Logistics and Supply Chain Operation",
+  "domain": "logistics-supply-chain",
+  "departments": [
+    {
+      "id": "orders",
+      "name": "Order Management"
+    },
+    {
+      "id": "inventory",
+      "name": "Inventory"
+    },
+    {
+      "id": "transport",
+      "name": "Transportation"
+    },
+    {
+      "id": "operations",
+      "name": "Operations"
+    }
+  ],
+  "actors": [
+    {
+      "id": "order-coordinator",
+      "role": "Order coordinator",
+      "department": "orders",
+      "authority": []
+    },
+    {
+      "id": "inventory-planner",
+      "role": "Inventory planner",
+      "department": "inventory",
+      "authority": [
+        "substitution-approval"
+      ]
+    },
+    {
+      "id": "transport-planner",
+      "role": "Transport planner",
+      "department": "transport",
+      "authority": [
+        "carrier-booking"
+      ]
+    },
+    {
+      "id": "ops-manager",
+      "role": "Operations manager",
+      "department": "operations",
+      "authority": [
+        "exception-release"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "orders",
+      "kind": "queue",
+      "state": {
+        "open": 1
+      }
+    },
+    {
+      "id": "inventory",
+      "kind": "inventory",
+      "state": {
+        "SKU-A": 0,
+        "SKU-B": 5
+      }
+    },
+    {
+      "id": "shipments",
+      "kind": "queue",
+      "state": {
+        "planned": 0
+      }
+    }
+  ],
+  "policies": [
+    {
+      "id": "substitution",
+      "description": "Material substitution requires inventory planner approval",
+      "authority_required": true
+    },
+    {
+      "id": "carrier",
+      "description": "Synthetic carrier booking requires transport authority",
+      "authority_required": true
+    }
+  ],
+  "state_model": {
+    "phase": "order-intake"
+  }
+}

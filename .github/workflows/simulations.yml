@@ -29,4 +29,5 @@ jobs:
       - run: python simulations/tests/validate.py
       - run: python -m unittest -v simulations.tests.test_runner
       - run: python -m unittest -v simulations.tests.test_robotics_production
+      - run: python -m unittest -v simulations.tests.test_remaining_portfolio
       - run: git diff --check

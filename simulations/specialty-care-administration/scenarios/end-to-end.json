@@ -1,0 +1,199 @@
+{
+  "schema": "axiom-simulation/scenario-spec-v1",
+  "scenario_id": "specialty-care-administration-e2e-001",
+  "domain": "specialty-care-administration",
+  "classification": "VALIDATED_EXECUTABLE_DEMO",
+  "objective": "Coordinate a synthetic end-to-end synthetic specialty care administration workflow",
+  "organization_ref": "organization.json",
+  "fixture_ref": "fixture-manifest.json",
+  "steps": [
+    {
+      "id": "referral-intake",
+      "kind": "observe",
+      "actor": "referral-coordinator",
+      "depends_on": [],
+      "inputs": {},
+      "expected_outputs": {
+        "referral": "received"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "records-check",
+      "kind": "inspect",
+      "actor": "referral-coordinator",
+      "depends_on": [
+        "referral-intake"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "missing": "imaging-report"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "records-recovery",
+      "kind": "recover",
+      "actor": "referral-coordinator",
+      "depends_on": [
+        "records-check"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "records": "complete"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "eligibility",
+      "kind": "inspect",
+      "actor": "auth-specialist",
+      "depends_on": [
+        "records-recovery"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "coverage": "active"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "auth-submit",
+      "kind": "approve",
+      "actor": "auth-specialist",
+      "depends_on": [
+        "eligibility"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "submitted": true
+      },
+      "approval_ref": "payer-submission"
+    },
+    {
+      "id": "auth-pending",
+      "kind": "handoff",
+      "actor": "auth-specialist",
+      "depends_on": [
+        "auth-submit"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "status": "pending-info"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "auth-recovery",
+      "kind": "recover",
+      "actor": "auth-specialist",
+      "depends_on": [
+        "auth-pending"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "status": "approved"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "schedule",
+      "kind": "schedule",
+      "actor": "scheduler",
+      "depends_on": [
+        "auth-recovery"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "slot": "reserved"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "previsit",
+      "kind": "inspect",
+      "actor": "clinician",
+      "depends_on": [
+        "schedule"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "ready": true
+      },
+      "approval_ref": "clinical-readiness"
+    },
+    {
+      "id": "visit-sim",
+      "kind": "handoff",
+      "actor": "clinician",
+      "depends_on": [
+        "previsit"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "encounter": "simulated"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "followup",
+      "kind": "schedule",
+      "actor": "scheduler",
+      "depends_on": [
+        "visit-sim"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "followup": "scheduled"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "close",
+      "kind": "approve",
+      "actor": "ops-manager",
+      "depends_on": [
+        "followup"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "episode": "administratively-complete"
+      },
+      "approval_ref": "episode-close"
+    }
+  ],
+  "failure_injections": [
+    {
+      "id": "missing-record",
+      "target_step": "records-check",
+      "failure_class": "dependency_unavailable",
+      "expected_behavior": "hold scheduling until synthetic record arrives"
+    },
+    {
+      "id": "payer-info-request",
+      "target_step": "auth-pending",
+      "failure_class": "dependency_unavailable",
+      "expected_behavior": "supply synthetic missing information and resume"
+    }
+  ],
+  "expected_terminal_state": {
+    "phase": "closed",
+    "authorization": "approved",
+    "visit": "simulated",
+    "clinical_decision": "human-controlled"
+  },
+  "acceptance_contract": {
+    "require_apex_success": true,
+    "require_authorization_binding": true,
+    "terminal_state_equals": {
+      "phase": "closed",
+      "authorization": "approved",
+      "visit": "simulated",
+      "clinical_decision": "human-controlled"
+    }
+  },
+  "evidence_requirements": [
+    "effect-ledger",
+    "authorization"
+  ]
+}

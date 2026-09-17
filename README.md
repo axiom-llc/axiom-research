@@ -29,7 +29,12 @@ implementation notes belong in their owning repositories.
 ### ASON → APEX
 
 ASON validates caller-supplied plans against caller-supplied policy and submits
-the approved tool sequence to APEX without probabilistic replanning. APEX is the
+the approved tool sequence to APEX without probabilistic replanning. The current
+ASON→APEX path durably binds authorization identity, caller authority reference,
+policy digest/reference, and exact approved-plan digest to the APEX run before
+dispatch; recovery preserves that binding and rejects substitution. This is
+application-level provenance, not cryptographic attestation or independent
+human-identity proof. APEX is the
 bounded deterministic execution substrate.
 
 The submission boundary is verified. Do not reopen that design question without

@@ -1,0 +1,117 @@
+{
+  "schema": "axiom-simulation/operational-fidelity-v1",
+  "record_id": "opf-1",
+  "scenario_id": "s-1",
+  "synthetic": true,
+  "clock": {
+    "start": "2026-01-01T08:00:00",
+    "end": "2026-01-01T17:00:00",
+    "timezone": "UTC"
+  },
+  "actors": [
+    {
+      "id": "actors-1"
+    }
+  ],
+  "resources": [
+    {
+      "id": "resources-1"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "schedules-1"
+    }
+  ],
+  "queues": [
+    {
+      "id": "queues-1"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "decisions-1"
+    }
+  ],
+  "communications": [
+    {
+      "id": "communications-1"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "transactions-1"
+    }
+  ],
+  "inventory_movements": [
+    {
+      "id": "inventory_movements-1"
+    }
+  ],
+  "documents": [
+    {
+      "id": "documents-1"
+    }
+  ],
+  "events": [
+    {
+      "id": "events-1"
+    }
+  ],
+  "situations": [
+    {
+      "id": "situations-1"
+    }
+  ],
+  "issues": [
+    {
+      "id": "issues-1"
+    }
+  ],
+  "approvals": [
+    {
+      "id": "approvals-1"
+    }
+  ],
+  "state_transitions": [
+    {
+      "id": "state_transitions-1"
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "outcomes-1"
+    }
+  ],
+  "operations": [
+    {
+      "id": "op-1",
+      "at": "2026-01-01T09:00:00",
+      "actor_ref": "actors-1",
+      "kind": "work",
+      "refs": [
+        "resources-1"
+      ],
+      "causes": [],
+      "result_ref": "outcomes-1"
+    }
+  ],
+  "completeness": {
+    "actors": true,
+    "resources": true,
+    "schedules": true,
+    "queues": true,
+    "decisions": true,
+    "communications": true,
+    "transactions": true,
+    "inventory": true,
+    "documents": true,
+    "events": true,
+    "situations": true,
+    "issues": true,
+    "approvals": true,
+    "failures_recovery": true,
+    "state_transitions": true,
+    "outcomes": true
+  }
+}

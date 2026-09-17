@@ -53,3 +53,7 @@ python -m pip install -r simulations/tests/requirements.txt
 python simulations/tests/validate.py
 git diff --check -- simulations
 ```
+
+## Operational fidelity
+
+Item 20 adds `operational-fidelity-v1`, a reconstructable record for material actors, resources, schedules, queues, decisions, communications, synthetic financial state, inventory, documents, events, situations, issues, approvals, recovery, state transitions, and outcomes. Completeness is scoped to the modeled operation and must pass reference-closure, reconciliation, and reconstruction checks.

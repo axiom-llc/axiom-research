@@ -22,4 +22,12 @@ class RoboticsProductionTests(unittest.TestCase):
         self.assertLessEqual(len(steps),req['policy']['max_steps']); self.assertEqual(set(req['policy']['allowed_tools']),{'write_file','read_file'})
         self.assertTrue(all(s['tool'] in {'write_file','read_file'} for s in steps)); self.assertTrue(all(str(s['args']['path']).startswith('/tmp/axiom-robotics-production-sr1-001/') for s in steps))
         self.assertEqual(req['policy']['blast_radius'],'local')
+    def test_retained_evidence_is_accepted_and_bounded(self):
+        evidence=runner.load(ROOT/'evidence/accepted-20260916/evidence.json'); evaluation=runner.load(ROOT/'evidence/accepted-20260916/evaluation.json')
+        runner.validate('simulation-evidence',evidence); runner.validate('evaluation-record',evaluation)
+        self.assertEqual(evidence['status'],'PASS'); self.assertEqual(evaluation['result'],'ACCEPT'); self.assertTrue(all(c['passed'] for c in evaluation['checks']))
+        self.assertEqual(len(evidence['effect_evidence']),19); self.assertTrue(all(e['state']=='SUCCEEDED' for e in evidence['effect_evidence']))
+        self.assertEqual(evidence['limitations'],[]); self.assertEqual(evidence['failures'],[])
+        self.assertEqual(len(evidence['recovery']),1); self.assertTrue(evidence['recovery'][0]['effect_files_unchanged'])
+        self.assertEqual(evidence['outputs']['authority_gate_negative_control']['apex_response'],None)
 if __name__=='__main__': unittest.main()

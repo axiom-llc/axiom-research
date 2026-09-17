@@ -1,0 +1,708 @@
+{
+  "schema": "axiom-simulation/operational-fidelity-v1",
+  "record_id": "software-development-day-001",
+  "actors": [
+    {
+      "id": "product-owner",
+      "role": "Product owner",
+      "authority": [
+        "requirements-acceptance"
+      ]
+    },
+    {
+      "id": "developer-a",
+      "role": "Software engineer",
+      "authority": []
+    },
+    {
+      "id": "developer-b",
+      "role": "Software engineer",
+      "authority": []
+    },
+    {
+      "id": "reviewer",
+      "role": "Code reviewer",
+      "authority": [
+        "code-merge"
+      ]
+    },
+    {
+      "id": "security-reviewer",
+      "role": "Security reviewer",
+      "authority": [
+        "security-release"
+      ]
+    },
+    {
+      "id": "release-manager",
+      "role": "Release manager",
+      "authority": [
+        "production-release"
+      ]
+    },
+    {
+      "id": "ci-service",
+      "role": "Synthetic CI service",
+      "authority": []
+    }
+  ],
+  "resources": [
+    {
+      "id": "backlog",
+      "kind": "work-queue",
+      "state": {
+        "open": 3
+      }
+    },
+    {
+      "id": "repo",
+      "kind": "source-control",
+      "state": {
+        "branch": "feature/SW-142"
+      }
+    },
+    {
+      "id": "ci-runners",
+      "kind": "compute",
+      "state": {
+        "available": 2
+      }
+    },
+    {
+      "id": "artifact-store",
+      "kind": "storage",
+      "state": {
+        "artifacts": 0
+      }
+    },
+    {
+      "id": "staging",
+      "kind": "environment",
+      "state": {
+        "status": "idle"
+      }
+    },
+    {
+      "id": "release-calendar",
+      "kind": "calendar",
+      "state": {
+        "window": "16:00-17:00Z"
+      }
+    }
+  ],
+  "schedules": [
+    {
+      "id": "sched-dev",
+      "owner": "developer-a",
+      "start": "09:00Z",
+      "end": "15:00Z"
+    },
+    {
+      "id": "sched-review",
+      "owner": "reviewer",
+      "start": "13:00Z",
+      "end": "14:00Z"
+    },
+    {
+      "id": "sched-release",
+      "owner": "release-manager",
+      "start": "16:00Z",
+      "end": "17:00Z"
+    }
+  ],
+  "queues": [
+    {
+      "id": "q-backlog",
+      "kind": "backlog",
+      "items": [
+        "SW-142",
+        "SW-143",
+        "SW-144"
+      ]
+    },
+    {
+      "id": "q-review",
+      "kind": "review",
+      "items": []
+    },
+    {
+      "id": "q-ci",
+      "kind": "ci",
+      "items": []
+    },
+    {
+      "id": "q-release",
+      "kind": "release",
+      "items": []
+    }
+  ],
+  "decisions": [
+    {
+      "id": "d-scope",
+      "actor": "product-owner",
+      "decision": "accept SW-142 scope"
+    },
+    {
+      "id": "d-design",
+      "actor": "developer-a",
+      "decision": "use bounded adapter"
+    },
+    {
+      "id": "d-security",
+      "actor": "security-reviewer",
+      "decision": "block on medium finding"
+    },
+    {
+      "id": "d-release",
+      "actor": "release-manager",
+      "decision": "approve simulated release"
+    }
+  ],
+  "communications": [
+    {
+      "id": "c-kickoff",
+      "from_actor": "product-owner",
+      "to": [
+        "developer-a"
+      ],
+      "channel": "ticket",
+      "message": "SW-142 accepted"
+    },
+    {
+      "id": "c-review",
+      "from_actor": "developer-a",
+      "to": [
+        "reviewer"
+      ],
+      "channel": "pull-request",
+      "message": "review requested"
+    },
+    {
+      "id": "c-security",
+      "from_actor": "security-reviewer",
+      "to": [
+        "developer-a"
+      ],
+      "channel": "finding",
+      "message": "dependency pin required"
+    },
+    {
+      "id": "c-release",
+      "from_actor": "release-manager",
+      "to": [
+        "product-owner"
+      ],
+      "channel": "release-note",
+      "message": "simulated release approved"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "t-labor-dev",
+      "kind": "synthetic-labor",
+      "amount_usd": 720.0
+    },
+    {
+      "id": "t-labor-review",
+      "kind": "synthetic-labor",
+      "amount_usd": 120.0
+    },
+    {
+      "id": "t-ci",
+      "kind": "synthetic-compute",
+      "amount_usd": 18.0
+    },
+    {
+      "id": "t-security",
+      "kind": "synthetic-labor",
+      "amount_usd": 160.0
+    }
+  ],
+  "inventory_movements": [
+    {
+      "id": "i-artifact-create",
+      "sku": "artifact-SW142",
+      "lot": "build-1",
+      "from": "ci",
+      "to": "artifact-store",
+      "quantity": 1
+    },
+    {
+      "id": "i-artifact-promote",
+      "sku": "artifact-SW142",
+      "lot": "build-2",
+      "from": "artifact-store",
+      "to": "staging",
+      "quantity": 1
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc-ticket",
+      "kind": "ticket"
+    },
+    {
+      "id": "doc-design",
+      "kind": "design-note"
+    },
+    {
+      "id": "doc-pr",
+      "kind": "pull-request"
+    },
+    {
+      "id": "doc-test-fail",
+      "kind": "ci-report"
+    },
+    {
+      "id": "doc-test-pass",
+      "kind": "ci-report"
+    },
+    {
+      "id": "doc-security",
+      "kind": "security-finding"
+    },
+    {
+      "id": "doc-release",
+      "kind": "release-record"
+    }
+  ],
+  "events": [
+    {
+      "id": "e-intake",
+      "kind": "work-intake"
+    },
+    {
+      "id": "e-ci-fail",
+      "kind": "ci-failure"
+    },
+    {
+      "id": "e-ci-pass",
+      "kind": "ci-pass"
+    },
+    {
+      "id": "e-security-fail",
+      "kind": "security-finding"
+    },
+    {
+      "id": "e-security-pass",
+      "kind": "security-clear"
+    },
+    {
+      "id": "e-release",
+      "kind": "simulated-release"
+    }
+  ],
+  "situations": [
+    {
+      "id": "sit-ci",
+      "status": "unit test failed"
+    },
+    {
+      "id": "sit-security",
+      "status": "medium dependency finding"
+    },
+    {
+      "id": "sit-window",
+      "status": "release window open"
+    }
+  ],
+  "issues": [
+    {
+      "id": "issue-unit",
+      "status": "resolved",
+      "recovery": "repair and retest"
+    },
+    {
+      "id": "issue-security",
+      "status": "resolved",
+      "recovery": "pin dependency and rescan"
+    }
+  ],
+  "approvals": [
+    {
+      "id": "a-req",
+      "actor": "product-owner",
+      "authority": "requirements-acceptance",
+      "decision": "APPROVED"
+    },
+    {
+      "id": "a-merge",
+      "actor": "reviewer",
+      "authority": "code-merge",
+      "decision": "APPROVED"
+    },
+    {
+      "id": "a-security",
+      "actor": "security-reviewer",
+      "authority": "security-release",
+      "decision": "APPROVED"
+    },
+    {
+      "id": "a-release",
+      "actor": "release-manager",
+      "authority": "production-release",
+      "decision": "APPROVED"
+    }
+  ],
+  "state_transitions": [
+    {
+      "id": "st-01",
+      "from": "NEW",
+      "to": "INTAKE"
+    },
+    {
+      "id": "st-02",
+      "from": "INTAKE",
+      "to": "DESIGN"
+    },
+    {
+      "id": "st-03",
+      "from": "DESIGN",
+      "to": "IMPLEMENTING"
+    },
+    {
+      "id": "st-04",
+      "from": "IMPLEMENTING",
+      "to": "CI_FAILED"
+    },
+    {
+      "id": "st-05",
+      "from": "CI_FAILED",
+      "to": "CI_PASSED"
+    },
+    {
+      "id": "st-06",
+      "from": "CI_PASSED",
+      "to": "REVIEWED"
+    },
+    {
+      "id": "st-07",
+      "from": "REVIEWED",
+      "to": "SECURITY_BLOCKED"
+    },
+    {
+      "id": "st-08",
+      "from": "SECURITY_BLOCKED",
+      "to": "SECURITY_CLEARED"
+    },
+    {
+      "id": "st-09",
+      "from": "SECURITY_CLEARED",
+      "to": "BUILT"
+    },
+    {
+      "id": "st-10",
+      "from": "BUILT",
+      "to": "RELEASE_APPROVED"
+    },
+    {
+      "id": "st-11",
+      "from": "RELEASE_APPROVED",
+      "to": "RELEASED_SIMULATED"
+    },
+    {
+      "id": "st-12",
+      "from": "RELEASED_SIMULATED",
+      "to": "CLOSED"
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "o-release",
+      "status": "RELEASED_SIMULATED"
+    },
+    {
+      "id": "o-close",
+      "status": "DONE"
+    }
+  ],
+  "operations": [
+    {
+      "id": "op01",
+      "at": "08:10Z",
+      "actor_ref": "product-owner",
+      "causes": [],
+      "refs": [
+        "q-backlog",
+        "doc-ticket",
+        "d-scope"
+      ],
+      "result_ref": "doc-ticket",
+      "kind": "observe"
+    },
+    {
+      "id": "op02",
+      "at": "08:20Z",
+      "actor_ref": "product-owner",
+      "causes": [
+        "op01"
+      ],
+      "refs": [
+        "a-req",
+        "c-kickoff"
+      ],
+      "result_ref": "a-req",
+      "kind": "approve"
+    },
+    {
+      "id": "op03",
+      "at": "09:00Z",
+      "actor_ref": "developer-a",
+      "causes": [
+        "op02"
+      ],
+      "refs": [
+        "d-design",
+        "doc-design",
+        "sched-dev"
+      ],
+      "result_ref": "doc-design",
+      "kind": "decide"
+    },
+    {
+      "id": "op04",
+      "at": "09:30Z",
+      "actor_ref": "developer-a",
+      "causes": [
+        "op03"
+      ],
+      "refs": [
+        "repo",
+        "t-labor-dev"
+      ],
+      "result_ref": "repo",
+      "kind": "produce"
+    },
+    {
+      "id": "op05",
+      "at": "11:00Z",
+      "actor_ref": "ci-service",
+      "causes": [
+        "op04"
+      ],
+      "refs": [
+        "q-ci",
+        "e-ci-fail",
+        "sit-ci",
+        "doc-test-fail"
+      ],
+      "result_ref": "doc-test-fail",
+      "kind": "test"
+    },
+    {
+      "id": "op06",
+      "at": "11:15Z",
+      "actor_ref": "developer-a",
+      "causes": [
+        "op05"
+      ],
+      "refs": [
+        "issue-unit",
+        "repo"
+      ],
+      "result_ref": "issue-unit",
+      "kind": "recover"
+    },
+    {
+      "id": "op07",
+      "at": "11:40Z",
+      "actor_ref": "ci-service",
+      "causes": [
+        "op06"
+      ],
+      "refs": [
+        "e-ci-pass",
+        "doc-test-pass",
+        "t-ci"
+      ],
+      "result_ref": "doc-test-pass",
+      "kind": "test"
+    },
+    {
+      "id": "op08",
+      "at": "12:00Z",
+      "actor_ref": "developer-a",
+      "causes": [
+        "op07"
+      ],
+      "refs": [
+        "q-review",
+        "c-review",
+        "doc-pr"
+      ],
+      "result_ref": "doc-pr",
+      "kind": "handoff"
+    },
+    {
+      "id": "op09",
+      "at": "13:10Z",
+      "actor_ref": "reviewer",
+      "causes": [
+        "op08"
+      ],
+      "refs": [
+        "sched-review",
+        "a-merge",
+        "t-labor-review"
+      ],
+      "result_ref": "a-merge",
+      "kind": "inspect"
+    },
+    {
+      "id": "op10",
+      "at": "13:30Z",
+      "actor_ref": "security-reviewer",
+      "causes": [
+        "op09"
+      ],
+      "refs": [
+        "e-security-fail",
+        "sit-security",
+        "doc-security",
+        "d-security"
+      ],
+      "result_ref": "doc-security",
+      "kind": "test"
+    },
+    {
+      "id": "op11",
+      "at": "14:00Z",
+      "actor_ref": "developer-b",
+      "causes": [
+        "op10"
+      ],
+      "refs": [
+        "issue-security",
+        "repo"
+      ],
+      "result_ref": "issue-security",
+      "kind": "recover"
+    },
+    {
+      "id": "op12",
+      "at": "14:30Z",
+      "actor_ref": "security-reviewer",
+      "causes": [
+        "op11"
+      ],
+      "refs": [
+        "e-security-pass",
+        "a-security",
+        "t-security"
+      ],
+      "result_ref": "a-security",
+      "kind": "approve"
+    },
+    {
+      "id": "op13",
+      "at": "15:00Z",
+      "actor_ref": "ci-service",
+      "causes": [
+        "op12"
+      ],
+      "refs": [
+        "artifact-store",
+        "i-artifact-create"
+      ],
+      "result_ref": "i-artifact-create",
+      "kind": "produce"
+    },
+    {
+      "id": "op14",
+      "at": "15:30Z",
+      "actor_ref": "developer-a",
+      "causes": [
+        "op13"
+      ],
+      "refs": [
+        "staging",
+        "i-artifact-promote"
+      ],
+      "result_ref": "i-artifact-promote",
+      "kind": "handoff"
+    },
+    {
+      "id": "op15",
+      "at": "16:00Z",
+      "actor_ref": "release-manager",
+      "causes": [
+        "op14"
+      ],
+      "refs": [
+        "sched-release",
+        "sit-window",
+        "q-release",
+        "d-release"
+      ],
+      "result_ref": "d-release",
+      "kind": "schedule"
+    },
+    {
+      "id": "op16",
+      "at": "16:15Z",
+      "actor_ref": "release-manager",
+      "causes": [
+        "op15"
+      ],
+      "refs": [
+        "a-release",
+        "doc-release",
+        "c-release"
+      ],
+      "result_ref": "a-release",
+      "kind": "approve"
+    },
+    {
+      "id": "op17",
+      "at": "16:30Z",
+      "actor_ref": "release-manager",
+      "causes": [
+        "op16"
+      ],
+      "refs": [
+        "e-release",
+        "o-release"
+      ],
+      "result_ref": "o-release",
+      "kind": "handoff"
+    },
+    {
+      "id": "op18",
+      "at": "16:45Z",
+      "actor_ref": "product-owner",
+      "causes": [
+        "op17"
+      ],
+      "refs": [
+        "o-close"
+      ],
+      "result_ref": "o-close",
+      "kind": "close"
+    }
+  ],
+  "completeness": {
+    "actors": true,
+    "resources": true,
+    "schedules": true,
+    "queues": true,
+    "decisions": true,
+    "communications": true,
+    "transactions": true,
+    "inventory": true,
+    "documents": true,
+    "events": true,
+    "situations": true,
+    "issues": true,
+    "approvals": true,
+    "failures_recovery": true,
+    "state_transitions": true,
+    "outcomes": true
+  },
+  "scenario_id": "software-development-e2e-001",
+  "synthetic": true,
+  "clock": {
+    "start": "2026-09-17T08:00:00Z",
+    "end": "2026-09-17T18:00:00Z",
+    "timezone": "UTC"
+  }
+}

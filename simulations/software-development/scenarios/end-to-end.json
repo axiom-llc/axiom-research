@@ -1,0 +1,238 @@
+{
+  "schema": "axiom-simulation/scenario-spec-v1",
+  "scenario_id": "software-development-e2e-001",
+  "domain": "software-development",
+  "classification": "VALIDATED_EXECUTABLE_DEMO",
+  "objective": "Coordinate a synthetic end-to-end synthetic software delivery organization workflow",
+  "organization_ref": "organization.json",
+  "fixture_ref": "fixture-manifest.json",
+  "steps": [
+    {
+      "id": "intake",
+      "kind": "observe",
+      "actor": "product-owner",
+      "depends_on": [],
+      "inputs": {},
+      "expected_outputs": {
+        "story": "accepted"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "requirements",
+      "kind": "approve",
+      "actor": "product-owner",
+      "depends_on": [
+        "intake"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "accepted": true
+      },
+      "approval_ref": "requirements-acceptance"
+    },
+    {
+      "id": "design",
+      "kind": "decide",
+      "actor": "developer",
+      "depends_on": [
+        "requirements"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "design": "bounded"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "implement",
+      "kind": "produce",
+      "actor": "developer",
+      "depends_on": [
+        "design"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "patch": "created"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "unit-test",
+      "kind": "test",
+      "actor": "developer",
+      "depends_on": [
+        "implement"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "first_pass": "fail"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "repair",
+      "kind": "recover",
+      "actor": "developer",
+      "depends_on": [
+        "unit-test"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "defect": "fixed"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "retest",
+      "kind": "test",
+      "actor": "developer",
+      "depends_on": [
+        "repair"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "tests": "pass"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "review",
+      "kind": "inspect",
+      "actor": "reviewer",
+      "depends_on": [
+        "retest"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "review": "approved"
+      },
+      "approval_ref": "code-merge"
+    },
+    {
+      "id": "security-scan",
+      "kind": "test",
+      "actor": "security-reviewer",
+      "depends_on": [
+        "review"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "finding": "medium"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "security-fix",
+      "kind": "recover",
+      "actor": "developer",
+      "depends_on": [
+        "security-scan"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "finding": "resolved"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "security-approval",
+      "kind": "approve",
+      "actor": "security-reviewer",
+      "depends_on": [
+        "security-fix"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "approved": true
+      },
+      "approval_ref": "security-release"
+    },
+    {
+      "id": "build",
+      "kind": "produce",
+      "actor": "developer",
+      "depends_on": [
+        "security-approval"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "artifact": "built"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "release-approval",
+      "kind": "approve",
+      "actor": "release-manager",
+      "depends_on": [
+        "build"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "approved": true
+      },
+      "approval_ref": "production-release"
+    },
+    {
+      "id": "deploy-sim",
+      "kind": "handoff",
+      "actor": "release-manager",
+      "depends_on": [
+        "release-approval"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "deployment": "simulated"
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "close",
+      "kind": "close",
+      "actor": "product-owner",
+      "depends_on": [
+        "deploy-sim"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "status": "done"
+      },
+      "approval_ref": null
+    }
+  ],
+  "failure_injections": [
+    {
+      "id": "ci-first-pass",
+      "target_step": "unit-test",
+      "failure_class": "retry_safe",
+      "expected_behavior": "repair and retest"
+    },
+    {
+      "id": "security-finding",
+      "target_step": "security-scan",
+      "failure_class": "non_retry_safe",
+      "expected_behavior": "block release until explicit fix and approval"
+    }
+  ],
+  "expected_terminal_state": {
+    "phase": "released",
+    "release": "simulated",
+    "tests": "pass",
+    "security": "approved"
+  },
+  "acceptance_contract": {
+    "require_apex_success": true,
+    "require_authorization_binding": true,
+    "terminal_state_equals": {
+      "phase": "released",
+      "release": "simulated",
+      "tests": "pass",
+      "security": "approved"
+    }
+  },
+  "evidence_requirements": [
+    "effect-ledger",
+    "authorization"
+  ]
+}

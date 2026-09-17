@@ -1,0 +1,119 @@
+{
+  "plan": {
+    "steps": [
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/00-requirements.json",
+          "content": "{\"status\": \"accepted\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/01-design.json",
+          "content": "{\"status\": \"complete\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/02-implementation.json",
+          "content": "{\"status\": \"complete\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/03-unit-test.json",
+          "content": "{\"reason\": \"synthetic regression\", \"status\": \"failed\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/04-repair.json",
+          "content": "{\"status\": \"complete\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/05-retest.json",
+          "content": "{\"status\": \"passed\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/06-review.json",
+          "content": "{\"status\": \"approved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/07-security-scan.json",
+          "content": "{\"status\": \"finding\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/08-security-fix.json",
+          "content": "{\"status\": \"resolved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/09-security-approval.json",
+          "content": "{\"status\": \"approved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/10-build.json",
+          "content": "{\"status\": \"built\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/11-release-approval.json",
+          "content": "{\"status\": \"approved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/12-deploy.json",
+          "content": "{\"status\": \"simulated\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/terminal-state.json",
+          "content": "{\"phase\": \"released\", \"release\": \"simulated\", \"security\": \"approved\", \"tests\": \"pass\"}"
+        }
+      },
+      {
+        "tool": "read_file",
+        "args": {
+          "path": "/tmp/axiom-software-development-001/terminal-state.json"
+        }
+      }
+    ]
+  },
+  "policy": {
+    "max_steps": 32,
+    "allowed_tools": [
+      "write_file",
+      "read_file"
+    ],
+    "blast_radius": "local",
+    "rollback_on_failure": false
+  }
+}

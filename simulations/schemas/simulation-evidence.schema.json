@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "SimulationEvidence",
+  "required": [
+    "schema",
+    "evidence_id",
+    "scenario_id",
+    "classification",
+    "status",
+    "repository_revisions",
+    "scenario_sha256",
+    "fixture_sha256",
+    "configuration",
+    "axiom_components",
+    "run_refs",
+    "authorization_refs",
+    "effect_evidence",
+    "events",
+    "outputs",
+    "terminal_state",
+    "failures",
+    "recovery",
+    "metrics",
+    "limitations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "axiom-simulation/evidence-v1"
+    },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "classification": {
+      "enum": [
+        "SYNTHETIC_SIMULATION",
+        "VALIDATED_EXECUTABLE_DEMO"
+      ]
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "INCONCLUSIVE"
+      ]
+    },
+    "repository_revisions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{7,40}$"
+      }
+    },
+    "scenario_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "fixture_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "configuration": {
+      "type": "object"
+    },
+    "axiom_components": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "run_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "authorization_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "effect_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "outputs": {
+      "type": "object"
+    },
+    "terminal_state": {
+      "type": "object"
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "recovery": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}

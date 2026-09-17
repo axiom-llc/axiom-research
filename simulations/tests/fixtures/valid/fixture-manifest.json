@@ -1,0 +1,18 @@
+{
+  "schema": "axiom-simulation/fixture-manifest-v1",
+  "fixture_id": "fixture-1",
+  "scenario_id": "robot-build-1",
+  "synthetic": true,
+  "generation_method": "deterministic hand-authored fixture",
+  "seed": 1,
+  "source_refs": [
+    "public-process-reference"
+  ],
+  "assumptions": [
+    "No physical effects"
+  ],
+  "contains_private_data": false,
+  "artifact_hashes": {
+    "inventory.json": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

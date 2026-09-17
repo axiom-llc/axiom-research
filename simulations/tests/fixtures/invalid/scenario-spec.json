@@ -1,0 +1,51 @@
+{
+  "scenario_id": "robot-build-1",
+  "domain": "robotics-production",
+  "classification": "SYNTHETIC_SIMULATION",
+  "objective": "Coordinate a synthetic robot build",
+  "organization_ref": "organization.json",
+  "fixture_ref": "fixture.json",
+  "steps": [
+    {
+      "id": "requirements",
+      "kind": "observe",
+      "actor": "lead",
+      "depends_on": [],
+      "inputs": {},
+      "expected_outputs": {
+        "accepted": true
+      },
+      "approval_ref": null
+    },
+    {
+      "id": "release",
+      "kind": "approve",
+      "actor": "lead",
+      "depends_on": [
+        "requirements"
+      ],
+      "inputs": {},
+      "expected_outputs": {
+        "approved": true
+      },
+      "approval_ref": "design-release"
+    }
+  ],
+  "failure_injections": [
+    {
+      "id": "delay",
+      "target_step": "requirements",
+      "failure_class": "dependency_unavailable",
+      "expected_behavior": "block and escalate"
+    }
+  ],
+  "expected_terminal_state": {
+    "phase": "released"
+  },
+  "acceptance_contract": {
+    "released": true
+  },
+  "evidence_requirements": [
+    "effect-ledger"
+  ]
+}

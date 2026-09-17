@@ -1,0 +1,65 @@
+{
+  "schema": "axiom-simulation/operational-fidelity-acceptance-v1",
+  "milestone_id": "high-fidelity-organizational-operations-20260917",
+  "status": "ACCEPT",
+  "milestone_accepted": true,
+  "gap_closure_domains": [
+    {
+      "domain": "software-development",
+      "cycle_id": "software-development-cycle-001",
+      "source_revision": "7fd0df13bb8d7e43b92dfead337f4ca145f0e1de",
+      "source_sha256": "b6a619e172a1e408a059fce85077fa305ba8bf0e827101d56e3ed944a4c0147b",
+      "reconstruction_sha256": "97a06ea27bdd5602691913e397514d1619dbc10f650346048a4e38cd47b3deb0",
+      "execution_evidence_sha256": "ab25ea5be12fb503576df20ecb51a76f37f562cc2ac7fdaf07c4597eeb6fb64b",
+      "checks": {
+        "result_accept": true,
+        "multi_day": true,
+        "mixed_workload": true,
+        "carryover": true,
+        "contention": true,
+        "queue_backpressure": true,
+        "ledger_balanced": true,
+        "authority_gate": true,
+        "authorization_binding": true,
+        "harness_receipts": true,
+        "effects_succeeded": true
+      }
+    },
+    {
+      "domain": "logistics-supply-chain",
+      "cycle_id": "logistics-supply-chain-cycle-001",
+      "source_revision": "7fd0df13bb8d7e43b92dfead337f4ca145f0e1de",
+      "source_sha256": "fccbafc9f4a5bee68a0b23b48a25707e6743849f5b32b57785f0522100a31295",
+      "reconstruction_sha256": "e3dc16377ea6104ff3bf4d545f36d882a1655d971b6b3a32c092f71a9e850211",
+      "execution_evidence_sha256": "f3d9835e66a9c1c6811aa8dc4dcd9fb8afde10cb765535440939c7ac338b4218",
+      "checks": {
+        "result_accept": true,
+        "multi_day": true,
+        "mixed_workload": true,
+        "carryover": true,
+        "contention": true,
+        "queue_backpressure": true,
+        "ledger_balanced": true,
+        "authority_gate": true,
+        "authorization_binding": true,
+        "harness_receipts": true,
+        "effects_succeeded": true
+      }
+    }
+  ],
+  "closed_material_gaps": [
+    "multi-day carryover and recurring-cycle behavior",
+    "concurrent mixed workload represented through multiple durable work-item tasks",
+    "shared-resource contention proven by exclusive Harness lease blocking",
+    "queue growth/backpressure and drain",
+    "dynamic arrivals plus staffing and calendar changes",
+    "richer double-entry synthetic ledger accrual/settlement cycles",
+    "sustained multi-entity state across six work items per domain"
+  ],
+  "retained_limits": [
+    "proof remains synthetic and bounded to modeled organizations and workloads",
+    "external services and consequential physical/clinical/cyber effects remain synthetic",
+    "acceptance does not establish production deployment, regulatory compliance, real-world economics, or arbitrary-enterprise completeness"
+  ],
+  "acceptance_basis": "The previously material gaps were closed in two strongest materially different domains using the existing Research/Harness/ASON/APEX semantics, with revision-bound retained evidence and no new runtime primitive."
+}

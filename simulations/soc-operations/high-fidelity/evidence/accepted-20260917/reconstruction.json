@@ -1,0 +1,82 @@
+{
+  "schema": "axiom-simulation/operational-reconstruction-v1",
+  "repository_revisions": {
+    "axiom-research": "96a572f869e506f90e4985187abc25d72e3c0cd1",
+    "axiom-ason": "0a5779af47db09dd69da4d4739ee963dc4519ae2",
+    "axiom-apex": "59e05e703d62cef24d08f52633a4bf6c70ad593b",
+    "axiom-harness": "1a054f8b4addf9eb1445203d2e61588e20c7ef3a"
+  },
+  "authority_gate_ok": true,
+  "authorization_bindings_ok": true,
+  "record_id": "soc-operations-day-001",
+  "result": "ACCEPT",
+  "audit": {
+    "operations": 12,
+    "synthetic_cost_usd": 615.0,
+    "inventory_movements": 3,
+    "documents": 8,
+    "communications": 5,
+    "approvals": 3
+  },
+  "phase_count": 4,
+  "harness_receipts": [
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "soc-operations-day-001:detect-triage",
+      "task_spec_hash": "ddec10cff472884a5d8b543360df62d134f96289d8e4f56174556435938b1d48",
+      "attempt_id": "attempt-soc-operations-day-001-detect-triage",
+      "resource_id": "soc-desk",
+      "context_hash": "4e5d8e245f6fa646fc04d9c7db706916629a45289e82a5657678837fbe218e1d",
+      "result_digest": "65f69c2cb71277d8c07931a35d469fa3b707db242a7e12aeafe43d1ae48ab63d",
+      "result_ref": "/tmp/axiom-soc-hifi-day-001/detect-triage/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 253
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "soc-operations-day-001:contain-authorize",
+      "task_spec_hash": "8715c24e82775e0cfef48f3724c5b5124d33e0a3d28d3a105ee54dcf5d8ae0c6",
+      "attempt_id": "attempt-soc-operations-day-001-contain-authorize",
+      "resource_id": "response-desk",
+      "context_hash": "4bdb9b29b80f314f7ffddef7e1135bc641f702ae0a7ff4471824b94a4df66743",
+      "result_digest": "704ea1ec84ca589c2b7ef44d0a5ff8179faabc821608df934ce8109dc2881c1a",
+      "result_ref": "/tmp/axiom-soc-hifi-day-001/contain-authorize/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "soc-operations-day-001:collect-recover",
+      "task_spec_hash": "a73c2570e2dc8f4909a99dd080e43b68c3d59602f554b63b40351dcb98b9ae3f",
+      "attempt_id": "attempt-soc-operations-day-001-collect-recover",
+      "resource_id": "forensics-desk",
+      "context_hash": "0b77a2779e4063cb5b2dc71ebba7a63b71f5212462baedeb6ca7aa4908939fd1",
+      "result_digest": "19074cf708d20b2d1c042ee35c74326692a2a66fbf38b8350bd96618ce3a5c69",
+      "result_ref": "/tmp/axiom-soc-hifi-day-001/collect-recover/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 259
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "soc-operations-day-001:validate-close",
+      "task_spec_hash": "5acebbd63353170562e93a87184dde52030756a0ae4289437a52bdbd51bdfadb",
+      "attempt_id": "attempt-soc-operations-day-001-validate-close",
+      "resource_id": "incident-command",
+      "context_hash": "b8c9021cc59cda291573bb12aceb58210ed5b408381af2c045f662b62d0ceb49",
+      "result_digest": "ec1e21b52eb235428f00758d66c44f9e0ac90dbf22a94720b9266004458475e8",
+      "result_ref": "/tmp/axiom-soc-hifi-day-001/validate-close/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 262
+    }
+  ],
+  "apex_runs": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "effect_count": 16,
+  "event_count": 16,
+  "final_state": "CLOSED",
+  "source_sha256": "1d876bd6921a68d14b8efa3e47af762683f1be3d99ea0e8b9be5ec1c36e9f482"
+}

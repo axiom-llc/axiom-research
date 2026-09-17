@@ -40,6 +40,8 @@ The current deterministic acceptance contract can require successful APEX comple
 
 The portfolio is designed to stress different architectural properties rather than maximize domain count.
 
+Accepted cross-domain results are summarized in [`portfolio-summary.json`](./portfolio-summary.json) and synthesized in [`cross-domain-findings.md`](./cross-domain-findings.md). The summary is evidence-indexing metadata only; it does not create new runtime authority or expand the scope of the underlying evidence.
+
 ## Retention and publication
 
 Retain only artifacts with durable research, engineering, benchmarking, demonstration, or commercial value. Canonical evidence remains separate from derived presentation. Website and sales claims must identify supporting `claim-record`/evidence artifacts and preserve their limitations. Failed and inconclusive experiments remain valuable when they reveal architectural limits.

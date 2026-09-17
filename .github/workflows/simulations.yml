@@ -37,4 +37,5 @@ jobs:
       - run: python -m unittest -v simulations.tests.test_operational_fidelity_final_domains
       - run: python -m unittest -v simulations.tests.test_operational_fidelity_milestone
       - run: python -m unittest -v simulations.tests.test_operational_cycle
+      - run: python -m unittest -v simulations.tests.test_operational_fidelity_acceptance
       - run: git diff --check

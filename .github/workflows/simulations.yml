@@ -30,4 +30,5 @@ jobs:
       - run: python -m unittest -v simulations.tests.test_runner
       - run: python -m unittest -v simulations.tests.test_robotics_production
       - run: python -m unittest -v simulations.tests.test_remaining_portfolio
+      - run: python -m unittest -v simulations.tests.test_cross_domain_findings
       - run: git diff --check

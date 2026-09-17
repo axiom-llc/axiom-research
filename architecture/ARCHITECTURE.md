@@ -120,7 +120,7 @@ One fact has one authoritative owner. Higher layers hold references, summaries, 
 15. `INV-015` — Harness task attempts and APEX runs are distinct identities.
 16. `INV-016` — APEX owns internal dispatch/effect uncertainty; Harness owns cross-executor task outcome.
 17. `INV-017` — An authorization-required APEX execution must bind the exact authorization identity and approved plan digest durably before dispatch.
-18. `INV-018` — Until that binding exists, ASON→APEX is a validated pre-execution gate, not audit-grade durable approval provenance.
+18. `INV-018` — ASON→APEX durable authorization provenance binds the caller-supplied authority reference, authorization identity, policy digest/reference, and exact approved-plan digest to the APEX run before dispatch; this is durable application provenance, not cryptographic attestation or independent proof of human identity.
 19. `INV-019` — Never claim exactly-once external effects without proof from the external system.
 20. `INV-020` — RAG persistence has one cooperating owner per root.
 21. `INV-021` — Repository, process, dependency, context, abstraction, and nested-agent count are costs.
@@ -351,7 +351,7 @@ authority_ref
 decision
 ```
 
-APEX must persist the required authorization reference and matching plan digest before tool dispatch. This remains a target invariant, not a claim that current ASON already provides durable approval-identity binding.
+Current ASON generates a unique authorization identity plus caller-supplied authority reference, policy digest/reference, and exact approved-plan digest. Current APEX validates that binding and atomically persists it with the run/effect ledger before tool dispatch. Recovery reuses the durable binding and rejects substitution. This establishes durable application-level authorization provenance for the recorded run; it does not establish cryptographic attestation, independent human-identity verification, or exactly-once external effects.
 
 APEX recovery remains conservative: ambiguous dispatch blocks replay; it does not establish exactly-once external effects.
 

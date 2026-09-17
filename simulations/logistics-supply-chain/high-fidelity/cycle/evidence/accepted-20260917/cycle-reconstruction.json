@@ -1,0 +1,125 @@
+{
+  "schema": "axiom-simulation/operational-cycle-reconstruction-v1",
+  "cycle_id": "logistics-supply-chain-cycle-001",
+  "domain": "logistics-supply-chain",
+  "result": "ACCEPT",
+  "repository_revisions": {
+    "axiom-research": "7fd0df13bb8d7e43b92dfead337f4ca145f0e1de",
+    "axiom-ason": "0a5779af47db09dd69da4d4739ee963dc4519ae2",
+    "axiom-apex": "59e05e703d62cef24d08f52633a4bf6c70ad593b",
+    "axiom-harness": "1a054f8b4addf9eb1445203d2e61588e20c7ef3a"
+  },
+  "source_sha256": "fccbafc9f4a5bee68a0b23b48a25707e6743849f5b32b57785f0522100a31295",
+  "audit": {
+    "work_items": 6,
+    "days": 3,
+    "contention_cases": 2,
+    "ledger_entries": 8,
+    "ledger_debits_usd": 29940.0,
+    "ledger_credits_usd": 29940.0,
+    "carryover_items": 5,
+    "queue_peak_open": 5
+  },
+  "authority_gate_ok": true,
+  "contention": [
+    {
+      "holder": "ORD-301",
+      "blocked": "ORD-305",
+      "resource": "carrier-b",
+      "exclusive_lease_blocked": true
+    },
+    {
+      "holder": "ORD-302",
+      "blocked": "ORD-304",
+      "resource": "dock-a",
+      "exclusive_lease_blocked": true
+    }
+  ],
+  "contention_ok": true,
+  "harness_receipts": [
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-301",
+      "task_spec_hash": "9b0d6403406b4d8ad3825fd95785608c4131a09e6cb7963b8218820c78eaa1e2",
+      "attempt_id": "attempt-ORD-301",
+      "resource_id": "carrier-b",
+      "context_hash": "140bbd15144622b4f47055e03fb3f84c0c6da41f1b6a8567f99613c10dfdc0a0",
+      "result_digest": "c1d061619b162b0380ca235167ff061e8184c9d3247b39ab15a09c66a3acfe8d",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-301/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 217
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-302",
+      "task_spec_hash": "16b81a56a7e579db73b4f8573ec19982515adf485044079c47969ff5aeb61e0f",
+      "attempt_id": "attempt-ORD-302",
+      "resource_id": "dock-a",
+      "context_hash": "1ee59acdcc4f9aa727bf7f8de675c326dcecad54c92988487885bd38e9907ad1",
+      "result_digest": "ef7c3381f29d970f0c8759c9cfb50ea8578ca63669e033b625994737d644ea06",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-302/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 227
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-303",
+      "task_spec_hash": "3a15e6467610f745499e034aa4923e119ba912b2f2f212879b33cfd016d94c2a",
+      "attempt_id": "attempt-ORD-303",
+      "resource_id": "inventory-desk",
+      "context_hash": "1e3bb61ff670ed732d2b23703f45bc9e6bd98139c81d1d89bf52c128d61f1006",
+      "result_digest": "e2d618266dc214ce48c1c8da4d3ba4891a2eb9ffaa67e4e7cb27b43fc8eee28e",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-303/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 237
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-304",
+      "task_spec_hash": "c27040ee87e8017cb04bf24d3010b2adc8519099942203511946c726d1c03d68",
+      "attempt_id": "attempt-ORD-304",
+      "resource_id": "dock-a",
+      "context_hash": "09c5a01b88b21f0b4470f6aa69b658d88f4d0245a3b0d5b363500537d1ce2203",
+      "result_digest": "13d12e05bb51955031a4b6488205a3f1898c6b5223aa1ba4ab4015ad3d0b5caf",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-304/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 247
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-305",
+      "task_spec_hash": "ae5883f8a008d5ee5b945dc6ac40320114e3b4eaf658f51e1e871273dfe61a9e",
+      "attempt_id": "attempt-ORD-305",
+      "resource_id": "carrier-b",
+      "context_hash": "f62fe7f2f455776ca47dd40db25e73af6fdaa241aca558005a3e7b7c8a610ca8",
+      "result_digest": "67bb1c7d9308225cd4bfbcc52878f53c21613181882a33814d51432583ea8f34",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-305/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-306",
+      "task_spec_hash": "b5af345f577e16c8c476ea22bdebf005c6b7144af3ae63684e75bb3a853780da",
+      "attempt_id": "attempt-ORD-306",
+      "resource_id": "carrier-a",
+      "context_hash": "9a904c1fc55f5d9968898453d0438e166880d2c1974e74533c1de68d6248bf8b",
+      "result_digest": "ca01c8a0ff1af74fa83ca48118ceca0495d66270bc458ff2b735449e280609d3",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-306/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 267
+    }
+  ],
+  "authorization_bindings_ok": true,
+  "effect_count": 24,
+  "event_count": 24,
+  "all_effects_succeeded": true,
+  "outcomes": [
+    {
+      "id": "logistics-cycle-close",
+      "status": "6/6 closed",
+      "orders_open": 0,
+      "ledger_balanced": true
+    }
+  ]
+}

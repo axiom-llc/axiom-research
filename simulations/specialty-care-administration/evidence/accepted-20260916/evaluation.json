@@ -1,0 +1,67 @@
+{
+  "schema": "axiom-simulation/evaluation-record-v1",
+  "evaluation_id": "specialty-care-administration-e2e-001:run:evaluation",
+  "evidence_ref": "specialty-care-administration-e2e-001:run",
+  "acceptance_contract": {
+    "require_apex_success": true,
+    "require_authorization_binding": true,
+    "terminal_state_equals": {
+      "phase": "closed",
+      "authorization": "approved",
+      "visit": "simulated",
+      "clinical_decision": "human-controlled"
+    }
+  },
+  "checks": [
+    {
+      "id": "apex-success",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "id": "authorization-binding",
+      "passed": true,
+      "observed": true
+    },
+    {
+      "id": "terminal-state",
+      "passed": true,
+      "observed": {
+        "authorization": "approved",
+        "clinical_decision": "human-controlled",
+        "phase": "closed",
+        "visit": "simulated"
+      }
+    },
+    {
+      "id": "evidence:effect-ledger",
+      "passed": true,
+      "observed": true
+    },
+    {
+      "id": "evidence:authorization",
+      "passed": true,
+      "observed": true
+    },
+    {
+      "id": "missing-authority-blocks-before-apex",
+      "passed": true,
+      "observed": {
+        "exit_code": 1,
+        "apex_response": null,
+        "error": "authority_ref is required for authorized APEX dispatch"
+      }
+    },
+    {
+      "id": "live-recovery-reuses-completed-effects",
+      "passed": true,
+      "observed": {
+        "exit_code": 0,
+        "effect_files_unchanged": true,
+        "observed_file_count": 12
+      }
+    }
+  ],
+  "result": "ACCEPT",
+  "limitations": []
+}

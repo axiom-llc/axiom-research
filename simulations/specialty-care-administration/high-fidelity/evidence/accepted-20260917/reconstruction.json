@@ -1,0 +1,82 @@
+{
+  "schema": "axiom-simulation/operational-reconstruction-v1",
+  "repository_revisions": {
+    "axiom-research": "96a572f869e506f90e4985187abc25d72e3c0cd1",
+    "axiom-ason": "0a5779af47db09dd69da4d4739ee963dc4519ae2",
+    "axiom-apex": "59e05e703d62cef24d08f52633a4bf6c70ad593b",
+    "axiom-harness": "1a054f8b4addf9eb1445203d2e61588e20c7ef3a"
+  },
+  "authority_gate_ok": true,
+  "authorization_bindings_ok": true,
+  "record_id": "specialty-care-administration-day-001",
+  "result": "ACCEPT",
+  "audit": {
+    "operations": 14,
+    "synthetic_cost_usd": 525.0,
+    "inventory_movements": 4,
+    "documents": 8,
+    "communications": 5,
+    "approvals": 3
+  },
+  "phase_count": 4,
+  "harness_receipts": [
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "specialty-care-administration-day-001:referral-records",
+      "task_spec_hash": "3e9e979bc895abdac32f108b0da5b222e040ce63b03933b8b1aadbcae364a983",
+      "attempt_id": "attempt-specialty-care-administration-day-001-referral-records",
+      "resource_id": "referral-desk",
+      "context_hash": "88b7a3548e235f22e02b5c94e8d8a70959b7839dad957fcda5aba9b846d9d0b0",
+      "result_digest": "183ae6775e2ef8b8cd0f87db49a9ba935902215134ea78bd8ef3e9c8cf2de619",
+      "result_ref": "/tmp/axiom-care-hifi-day-001/referral-records/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 253
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "specialty-care-administration-day-001:authorization",
+      "task_spec_hash": "e922fe0ab49ee88d67e5d3d5e7d9295f1bec23642fa9f22d1376f520a5a87fe6",
+      "attempt_id": "attempt-specialty-care-administration-day-001-authorization",
+      "resource_id": "auth-desk",
+      "context_hash": "51ca8a1a0fad3c15137ed916e0c911e116ef16913af37020355afb6ad9221324",
+      "result_digest": "a59f07d9bef75bca0d5d5afe368fca10207835d442567e4640a1ccff87e94b93",
+      "result_ref": "/tmp/axiom-care-hifi-day-001/authorization/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "specialty-care-administration-day-001:scheduling-readiness",
+      "task_spec_hash": "0cb44595eaa7814af12e3c2b5f50d59c26537a3c8e8f2e459d2bd09c92fe6ea8",
+      "attempt_id": "attempt-specialty-care-administration-day-001-scheduling-readiness",
+      "resource_id": "clinical-admin-desk",
+      "context_hash": "8667722c07b5e9c195cf7926cf9e300c6ccfbfa49635a773ebdd5e2b4ebbfa21",
+      "result_digest": "374289ff2c261f9e5c23cfed4d82145e93490d70c16480b5368e3f907e125c78",
+      "result_ref": "/tmp/axiom-care-hifi-day-001/scheduling-readiness/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 261
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "specialty-care-administration-day-001:handoff-close",
+      "task_spec_hash": "c9ac995515ca14c149d5941065b27fab0454fb99ae47548bd72c598eb3355f67",
+      "attempt_id": "attempt-specialty-care-administration-day-001-handoff-close",
+      "resource_id": "ops-desk",
+      "context_hash": "e7d1c66f43dcf4bf0614d6b0399758d5e66f943ec992f0404a1b09bc93c77cb3",
+      "result_digest": "2b6fa07f8583fcf365d624c0b6b326aba2632ff7686764862166ccdacd63478f",
+      "result_ref": "/tmp/axiom-care-hifi-day-001/handoff-close/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 264
+    }
+  ],
+  "apex_runs": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "effect_count": 16,
+  "event_count": 16,
+  "final_state": "CLOSED",
+  "source_sha256": "ca1daa73abc0214d937af58147bfb7c88b5403728dd7e2760bb4e154be6d868c"
+}

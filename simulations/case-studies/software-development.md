@@ -22,3 +22,16 @@ This case study records a reproducible synthetic organizational workflow execute
 ## Limits
 
 This is a synthetic demonstration. It does not establish production performance, regulatory compliance, independent assurance, economic benefit, exactly-once external effects, or autonomous professional authority.
+
+## High-fidelity multi-day evidence
+
+The accepted high-fidelity extension models a **three-day synthetic operating cycle** with **6 persistent work items**, dynamic arrivals, multi-day carryover, queue growth and drain, staffing/calendar changes, two shared-resource contention cases proven through Harness exclusive leases, and a balanced 7-entry synthetic accrual/settlement ledger totaling $5,364 on each debit/credit side.
+
+The retained cycle records **6 canonical Harness receipts**, **6 exact ASON-authorized APEX runs**, and **24/24 successful APEX effects/events**. Missing authority blocks dispatch and every retained authorization/approved-plan binding validates.
+
+- [Cycle model](../software-development/high-fidelity/cycle/operational-cycle.json)
+- [Cycle reconstruction](../software-development/high-fidelity/cycle/evidence/accepted-20260917/cycle-reconstruction.json)
+- [Cycle execution evidence](../software-development/high-fidelity/cycle/evidence/accepted-20260917/cycle-execution-evidence.json)
+- [Portfolio acceptance record](../operational-fidelity/portfolio-acceptance.json)
+
+This stronger evidence remains synthetic. It does not establish production deployment, regulatory compliance, measured real-world economics, arbitrary-enterprise completeness, or exactly-once external effects.

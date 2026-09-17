@@ -23,6 +23,13 @@ Use current owning-system interfaces. APEX remains the bounded execution substra
 
 Never infer production performance, regulatory compliance, autonomous professional authority, universal organizational capability, exactly-once external effects, or economic benefit from a simulation. Regulated, safety-critical, financial, legal, medical, robotics, industrial, and physical workflows retain explicit human/professional authority and simulate uncontrolled external effects.
 
+
+## Runner and deterministic evaluation
+
+`python simulations/runner.py` validates an organization/scenario/fixture bundle, binds it to an explicit exact ASON request, submits that request through the real ASON CLI to APEX, retrieves the durable APEX run record, and emits schema-valid `SimulationEvidence` plus `SimulationEvaluationRecord` artifacts. The runner does not translate organizational workflow semantics into executable tools: each simulation supplies its own exact execution request.
+
+The current deterministic acceptance contract can require successful APEX completion, durable authorization/plan binding, exact terminal-state equality, and named evidence such as the effect ledger. A simulation should have its APEX plan produce its terminal-state JSON artifact; the runner reads that artifact after execution. This keeps organizational modeling, AXIOM execution, and acceptance separate.
+
 ## Initial approved portfolio
 
 1. Robotics production — flagship: requirements through engineering, procurement, inventory, planning, assembly, firmware/software, test, quality, defect handling, release, deployment simulation, and field feedback.

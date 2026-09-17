@@ -43,7 +43,11 @@
     "phase": "released"
   },
   "acceptance_contract": {
-    "released": true
+    "require_apex_success": true,
+    "require_authorization_binding": true,
+    "terminal_state_equals": {
+      "phase": "released"
+    }
   },
   "evidence_requirements": [
     "effect-ledger"

@@ -1,0 +1,41 @@
+{
+  "revision": "A",
+  "items": [
+    {
+      "part": "chassis",
+      "qty": 1
+    },
+    {
+      "part": "drive-motor",
+      "qty": 2
+    },
+    {
+      "part": "motor-controller",
+      "qty": 2
+    },
+    {
+      "part": "compute-module",
+      "qty": 1
+    },
+    {
+      "part": "battery",
+      "qty": 1
+    },
+    {
+      "part": "camera",
+      "qty": 2
+    },
+    {
+      "part": "lidar",
+      "qty": 1
+    },
+    {
+      "part": "wiring-harness",
+      "qty": 1
+    },
+    {
+      "part": "safety-switch",
+      "qty": 1
+    }
+  ]
+}

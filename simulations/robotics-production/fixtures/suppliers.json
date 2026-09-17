@@ -1,0 +1,23 @@
+{
+  "suppliers": [
+    {
+      "id": "SUP-A",
+      "part": "lidar",
+      "lead_days": 12,
+      "status": "delayed"
+    },
+    {
+      "id": "SUP-B",
+      "part": "compute-module",
+      "lead_days": 5,
+      "status": "available"
+    },
+    {
+      "id": "SUP-C",
+      "part": "drive-motor",
+      "lead_days": 4,
+      "status": "available"
+    }
+  ],
+  "exception": "SUP-A lidar shipment delayed by 3 synthetic days"
+}

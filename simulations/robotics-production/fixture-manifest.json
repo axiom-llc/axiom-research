@@ -1,0 +1,29 @@
+{
+  "schema": "axiom-simulation/fixture-manifest-v1",
+  "fixture_id": "robotics-production-sr1-001-fixtures",
+  "scenario_id": "robotics-production-sr1-001",
+  "synthetic": true,
+  "generation_method": "Deterministic hand-authored synthetic fixtures grounded in public systems-engineering, manufacturing-traceability, and robot-safety process references; no production or proprietary data.",
+  "seed": 19001,
+  "source_refs": [
+    "NASA Systems Engineering Handbook \u2014 verification/validation and acceptance flow",
+    "NIST Digital Thread \u2014 engineering/manufacturing/quality traceability",
+    "OSHA Robotics Standards \u2014 risk assessment and safeguarding references"
+  ],
+  "assumptions": [
+    "No physical robot, supplier, payment, deployment, or industrial-control effect occurs.",
+    "Human/professional approvals are represented by explicit synthetic authority fixtures and ASON authority provenance.",
+    "Business exceptions are deterministic scenario inputs, not measured industry frequencies.",
+    "This simulation is not evidence of regulatory compliance or production performance."
+  ],
+  "contains_private_data": false,
+  "artifact_hashes": {
+    "bom.json": "69e6b1ff705bf44e4946ca316b5f5a517960510a5d01214f7841668236be65eb",
+    "build-inputs.json": "e4bc590ded10161c3b93113046ec7b37d9aa54f534879b3766c9f9fab39a10e5",
+    "field-feedback.json": "ba51c8d9075e189827b06e1e384a2fc84048853e0e6e667ca7dbbf4d644a6278",
+    "inventory.json": "31d54ab262dcb54d3436f87874c33d744db2839f8c3a0dd0b15ff1223866aca9",
+    "requirements.json": "a67a497108a031fd677febdfd05bfea53a78c8404d6ea12cfa9d9894d8cd2e9f",
+    "suppliers.json": "da9b07f4baa8607371feb0aec5256f90cf240347b17459203a2d98ae45779747",
+    "test-seed.json": "b7fe9783355f90d56f2635c2c85d4690bb492d5a3ffd300e6a1d46fb31373054"
+  }
+}

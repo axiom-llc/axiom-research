@@ -1,0 +1,15 @@
+{
+  "first_pass": {
+    "firmware_boot": "FAIL",
+    "drive_test": "PASS",
+    "safety_interlock": "PASS"
+  },
+  "assembly_inspection": {
+    "left_motor_mount_torque": "OUT_OF_RANGE"
+  },
+  "expected_recovery": [
+    "firmware_reflash",
+    "motor_mount_rework",
+    "retest"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "product": "SR-1 synthetic mobile inspection robot",
+  "revision": "A",
+  "mission": "indoor equipment inspection",
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "text": "Traverse marked indoor routes"
+    },
+    {
+      "id": "REQ-002",
+      "text": "Capture inspection imagery"
+    },
+    {
+      "id": "REQ-003",
+      "text": "Stop on synthetic safety interlock"
+    }
+  ]
+}

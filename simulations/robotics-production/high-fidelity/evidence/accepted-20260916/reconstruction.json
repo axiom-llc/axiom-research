@@ -1,0 +1,82 @@
+{
+  "schema": "axiom-simulation/operational-reconstruction-v1",
+  "repository_revisions": {
+    "axiom-research": "6ece797753ea1742dc97c97c077a05c7f2c63037",
+    "axiom-ason": "0a5779af47db09dd69da4d4739ee963dc4519ae2",
+    "axiom-apex": "59e05e703d62cef24d08f52633a4bf6c70ad593b",
+    "axiom-harness": "1a054f8b4addf9eb1445203d2e61588e20c7ef3a"
+  },
+  "authority_gate_ok": true,
+  "authorization_bindings_ok": true,
+  "record_id": "robotics-production-sr1-day-001",
+  "result": "ACCEPT",
+  "audit": {
+    "operations": 28,
+    "synthetic_cost_usd": 21390.0,
+    "inventory_movements": 5,
+    "documents": 9,
+    "communications": 5,
+    "approvals": 5
+  },
+  "phase_count": 4,
+  "harness_receipts": [
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "robotics-day:engineering-procurement",
+      "task_spec_hash": "dfde85983f56ab169fd8d9a4800edb47057178ce6488761a87b0627fa0477af0",
+      "attempt_id": "attempt-engineering-procurement",
+      "resource_id": "buyer-desk",
+      "context_hash": "58678d91ad1a62fa689e31f947f21e7a8486e87826d29e835f84cb3bdb96fe64",
+      "result_digest": "df67390ec6f09001ef03fe2e41657b4b0ad43bd18f397f1923a924a2787b5d37",
+      "result_ref": "/tmp/axiom-robotics-hifi-day-001/engineering-procurement/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 253
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "robotics-day:production-test",
+      "task_spec_hash": "9d95e3f60bce55ec3c3d7fa5e21cb9a595e9ddb974f8485fb0dfa831bd54a804",
+      "attempt_id": "attempt-production-test",
+      "resource_id": "build-cell",
+      "context_hash": "79cd68408c73b76cab6282162e86f56807692f859cfce4120863469fb154da84",
+      "result_digest": "1a5d6188ddf93ed28f31e2666ed7115dda5d21022ed12190bdb2db18d0cf9132",
+      "result_ref": "/tmp/axiom-robotics-hifi-day-001/production-test/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 261
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "robotics-day:quality-release",
+      "task_spec_hash": "eb32f25e8a86a901e786a904baf999097b09661dd872a6b6d9e76bc395e07ef3",
+      "attempt_id": "attempt-quality-release",
+      "resource_id": "quality-desk",
+      "context_hash": "ab11f5f4218385214ffb4471086c391df1d83caf125a2131297e3973299ea360",
+      "result_digest": "2309c3dde8a754beb90de164460a06183acf3ddfa8e67121493df84d1ab06b4b",
+      "result_ref": "/tmp/axiom-robotics-hifi-day-001/quality-release/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 269
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "robotics-day:field-close",
+      "task_spec_hash": "44de41b571ec43b56bff0eb671d123705231b3874d699a19c0f4ebb0ff33ecd5",
+      "attempt_id": "attempt-field-close",
+      "resource_id": "field-ops",
+      "context_hash": "66ff2747c33d5caa94a51d0353a6a7d3dc2900b0b10e43b15df685a20ff2d72e",
+      "result_digest": "5107ec99066ef84ea307aeb8fcb074c8e0603a2f87cc5e8c2fec77d87e1432e1",
+      "result_ref": "/tmp/axiom-robotics-hifi-day-001/field-close/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 275
+    }
+  ],
+  "apex_runs": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "effect_count": 16,
+  "event_count": 16,
+  "final_state": "FIELD_FEEDBACK_OPEN",
+  "source_sha256": "35ba8988c94440dd3175eb2109ba081244e0a7f7e688907c7a98ebd3e59dc5ff"
+}

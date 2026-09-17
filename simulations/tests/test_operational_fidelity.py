@@ -32,4 +32,19 @@ class OperationalFidelityTests(unittest.TestCase):
             self.assertGreater(m['quantity'],0)
         actors={x['id'] for x in self.record['actors']}
         self.assertTrue(all(a['actor'] in actors for a in self.record['approvals']))
+
+    def test_retained_high_fidelity_evidence_is_bound_and_accepted(self):
+        base=ROOT/'robotics-production/high-fidelity'
+        report=json.loads((base/'evidence/accepted-20260916/reconstruction.json').read_text())
+        evidence=json.loads((base/'evidence/accepted-20260916/execution-evidence.json').read_text())
+        self.assertEqual(report['result'],'ACCEPT')
+        self.assertEqual(report['repository_revisions']['axiom-research'],'6ece797753ea1742dc97c97c077a05c7f2c63037')
+        self.assertEqual(report['phase_count'],4); self.assertEqual(len(report['harness_receipts']),4)
+        self.assertTrue(report['authority_gate_ok']); self.assertTrue(report['authorization_bindings_ok'])
+        self.assertEqual(report['effect_count'],16); self.assertEqual(report['event_count'],16)
+        self.assertEqual(report['final_state'],'FIELD_FEEDBACK_OPEN')
+        self.assertTrue(all(x['outcome']=='ACCEPTED' for x in report['harness_receipts']))
+        self.assertTrue(all(effect.get('state')=='SUCCEEDED' for phase in evidence for effect in phase['effects']))
+        self.assertTrue(all(phase['authorization_binding'] for phase in evidence))
+
 if __name__=='__main__': unittest.main()

@@ -1,0 +1,343 @@
+{
+  "schema": "axiom-simulation/operational-cycle-v1",
+  "cycle_id": "logistics-supply-chain-cycle-001",
+  "domain": "logistics-supply-chain",
+  "synthetic": true,
+  "days": [
+    {
+      "id": "day-1",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "day-2",
+      "date": "2026-09-19"
+    },
+    {
+      "id": "day-3",
+      "date": "2026-09-20"
+    }
+  ],
+  "entities": [
+    {
+      "id": "ORD-301",
+      "kind": "order"
+    },
+    {
+      "id": "ORD-302",
+      "kind": "order"
+    },
+    {
+      "id": "ORD-303",
+      "kind": "order"
+    },
+    {
+      "id": "ORD-304",
+      "kind": "order"
+    },
+    {
+      "id": "ORD-305",
+      "kind": "order"
+    },
+    {
+      "id": "ORD-306",
+      "kind": "order"
+    }
+  ],
+  "resources": [
+    {
+      "id": "inventory-desk",
+      "kind": "planner",
+      "capacity": 1
+    },
+    {
+      "id": "dock-a",
+      "kind": "dock",
+      "capacity": 1
+    },
+    {
+      "id": "carrier-a",
+      "kind": "carrier-slot",
+      "capacity": 1
+    },
+    {
+      "id": "carrier-b",
+      "kind": "carrier-slot",
+      "capacity": 1
+    },
+    {
+      "id": "ops-desk",
+      "kind": "operations",
+      "capacity": 1
+    }
+  ],
+  "arrivals": [
+    {
+      "day": "day-1",
+      "entity": "ORD-301"
+    },
+    {
+      "day": "day-1",
+      "entity": "ORD-302"
+    },
+    {
+      "day": "day-2",
+      "entity": "ORD-303"
+    },
+    {
+      "day": "day-2",
+      "entity": "ORD-304"
+    },
+    {
+      "day": "day-2",
+      "entity": "ORD-305"
+    },
+    {
+      "day": "day-3",
+      "entity": "ORD-306"
+    }
+  ],
+  "staffing_events": [
+    {
+      "day": "day-2",
+      "resource": "dock-a",
+      "event": "reduced-capacity",
+      "hours": 4
+    },
+    {
+      "day": "day-3",
+      "resource": "dock-a",
+      "event": "normal-capacity",
+      "hours": 8
+    }
+  ],
+  "calendar_events": [
+    {
+      "day": "day-2",
+      "resource": "carrier-a",
+      "event": "pickup-window-missed",
+      "start": "14:00",
+      "end": "16:00"
+    },
+    {
+      "day": "day-3",
+      "resource": "carrier-b",
+      "event": "recovery-window",
+      "start": "09:00",
+      "end": "15:00"
+    }
+  ],
+  "queue_snapshots": [
+    {
+      "day": "day-1",
+      "queue": "orders",
+      "open": 2,
+      "allocated": 1,
+      "ship_ready": 0
+    },
+    {
+      "day": "day-2",
+      "queue": "orders",
+      "open": 5,
+      "allocated": 3,
+      "ship_ready": 2
+    },
+    {
+      "day": "day-3",
+      "queue": "orders",
+      "open": 3,
+      "allocated": 4,
+      "ship_ready": 4
+    },
+    {
+      "day": "day-3-close",
+      "queue": "orders",
+      "open": 0,
+      "allocated": 0,
+      "ship_ready": 0
+    }
+  ],
+  "resource_contention": [
+    {
+      "id": "cont-dock",
+      "day": "day-2",
+      "resource": "dock-a",
+      "holder": "ORD-302",
+      "blocked": "ORD-304",
+      "expected": "exclusive-lease-block"
+    },
+    {
+      "id": "cont-carrier",
+      "day": "day-3",
+      "resource": "carrier-b",
+      "holder": "ORD-301",
+      "blocked": "ORD-305",
+      "expected": "exclusive-lease-block"
+    }
+  ],
+  "ledger_entries": [
+    {
+      "id": "le-01",
+      "day": "day-1",
+      "debit_account": "inventory-expense",
+      "credit_account": "accounts-payable",
+      "amount_usd": 5400,
+      "memo": "synthetic goods allocated"
+    },
+    {
+      "id": "le-02",
+      "day": "day-1",
+      "debit_account": "freight-expense",
+      "credit_account": "carrier-payable",
+      "amount_usd": 420,
+      "memo": "carrier booking"
+    },
+    {
+      "id": "le-03",
+      "day": "day-2",
+      "debit_account": "inventory-expense",
+      "credit_account": "accounts-payable",
+      "amount_usd": 8100,
+      "memo": "additional goods"
+    },
+    {
+      "id": "le-04",
+      "day": "day-2",
+      "debit_account": "warehouse-expense",
+      "credit_account": "accrued-labor",
+      "amount_usd": 360,
+      "memo": "dock labor"
+    },
+    {
+      "id": "le-05",
+      "day": "day-3",
+      "debit_account": "freight-expense",
+      "credit_account": "carrier-payable",
+      "amount_usd": 690,
+      "memo": "rebooked freight"
+    },
+    {
+      "id": "le-06",
+      "day": "day-3",
+      "debit_account": "accounts-payable",
+      "credit_account": "synthetic-cash",
+      "amount_usd": 13500,
+      "memo": "settle goods payable"
+    },
+    {
+      "id": "le-07",
+      "day": "day-3",
+      "debit_account": "carrier-payable",
+      "credit_account": "synthetic-cash",
+      "amount_usd": 1110,
+      "memo": "settle carriers"
+    },
+    {
+      "id": "le-08",
+      "day": "day-3",
+      "debit_account": "accrued-labor",
+      "credit_account": "synthetic-cash",
+      "amount_usd": 360,
+      "memo": "settle labor"
+    }
+  ],
+  "state_snapshots": [
+    {
+      "day": "day-1",
+      "states": {
+        "ORD-301": "SHIP_READY",
+        "ORD-302": "ALLOCATED"
+      }
+    },
+    {
+      "day": "day-2",
+      "states": {
+        "ORD-301": "CARRYOVER",
+        "ORD-302": "AT_DOCK",
+        "ORD-303": "ALLOCATED",
+        "ORD-304": "WAIT_DOCK",
+        "ORD-305": "ALLOCATED"
+      }
+    },
+    {
+      "day": "day-3",
+      "states": {
+        "ORD-301": "CLOSED",
+        "ORD-302": "CLOSED",
+        "ORD-303": "CLOSED",
+        "ORD-304": "CLOSED",
+        "ORD-305": "CLOSED",
+        "ORD-306": "CLOSED"
+      }
+    }
+  ],
+  "work_items": [
+    {
+      "id": "ORD-301",
+      "day_started": "day-1",
+      "day_completed": "day-3",
+      "execution_resource": "carrier-b",
+      "result": "CLOSED",
+      "carryover": true,
+      "contention_probe": "ORD-305"
+    },
+    {
+      "id": "ORD-302",
+      "day_started": "day-1",
+      "day_completed": "day-3",
+      "execution_resource": "dock-a",
+      "result": "CLOSED",
+      "carryover": true,
+      "contention_probe": "ORD-304"
+    },
+    {
+      "id": "ORD-303",
+      "day_started": "day-2",
+      "day_completed": "day-3",
+      "execution_resource": "inventory-desk",
+      "result": "CLOSED",
+      "carryover": true
+    },
+    {
+      "id": "ORD-304",
+      "day_started": "day-2",
+      "day_completed": "day-3",
+      "execution_resource": "dock-a",
+      "result": "CLOSED",
+      "carryover": true
+    },
+    {
+      "id": "ORD-305",
+      "day_started": "day-2",
+      "day_completed": "day-3",
+      "execution_resource": "carrier-b",
+      "result": "CLOSED",
+      "carryover": true
+    },
+    {
+      "id": "ORD-306",
+      "day_started": "day-3",
+      "day_completed": "day-3",
+      "execution_resource": "carrier-a",
+      "result": "CLOSED",
+      "carryover": false
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "logistics-cycle-close",
+      "status": "6/6 closed",
+      "orders_open": 0,
+      "ledger_balanced": true
+    }
+  ],
+  "completeness": {
+    "multi_day_carryover": true,
+    "mixed_workload": true,
+    "shared_resource_contention": true,
+    "queue_backpressure": true,
+    "dynamic_arrivals": true,
+    "staffing_calendar_changes": true,
+    "financial_ledger_cycle": true,
+    "sustained_multi_entity_state": true
+  }
+}

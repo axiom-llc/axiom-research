@@ -128,7 +128,7 @@ One fact has one authoritative owner. Higher layers hold references, summaries, 
 22. `INV-022` — A service, repository, provider adapter, or orchestration layer must remove more total complexity than it adds.
 23. `INV-023` — Preserve validated working paths during migration.
 24. `INV-024` — Public repositories must not contain live sensitive personal state or credentials.
-25. `INV-025` — Autonomy increases only from evidence.
+25. `INV-025` — Autonomy and supply-chain independence increase only from evidence; neither grants authority to change goals, constraints, authorization boundaries, or safety requirements.
 26. `INV-026` — Optimize valuable autonomous progress, not automation depth.
 27. `INV-027` — A model endpoint responding successfully does **not** establish APEX compatibility; acceptance requires workload-level validation.
 28. `INV-028` — Provider/model/context/host configuration is part of the execution profile and cannot be generalized across materially different configurations.
@@ -137,7 +137,6 @@ One fact has one authoritative owner. Higher layers hold references, summaries, 
 31. `INV-031` — External coding/agent harnesses do not acquire AXIOM task authority merely by launching or invoking APEX.
 32. `INV-032` — Prefer direct APEX execution before adding nested host-harness orchestration.
 33. `INV-033` — Account-specific usage and pricing must be verified before assigning nonzero spend capacity.
-34. `INV-034` — Progressive supply-chain independence is an optimization objective, never an authority grant: reducing external dependencies cannot change goals, constraints, authorization boundaries, or safety requirements.
 
 Current APEX already implements plan generation, schema validation, bounded execution, durable run/effect state, recovery/replay, tools, HTTP/MCP surfaces, and exact-plan execution; treating it merely as a consequential-effect endpoint would duplicate its implemented role.
 

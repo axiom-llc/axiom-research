@@ -98,6 +98,7 @@ RAG, Infra, Ops, API, Research, model providers, compute accounts, and external 
 | Ops | bounded deterministic operational utilities |
 | API | reusable HTTP transport utility |
 | Research | evidence, falsification, benchmarks, validation records, durable architectural research |
+| Robotics | reusable robotics simulation, control-task contracts, telemetry, safety envelopes, and robotics execution receipts; no strategic or authorization authority |
 
 One fact has one authoritative owner. Higher layers hold references, summaries, or interpretations rather than duplicate lower-layer state.
 
@@ -127,7 +128,7 @@ One fact has one authoritative owner. Higher layers hold references, summaries, 
 22. `INV-022` — A service, repository, provider adapter, or orchestration layer must remove more total complexity than it adds.
 23. `INV-023` — Preserve validated working paths during migration.
 24. `INV-024` — Public repositories must not contain live sensitive personal state or credentials.
-25. `INV-025` — Autonomy increases only from evidence.
+25. `INV-025` — Autonomy and supply-chain independence increase only from evidence; neither grants authority to change goals, constraints, authorization boundaries, or safety requirements.
 26. `INV-026` — Optimize valuable autonomous progress, not automation depth.
 27. `INV-027` — A model endpoint responding successfully does **not** establish APEX compatibility; acceptance requires workload-level validation.
 28. `INV-028` — Provider/model/context/host configuration is part of the execution profile and cannot be generalized across materially different configurations.
@@ -138,6 +139,26 @@ One fact has one authoritative owner. Higher layers hold references, summaries, 
 33. `INV-033` — Account-specific usage and pricing must be verified before assigning nonzero spend capacity.
 
 Current APEX already implements plan generation, schema validation, bounded execution, durable run/effect state, recovery/replay, tools, HTTP/MCP surfaces, and exact-plan execution; treating it merely as a consequential-effect endpoint would duplicate its implemented role.
+
+## Progressive supply-chain independence
+
+AXIOM adopts **progressive supply-chain independence** as a strategic engineering tenet: software and physical systems should, where net-value-positive, become increasingly capable of operating, maintaining, repairing, reproducing, and expanding with fewer externally human-supplied inputs.
+
+Measure remaining dependency explicitly across:
+
+```text
+materials
+energy
+components
+tools
+maintenance
+software
+human intervention
+```
+
+Dependency reduction is evidence-driven rather than absolute. External supply remains valid where it is safer, more reliable, lower-cost, or otherwise higher-value. Increased independence changes capability and dependency structure only; it never grants authority to change objectives, constraints, approval requirements, execution boundaries, or safety policy.
+
+Reusable robotics primitives are owned by private `axiom-robotics`. Vehicle-specific robotics behavior remains owned by private `axiom-automotive`. Shared control contracts have exactly one canonical owner; domain repositories reference or consume them rather than copying divergent variants.
 
 ## Director
 
@@ -729,6 +750,7 @@ Preserve existing validated layouts until migration demonstrates greater net val
 | `axiom-rag` | canonical retrieval/storage subsystem |
 | `axiom-infra` | integration and portfolio validation |
 | `axiom-ops` | bounded deterministic operations utilities |
+| `axiom-robotics` | private reusable robotics simulation, control contracts, telemetry, safety limits, and robotics execution receipts; simulation-only first milestone |
 | `axiom-research` | durable evidence, validation, architecture and falsification workspace |
 | `axiom-api` | reusable HTTP transport utility; not a control plane |
 | `axiom-blender` | applied domain system |

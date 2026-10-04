@@ -1,0 +1,8 @@
+{
+  "id": "SW-101",
+  "priority": "high",
+  "acceptance": [
+    "deterministic output",
+    "no network effects"
+  ]
+}

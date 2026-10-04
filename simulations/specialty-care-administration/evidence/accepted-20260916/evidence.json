@@ -1,0 +1,838 @@
+{
+  "schema": "axiom-simulation/evidence-v1",
+  "evidence_id": "specialty-care-administration-e2e-001:run",
+  "scenario_id": "specialty-care-administration-e2e-001",
+  "classification": "VALIDATED_EXECUTABLE_DEMO",
+  "status": "PASS",
+  "repository_revisions": {
+    "axiom-research": "8519fcbb3e9e9c299d854e009bd4daed8c17b4d9",
+    "axiom-ason": "0a5779af47db09dd69da4d4739ee963dc4519ae2",
+    "axiom-apex": "59e05e703d62cef24d08f52633a4bf6c70ad593b"
+  },
+  "scenario_sha256": "0d5f0e4df2ce6afb3a899935b669a075d0f9cd31f668a4dbd227a71f00c3f1f8",
+  "fixture_sha256": "062ce7ba32dfa876072ba85b90ab2d8acb14259854b1a64acef0a01d6e14960e",
+  "configuration": {
+    "execution_request_sha256": "ab966ed0a5cfe515d530d63ad4d5b859851e9c95f87b2a59d989975bd2a662f4",
+    "apex_url": "http://127.0.0.1:58881",
+    "authority_ref": "clinical-operations-manager:synthetic-approved"
+  },
+  "axiom_components": [
+    "axiom-ason",
+    "axiom-apex"
+  ],
+  "run_refs": [
+    "apex:1"
+  ],
+  "authorization_refs": [
+    "f5f8e9fc-91fb-4d07-820b-d16ded780d12"
+  ],
+  "effect_evidence": [
+    {
+      "result_json": "{\"bytes_written\":22}",
+      "state": "SUCCEEDED",
+      "step": 0
+    },
+    {
+      "result_json": "{\"bytes_written\":21}",
+      "state": "SUCCEEDED",
+      "step": 1
+    },
+    {
+      "result_json": "{\"bytes_written\":22}",
+      "state": "SUCCEEDED",
+      "step": 2
+    },
+    {
+      "result_json": "{\"bytes_written\":20}",
+      "state": "SUCCEEDED",
+      "step": 3
+    },
+    {
+      "result_json": "{\"bytes_written\":23}",
+      "state": "SUCCEEDED",
+      "step": 4
+    },
+    {
+      "result_json": "{\"bytes_written\":26}",
+      "state": "SUCCEEDED",
+      "step": 5
+    },
+    {
+      "result_json": "{\"bytes_written\":22}",
+      "state": "SUCCEEDED",
+      "step": 6
+    },
+    {
+      "result_json": "{\"bytes_written\":22}",
+      "state": "SUCCEEDED",
+      "step": 7
+    },
+    {
+      "result_json": "{\"bytes_written\":22}",
+      "state": "SUCCEEDED",
+      "step": 8
+    },
+    {
+      "result_json": "{\"bytes_written\":23}",
+      "state": "SUCCEEDED",
+      "step": 9
+    },
+    {
+      "result_json": "{\"bytes_written\":23}",
+      "state": "SUCCEEDED",
+      "step": 10
+    },
+    {
+      "result_json": "{\"bytes_written\":111}",
+      "state": "SUCCEEDED",
+      "step": 11
+    },
+    {
+      "result_json": "{\"content\":\"{\\\"authorization\\\": \\\"approved\\\", \\\"clinical_decision\\\": \\\"human-controlled\\\", \\\"phase\\\": \\\"closed\\\", \\\"visit\\\": \\\"simulated\\\"}\"}",
+      "state": "SUCCEEDED",
+      "step": 12
+    }
+  ],
+  "events": [
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/00-referral.json\",\"content\":\"{\\\"status\\\": \\\"received\\\"}\"}",
+      "id": 1,
+      "result_json": "{\"bytes_written\":22}",
+      "run_id": 1,
+      "step": 0,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/01-records-check.json\",\"content\":\"{\\\"status\\\": \\\"missing\\\"}\"}",
+      "id": 2,
+      "result_json": "{\"bytes_written\":21}",
+      "run_id": 1,
+      "step": 1,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/02-records-recovery.json\",\"content\":\"{\\\"status\\\": \\\"complete\\\"}\"}",
+      "id": 3,
+      "result_json": "{\"bytes_written\":22}",
+      "run_id": 1,
+      "step": 2,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/03-eligibility.json\",\"content\":\"{\\\"status\\\": \\\"active\\\"}\"}",
+      "id": 4,
+      "result_json": "{\"bytes_written\":20}",
+      "run_id": 1,
+      "step": 3,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/04-auth-submit.json\",\"content\":\"{\\\"status\\\": \\\"submitted\\\"}\"}",
+      "id": 5,
+      "result_json": "{\"bytes_written\":23}",
+      "run_id": 1,
+      "step": 4,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/05-auth-pending.json\",\"content\":\"{\\\"status\\\": \\\"pending-info\\\"}\"}",
+      "id": 6,
+      "result_json": "{\"bytes_written\":26}",
+      "run_id": 1,
+      "step": 5,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/06-auth-recovery.json\",\"content\":\"{\\\"status\\\": \\\"approved\\\"}\"}",
+      "id": 7,
+      "result_json": "{\"bytes_written\":22}",
+      "run_id": 1,
+      "step": 6,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/07-schedule.json\",\"content\":\"{\\\"status\\\": \\\"reserved\\\"}\"}",
+      "id": 8,
+      "result_json": "{\"bytes_written\":22}",
+      "run_id": 1,
+      "step": 7,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/08-clinical-readiness.json\",\"content\":\"{\\\"status\\\": \\\"approved\\\"}\"}",
+      "id": 9,
+      "result_json": "{\"bytes_written\":22}",
+      "run_id": 1,
+      "step": 8,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/09-visit.json\",\"content\":\"{\\\"status\\\": \\\"simulated\\\"}\"}",
+      "id": 10,
+      "result_json": "{\"bytes_written\":23}",
+      "run_id": 1,
+      "step": 9,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/10-followup.json\",\"content\":\"{\\\"status\\\": \\\"scheduled\\\"}\"}",
+      "id": 11,
+      "result_json": "{\"bytes_written\":23}",
+      "run_id": 1,
+      "step": 10,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/terminal-state.json\",\"content\":\"{\\\"authorization\\\": \\\"approved\\\", \\\"clinical_decision\\\": \\\"human-controlled\\\", \\\"phase\\\": \\\"closed\\\", \\\"visit\\\": \\\"simulated\\\"}\"}",
+      "id": 12,
+      "result_json": "{\"bytes_written\":111}",
+      "run_id": 1,
+      "step": 11,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "write_file"
+    },
+    {
+      "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/terminal-state.json\"}",
+      "id": 13,
+      "result_json": "{\"content\":\"{\\\"authorization\\\": \\\"approved\\\", \\\"clinical_decision\\\": \\\"human-controlled\\\", \\\"phase\\\": \\\"closed\\\", \\\"visit\\\": \\\"simulated\\\"}\"}",
+      "run_id": 1,
+      "step": 12,
+      "timestamp": "2026-09-17 02:14:58",
+      "tool": "read_file"
+    }
+  ],
+  "outputs": {
+    "ason_submission": {
+      "accepted": true,
+      "violations": [],
+      "authorization": {
+        "authorization_id": "f5f8e9fc-91fb-4d07-820b-d16ded780d12",
+        "approved_plan_digest": "08de28aed5220e2db8762e73c37700348e661fbd38cad4daa17c94f6303bd910",
+        "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009",
+        "authority_ref": "clinical-operations-manager:synthetic-approved",
+        "decision": true
+      },
+      "apex_response": {
+        "authorization": {
+          "approved_plan_digest": "08de28aed5220e2db8762e73c37700348e661fbd38cad4daa17c94f6303bd910",
+          "authority_ref": "clinical-operations-manager:synthetic-approved",
+          "authorization_id": "f5f8e9fc-91fb-4d07-820b-d16ded780d12",
+          "decision": true,
+          "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009"
+        },
+        "exit_code": 0,
+        "output": "Status: HALTED\nTokens: 0\n\nGoal: Execute ASON-approved plan\nSteps executed: 13\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 21}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 20}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 26}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 111}\n\n[read_file]\n  Success: {'content': '{\"authorization\": \"approved\", \"clinical_decision\": \"human-controlled\", \"phase\": \"closed\", \"visit\": \"simulated\"}'}",
+        "plan": {
+          "goal": "Execute ASON-approved plan",
+          "steps": [
+            {
+              "args": {
+                "content": "{\"status\": \"received\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/00-referral.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"missing\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/01-records-check.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"complete\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/02-records-recovery.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"active\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/03-eligibility.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"submitted\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/04-auth-submit.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"pending-info\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/05-auth-pending.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"approved\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/06-auth-recovery.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"reserved\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/07-schedule.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"approved\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/08-clinical-readiness.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"simulated\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/09-visit.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"status\": \"scheduled\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/10-followup.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "content": "{\"authorization\": \"approved\", \"clinical_decision\": \"human-controlled\", \"phase\": \"closed\", \"visit\": \"simulated\"}",
+                "path": "/tmp/axiom-specialty-care-administration-001/terminal-state.json"
+              },
+              "name": "write_file",
+              "type": "tool"
+            },
+            {
+              "args": {
+                "path": "/tmp/axiom-specialty-care-administration-001/terminal-state.json"
+              },
+              "name": "read_file",
+              "type": "tool"
+            },
+            {
+              "reason": "ASON-approved plan complete",
+              "type": "halt"
+            }
+          ]
+        },
+        "run_id": 1,
+        "status": "HALTED",
+        "step_count": 13,
+        "token_count": 0
+      }
+    },
+    "apex_response": {
+      "authorization": {
+        "approved_plan_digest": "08de28aed5220e2db8762e73c37700348e661fbd38cad4daa17c94f6303bd910",
+        "authority_ref": "clinical-operations-manager:synthetic-approved",
+        "authorization_id": "f5f8e9fc-91fb-4d07-820b-d16ded780d12",
+        "decision": true,
+        "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009"
+      },
+      "exit_code": 0,
+      "output": "Status: HALTED\nTokens: 0\n\nGoal: Execute ASON-approved plan\nSteps executed: 13\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 21}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 20}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 26}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 22}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 23}\n\n[write_file]\n  Success: {'bytes_written': 111}\n\n[read_file]\n  Success: {'content': '{\"authorization\": \"approved\", \"clinical_decision\": \"human-controlled\", \"phase\": \"closed\", \"visit\": \"simulated\"}'}",
+      "plan": {
+        "goal": "Execute ASON-approved plan",
+        "steps": [
+          {
+            "args": {
+              "content": "{\"status\": \"received\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/00-referral.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"missing\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/01-records-check.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"complete\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/02-records-recovery.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"active\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/03-eligibility.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"submitted\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/04-auth-submit.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"pending-info\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/05-auth-pending.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"approved\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/06-auth-recovery.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"reserved\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/07-schedule.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"approved\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/08-clinical-readiness.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"simulated\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/09-visit.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"scheduled\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/10-followup.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"authorization\": \"approved\", \"clinical_decision\": \"human-controlled\", \"phase\": \"closed\", \"visit\": \"simulated\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/terminal-state.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "path": "/tmp/axiom-specialty-care-administration-001/terminal-state.json"
+            },
+            "name": "read_file",
+            "type": "tool"
+          },
+          {
+            "reason": "ASON-approved plan complete",
+            "type": "halt"
+          }
+        ]
+      },
+      "run_id": 1,
+      "status": "HALTED",
+      "step_count": 13,
+      "token_count": 0
+    },
+    "authorization": {
+      "authorization_id": "f5f8e9fc-91fb-4d07-820b-d16ded780d12",
+      "approved_plan_digest": "08de28aed5220e2db8762e73c37700348e661fbd38cad4daa17c94f6303bd910",
+      "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009",
+      "authority_ref": "clinical-operations-manager:synthetic-approved",
+      "decision": true
+    },
+    "apex_run_detail": {
+      "authorization": {
+        "approved_plan_digest": "08de28aed5220e2db8762e73c37700348e661fbd38cad4daa17c94f6303bd910",
+        "authority_ref": "clinical-operations-manager:synthetic-approved",
+        "authorization_id": "f5f8e9fc-91fb-4d07-820b-d16ded780d12",
+        "decision": true,
+        "policy_digest_or_ref": "513314e7639e46eb41e7e7a70b2e31f8c10c5361550c558ccc28bbbbf1a73009"
+      },
+      "effects": [
+        {
+          "result_json": "{\"bytes_written\":22}",
+          "state": "SUCCEEDED",
+          "step": 0
+        },
+        {
+          "result_json": "{\"bytes_written\":21}",
+          "state": "SUCCEEDED",
+          "step": 1
+        },
+        {
+          "result_json": "{\"bytes_written\":22}",
+          "state": "SUCCEEDED",
+          "step": 2
+        },
+        {
+          "result_json": "{\"bytes_written\":20}",
+          "state": "SUCCEEDED",
+          "step": 3
+        },
+        {
+          "result_json": "{\"bytes_written\":23}",
+          "state": "SUCCEEDED",
+          "step": 4
+        },
+        {
+          "result_json": "{\"bytes_written\":26}",
+          "state": "SUCCEEDED",
+          "step": 5
+        },
+        {
+          "result_json": "{\"bytes_written\":22}",
+          "state": "SUCCEEDED",
+          "step": 6
+        },
+        {
+          "result_json": "{\"bytes_written\":22}",
+          "state": "SUCCEEDED",
+          "step": 7
+        },
+        {
+          "result_json": "{\"bytes_written\":22}",
+          "state": "SUCCEEDED",
+          "step": 8
+        },
+        {
+          "result_json": "{\"bytes_written\":23}",
+          "state": "SUCCEEDED",
+          "step": 9
+        },
+        {
+          "result_json": "{\"bytes_written\":23}",
+          "state": "SUCCEEDED",
+          "step": 10
+        },
+        {
+          "result_json": "{\"bytes_written\":111}",
+          "state": "SUCCEEDED",
+          "step": 11
+        },
+        {
+          "result_json": "{\"content\":\"{\\\"authorization\\\": \\\"approved\\\", \\\"clinical_decision\\\": \\\"human-controlled\\\", \\\"phase\\\": \\\"closed\\\", \\\"visit\\\": \\\"simulated\\\"}\"}",
+          "state": "SUCCEEDED",
+          "step": 12
+        }
+      ],
+      "events": [
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/00-referral.json\",\"content\":\"{\\\"status\\\": \\\"received\\\"}\"}",
+          "id": 1,
+          "result_json": "{\"bytes_written\":22}",
+          "run_id": 1,
+          "step": 0,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/01-records-check.json\",\"content\":\"{\\\"status\\\": \\\"missing\\\"}\"}",
+          "id": 2,
+          "result_json": "{\"bytes_written\":21}",
+          "run_id": 1,
+          "step": 1,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/02-records-recovery.json\",\"content\":\"{\\\"status\\\": \\\"complete\\\"}\"}",
+          "id": 3,
+          "result_json": "{\"bytes_written\":22}",
+          "run_id": 1,
+          "step": 2,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/03-eligibility.json\",\"content\":\"{\\\"status\\\": \\\"active\\\"}\"}",
+          "id": 4,
+          "result_json": "{\"bytes_written\":20}",
+          "run_id": 1,
+          "step": 3,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/04-auth-submit.json\",\"content\":\"{\\\"status\\\": \\\"submitted\\\"}\"}",
+          "id": 5,
+          "result_json": "{\"bytes_written\":23}",
+          "run_id": 1,
+          "step": 4,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/05-auth-pending.json\",\"content\":\"{\\\"status\\\": \\\"pending-info\\\"}\"}",
+          "id": 6,
+          "result_json": "{\"bytes_written\":26}",
+          "run_id": 1,
+          "step": 5,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/06-auth-recovery.json\",\"content\":\"{\\\"status\\\": \\\"approved\\\"}\"}",
+          "id": 7,
+          "result_json": "{\"bytes_written\":22}",
+          "run_id": 1,
+          "step": 6,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/07-schedule.json\",\"content\":\"{\\\"status\\\": \\\"reserved\\\"}\"}",
+          "id": 8,
+          "result_json": "{\"bytes_written\":22}",
+          "run_id": 1,
+          "step": 7,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/08-clinical-readiness.json\",\"content\":\"{\\\"status\\\": \\\"approved\\\"}\"}",
+          "id": 9,
+          "result_json": "{\"bytes_written\":22}",
+          "run_id": 1,
+          "step": 8,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/09-visit.json\",\"content\":\"{\\\"status\\\": \\\"simulated\\\"}\"}",
+          "id": 10,
+          "result_json": "{\"bytes_written\":23}",
+          "run_id": 1,
+          "step": 9,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/10-followup.json\",\"content\":\"{\\\"status\\\": \\\"scheduled\\\"}\"}",
+          "id": 11,
+          "result_json": "{\"bytes_written\":23}",
+          "run_id": 1,
+          "step": 10,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/terminal-state.json\",\"content\":\"{\\\"authorization\\\": \\\"approved\\\", \\\"clinical_decision\\\": \\\"human-controlled\\\", \\\"phase\\\": \\\"closed\\\", \\\"visit\\\": \\\"simulated\\\"}\"}",
+          "id": 12,
+          "result_json": "{\"bytes_written\":111}",
+          "run_id": 1,
+          "step": 11,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "write_file"
+        },
+        {
+          "args_json": "{\"path\":\"/tmp/axiom-specialty-care-administration-001/terminal-state.json\"}",
+          "id": 13,
+          "result_json": "{\"content\":\"{\\\"authorization\\\": \\\"approved\\\", \\\"clinical_decision\\\": \\\"human-controlled\\\", \\\"phase\\\": \\\"closed\\\", \\\"visit\\\": \\\"simulated\\\"}\"}",
+          "run_id": 1,
+          "step": 12,
+          "timestamp": "2026-09-17 02:14:58",
+          "tool": "read_file"
+        }
+      ],
+      "exit_code": 0,
+      "id": 1,
+      "ledger": {
+        "plan_digest": "08de28aed5220e2db8762e73c37700348e661fbd38cad4daa17c94f6303bd910",
+        "step_count": 14
+      },
+      "plan_json": {
+        "goal": "Execute ASON-approved plan",
+        "steps": [
+          {
+            "args": {
+              "content": "{\"status\": \"received\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/00-referral.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"missing\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/01-records-check.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"complete\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/02-records-recovery.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"active\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/03-eligibility.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"submitted\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/04-auth-submit.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"pending-info\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/05-auth-pending.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"approved\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/06-auth-recovery.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"reserved\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/07-schedule.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"approved\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/08-clinical-readiness.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"simulated\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/09-visit.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"status\": \"scheduled\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/10-followup.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "content": "{\"authorization\": \"approved\", \"clinical_decision\": \"human-controlled\", \"phase\": \"closed\", \"visit\": \"simulated\"}",
+              "path": "/tmp/axiom-specialty-care-administration-001/terminal-state.json"
+            },
+            "name": "write_file",
+            "type": "tool"
+          },
+          {
+            "args": {
+              "path": "/tmp/axiom-specialty-care-administration-001/terminal-state.json"
+            },
+            "name": "read_file",
+            "type": "tool"
+          },
+          {
+            "reason": "ASON-approved plan complete",
+            "type": "halt"
+          }
+        ]
+      },
+      "registry_binding": {
+        "contract_digest": "a1c01fee4fcb41cafe7cf647ba9111b9a40385e1c3c588419d1f897496108f59"
+      },
+      "task": "Execute ASON-approved plan",
+      "timestamp": "2026-09-17 02:14:58",
+      "token_count": 0,
+      "wall_seconds": 0.027
+    },
+    "authority_gate_negative_control": {
+      "accepted": true,
+      "violations": [],
+      "apex_response": null,
+      "error": "authority_ref is required for authorized APEX dispatch"
+    }
+  },
+  "terminal_state": {
+    "authorization": "approved",
+    "clinical_decision": "human-controlled",
+    "phase": "closed",
+    "visit": "simulated"
+  },
+  "failures": [],
+  "recovery": [
+    {
+      "mode": "live",
+      "run_ref": "apex:1",
+      "exit_code": 0,
+      "effect_files_unchanged": true,
+      "observed_file_count": 12,
+      "output_sha256": "9e04d4850fb93710753a6efe1ca251c2d8ce34837ed20723f7c2abf9da05d0b4"
+    }
+  ],
+  "metrics": {
+    "modeled_steps": 12,
+    "effect_count": 13,
+    "event_count": 13
+  },
+  "limitations": []
+}

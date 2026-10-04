@@ -1,0 +1,6 @@
+{
+  "id": "ALERT-7",
+  "host": "SYN-HOST-7",
+  "signal": "suspicious-process",
+  "synthetic": true
+}

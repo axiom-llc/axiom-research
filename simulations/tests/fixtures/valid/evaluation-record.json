@@ -1,0 +1,21 @@
+{
+  "schema": "axiom-simulation/evaluation-record-v1",
+  "evaluation_id": "eval-1",
+  "evidence_ref": "ev-1",
+  "acceptance_contract": {
+    "released": true
+  },
+  "checks": [
+    {
+      "id": "terminal",
+      "passed": true,
+      "observed": {
+        "released": true
+      }
+    }
+  ],
+  "result": "ACCEPT",
+  "limitations": [
+    "Synthetic only"
+  ]
+}

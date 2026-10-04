@@ -1,0 +1,31 @@
+{
+  "schema": "axiom-simulation/operational-fidelity-criteria-v1",
+  "required_components": [
+    "actors",
+    "resources",
+    "schedules",
+    "queues",
+    "decisions",
+    "communications",
+    "transactions",
+    "inventory",
+    "documents",
+    "events",
+    "situations",
+    "issues",
+    "approvals",
+    "failures_recovery",
+    "state_transitions",
+    "outcomes"
+  ],
+  "requirements": [
+    "Every operation has an actor, timestamp, causal predecessor set, material references, and result reference.",
+    "Every referenced entity resolves to a deterministic record in the same evidence bundle.",
+    "Synthetic financial transactions are explicit and arithmetically reconcilable.",
+    "Inventory movements identify SKU, lot, source, destination, and quantity.",
+    "State transitions form a continuous chain for each tracked operational entity.",
+    "Approvals identify the authority and actor; communications and documents remain queryable.",
+    "Harness receipts bind durable operational phase tasks; APEX evidence binds exact authorized machine effects.",
+    "The reconstruction audit must reproduce aggregate counts, cost total, operation order, and terminal state from retained artifacts."
+  ]
+}

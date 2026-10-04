@@ -1,0 +1,5 @@
+{
+  "finding": "unsafe-default",
+  "severity": "medium",
+  "after_fix": "resolved"
+}

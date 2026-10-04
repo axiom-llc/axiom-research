@@ -1,0 +1,23 @@
+{
+  "schema": "axiom-simulation/claim-record-v1",
+  "claim_id": "cross-domain-authority-recovery-20260916",
+  "claim": "Across all five retained synthetic demonstrations, missing authority blocked APEX dispatch and live recovery reused completed local-file effects.",
+  "scope": "The seven common validation checks recorded in simulations/portfolio-summary.json across the five retained demonstrations.",
+  "evidence_refs": [
+    "robotics-production/evidence/accepted-20260916/evidence.json",
+    "software-development/evidence/accepted-20260916/evidence.json",
+    "specialty-care-administration/evidence/accepted-20260916/evidence.json",
+    "soc-operations/evidence/accepted-20260916/evidence.json",
+    "logistics-supply-chain/evidence/accepted-20260916/evidence.json"
+  ],
+  "evidence_classification": "VALIDATED_EXECUTABLE_DEMO",
+  "limitations": [
+    "All supporting cases are synthetic local-file demonstrations, not production deployments.",
+    "The evidence does not establish regulatory compliance, real-world throughput, economic benefit, or autonomous professional authority.",
+    "Completed-effect recovery evidence does not establish exactly-once external effects or distributed recovery."
+  ],
+  "publication_surfaces": [
+    "axiom-demos/organizational-simulations",
+    "axiom-llc.github.io/case-studies"
+  ]
+}

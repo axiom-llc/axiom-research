@@ -1,0 +1,102 @@
+{
+  "schema": "axiom-simulation/organization-model-v1",
+  "organization_id": "software-development-org",
+  "name": "Synthetic Software Delivery Organization",
+  "domain": "software-development",
+  "departments": [
+    {
+      "id": "product",
+      "name": "Product"
+    },
+    {
+      "id": "engineering",
+      "name": "Engineering"
+    },
+    {
+      "id": "security",
+      "name": "Security"
+    },
+    {
+      "id": "release",
+      "name": "Release"
+    }
+  ],
+  "actors": [
+    {
+      "id": "product-owner",
+      "role": "Product owner",
+      "department": "product",
+      "authority": [
+        "requirements-acceptance"
+      ]
+    },
+    {
+      "id": "developer",
+      "role": "Software engineer",
+      "department": "engineering",
+      "authority": []
+    },
+    {
+      "id": "reviewer",
+      "role": "Code reviewer",
+      "department": "engineering",
+      "authority": [
+        "code-merge"
+      ]
+    },
+    {
+      "id": "security-reviewer",
+      "role": "Security reviewer",
+      "department": "security",
+      "authority": [
+        "security-release"
+      ]
+    },
+    {
+      "id": "release-manager",
+      "role": "Release manager",
+      "department": "release",
+      "authority": [
+        "production-release"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "backlog",
+      "kind": "queue",
+      "state": {
+        "open": 1
+      }
+    },
+    {
+      "id": "repository",
+      "kind": "source-control",
+      "state": {
+        "branch": "feature/synthetic"
+      }
+    },
+    {
+      "id": "ci",
+      "kind": "pipeline",
+      "state": {
+        "status": "idle"
+      }
+    }
+  ],
+  "policies": [
+    {
+      "id": "merge-policy",
+      "description": "Independent review required before merge",
+      "authority_required": true
+    },
+    {
+      "id": "release-policy",
+      "description": "Release manager approval required",
+      "authority_required": true
+    }
+  ],
+  "state_model": {
+    "phase": "intake"
+  }
+}

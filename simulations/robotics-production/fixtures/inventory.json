@@ -1,0 +1,21 @@
+{
+  "lot": "LOT-SR1-001",
+  "available": {
+    "chassis": 1,
+    "drive-motor": 2,
+    "motor-controller": 2,
+    "compute-module": 1,
+    "battery": 1,
+    "camera": 2,
+    "lidar": 0,
+    "wiring-harness": 1,
+    "safety-switch": 1
+  },
+  "quarantine": [
+    {
+      "part": "motor-controller",
+      "qty": 1,
+      "reason": "wrong revision received"
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+[
+  {
+    "phase": "order-allocation",
+    "run_id": 1,
+    "authorization": {
+      "authorization_id": "fd820a26-b6c8-4f6e-b367-659c86b43e8f",
+      "approved_plan_digest": "f56736b68d8185a475ea14eeb3116f5e5d221ea11f39bd5b1eaac8cdeb665984",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-operations:order-allocation:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "f56736b68d8185a475ea14eeb3116f5e5d221ea11f39bd5b1eaac8cdeb665984",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":1049}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":106}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":95}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"order-allocation\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/order-allocation/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op01\\\",\\n    \\\"at\\\": \\\"08:05Z\\\",\\n    \\\"actor_ref\\\": \\\"order-coordinator\\\",\\n    \\\"causes\\\": [],\\n    \\\"refs\\\": [\\n      \\\"q-orders\\\",\\n      \\\"doc-order\\\",\\n      \\\"e-order\\\",\\n      \\\"c-order\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-order\\\",\\n    \\\"kind\\\": \\\"observe\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op02\\\",\\n    \\\"at\\\": \\\"08:20Z\\\",\\n    \\\"actor_ref\\\": \\\"inventory-planner\\\",\\n    \\\"causes\\\": [\\n      \\\"op01\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"warehouse\\\",\\n      \\\"e-stockout\\\",\\n      \\\"sit-stockout\\\",\\n      \\\"issue-stockout\\\",\\n      \\\"c-stockout\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"e-stockout\\\",\\n    \\\"kind\\\": \\\"inspect\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op03\\\",\\n    \\\"at\\\": \\\"08:30Z\\\",\\n    \\\"actor_ref\\\": \\\"inventory-planner\\\",\\n    \\\"causes\\\": [\\n      \\\"op02\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"d-sub\\\",\\n      \\\"a-sub\\\",\\n      \\\"doc-sub\\\",\\n      \\\"e-sub\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-sub\\\",\\n    \\\"kind\\\": \\\"approve\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op04\\\",\\n    \\\"at\\\": \\\"08:40Z\\\",\\n    \\\"actor_ref\\\": \\\"inventory-planner\\\",\\n    \\\"causes\\\": [\\n      \\\"op03\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"i-reserve\\\",\\n      \\\"t-goods\\\",\\n      \\\"q-pick\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"i-reserve\\\",\\n    \\\"kind\\\": \\\"allocate\\\"\\n  }\\n]\\n\"}",
+        "id": 1,
+        "result_json": "{\"bytes_written\":1049}",
+        "run_id": 1,
+        "step": 0,
+        "timestamp": "2026-09-17 02:49:52",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/order-allocation/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"order-allocation\\\",\\n  \\\"last_operation\\\": \\\"op04\\\",\\n  \\\"terminal_operation_result\\\": \\\"i-reserve\\\"\\n}\\n\"}",
+        "id": 2,
+        "result_json": "{\"bytes_written\":106}",
+        "run_id": 1,
+        "step": 1,
+        "timestamp": "2026-09-17 02:49:52",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/order-allocation/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"order-allocation\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 3,
+        "result_json": "{\"bytes_written\":95}",
+        "run_id": 1,
+        "step": 2,
+        "timestamp": "2026-09-17 02:49:52",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/order-allocation/result.json\"}",
+        "id": 4,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"order-allocation\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 1,
+        "step": 3,
+        "timestamp": "2026-09-17 02:49:52",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-day-001:order-allocation",
+      "task_spec_hash": "a5dd61fc775abf3a20a50bb41c6c32ebd5b0907f9066e7ccc414fe439885fa1d",
+      "attempt_id": "attempt-logistics-supply-chain-day-001-order-allocation",
+      "resource_id": "inventory-desk",
+      "context_hash": "3c5c18c88630dcc513477f665e155368bcd27198e106d0e3e3c52292e3ea1be0",
+      "result_digest": "3bc2d412b8b25c707831561a6a98bad8e0dfc9cee9d965c9d8c21b818ad1a6a0",
+      "result_ref": "/tmp/axiom-logistics-hifi-day-001/order-allocation/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 253
+    }
+  },
+  {
+    "phase": "warehouse-booking",
+    "run_id": 2,
+    "authorization": {
+      "authorization_id": "eab0567c-2194-4b10-a1ee-af6f8d7f37c9",
+      "approved_plan_digest": "6467d3a9157034f009439e4870582fa5daaa84ab7225e4a613326a2cd23b1a28",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-operations:warehouse-booking:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "6467d3a9157034f009439e4870582fa5daaa84ab7225e4a613326a2cd23b1a28",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":757}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":104}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":89}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\",\\\"op07\\\"],\\\"phase\\\":\\\"warehouse-booking\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/warehouse-booking/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op05\\\",\\n    \\\"at\\\": \\\"10:00Z\\\",\\n    \\\"actor_ref\\\": \\\"warehouse-tech\\\",\\n    \\\"causes\\\": [\\n      \\\"op04\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"sched-pick\\\",\\n      \\\"doc-pick\\\",\\n      \\\"t-pick\\\",\\n      \\\"i-pick\\\",\\n      \\\"e-pick\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"i-pick\\\",\\n    \\\"kind\\\": \\\"produce\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op06\\\",\\n    \\\"at\\\": \\\"10:30Z\\\",\\n    \\\"actor_ref\\\": \\\"warehouse-tech\\\",\\n    \\\"causes\\\": [\\n      \\\"op05\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"i-stage\\\",\\n      \\\"dock\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"i-stage\\\",\\n    \\\"kind\\\": \\\"handoff\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op07\\\",\\n    \\\"at\\\": \\\"11:00Z\\\",\\n    \\\"actor_ref\\\": \\\"transport-planner\\\",\\n    \\\"causes\\\": [\\n      \\\"op06\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"d-carrier\\\",\\n      \\\"a-book\\\",\\n      \\\"doc-book\\\",\\n      \\\"q-ship\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-book\\\",\\n    \\\"kind\\\": \\\"approve\\\"\\n  }\\n]\\n\"}",
+        "id": 5,
+        "result_json": "{\"bytes_written\":757}",
+        "run_id": 2,
+        "step": 0,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/warehouse-booking/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"warehouse-booking\\\",\\n  \\\"last_operation\\\": \\\"op07\\\",\\n  \\\"terminal_operation_result\\\": \\\"a-book\\\"\\n}\\n\"}",
+        "id": 6,
+        "result_json": "{\"bytes_written\":104}",
+        "run_id": 2,
+        "step": 1,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/warehouse-booking/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\",\\\"op07\\\"],\\\"phase\\\":\\\"warehouse-booking\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 7,
+        "result_json": "{\"bytes_written\":89}",
+        "run_id": 2,
+        "step": 2,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/warehouse-booking/result.json\"}",
+        "id": 8,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\",\\\"op07\\\"],\\\"phase\\\":\\\"warehouse-booking\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 2,
+        "step": 3,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-day-001:warehouse-booking",
+      "task_spec_hash": "3e839607b073dd083095bafea1bea160ed5c5bee33fe86901e58855c6aba7740",
+      "attempt_id": "attempt-logistics-supply-chain-day-001-warehouse-booking",
+      "resource_id": "warehouse-dock",
+      "context_hash": "c287b4507112d1b6abcef5f18d04409c2527e8e6ba522439839453c3d8c435d0",
+      "result_digest": "c1d51d483da9f98862421c62c9ad2a5b6487dec0d8106491f5dcdf59d0ba76ed",
+      "result_ref": "/tmp/axiom-logistics-hifi-day-001/warehouse-booking/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    }
+  },
+  {
+    "phase": "exception-recovery",
+    "run_id": 3,
+    "authorization": {
+      "authorization_id": "563f184f-a59b-496e-972e-7eab2f0c1a66",
+      "approved_plan_digest": "c4cbab3b62ff82513460b949034e580411a2d0364a1c31ebb2be21d46fc9a245",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-operations:exception-recovery:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "c4cbab3b62ff82513460b949034e580411a2d0364a1c31ebb2be21d46fc9a245",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":855}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":110}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":90}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op08\\\",\\\"op09\\\",\\\"op10\\\"],\\\"phase\\\":\\\"exception-recovery\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/exception-recovery/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op08\\\",\\n    \\\"at\\\": \\\"13:15Z\\\",\\n    \\\"actor_ref\\\": \\\"carrier-a\\\",\\n    \\\"causes\\\": [\\n      \\\"op07\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"sched-pickup-a\\\",\\n      \\\"e-missed\\\",\\n      \\\"sit-missed\\\",\\n      \\\"issue-pickup\\\",\\n      \\\"c-carrier-fail\\\",\\n      \\\"t-freight-a\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"e-missed\\\",\\n    \\\"kind\\\": \\\"test\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op09\\\",\\n    \\\"at\\\": \\\"13:30Z\\\",\\n    \\\"actor_ref\\\": \\\"transport-planner\\\",\\n    \\\"causes\\\": [\\n      \\\"op08\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"q-exception\\\",\\n      \\\"d-rebook\\\",\\n      \\\"doc-rebook\\\",\\n      \\\"e-rebook\\\",\\n      \\\"c-rebook\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-rebook\\\",\\n    \\\"kind\\\": \\\"recover\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op10\\\",\\n    \\\"at\\\": \\\"14:00Z\\\",\\n    \\\"actor_ref\\\": \\\"ops-manager\\\",\\n    \\\"causes\\\": [\\n      \\\"op09\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"a-exception\\\",\\n      \\\"d-release\\\",\\n      \\\"t-exception\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-exception\\\",\\n    \\\"kind\\\": \\\"approve\\\"\\n  }\\n]\\n\"}",
+        "id": 9,
+        "result_json": "{\"bytes_written\":855}",
+        "run_id": 3,
+        "step": 0,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/exception-recovery/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"exception-recovery\\\",\\n  \\\"last_operation\\\": \\\"op10\\\",\\n  \\\"terminal_operation_result\\\": \\\"a-exception\\\"\\n}\\n\"}",
+        "id": 10,
+        "result_json": "{\"bytes_written\":110}",
+        "run_id": 3,
+        "step": 1,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/exception-recovery/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op08\\\",\\\"op09\\\",\\\"op10\\\"],\\\"phase\\\":\\\"exception-recovery\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 11,
+        "result_json": "{\"bytes_written\":90}",
+        "run_id": 3,
+        "step": 2,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/exception-recovery/result.json\"}",
+        "id": 12,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op08\\\",\\\"op09\\\",\\\"op10\\\"],\\\"phase\\\":\\\"exception-recovery\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 3,
+        "step": 3,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-day-001:exception-recovery",
+      "task_spec_hash": "186f9712e67fbbd1835360135631d248494747e43821ab8ca590e37e0e35af84",
+      "attempt_id": "attempt-logistics-supply-chain-day-001-exception-recovery",
+      "resource_id": "transport-desk",
+      "context_hash": "7546f30c44613c78f26081e655545a183ff74831c235ad4f402361b3e11193e8",
+      "result_digest": "611a9c1ad24cbf7fbf01db5a03b347dbbc99215e3ac60cda9e55bca03378d385",
+      "result_ref": "/tmp/axiom-logistics-hifi-day-001/exception-recovery/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 260
+    }
+  },
+  {
+    "phase": "ship-close",
+    "run_id": 4,
+    "authorization": {
+      "authorization_id": "b304d724-142b-4515-baa5-c18d140694e3",
+      "approved_plan_digest": "9f2d4319e55f6e5c753a85be0b681f7db46a3405e0ca5cd288990563fb7b17ea",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-operations:ship-close:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "9f2d4319e55f6e5c753a85be0b681f7db46a3405e0ca5cd288990563fb7b17ea",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":731}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":98}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":82}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op11\\\",\\\"op12\\\",\\\"op13\\\"],\\\"phase\\\":\\\"ship-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/ship-close/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op11\\\",\\n    \\\"at\\\": \\\"15:00Z\\\",\\n    \\\"actor_ref\\\": \\\"carrier-b\\\",\\n    \\\"causes\\\": [\\n      \\\"op10\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"sched-pickup-b\\\",\\n      \\\"t-freight-b\\\",\\n      \\\"i-ship\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"i-ship\\\",\\n    \\\"kind\\\": \\\"handoff\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op12\\\",\\n    \\\"at\\\": \\\"16:30Z\\\",\\n    \\\"actor_ref\\\": \\\"carrier-b\\\",\\n    \\\"causes\\\": [\\n      \\\"op11\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"i-deliver\\\",\\n      \\\"e-delivery\\\",\\n      \\\"doc-pod\\\",\\n      \\\"c-delivery\\\",\\n      \\\"o-delivery\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"o-delivery\\\",\\n    \\\"kind\\\": \\\"handoff\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op13\\\",\\n    \\\"at\\\": \\\"16:45Z\\\",\\n    \\\"actor_ref\\\": \\\"ops-manager\\\",\\n    \\\"causes\\\": [\\n      \\\"op12\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"o-close\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"o-close\\\",\\n    \\\"kind\\\": \\\"close\\\"\\n  }\\n]\\n\"}",
+        "id": 13,
+        "result_json": "{\"bytes_written\":731}",
+        "run_id": 4,
+        "step": 0,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/ship-close/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"ship-close\\\",\\n  \\\"last_operation\\\": \\\"op13\\\",\\n  \\\"terminal_operation_result\\\": \\\"o-close\\\"\\n}\\n\"}",
+        "id": 14,
+        "result_json": "{\"bytes_written\":98}",
+        "run_id": 4,
+        "step": 1,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/ship-close/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op11\\\",\\\"op12\\\",\\\"op13\\\"],\\\"phase\\\":\\\"ship-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 15,
+        "result_json": "{\"bytes_written\":82}",
+        "run_id": 4,
+        "step": 2,
+        "timestamp": "2026-09-17 02:49:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-hifi-day-001/ship-close/result.json\"}",
+        "id": 16,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op11\\\",\\\"op12\\\",\\\"op13\\\"],\\\"phase\\\":\\\"ship-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 4,
+        "step": 3,
+        "timestamp": "2026-09-17 02:49:54",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-day-001:ship-close",
+      "task_spec_hash": "6ff60712b5d80eb2b29d32267b9efc44ad6f5ce3d056ef38cb8243e23b00567c",
+      "attempt_id": "attempt-logistics-supply-chain-day-001-ship-close",
+      "resource_id": "carrier-b",
+      "context_hash": "3e09bc8d5e883a8144b3f3f125bdb7e47468b56a6852e4760a43e9d984728f27",
+      "result_digest": "6e4cb83ae6d225f8a2e1d4c89730555b5589d1c7617592e7e097b97ff09d6400",
+      "result_ref": "/tmp/axiom-logistics-hifi-day-001/ship-close/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 263
+    }
+  }
+]

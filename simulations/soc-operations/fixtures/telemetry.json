@@ -1,0 +1,5 @@
+{
+  "process": "synthetic-loader",
+  "network": "198.51.100.10",
+  "classification": "test-net"
+}

@@ -1,0 +1,10 @@
+{
+  "result": "ACCEPT",
+  "run_id": 1,
+  "modeled_steps": 12,
+  "effects": 13,
+  "events": 13,
+  "authority_gate_ok": true,
+  "recovery_ok": true,
+  "out_dir": "simulations/specialty-care-administration/evidence/accepted-20260916"
+}

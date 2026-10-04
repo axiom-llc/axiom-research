@@ -1,0 +1,7 @@
+{
+  "SKU-A": 0,
+  "SKU-B": 5,
+  "substitute_for": {
+    "SKU-A": "SKU-B"
+  }
+}

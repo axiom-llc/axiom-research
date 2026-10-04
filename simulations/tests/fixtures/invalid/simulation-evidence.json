@@ -1,0 +1,41 @@
+{
+  "evidence_id": "ev-1",
+  "scenario_id": "robot-build-1",
+  "classification": "VALIDATED_EXECUTABLE_DEMO",
+  "status": "PASS",
+  "repository_revisions": {
+    "axiom-apex": "abcdef0"
+  },
+  "scenario_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "fixture_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+  "configuration": {},
+  "axiom_components": [
+    "axiom-apex"
+  ],
+  "run_refs": [
+    "apex:1"
+  ],
+  "authorization_refs": [
+    "auth:1"
+  ],
+  "effect_evidence": [
+    {
+      "state": "SUCCEEDED"
+    }
+  ],
+  "events": [],
+  "outputs": {
+    "released": true
+  },
+  "terminal_state": {
+    "phase": "released"
+  },
+  "failures": [],
+  "recovery": [],
+  "metrics": {
+    "steps": 2
+  },
+  "limitations": [
+    "Synthetic only"
+  ]
+}

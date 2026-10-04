@@ -1,90 +1,56 @@
 # 3. Validation performed and results
 
-The supplied architecture and modification task were checked for ownership uniqueness, provider/account placement, control-plane duplication, spend enforcement, model/profile identity, nested-harness semantics, acceptance boundaries, and migration ordering.
+The canonical architecture remains version `1.0.0`. This synchronization updates authorization-provenance implementation status to match validated behavior without changing the intended authority, recovery, or exactly-once boundaries. Live implementation and tests were reconciled against the architecture authority, provider, spend, and interoperability constraints.
 
-**Repository state:** the accessible APEX default branch remains at commit `0fa8ffc92d09d13821b4ae0d041ecebf7c94236d`. The published immutable `v3.1.1` release exists and contains the wheel/source/checksum artifacts, while the current README still calls the version unreleased; this is confirmed documentation drift rather than architectural uncertainty.
+**Repository state:** `axiom-apex/main` remains at `59e05e703d62cef24d08f52633a4bf6c70ad593b` (source version `3.2.0`) and `axiom-ason/main` remains at `379c4833db012080aa016ac19c30f53f00e548b0` (source version `0.3.0`). The current authorization-provenance integration cycle has an uncommitted ASON regression-test change; the separate uncommitted APEX release-metadata change belongs to deferred release-compatibility work and is not part of this promotion. The APEX changes after accepted provider revision `67696d661d5084cb2cb4aa641835e725dbb6f75f` do not rebind that exact-profile acceptance evidence.
 
-**Provider implementation:** APEX currently supports exactly `gemini` and `ollama` through the configured provider abstraction. Ollama uses `OLLAMA_BASE_URL`, `OLLAMA_MODEL`, native `/api/generate`, non-streaming generation, temperature `0.2`, and a 300-second request timeout.
+**ASON → APEX authorization and interoperability:** ASON remains policy authorization only. Caller-supplied `authority_ref`, unique authorization identity, policy digest/reference, and exact approved-plan digest are validated by APEX and durably committed with the run/effect ledger before dispatch; recovery reuses that stored binding and rejects substitution. Current validation: durable no-reissue provenance regression `2/2`; negative authorization cases `13/13`; full ASON suite `64/64`; APEX authorization/effect-ledger targeted suite `53/53`; APEX CI-equivalent offline suite `194 passed, 2 deselected`. This is implemented durable application-level authorization provenance, not cryptographic attestation, independent human-identity proof, or an exactly-once guarantee.
 
-**Ollama protocol compatibility:** APEX consumes response fields that remain present in current Ollama documentation. Ollama exposes additional duration metrics sufficient to calculate detailed prompt/generation performance if the validation path chooses to capture them.
+**APEX recovery reliability:** current APEX additionally binds each new live effect-ledger run to a SHA-256 digest of the planner-visible tool-registry contract. Registry key/name, input/output type schemas, required arguments, and `retry_safe` participate; registry ordering, implementation code, environment, provider state, and remote-service semantics do not. Missing or changed registry binding blocks live recovery before dispatch. The current zero-provider offline gate passed `159` tests with `37` deselected.
 
-**Provider validation:** unit tests validate fail-closed provider behavior. Live local Ollama workload tests reject the current Gemma/Qwen profiles. Direct APEX→Gemini integration and the complete 12-task workload now pass; `gemini-3.8-flash` is `ACCEPT` for the exact validated profile below.
+**Provider implementation:** APEX continues to expose native `gemini` and `ollama` provider selection. Planning compute remains distinct from execution authority.
 
-**Existing benchmark capability:** `apex.bench` already provides a suitable first production gate: real APEX subprocess execution, per-task wall duration, pass/fail results, token counts, aggregate pass rate, speed factor, token efficiency, and composite score. The supplied benchmark covers twelve file/shell/memory/HTTP/multi-step workloads.
+**Provider-backed Gemini evidence:** current APEX revision `67696d661d5084cb2cb4aa641835e725dbb6f75f` is accepted for the exact direct-host profile `gemini / gemini-3.8-flash`, Python `3.12.9`, `google-genai 1.66.0`, and execution-profile digest `430069bf67aaaf9aa1c45ac665a94d714213422de9a5c30e7431dfd2d262c3de`. Provider smoke, both live integration tests, valid halt-terminated planning, real write/read execution, and a clean `12/12` benchmark passed (`100.725s`, APEX score `0.98635`). One prior full attempt observed a redacted pre-planning provider failure on `multi_step_chain`; no tool effect was dispatched and the failure did not reproduce on the clean full rerun. Canonical evidence is `../apex-validation-gemini-3.8-flash-20260915T034212Z.json`. Acceptance is exact-profile evidence and does not generalize to changed source, provider, model, configuration digest, host harness, or workload.
 
-**Codex/OpenCode:** current Ollama documentation explicitly supports both environments and recommends substantially larger contexts for these coding harnesses. Their availability therefore justifies experiments, not a presumption that the current local Gemma/Qwen profiles are suitable inside them.
+**Local Ollama evidence:** `gemma3:1b` remains measured at `2/12` benchmark tasks in two complete runs and is not production-routable. The `qwen3.5:0.8b` benchmark remains incomplete after four consecutive provider timeouts and is not accepted. Endpoint availability is not workload compatibility.
 
-**AGY:** current Antigravity documentation identifies `agy` as a terminal agent harness with reasoning, execution, and orchestration capabilities. That supports classification as a host harness, but no APEX-specific integration result is available.
+**Harness state:** the validated generic operational slice was promoted into private `axiom-harness` version `0.1.0`; its standalone invariant suite passed `15/15`, while the reward-specific application remained separate and passed its reduced `48/48` suite after duplicate generic ownership was removed. Harness remains durable operational orchestration only when persistence has material value.
 
-**Live local results:** `gemma3:1b` completed two 12-task APEX benchmark runs and passed 2/12 tasks in each (`pass_rate = 0.1667`), with wall times 583.896 s and 527.865 s. Most failures were malformed or invalid generated plans; the repeatable passes were `read_file` and `large_file_write`. `qwen3.5:0.8b` was manually stopped after four consecutive tasks each failed at the provider's approximately 300-second timeout; the fifth task had begun. These exact local profiles are not production-routable. The Qwen suite is incomplete and must not be represented as a completed 12-task benchmark.
+**Optional remote operator infrastructure:** Desktop Commander Remote MCP `0.2.50` was validated as an optional privileged host-access channel for explicit operator-authorized inspection, tests, diagnostics, and maintenance. It is not an AXIOM authority source, APEX target by default, Harness executor by default, CI dependency, or runtime requirement. Its live unrestricted filesystem scope and external beta-service/telemetry state prohibit unattended routing without separate hardening and validation.
 
-**Gemini account/resource audit:** private account identity remains outside the public repository. The selected project is Paid Tier 1 / Postpay. Gemini 3.8 Flash limits are 1,000 RPM, 2,000,000 input TPM, and 10,000 RPD; observed 28-day peaks were 8 RPM, 3,560 TPM, and 22 RPD. Gemini API billing for September 1–14 was $0.02. Google requires migration to Prepay before October 12, 2026 to avoid interruption of paid Gemini API features.
-
-**Gemini integration and workload acceptance:** on APEX revision `0fa8ffc92d09d13821b4ae0d041ecebf7c94236d`, `gemini-3.8-flash` passed the provider smoke, both existing live integration tests (`2 passed in 14.68s`), valid halt-terminated dry-run planning, real write/read execution, and all 12 benchmark tasks. The benchmark completed in 91.247 s with pass rate `1.0`, speed factor `1.0`, token efficiency `0.9838`, APEX score `0.983798`, and 21,721 total benchmark tokens. The accepted workload record is `../apex-validation-gemini-3.8-flash-20260914T211337Z.json`; the earlier integration-only record remains historical evidence. Account identity and credential remain excluded from public state.
-
-**Host-harness results:** no APEX-through-Codex/AGY/OpenCode execution is accepted. Direct APEX provider validation remains the prerequisite baseline before nested-harness comparisons.
+**Account/resource evidence:** account-specific compute, billing, quota, and trial state remains private operational state owned by Director/runtime evidence rather than this public architecture status. Verified account evidence does not create a nonzero spend allowance; free-tier eligibility and enabled APIs are not equivalent to remaining quota or authorized spend.
 
 # 4. Remaining unresolved constraints or uncertainties
 
-1. Exact per-run Gemini cash cost is not isolated from aggregate billing; the observed billing-period total is $0.02.
-2. Paid Gemini API billing must migrate from Postpay to Prepay before October 12, 2026; a reminder is scheduled for October 1.
-3. No measured comparison yet establishes whether Codex, AGY, or OpenCode improves APEX capability, reliability, automation, or compute utilization enough to justify nesting.
-4. Current ASON still lacks the target durable approval-identity binding to APEX recovery state.
-5. `reward-harness` remains unavailable for a defensible `PROMOTE`, `RETAIN`, or `SPLIT_LATER` decision.
-6. The exact `sensitivity_class` taxonomy remains policy-defined.
-7. Domain-specific acceptance contracts, retry evidence, event sources, and mutation rules remain domain concerns.
-8. No stronger host-power-loss, distributed recovery, compensation, or exactly-once external-effect guarantee is inferred.
-9. No materially different model/provider/host-harness profile should be promoted without its own measured acceptance workload.
+1. Exact per-run hosted-model cash cost remains unisolated from aggregate account billing.
+2. Any materially changed APEX source/provider/model/configuration digest/host harness/workload requires its own measured provider-backed acceptance.
+3. The Qwen local benchmark remains incomplete; measured Gemma remains rejected and neither local profile is production-routable.
+4. `authority_ref` remains trusted caller provenance rather than cryptographic proof of human/Harness authority.
+5. The exact `sensitivity_class` taxonomy and domain-specific acceptance/retry/event/mutation contracts remain policy/domain concerns.
+6. No stronger host-power-loss, distributed recovery, compensation, submission-deduplication, or exactly-once external-effect guarantee is inferred.
+7. Desktop Commander unattended routing remains blocked pending exact directory/tool scope, privacy/telemetry posture, authentication, failure semantics, and deterministic acceptance evidence.
+8. No host-harness nesting, provider abstraction, or additional control plane is justified without measured net-value evidence.
 
 # 5. Convergence rationale
 
-The modification exposed one genuine architectural gap: compute/account/harness validation lacked an explicit place in the resource and evidence model.
-
-The minimal correction is **not** another orchestrator, provider framework, repository, or generic adapter layer. Existing architecture already contains the required primitives:
+The intended architecture remains converged. Current evidence strengthens implementation reliability and operational channel knowledge without changing the normative authority path:
 
 ```text
-Harness resource state
-APEX provider abstraction
-APEX exact-plan validation/execution
-CLI / HTTP / MCP interfaces
-Research evidence
-acceptance contracts
-cash ceilings
+Owner/Operator
+→ Director
+→ WorkIntent
+→ Harness when durable orchestration has material value, otherwise authorized direct work
+→ ASON policy authorization where required
+→ APEX or another bounded executor
+→ evidence
+→ acceptance/commit
+→ CompletionReceipt / Director update
 ```
 
-The converged solution therefore:
+APEX registry-contract recovery binding, Harness promotion, account-resource discovery, trial activation, and optional Remote MCP access are implementation/status evidence. None requires a new architecture invariant, repository, scheduler, provider framework, or mandatory dependency. `architecture/VERSION` therefore remains `1.0.0`.
 
-```text
-models/accounts → measured resources
-external agent CLIs → subordinate host harnesses
-benchmarks → Research evidence
-accepted configuration → routable capacity
-```
-
-without altering canonical authority.
-
-Further simplification would erase required distinctions:
-
-```text
-strategy ≠ operation
-task ≠ attempt
-attempt ≠ APEX run
-provider compute ≠ execution authority
-host harness ≠ AXIOM Harness
-endpoint availability ≠ workload acceptance
-free-tier claim ≠ verified spend capacity
-authorization ≠ execution
-execution ≠ acceptance
-acceptance ≠ canonical commit
-unknown outcome ≠ retry permission
-```
-
-Further expansion into dedicated provider repositories, per-harness adapters, new schedulers, new control planes, or automatic multi-provider failover currently has no evidence of positive expected global value.
-
-The architecture has therefore converged under currently available evidence. **The direct APEX→Gemini 3.8 Flash profile is operational and accepted for the validated workload.** Broader implementation convergence remains incomplete because the target ASON approval binding, billing migration, and empirical host-harness comparisons remain unresolved.
-
-The highest-value next implementation action is the durable ASON approval-identity binding into APEX recovery state. Gemini 3.8 Flash is now the preferred direct APEX planning profile for the validated workload; local Gemma/Qwen remain non-routable under their measured profiles.
+The next substantive portfolio objective is not an architecture pass. Director owns the singleton Current Opportunity and currently selects productization of the validated reliability/control capability; this status file does not duplicate that queue.
 
 # 6. Estimated additional passes to convergence
 
-`indeterminate`
+`0` additional architecture-contract passes are justified by current evidence. Future status updates should be evidence-driven and must not generalize acceptance across materially different source, provider, model, context, host, tool-registry, or billing profiles.

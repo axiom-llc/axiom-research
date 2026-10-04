@@ -1,0 +1,354 @@
+[
+  {
+    "phase": "intake-implementation",
+    "run_id": 1,
+    "authorization": {
+      "authorization_id": "f6d66b30-c816-444c-b49b-dd81bb59efa9",
+      "approved_plan_digest": "314b02feb5f53e1c644f35c898434b50818d2aeeada90a9ec40e0fa2ac0434d7",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-operations:intake-implementation:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "314b02feb5f53e1c644f35c898434b50818d2aeeada90a9ec40e0fa2ac0434d7",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":915}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":106}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":100}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"intake-implementation\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/intake-implementation/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op01\\\",\\n    \\\"at\\\": \\\"08:10Z\\\",\\n    \\\"actor_ref\\\": \\\"product-owner\\\",\\n    \\\"causes\\\": [],\\n    \\\"refs\\\": [\\n      \\\"q-backlog\\\",\\n      \\\"doc-ticket\\\",\\n      \\\"d-scope\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-ticket\\\",\\n    \\\"kind\\\": \\\"observe\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op02\\\",\\n    \\\"at\\\": \\\"08:20Z\\\",\\n    \\\"actor_ref\\\": \\\"product-owner\\\",\\n    \\\"causes\\\": [\\n      \\\"op01\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"a-req\\\",\\n      \\\"c-kickoff\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-req\\\",\\n    \\\"kind\\\": \\\"approve\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op03\\\",\\n    \\\"at\\\": \\\"09:00Z\\\",\\n    \\\"actor_ref\\\": \\\"developer-a\\\",\\n    \\\"causes\\\": [\\n      \\\"op02\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"d-design\\\",\\n      \\\"doc-design\\\",\\n      \\\"sched-dev\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-design\\\",\\n    \\\"kind\\\": \\\"decide\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op04\\\",\\n    \\\"at\\\": \\\"09:30Z\\\",\\n    \\\"actor_ref\\\": \\\"developer-a\\\",\\n    \\\"causes\\\": [\\n      \\\"op03\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"repo\\\",\\n      \\\"t-labor-dev\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"repo\\\",\\n    \\\"kind\\\": \\\"produce\\\"\\n  }\\n]\\n\"}",
+        "id": 1,
+        "result_json": "{\"bytes_written\":915}",
+        "run_id": 1,
+        "step": 0,
+        "timestamp": "2026-09-17 02:49:50",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/intake-implementation/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"intake-implementation\\\",\\n  \\\"last_operation\\\": \\\"op04\\\",\\n  \\\"terminal_operation_result\\\": \\\"repo\\\"\\n}\\n\"}",
+        "id": 2,
+        "result_json": "{\"bytes_written\":106}",
+        "run_id": 1,
+        "step": 1,
+        "timestamp": "2026-09-17 02:49:50",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/intake-implementation/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"intake-implementation\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 3,
+        "result_json": "{\"bytes_written\":100}",
+        "run_id": 1,
+        "step": 2,
+        "timestamp": "2026-09-17 02:49:50",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/intake-implementation/result.json\"}",
+        "id": 4,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"intake-implementation\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 1,
+        "step": 3,
+        "timestamp": "2026-09-17 02:49:50",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-day-001:intake-implementation",
+      "task_spec_hash": "1e917c04122d92becb52693c325f24e135a746328c4a950525669ff8ceff082e",
+      "attempt_id": "attempt-software-development-day-001-intake-implementation",
+      "resource_id": "dev-desk",
+      "context_hash": "2ae39ccd26250ff2e7cb5054bad43329d36f1d149d7a0acf7b1a5bb966896502",
+      "result_digest": "5cce5e2a87baa83cec910f28673edc858157ec6dce45c0e7f3401d2c08cfbb2b",
+      "result_ref": "/tmp/axiom-software-hifi-day-001/intake-implementation/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 253
+    }
+  },
+  {
+    "phase": "ci-review",
+    "run_id": 2,
+    "authorization": {
+      "authorization_id": "7fdbed92-af13-4056-a598-811a796e620c",
+      "approved_plan_digest": "8e605812f2bdf99a7963d9cc3f7496e8d2349747c7743152a3773d48d7202107",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-operations:ci-review:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "8e605812f2bdf99a7963d9cc3f7496e8d2349747c7743152a3773d48d7202107",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":1213}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":97}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":95}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\",\\\"op07\\\",\\\"op08\\\",\\\"op09\\\"],\\\"phase\\\":\\\"ci-review\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/ci-review/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op05\\\",\\n    \\\"at\\\": \\\"11:00Z\\\",\\n    \\\"actor_ref\\\": \\\"ci-service\\\",\\n    \\\"causes\\\": [\\n      \\\"op04\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"q-ci\\\",\\n      \\\"e-ci-fail\\\",\\n      \\\"sit-ci\\\",\\n      \\\"doc-test-fail\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-test-fail\\\",\\n    \\\"kind\\\": \\\"test\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op06\\\",\\n    \\\"at\\\": \\\"11:15Z\\\",\\n    \\\"actor_ref\\\": \\\"developer-a\\\",\\n    \\\"causes\\\": [\\n      \\\"op05\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"issue-unit\\\",\\n      \\\"repo\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"issue-unit\\\",\\n    \\\"kind\\\": \\\"recover\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op07\\\",\\n    \\\"at\\\": \\\"11:40Z\\\",\\n    \\\"actor_ref\\\": \\\"ci-service\\\",\\n    \\\"causes\\\": [\\n      \\\"op06\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"e-ci-pass\\\",\\n      \\\"doc-test-pass\\\",\\n      \\\"t-ci\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-test-pass\\\",\\n    \\\"kind\\\": \\\"test\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op08\\\",\\n    \\\"at\\\": \\\"12:00Z\\\",\\n    \\\"actor_ref\\\": \\\"developer-a\\\",\\n    \\\"causes\\\": [\\n      \\\"op07\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"q-review\\\",\\n      \\\"c-review\\\",\\n      \\\"doc-pr\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-pr\\\",\\n    \\\"kind\\\": \\\"handoff\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op09\\\",\\n    \\\"at\\\": \\\"13:10Z\\\",\\n    \\\"actor_ref\\\": \\\"reviewer\\\",\\n    \\\"causes\\\": [\\n      \\\"op08\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"sched-review\\\",\\n      \\\"a-merge\\\",\\n      \\\"t-labor-review\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-merge\\\",\\n    \\\"kind\\\": \\\"inspect\\\"\\n  }\\n]\\n\"}",
+        "id": 5,
+        "result_json": "{\"bytes_written\":1213}",
+        "run_id": 2,
+        "step": 0,
+        "timestamp": "2026-09-17 02:49:50",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/ci-review/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"ci-review\\\",\\n  \\\"last_operation\\\": \\\"op09\\\",\\n  \\\"terminal_operation_result\\\": \\\"a-merge\\\"\\n}\\n\"}",
+        "id": 6,
+        "result_json": "{\"bytes_written\":97}",
+        "run_id": 2,
+        "step": 1,
+        "timestamp": "2026-09-17 02:49:50",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/ci-review/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\",\\\"op07\\\",\\\"op08\\\",\\\"op09\\\"],\\\"phase\\\":\\\"ci-review\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 7,
+        "result_json": "{\"bytes_written\":95}",
+        "run_id": 2,
+        "step": 2,
+        "timestamp": "2026-09-17 02:49:50",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/ci-review/result.json\"}",
+        "id": 8,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\",\\\"op07\\\",\\\"op08\\\",\\\"op09\\\"],\\\"phase\\\":\\\"ci-review\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 2,
+        "step": 3,
+        "timestamp": "2026-09-17 02:49:50",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-day-001:ci-review",
+      "task_spec_hash": "15a55a7e6ae864cf3d85a256d9961b76c235a423d414a2320635fdaf90d8e35d",
+      "attempt_id": "attempt-software-development-day-001-ci-review",
+      "resource_id": "ci-review",
+      "context_hash": "4200a8fa31c80b20ffd99107552c4908786e1d1d5b1de6e979e9a691a72d4886",
+      "result_digest": "17a12813b2357e05add13a9a14064f622b138b8718d71da2bd6975807af61afc",
+      "result_ref": "/tmp/axiom-software-hifi-day-001/ci-review/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    }
+  },
+  {
+    "phase": "security-build",
+    "run_id": 3,
+    "authorization": {
+      "authorization_id": "4cf9aee0-23e1-40ab-8eb0-77416b337435",
+      "approved_plan_digest": "9262cb18aadd8c88a0f048957514dd5492daa78a43ab2b3b2f29890d7fda4892",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-operations:security-build:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "9262cb18aadd8c88a0f048957514dd5492daa78a43ab2b3b2f29890d7fda4892",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":1265}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":113}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":100}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op10\\\",\\\"op11\\\",\\\"op12\\\",\\\"op13\\\",\\\"op14\\\"],\\\"phase\\\":\\\"security-build\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/security-build/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op10\\\",\\n    \\\"at\\\": \\\"13:30Z\\\",\\n    \\\"actor_ref\\\": \\\"security-reviewer\\\",\\n    \\\"causes\\\": [\\n      \\\"op09\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"e-security-fail\\\",\\n      \\\"sit-security\\\",\\n      \\\"doc-security\\\",\\n      \\\"d-security\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-security\\\",\\n    \\\"kind\\\": \\\"test\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op11\\\",\\n    \\\"at\\\": \\\"14:00Z\\\",\\n    \\\"actor_ref\\\": \\\"developer-b\\\",\\n    \\\"causes\\\": [\\n      \\\"op10\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"issue-security\\\",\\n      \\\"repo\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"issue-security\\\",\\n    \\\"kind\\\": \\\"recover\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op12\\\",\\n    \\\"at\\\": \\\"14:30Z\\\",\\n    \\\"actor_ref\\\": \\\"security-reviewer\\\",\\n    \\\"causes\\\": [\\n      \\\"op11\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"e-security-pass\\\",\\n      \\\"a-security\\\",\\n      \\\"t-security\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-security\\\",\\n    \\\"kind\\\": \\\"approve\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op13\\\",\\n    \\\"at\\\": \\\"15:00Z\\\",\\n    \\\"actor_ref\\\": \\\"ci-service\\\",\\n    \\\"causes\\\": [\\n      \\\"op12\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"artifact-store\\\",\\n      \\\"i-artifact-create\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"i-artifact-create\\\",\\n    \\\"kind\\\": \\\"produce\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op14\\\",\\n    \\\"at\\\": \\\"15:30Z\\\",\\n    \\\"actor_ref\\\": \\\"developer-a\\\",\\n    \\\"causes\\\": [\\n      \\\"op13\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"staging\\\",\\n      \\\"i-artifact-promote\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"i-artifact-promote\\\",\\n    \\\"kind\\\": \\\"handoff\\\"\\n  }\\n]\\n\"}",
+        "id": 9,
+        "result_json": "{\"bytes_written\":1265}",
+        "run_id": 3,
+        "step": 0,
+        "timestamp": "2026-09-17 02:49:51",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/security-build/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"security-build\\\",\\n  \\\"last_operation\\\": \\\"op14\\\",\\n  \\\"terminal_operation_result\\\": \\\"i-artifact-promote\\\"\\n}\\n\"}",
+        "id": 10,
+        "result_json": "{\"bytes_written\":113}",
+        "run_id": 3,
+        "step": 1,
+        "timestamp": "2026-09-17 02:49:51",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/security-build/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op10\\\",\\\"op11\\\",\\\"op12\\\",\\\"op13\\\",\\\"op14\\\"],\\\"phase\\\":\\\"security-build\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 11,
+        "result_json": "{\"bytes_written\":100}",
+        "run_id": 3,
+        "step": 2,
+        "timestamp": "2026-09-17 02:49:51",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/security-build/result.json\"}",
+        "id": 12,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op10\\\",\\\"op11\\\",\\\"op12\\\",\\\"op13\\\",\\\"op14\\\"],\\\"phase\\\":\\\"security-build\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 3,
+        "step": 3,
+        "timestamp": "2026-09-17 02:49:51",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-day-001:security-build",
+      "task_spec_hash": "3ad4885140e67c9e7c00a5f92fd9d5d981a9d52d5ef01543f4b27ea9579871b6",
+      "attempt_id": "attempt-software-development-day-001-security-build",
+      "resource_id": "security-desk",
+      "context_hash": "4b21afee4fba830772781c97e65837229ed018c7a4000658c59b3e695cc9a6bb",
+      "result_digest": "14ca059ba18dcf84406de96e4135da1f5eaa26af26519d2ff32887ea1fcf3944",
+      "result_ref": "/tmp/axiom-software-hifi-day-001/security-build/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 262
+    }
+  },
+  {
+    "phase": "release-close",
+    "run_id": 4,
+    "authorization": {
+      "authorization_id": "cdbccd85-8a6f-43b5-a1a7-91582ef2d24c",
+      "approved_plan_digest": "65eb24ec108235a238f5c00fff705a9a6f8b1d769f7c55efdf20819c860060a2",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-operations:release-close:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "65eb24ec108235a238f5c00fff705a9a6f8b1d769f7c55efdf20819c860060a2",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":961}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":101}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":92}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op15\\\",\\\"op16\\\",\\\"op17\\\",\\\"op18\\\"],\\\"phase\\\":\\\"release-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/release-close/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op15\\\",\\n    \\\"at\\\": \\\"16:00Z\\\",\\n    \\\"actor_ref\\\": \\\"release-manager\\\",\\n    \\\"causes\\\": [\\n      \\\"op14\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"sched-release\\\",\\n      \\\"sit-window\\\",\\n      \\\"q-release\\\",\\n      \\\"d-release\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"d-release\\\",\\n    \\\"kind\\\": \\\"schedule\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op16\\\",\\n    \\\"at\\\": \\\"16:15Z\\\",\\n    \\\"actor_ref\\\": \\\"release-manager\\\",\\n    \\\"causes\\\": [\\n      \\\"op15\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"a-release\\\",\\n      \\\"doc-release\\\",\\n      \\\"c-release\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-release\\\",\\n    \\\"kind\\\": \\\"approve\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op17\\\",\\n    \\\"at\\\": \\\"16:30Z\\\",\\n    \\\"actor_ref\\\": \\\"release-manager\\\",\\n    \\\"causes\\\": [\\n      \\\"op16\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"e-release\\\",\\n      \\\"o-release\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"o-release\\\",\\n    \\\"kind\\\": \\\"handoff\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op18\\\",\\n    \\\"at\\\": \\\"16:45Z\\\",\\n    \\\"actor_ref\\\": \\\"product-owner\\\",\\n    \\\"causes\\\": [\\n      \\\"op17\\\"\\n    ],\\n    \\\"refs\\\": [\\n      \\\"o-close\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"o-close\\\",\\n    \\\"kind\\\": \\\"close\\\"\\n  }\\n]\\n\"}",
+        "id": 13,
+        "result_json": "{\"bytes_written\":961}",
+        "run_id": 4,
+        "step": 0,
+        "timestamp": "2026-09-17 02:49:51",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/release-close/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"release-close\\\",\\n  \\\"last_operation\\\": \\\"op18\\\",\\n  \\\"terminal_operation_result\\\": \\\"o-close\\\"\\n}\\n\"}",
+        "id": 14,
+        "result_json": "{\"bytes_written\":101}",
+        "run_id": 4,
+        "step": 1,
+        "timestamp": "2026-09-17 02:49:51",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/release-close/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op15\\\",\\\"op16\\\",\\\"op17\\\",\\\"op18\\\"],\\\"phase\\\":\\\"release-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 15,
+        "result_json": "{\"bytes_written\":92}",
+        "run_id": 4,
+        "step": 2,
+        "timestamp": "2026-09-17 02:49:51",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-hifi-day-001/release-close/result.json\"}",
+        "id": 16,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op15\\\",\\\"op16\\\",\\\"op17\\\",\\\"op18\\\"],\\\"phase\\\":\\\"release-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 4,
+        "step": 3,
+        "timestamp": "2026-09-17 02:49:51",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-day-001:release-close",
+      "task_spec_hash": "60f7431ce4c53deda33e3b355462981a82cf19b5384ae8cd47c7a8fed56a8d95",
+      "attempt_id": "attempt-software-development-day-001-release-close",
+      "resource_id": "release-desk",
+      "context_hash": "07cc37a569350b710bdb738b0b3548a18433aa3f6254913edb0452de991fc8f7",
+      "result_digest": "2e86e7c985d492cc55cace322bc31d33d6afc76aba79a3fa4742fb3b9c62263a",
+      "result_ref": "/tmp/axiom-software-hifi-day-001/release-close/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 267
+    }
+  }
+]

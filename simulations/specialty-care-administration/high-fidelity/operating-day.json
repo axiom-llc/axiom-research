@@ -1,0 +1,679 @@
+{
+  "schema": "axiom-simulation/operational-fidelity-v1",
+  "record_id": "specialty-care-administration-day-001",
+  "scenario_id": "specialty-care-administration-e2e-001",
+  "synthetic": true,
+  "clock": {
+    "start": "2026-09-17T08:00:00Z",
+    "end": "2026-09-17T17:00:00Z",
+    "timezone": "UTC"
+  },
+  "actors": [
+    {
+      "id": "referral-coordinator",
+      "role": "Referral coordinator",
+      "authority": []
+    },
+    {
+      "id": "auth-specialist",
+      "role": "Prior authorization specialist",
+      "authority": [
+        "payer-submission"
+      ]
+    },
+    {
+      "id": "scheduler",
+      "role": "Scheduler",
+      "authority": []
+    },
+    {
+      "id": "clinician",
+      "role": "Licensed clinician",
+      "authority": [
+        "clinical-readiness"
+      ]
+    },
+    {
+      "id": "ops-manager",
+      "role": "Clinical operations manager",
+      "authority": [
+        "episode-close"
+      ]
+    },
+    {
+      "id": "synthetic-payer",
+      "role": "Synthetic payer service",
+      "authority": []
+    }
+  ],
+  "resources": [
+    {
+      "id": "referral-queue",
+      "kind": "queue",
+      "state": {
+        "open": 2
+      }
+    },
+    {
+      "id": "records-store",
+      "kind": "synthetic-document-set",
+      "state": {
+        "complete": false
+      }
+    },
+    {
+      "id": "auth-portal",
+      "kind": "synthetic-payer-interface",
+      "state": {
+        "status": "available"
+      }
+    },
+    {
+      "id": "schedule",
+      "kind": "calendar",
+      "state": {
+        "slots": 2
+      }
+    },
+    {
+      "id": "admin-case",
+      "kind": "case",
+      "state": {
+        "status": "new"
+      }
+    }
+  ],
+  "schedules": [
+    {
+      "id": "sched-referral",
+      "owner": "referral-coordinator",
+      "start": "08:00Z",
+      "end": "12:00Z"
+    },
+    {
+      "id": "sched-auth",
+      "owner": "auth-specialist",
+      "start": "09:00Z",
+      "end": "14:00Z"
+    },
+    {
+      "id": "sched-clinician",
+      "owner": "clinician",
+      "start": "13:30Z",
+      "end": "14:00Z"
+    }
+  ],
+  "queues": [
+    {
+      "id": "q-referral",
+      "kind": "referral",
+      "items": [
+        "SYN-REF-001",
+        "SYN-REF-002"
+      ]
+    },
+    {
+      "id": "q-records",
+      "kind": "records",
+      "items": [
+        "SYN-REF-001"
+      ]
+    },
+    {
+      "id": "q-auth",
+      "kind": "authorization",
+      "items": []
+    },
+    {
+      "id": "q-schedule",
+      "kind": "scheduling",
+      "items": []
+    }
+  ],
+  "decisions": [
+    {
+      "id": "d-records",
+      "actor": "referral-coordinator",
+      "decision": "hold until synthetic imaging report arrives"
+    },
+    {
+      "id": "d-auth",
+      "actor": "auth-specialist",
+      "decision": "submit complete synthetic administrative packet"
+    },
+    {
+      "id": "d-readiness",
+      "actor": "clinician",
+      "decision": "administratively ready; no diagnosis or treatment decision represented"
+    },
+    {
+      "id": "d-close",
+      "actor": "ops-manager",
+      "decision": "close administrative episode"
+    }
+  ],
+  "communications": [
+    {
+      "id": "c-record-request",
+      "from_actor": "referral-coordinator",
+      "to": [
+        "synthetic-source"
+      ],
+      "channel": "synthetic-fax",
+      "message": "request missing imaging report"
+    },
+    {
+      "id": "c-auth-info",
+      "from_actor": "synthetic-payer",
+      "to": [
+        "auth-specialist"
+      ],
+      "channel": "synthetic-portal",
+      "message": "additional administrative field requested"
+    },
+    {
+      "id": "c-schedule",
+      "from_actor": "scheduler",
+      "to": [
+        "synthetic-patient"
+      ],
+      "channel": "synthetic-message",
+      "message": "simulated appointment slot reserved"
+    },
+    {
+      "id": "c-clinical",
+      "from_actor": "clinician",
+      "to": [
+        "scheduler"
+      ],
+      "channel": "internal",
+      "message": "administrative readiness confirmed"
+    },
+    {
+      "id": "c-close",
+      "from_actor": "ops-manager",
+      "to": [
+        "referral-coordinator"
+      ],
+      "channel": "internal",
+      "message": "administrative episode closed"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "t-admin-labor",
+      "kind": "synthetic-labor",
+      "amount_usd": 210.0
+    },
+    {
+      "id": "t-auth-labor",
+      "kind": "synthetic-labor",
+      "amount_usd": 165.0
+    },
+    {
+      "id": "t-scheduling",
+      "kind": "synthetic-labor",
+      "amount_usd": 55.0
+    },
+    {
+      "id": "t-clinical-admin",
+      "kind": "synthetic-admin-time",
+      "amount_usd": 95.0
+    }
+  ],
+  "inventory_movements": [
+    {
+      "id": "i-referral",
+      "sku": "synthetic-referral",
+      "lot": "SYN-REF-001",
+      "from": "q-referral",
+      "to": "admin-case",
+      "quantity": 1
+    },
+    {
+      "id": "i-record",
+      "sku": "synthetic-record-set",
+      "lot": "SYN-REF-001",
+      "from": "q-records",
+      "to": "records-store",
+      "quantity": 1
+    },
+    {
+      "id": "i-auth",
+      "sku": "synthetic-auth-packet",
+      "lot": "AUTH-001",
+      "from": "records-store",
+      "to": "auth-portal",
+      "quantity": 1
+    },
+    {
+      "id": "i-slot",
+      "sku": "synthetic-slot",
+      "lot": "SLOT-001",
+      "from": "schedule",
+      "to": "admin-case",
+      "quantity": 1
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc-referral",
+      "kind": "synthetic-referral"
+    },
+    {
+      "id": "doc-imaging",
+      "kind": "synthetic-imaging-report"
+    },
+    {
+      "id": "doc-eligibility",
+      "kind": "synthetic-eligibility-record"
+    },
+    {
+      "id": "doc-auth",
+      "kind": "synthetic-prior-auth-packet"
+    },
+    {
+      "id": "doc-auth-response",
+      "kind": "synthetic-payer-response"
+    },
+    {
+      "id": "doc-schedule",
+      "kind": "synthetic-schedule-record"
+    },
+    {
+      "id": "doc-readiness",
+      "kind": "administrative-readiness-note"
+    },
+    {
+      "id": "doc-close",
+      "kind": "administrative-close-record"
+    }
+  ],
+  "events": [
+    {
+      "id": "e-referral",
+      "kind": "referral-received"
+    },
+    {
+      "id": "e-missing",
+      "kind": "record-missing"
+    },
+    {
+      "id": "e-records-complete",
+      "kind": "records-complete"
+    },
+    {
+      "id": "e-auth-pending",
+      "kind": "authorization-pending"
+    },
+    {
+      "id": "e-auth-approved",
+      "kind": "authorization-approved"
+    },
+    {
+      "id": "e-scheduled",
+      "kind": "schedule-reserved"
+    },
+    {
+      "id": "e-ready",
+      "kind": "administrative-ready"
+    },
+    {
+      "id": "e-close",
+      "kind": "administrative-close"
+    }
+  ],
+  "situations": [
+    {
+      "id": "sit-records",
+      "status": "missing synthetic imaging report"
+    },
+    {
+      "id": "sit-auth",
+      "status": "synthetic payer requests additional administrative field"
+    },
+    {
+      "id": "sit-clinical",
+      "status": "clinical judgment remains human-controlled"
+    }
+  ],
+  "issues": [
+    {
+      "id": "issue-records",
+      "status": "resolved",
+      "recovery": "synthetic record supplied"
+    },
+    {
+      "id": "issue-auth",
+      "status": "resolved",
+      "recovery": "synthetic administrative field supplied"
+    }
+  ],
+  "approvals": [
+    {
+      "id": "a-auth",
+      "actor": "auth-specialist",
+      "authority": "payer-submission",
+      "decision": "APPROVED"
+    },
+    {
+      "id": "a-ready",
+      "actor": "clinician",
+      "authority": "clinical-readiness",
+      "decision": "APPROVED"
+    },
+    {
+      "id": "a-close",
+      "actor": "ops-manager",
+      "authority": "episode-close",
+      "decision": "APPROVED"
+    }
+  ],
+  "state_transitions": [
+    {
+      "id": "st-01",
+      "from": "NEW",
+      "to": "REFERRAL_RECEIVED"
+    },
+    {
+      "id": "st-02",
+      "from": "REFERRAL_RECEIVED",
+      "to": "RECORDS_INCOMPLETE"
+    },
+    {
+      "id": "st-03",
+      "from": "RECORDS_INCOMPLETE",
+      "to": "RECORDS_COMPLETE"
+    },
+    {
+      "id": "st-04",
+      "from": "RECORDS_COMPLETE",
+      "to": "ELIGIBILITY_CONFIRMED"
+    },
+    {
+      "id": "st-05",
+      "from": "ELIGIBILITY_CONFIRMED",
+      "to": "AUTH_SUBMITTED"
+    },
+    {
+      "id": "st-06",
+      "from": "AUTH_SUBMITTED",
+      "to": "AUTH_PENDING_INFO"
+    },
+    {
+      "id": "st-07",
+      "from": "AUTH_PENDING_INFO",
+      "to": "AUTH_APPROVED"
+    },
+    {
+      "id": "st-08",
+      "from": "AUTH_APPROVED",
+      "to": "SCHEDULED"
+    },
+    {
+      "id": "st-09",
+      "from": "SCHEDULED",
+      "to": "ADMIN_READY"
+    },
+    {
+      "id": "st-10",
+      "from": "ADMIN_READY",
+      "to": "SIMULATED_VISIT_HANDOFF"
+    },
+    {
+      "id": "st-11",
+      "from": "SIMULATED_VISIT_HANDOFF",
+      "to": "FOLLOWUP_SCHEDULED"
+    },
+    {
+      "id": "st-12",
+      "from": "FOLLOWUP_SCHEDULED",
+      "to": "CLOSED"
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "o-admin-ready",
+      "status": "ADMINISTRATIVELY_READY"
+    },
+    {
+      "id": "o-close",
+      "status": "ADMINISTRATIVELY_CLOSED"
+    }
+  ],
+  "operations": [
+    {
+      "id": "op01",
+      "at": "08:10Z",
+      "actor_ref": "referral-coordinator",
+      "kind": "observe",
+      "refs": [
+        "q-referral",
+        "doc-referral",
+        "e-referral"
+      ],
+      "causes": [],
+      "result_ref": "doc-referral"
+    },
+    {
+      "id": "op02",
+      "at": "08:25Z",
+      "actor_ref": "referral-coordinator",
+      "kind": "inspect",
+      "refs": [
+        "q-records",
+        "sit-records",
+        "e-missing",
+        "d-records"
+      ],
+      "causes": [
+        "op01"
+      ],
+      "result_ref": "sit-records"
+    },
+    {
+      "id": "op03",
+      "at": "08:40Z",
+      "actor_ref": "referral-coordinator",
+      "kind": "communicate",
+      "refs": [
+        "c-record-request",
+        "sched-referral",
+        "issue-records"
+      ],
+      "causes": [
+        "op02"
+      ],
+      "result_ref": "c-record-request"
+    },
+    {
+      "id": "op04",
+      "at": "09:10Z",
+      "actor_ref": "referral-coordinator",
+      "kind": "recover",
+      "refs": [
+        "doc-imaging",
+        "e-records-complete",
+        "i-record"
+      ],
+      "causes": [
+        "op03"
+      ],
+      "result_ref": "doc-imaging"
+    },
+    {
+      "id": "op05",
+      "at": "09:30Z",
+      "actor_ref": "auth-specialist",
+      "kind": "inspect",
+      "refs": [
+        "doc-eligibility",
+        "t-auth-labor"
+      ],
+      "causes": [
+        "op04"
+      ],
+      "result_ref": "doc-eligibility"
+    },
+    {
+      "id": "op06",
+      "at": "10:00Z",
+      "actor_ref": "auth-specialist",
+      "kind": "approve",
+      "refs": [
+        "d-auth",
+        "a-auth",
+        "doc-auth",
+        "i-auth"
+      ],
+      "causes": [
+        "op05"
+      ],
+      "result_ref": "a-auth"
+    },
+    {
+      "id": "op07",
+      "at": "10:30Z",
+      "actor_ref": "synthetic-payer",
+      "kind": "handoff",
+      "refs": [
+        "sit-auth",
+        "e-auth-pending",
+        "c-auth-info",
+        "issue-auth"
+      ],
+      "causes": [
+        "op06"
+      ],
+      "result_ref": "sit-auth"
+    },
+    {
+      "id": "op08",
+      "at": "11:00Z",
+      "actor_ref": "auth-specialist",
+      "kind": "recover",
+      "refs": [
+        "doc-auth-response",
+        "e-auth-approved"
+      ],
+      "causes": [
+        "op07"
+      ],
+      "result_ref": "doc-auth-response"
+    },
+    {
+      "id": "op09",
+      "at": "11:30Z",
+      "actor_ref": "scheduler",
+      "kind": "schedule",
+      "refs": [
+        "q-schedule",
+        "sched-referral",
+        "doc-schedule",
+        "i-slot",
+        "t-scheduling",
+        "c-schedule",
+        "e-scheduled"
+      ],
+      "causes": [
+        "op08"
+      ],
+      "result_ref": "doc-schedule"
+    },
+    {
+      "id": "op10",
+      "at": "13:30Z",
+      "actor_ref": "clinician",
+      "kind": "inspect",
+      "refs": [
+        "sched-clinician",
+        "sit-clinical",
+        "d-readiness",
+        "doc-readiness",
+        "t-clinical-admin"
+      ],
+      "causes": [
+        "op09"
+      ],
+      "result_ref": "doc-readiness"
+    },
+    {
+      "id": "op11",
+      "at": "13:45Z",
+      "actor_ref": "clinician",
+      "kind": "approve",
+      "refs": [
+        "a-ready",
+        "e-ready",
+        "c-clinical"
+      ],
+      "causes": [
+        "op10"
+      ],
+      "result_ref": "a-ready"
+    },
+    {
+      "id": "op12",
+      "at": "14:00Z",
+      "actor_ref": "clinician",
+      "kind": "handoff",
+      "refs": [
+        "o-admin-ready"
+      ],
+      "causes": [
+        "op11"
+      ],
+      "result_ref": "o-admin-ready"
+    },
+    {
+      "id": "op13",
+      "at": "14:30Z",
+      "actor_ref": "scheduler",
+      "kind": "schedule",
+      "refs": [
+        "doc-schedule"
+      ],
+      "causes": [
+        "op12"
+      ],
+      "result_ref": "doc-schedule"
+    },
+    {
+      "id": "op14",
+      "at": "16:00Z",
+      "actor_ref": "ops-manager",
+      "kind": "approve",
+      "refs": [
+        "d-close",
+        "a-close",
+        "doc-close",
+        "c-close",
+        "t-admin-labor",
+        "e-close",
+        "o-close"
+      ],
+      "causes": [
+        "op13"
+      ],
+      "result_ref": "o-close"
+    }
+  ],
+  "completeness": {
+    "actors": true,
+    "resources": true,
+    "schedules": true,
+    "queues": true,
+    "decisions": true,
+    "communications": true,
+    "transactions": true,
+    "inventory": true,
+    "documents": true,
+    "events": true,
+    "situations": true,
+    "issues": true,
+    "approvals": true,
+    "failures_recovery": true,
+    "state_transitions": true,
+    "outcomes": true
+  }
+}

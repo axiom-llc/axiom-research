@@ -1,0 +1,95 @@
+{
+  "schema": "axiom-simulation/organization-model-v1",
+  "organization_id": "soc-operations-org",
+  "name": "Synthetic Security Operations Center",
+  "domain": "cybersecurity-soc",
+  "departments": [
+    {
+      "id": "monitoring",
+      "name": "Monitoring"
+    },
+    {
+      "id": "response",
+      "name": "Incident Response"
+    },
+    {
+      "id": "it",
+      "name": "IT Operations"
+    },
+    {
+      "id": "leadership",
+      "name": "Security Leadership"
+    }
+  ],
+  "actors": [
+    {
+      "id": "analyst",
+      "role": "SOC analyst",
+      "department": "monitoring",
+      "authority": []
+    },
+    {
+      "id": "responder",
+      "role": "Incident responder",
+      "department": "response",
+      "authority": [
+        "containment-action"
+      ]
+    },
+    {
+      "id": "it-operator",
+      "role": "IT operator",
+      "department": "it",
+      "authority": [
+        "system-isolation"
+      ]
+    },
+    {
+      "id": "commander",
+      "role": "Incident commander",
+      "department": "leadership",
+      "authority": [
+        "incident-close"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "alert-queue",
+      "kind": "queue",
+      "state": {
+        "alerts": 1
+      }
+    },
+    {
+      "id": "endpoint",
+      "kind": "system",
+      "state": {
+        "host": "SYN-HOST-7",
+        "network": "connected"
+      }
+    },
+    {
+      "id": "case",
+      "kind": "case",
+      "state": {
+        "severity": "unknown"
+      }
+    }
+  ],
+  "policies": [
+    {
+      "id": "containment-policy",
+      "description": "Containment requires authorized responder and IT isolation authority",
+      "authority_required": true
+    },
+    {
+      "id": "closure-policy",
+      "description": "Incident closure requires incident commander approval",
+      "authority_required": true
+    }
+  ],
+  "state_model": {
+    "phase": "detection"
+  }
+}

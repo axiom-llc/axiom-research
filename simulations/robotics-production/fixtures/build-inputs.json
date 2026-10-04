@@ -1,0 +1,13 @@
+{
+  "production_order": "PO-SR1-001",
+  "unit_serial": "SR1-SYN-0001",
+  "firmware": "fw-0.9.3",
+  "control_software": "ctrl-1.4.0",
+  "planned_station_sequence": [
+    "mechanical-assembly",
+    "electrical-assembly",
+    "software-load",
+    "functional-test",
+    "quality-inspection"
+  ]
+}

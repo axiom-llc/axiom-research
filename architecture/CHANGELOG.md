@@ -10,5 +10,5 @@
 8. **Added `ApexValidationRecord` as a Research artifact.** This captures reproducible model/account/harness results without introducing another runtime state owner.
 9. **Made workload acceptance—not endpoint availability—the production criterion for local models.**
 10. **Added explicit no-hidden-paid-fallback invariant.**
-11. **Moved local Gemma/Qwen validation and `gxy` audit ahead of speculative new providers or adapters.**
+11. **Required authorized direct-profile validation and account/resource verification ahead of speculative providers, host harnesses, or adapters.**
 12. **Preserved all prior authority, APEX/ASON, retry, recovery, acceptance, RAG, repository, and Harness-promotion boundaries required for correctness.**

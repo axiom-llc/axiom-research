@@ -98,6 +98,7 @@ RAG, Infra, Ops, API, Research, model providers, compute accounts, and external 
 | Ops | bounded deterministic operational utilities |
 | API | reusable HTTP transport utility |
 | Research | evidence, falsification, benchmarks, validation records, durable architectural research |
+| Robotics | reusable robotics simulation, control-task contracts, telemetry, safety envelopes, and robotics execution receipts; no strategic or authorization authority |
 
 One fact has one authoritative owner. Higher layers hold references, summaries, or interpretations rather than duplicate lower-layer state.
 
@@ -120,14 +121,14 @@ One fact has one authoritative owner. Higher layers hold references, summaries, 
 15. `INV-015` — Harness task attempts and APEX runs are distinct identities.
 16. `INV-016` — APEX owns internal dispatch/effect uncertainty; Harness owns cross-executor task outcome.
 17. `INV-017` — An authorization-required APEX execution must bind the exact authorization identity and approved plan digest durably before dispatch.
-18. `INV-018` — Until that binding exists, ASON→APEX is a validated pre-execution gate, not audit-grade durable approval provenance.
+18. `INV-018` — ASON→APEX durable authorization provenance binds the caller-supplied authority reference, authorization identity, policy digest/reference, and exact approved-plan digest to the APEX run before dispatch; this is durable application provenance, not cryptographic attestation or independent proof of human identity.
 19. `INV-019` — Never claim exactly-once external effects without proof from the external system.
 20. `INV-020` — RAG persistence has one cooperating owner per root.
 21. `INV-021` — Repository, process, dependency, context, abstraction, and nested-agent count are costs.
 22. `INV-022` — A service, repository, provider adapter, or orchestration layer must remove more total complexity than it adds.
 23. `INV-023` — Preserve validated working paths during migration.
 24. `INV-024` — Public repositories must not contain live sensitive personal state or credentials.
-25. `INV-025` — Autonomy increases only from evidence.
+25. `INV-025` — Autonomy and supply-chain independence increase only from evidence; neither grants authority to change goals, constraints, authorization boundaries, or safety requirements.
 26. `INV-026` — Optimize valuable autonomous progress, not automation depth.
 27. `INV-027` — A model endpoint responding successfully does **not** establish APEX compatibility; acceptance requires workload-level validation.
 28. `INV-028` — Provider/model/context/host configuration is part of the execution profile and cannot be generalized across materially different configurations.
@@ -138,6 +139,26 @@ One fact has one authoritative owner. Higher layers hold references, summaries, 
 33. `INV-033` — Account-specific usage and pricing must be verified before assigning nonzero spend capacity.
 
 Current APEX already implements plan generation, schema validation, bounded execution, durable run/effect state, recovery/replay, tools, HTTP/MCP surfaces, and exact-plan execution; treating it merely as a consequential-effect endpoint would duplicate its implemented role.
+
+## Progressive supply-chain independence
+
+AXIOM adopts **progressive supply-chain independence** as a strategic engineering tenet: software and physical systems should, where net-value-positive, become increasingly capable of operating, maintaining, repairing, reproducing, and expanding with fewer externally human-supplied inputs.
+
+Measure remaining dependency explicitly across:
+
+```text
+materials
+energy
+components
+tools
+maintenance
+software
+human intervention
+```
+
+Dependency reduction is evidence-driven rather than absolute. External supply remains valid where it is safer, more reliable, lower-cost, or otherwise higher-value. Increased independence changes capability and dependency structure only; it never grants authority to change objectives, constraints, approval requirements, execution boundaries, or safety policy.
+
+Reusable robotics primitives are owned by private `axiom-robotics`. Vehicle-specific robotics behavior remains owned by private `axiom-automotive`. Shared control contracts have exactly one canonical owner; domain repositories reference or consume them rather than copying divergent variants.
 
 ## Director
 
@@ -181,7 +202,7 @@ Classes outrank speculative numerical scoring. Within a class, rank by defensibl
 
 ## Harness
 
-Harness is a **logical operational boundary**, not presently a justified standalone repository.
+Harness is the **durable operational orchestration boundary**, implemented by the validated private `axiom-harness` repository when persistence has material value.
 
 It owns:
 
@@ -351,7 +372,7 @@ authority_ref
 decision
 ```
 
-APEX must persist the required authorization reference and matching plan digest before tool dispatch. This remains a target invariant, not a claim that current ASON already provides durable approval-identity binding.
+Current ASON generates a unique authorization identity plus caller-supplied authority reference, policy digest/reference, and exact approved-plan digest. Current APEX validates that binding and atomically persists it with the run/effect ledger before tool dispatch. Recovery reuses the durable binding and rejects substitution. This establishes durable application-level authorization provenance for the recorded run; it does not establish cryptographic attestation, independent human-identity verification, or exactly-once external effects.
 
 APEX recovery remains conservative: ambiguous dispatch blocks replay; it does not establish exactly-once external effects.
 
@@ -428,21 +449,7 @@ Current unit tests verify Ollama's single-attempt redacted failure behavior but 
 
 The existing benchmark already executes real APEX tasks and records pass rate, wall time, token count, and a bounded composite score; its current workload contains file, shell, memory, HTTP, and multi-step cases.
 
-Canonical local validation:
-
-```bash
-LLM_PROVIDER=ollama OLLAMA_MODEL=gemma3:1b \
-python -m apex.bench --tasks benchmarks/tasks.json \
-  --out /tmp/apex-gemma3-1b.json
-```
-
-```bash
-LLM_PROVIDER=ollama OLLAMA_MODEL=qwen3.5:0.8b \
-python -m apex.bench --tasks benchmarks/tasks.json \
-  --out /tmp/apex-qwen3.5-0.8b.json
-```
-
-These are validation commands, not claimed results.
+Model-specific live validation is operational evidence, not architecture. Record it in Research status/artifacts with the exact execution profile and authorization boundary. A rejected or unapproved profile must not be re-queued merely because the endpoint remains available; repeat testing requires a new material hypothesis and applicable explicit authorization.
 
 ## `gxy` account policy
 
@@ -737,12 +744,13 @@ Preserve existing validated layouts until migration demonstrates greater net val
 | Repository | Canonical disposition |
 | --- | --- |
 | `axiom-director` | strategic control |
-| `axiom-harness` | logical boundary only; no repository without promotion evidence |
+| `axiom-harness` | private durable operational orchestration core; use only when persistence has material value |
 | `axiom-apex` | canonical bounded machine execution runtime |
 | `axiom-ason` | selective exact-plan pre-execution policy layer |
 | `axiom-rag` | canonical retrieval/storage subsystem |
 | `axiom-infra` | integration and portfolio validation |
 | `axiom-ops` | bounded deterministic operations utilities |
+| `axiom-robotics` | private reusable robotics simulation, control contracts, telemetry, safety limits, and robotics execution receipts; simulation-only first milestone |
 | `axiom-research` | durable evidence, validation, architecture and falsification workspace |
 | `axiom-api` | reusable HTTP transport utility; not a control plane |
 | `axiom-blender` | applied domain system |
@@ -827,23 +835,22 @@ APEX continues owning its own internal run/effect recovery.
 
 ```text
 0   preserve validated working paths
-1   repair APEX/RAG release-state documentation drift
+1   keep release/state documentation synchronized with live authoritative evidence
 2   retain architecture terminology: APEX = canonical machine execution runtime
-3   establish direct APEX local-Ollama baseline for Gemma and Qwen
-4   record reproducible ApexValidationRecord artifacts
-5   audit gxy account/service/quota/pricing/usage; retain $0 spend ceiling until verified
-6   compare validated local profiles with any verified zero-spend hosted capacity
-7   test Codex, AGY, and OpenCode only against the direct APEX baseline
+3   validate only authorized provider/model profiles against direct APEX before host-harness nesting
+4   record reproducible ApexValidationRecord artifacts for materially relevant profiles
+5   verify account/service/quota/pricing/usage before assigning nonzero spend capacity
+6   compare only accepted or explicitly authorized candidate profiles
+7   test external host harnesses only against an accepted direct APEX baseline
 8   add no host-harness adapter unless existing CLI/HTTP/MCP surfaces prove insufficient
-9   durably bind required ASON authorization identity to exact APEX plan/run
-10  inspect reward-harness; issue PROMOTE / RETAIN / SPLIT_LATER
-11  if PROMOTE, prove the minimal Harness scheduling/acceptance slice
-12  add ContextPack budgeting/cache only where measured
-13  add providers/executors only for demonstrated workloads
-14  move persistent operational scheduling out of Director where implementation proves overlap
-15  add high-value events/escalations
-16  expand reusable primitives only from repeated evidence
-17  measure and delete low-value machinery
+9   preserve durable ASON authorization binding to exact APEX plan/run
+10  use Harness only where durable orchestration has measured material value
+11  add ContextPack budgeting/cache only where measured
+12  add providers/executors only for demonstrated workloads
+13  move persistent operational scheduling out of Director only where implementation proves overlap
+14  add high-value events/escalations
+15  expand reusable primitives only from repeated evidence
+16  measure and delete low-value machinery
 ```
 
 Architecture purity never outranks continuity of a validated working path.

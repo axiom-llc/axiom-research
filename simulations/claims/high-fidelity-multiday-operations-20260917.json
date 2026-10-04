@@ -1,0 +1,21 @@
+{
+  "schema": "axiom-simulation/claim-record-v1",
+  "claim_id": "high-fidelity-multiday-operations-20260917",
+  "claim": "AXIOM coordinated and reconstructed three-day synthetic operational cycles in software development and logistics/supply-chain, with six work items per domain, multi-day carryover, dynamic arrivals, queue growth and drain, and sustained multi-entity state.",
+  "scope": "Retained accepted multi-day cycle evidence for software-development-cycle-001 and logistics-supply-chain-cycle-001.",
+  "evidence_refs": [
+    "software-development/high-fidelity/cycle/evidence/accepted-20260917/cycle-reconstruction.json",
+    "logistics-supply-chain/high-fidelity/cycle/evidence/accepted-20260917/cycle-reconstruction.json",
+    "operational-fidelity/portfolio-acceptance.json"
+  ],
+  "evidence_classification": "VALIDATED_EXECUTABLE_DEMO",
+  "limitations": [
+    "Supporting evidence is synthetic and bounded to modeled organizations and workloads, not production deployment.",
+    "Synthetic ledger values are model accounting evidence, not measured real-world economic performance or benefit.",
+    "The evidence does not establish regulatory compliance, arbitrary-enterprise completeness, or exactly-once external effects."
+  ],
+  "publication_surfaces": [
+    "axiom-demos/organizational-simulations/high-fidelity",
+    "axiom-llc.github.io/case-studies"
+  ]
+}

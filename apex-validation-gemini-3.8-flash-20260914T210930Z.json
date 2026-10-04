@@ -3,13 +3,13 @@
   "provider": "gemini",
   "model": "gemini-3.8-flash",
   "endpoint_ref": "Google Gemini API",
-  "account_ref": "private configured Gemini account; identifier withheld from public repository",
+  "account_ref": "account-specific identity omitted from public repository",
   "host_harness": "direct APEX CLI",
   "config_digest": "sha256:3ea6418bda19d57d530c5512f7ef48ddd784b0e2900e498cbee55259e9960498",
   "workload_ref": "direct_gemini_integration_gate_v1",
-  "command": "~/downloads/apex-gemini-validate.sh",
+  "command": "historical validation harness; local path omitted",
   "pass_rate": {
-    "rate": 1.0,
+    "rate": 1,
     "gates_passed": 5,
     "gates_total": 5,
     "gates": [
@@ -37,16 +37,16 @@
   "resource_observations": {
     "python": "3.12.9",
     "google_genai": "1.66.0",
-    "execution": "remote Gemini inference with local APEX tool execution",
-    "result_dir": "/home/u/apex-gemini-validation/20260914T210930Z"
+    "execution": "historical direct APEX CLI with remote Gemini inference"
   },
-  "cash_cost": "unverified; account-specific quota, usage, billing tier, and spend remain unaudited",
+  "cash_cost": "not isolated; account-specific billing, quota, usage, and renewal state are intentionally omitted from this public artifact",
   "failures": [],
   "limitations": [
     "The 12-task APEX workload benchmark has not yet been executed with this Gemini profile.",
     "The configuration digest covers the captured nonsecret validation profile only; unobserved environment variables are not included.",
-    "Account identifier and API credential are intentionally excluded from the public artifact.",
-    "Successful integration does not establish production workload acceptance."
+    "Successful integration does not establish production workload acceptance.",
+    "Account-specific identity, credentials, billing, quota, usage, and renewal state are intentionally excluded from this public artifact.",
+    "Historical host-local execution evidence is retained only as provenance and is not an eligible current AXIOM execution route."
   ],
   "result": "EXPERIMENTAL",
   "verified_at": "2026-09-14T17:09:30-04:00"

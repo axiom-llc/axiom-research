@@ -1,0 +1,21 @@
+{
+  "schema": "axiom-simulation/claim-record-v1",
+  "claim_id": "high-fidelity-contention-ledger-20260917",
+  "claim": "In both retained three-day synthetic cycles, Harness exclusive leases blocked shared-resource contention, ASON authority gates bound exact APEX plans, queues drained to zero, and synthetic accrual/settlement ledgers reconciled.",
+  "scope": "Two materially different accepted high-fidelity cycles using existing Research, Harness, ASON, and APEX semantics.",
+  "evidence_refs": [
+    "software-development/high-fidelity/cycle/evidence/accepted-20260917/cycle-reconstruction.json",
+    "logistics-supply-chain/high-fidelity/cycle/evidence/accepted-20260917/cycle-reconstruction.json",
+    "operational-fidelity/portfolio-acceptance.json"
+  ],
+  "evidence_classification": "VALIDATED_EXECUTABLE_DEMO",
+  "limitations": [
+    "Supporting evidence is synthetic and bounded to modeled organizations and workloads, not production deployment.",
+    "Synthetic ledger values are model accounting evidence, not measured real-world economic performance or benefit.",
+    "The evidence does not establish regulatory compliance, arbitrary-enterprise completeness, or exactly-once external effects."
+  ],
+  "publication_surfaces": [
+    "axiom-demos/organizational-simulations/high-fidelity",
+    "axiom-llc.github.io/case-studies"
+  ]
+}

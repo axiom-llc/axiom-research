@@ -1,0 +1,506 @@
+[
+  {
+    "work_item": "ORD-301",
+    "run_id": 1,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "28346c6e-f9bc-4eaf-8a79-1be01c3f11a6",
+      "approved_plan_digest": "4742752b1a46e13b56606442af48ccc6fa7f7d2726bed202ed59972de04e8cae",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-supply-chain-cycle:ORD-301:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":910}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1475}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":66}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-301\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-301/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"pickup-window-missed\\\",\\\"resource\\\":\\\"carrier-a\\\",\\\"start\\\":\\\"14:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"15:00\\\",\\\"event\\\":\\\"recovery-window\\\",\\\"resource\\\":\\\"carrier-b\\\",\\\"start\\\":\\\"09:00\\\"}],\\\"cycle_id\\\":\\\"logistics-supply-chain-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"allocated\\\":1,\\\"day\\\":\\\"day-1\\\",\\\"open\\\":2,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0},{\\\"allocated\\\":3,\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":2},{\\\"allocated\\\":4,\\\"day\\\":\\\"day-3\\\",\\\"open\\\":3,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":4},{\\\"allocated\\\":0,\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"reduced-capacity\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dock-a\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"normal-capacity\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dock-a\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"contention_probe\\\":\\\"ORD-305\\\",\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-1\\\",\\\"execution_resource\\\":\\\"carrier-b\\\",\\\"id\\\":\\\"ORD-301\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 1,
+        "result_json": "{\"bytes_written\":910}",
+        "run_id": 1,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-301/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 5400,\\n    \\\"memo\\\": \\\"synthetic goods allocated\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 420,\\n    \\\"memo\\\": \\\"carrier booking\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 8100,\\n    \\\"memo\\\": \\\"additional goods\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"warehouse-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-labor\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"dock labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 690,\\n    \\\"memo\\\": \\\"rebooked freight\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accounts-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 13500,\\n    \\\"memo\\\": \\\"settle goods payable\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"carrier-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 1110,\\n    \\\"memo\\\": \\\"settle carriers\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-08\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-labor\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"settle labor\\\"\\n  }\\n]\\n\"}",
+        "id": 2,
+        "result_json": "{\"bytes_written\":1475}",
+        "run_id": 1,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-301/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-301\\\"}\\n\"}",
+        "id": 3,
+        "result_json": "{\"bytes_written\":66}",
+        "run_id": 1,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-301/result.json\"}",
+        "id": 4,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-301\\\"}\\n\"}",
+        "run_id": 1,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:56",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-301",
+      "task_spec_hash": "9b0d6403406b4d8ad3825fd95785608c4131a09e6cb7963b8218820c78eaa1e2",
+      "attempt_id": "attempt-ORD-301",
+      "resource_id": "carrier-b",
+      "context_hash": "140bbd15144622b4f47055e03fb3f84c0c6da41f1b6a8567f99613c10dfdc0a0",
+      "result_digest": "c1d061619b162b0380ca235167ff061e8184c9d3247b39ab15a09c66a3acfe8d",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-301/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 217
+    }
+  },
+  {
+    "work_item": "ORD-302",
+    "run_id": 2,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "ac5f2b39-8c80-4494-8f9e-b5bcbf9206a1",
+      "approved_plan_digest": "bf4d093dc057fec29f4ffb61d49b44c883e55cabd490e5db0231d6832731cee2",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-supply-chain-cycle:ORD-302:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":907}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1475}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":66}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-302\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-302/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"pickup-window-missed\\\",\\\"resource\\\":\\\"carrier-a\\\",\\\"start\\\":\\\"14:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"15:00\\\",\\\"event\\\":\\\"recovery-window\\\",\\\"resource\\\":\\\"carrier-b\\\",\\\"start\\\":\\\"09:00\\\"}],\\\"cycle_id\\\":\\\"logistics-supply-chain-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"allocated\\\":1,\\\"day\\\":\\\"day-1\\\",\\\"open\\\":2,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0},{\\\"allocated\\\":3,\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":2},{\\\"allocated\\\":4,\\\"day\\\":\\\"day-3\\\",\\\"open\\\":3,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":4},{\\\"allocated\\\":0,\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"reduced-capacity\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dock-a\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"normal-capacity\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dock-a\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"contention_probe\\\":\\\"ORD-304\\\",\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-1\\\",\\\"execution_resource\\\":\\\"dock-a\\\",\\\"id\\\":\\\"ORD-302\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 5,
+        "result_json": "{\"bytes_written\":907}",
+        "run_id": 2,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-302/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 5400,\\n    \\\"memo\\\": \\\"synthetic goods allocated\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 420,\\n    \\\"memo\\\": \\\"carrier booking\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 8100,\\n    \\\"memo\\\": \\\"additional goods\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"warehouse-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-labor\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"dock labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 690,\\n    \\\"memo\\\": \\\"rebooked freight\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accounts-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 13500,\\n    \\\"memo\\\": \\\"settle goods payable\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"carrier-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 1110,\\n    \\\"memo\\\": \\\"settle carriers\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-08\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-labor\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"settle labor\\\"\\n  }\\n]\\n\"}",
+        "id": 6,
+        "result_json": "{\"bytes_written\":1475}",
+        "run_id": 2,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-302/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-302\\\"}\\n\"}",
+        "id": 7,
+        "result_json": "{\"bytes_written\":66}",
+        "run_id": 2,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-302/result.json\"}",
+        "id": 8,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-302\\\"}\\n\"}",
+        "run_id": 2,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:56",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-302",
+      "task_spec_hash": "16b81a56a7e579db73b4f8573ec19982515adf485044079c47969ff5aeb61e0f",
+      "attempt_id": "attempt-ORD-302",
+      "resource_id": "dock-a",
+      "context_hash": "1ee59acdcc4f9aa727bf7f8de675c326dcecad54c92988487885bd38e9907ad1",
+      "result_digest": "ef7c3381f29d970f0c8759c9cfb50ea8578ca63669e033b625994737d644ea06",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-302/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 227
+    }
+  },
+  {
+    "work_item": "ORD-303",
+    "run_id": 3,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "3cdc4c6b-ba1d-4988-a4ab-1825a0b1d8ed",
+      "approved_plan_digest": "3ef9911e3d6793dee111c41555f266d1420865e4bafa95948dfdd246e07eb7aa",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-supply-chain-cycle:ORD-303:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":886}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1475}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":66}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-303\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-303/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"pickup-window-missed\\\",\\\"resource\\\":\\\"carrier-a\\\",\\\"start\\\":\\\"14:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"15:00\\\",\\\"event\\\":\\\"recovery-window\\\",\\\"resource\\\":\\\"carrier-b\\\",\\\"start\\\":\\\"09:00\\\"}],\\\"cycle_id\\\":\\\"logistics-supply-chain-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"allocated\\\":1,\\\"day\\\":\\\"day-1\\\",\\\"open\\\":2,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0},{\\\"allocated\\\":3,\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":2},{\\\"allocated\\\":4,\\\"day\\\":\\\"day-3\\\",\\\"open\\\":3,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":4},{\\\"allocated\\\":0,\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"reduced-capacity\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dock-a\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"normal-capacity\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dock-a\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-2\\\",\\\"execution_resource\\\":\\\"inventory-desk\\\",\\\"id\\\":\\\"ORD-303\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 9,
+        "result_json": "{\"bytes_written\":886}",
+        "run_id": 3,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:57",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-303/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 5400,\\n    \\\"memo\\\": \\\"synthetic goods allocated\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 420,\\n    \\\"memo\\\": \\\"carrier booking\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 8100,\\n    \\\"memo\\\": \\\"additional goods\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"warehouse-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-labor\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"dock labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 690,\\n    \\\"memo\\\": \\\"rebooked freight\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accounts-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 13500,\\n    \\\"memo\\\": \\\"settle goods payable\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"carrier-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 1110,\\n    \\\"memo\\\": \\\"settle carriers\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-08\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-labor\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"settle labor\\\"\\n  }\\n]\\n\"}",
+        "id": 10,
+        "result_json": "{\"bytes_written\":1475}",
+        "run_id": 3,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:57",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-303/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-303\\\"}\\n\"}",
+        "id": 11,
+        "result_json": "{\"bytes_written\":66}",
+        "run_id": 3,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:57",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-303/result.json\"}",
+        "id": 12,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-303\\\"}\\n\"}",
+        "run_id": 3,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:57",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-303",
+      "task_spec_hash": "3a15e6467610f745499e034aa4923e119ba912b2f2f212879b33cfd016d94c2a",
+      "attempt_id": "attempt-ORD-303",
+      "resource_id": "inventory-desk",
+      "context_hash": "1e3bb61ff670ed732d2b23703f45bc9e6bd98139c81d1d89bf52c128d61f1006",
+      "result_digest": "e2d618266dc214ce48c1c8da4d3ba4891a2eb9ffaa67e4e7cb27b43fc8eee28e",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-303/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 237
+    }
+  },
+  {
+    "work_item": "ORD-304",
+    "run_id": 4,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "63543f3e-c8b1-47fd-b0fb-20d56e27d0a4",
+      "approved_plan_digest": "97c7451b9a2acebd61f95bd5e0a096e275dc3f58cef46d85780d01b2bc141c54",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-supply-chain-cycle:ORD-304:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":878}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1475}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":66}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-304\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-304/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"pickup-window-missed\\\",\\\"resource\\\":\\\"carrier-a\\\",\\\"start\\\":\\\"14:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"15:00\\\",\\\"event\\\":\\\"recovery-window\\\",\\\"resource\\\":\\\"carrier-b\\\",\\\"start\\\":\\\"09:00\\\"}],\\\"cycle_id\\\":\\\"logistics-supply-chain-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"allocated\\\":1,\\\"day\\\":\\\"day-1\\\",\\\"open\\\":2,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0},{\\\"allocated\\\":3,\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":2},{\\\"allocated\\\":4,\\\"day\\\":\\\"day-3\\\",\\\"open\\\":3,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":4},{\\\"allocated\\\":0,\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"reduced-capacity\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dock-a\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"normal-capacity\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dock-a\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-2\\\",\\\"execution_resource\\\":\\\"dock-a\\\",\\\"id\\\":\\\"ORD-304\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 13,
+        "result_json": "{\"bytes_written\":878}",
+        "run_id": 4,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:57",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-304/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 5400,\\n    \\\"memo\\\": \\\"synthetic goods allocated\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 420,\\n    \\\"memo\\\": \\\"carrier booking\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 8100,\\n    \\\"memo\\\": \\\"additional goods\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"warehouse-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-labor\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"dock labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 690,\\n    \\\"memo\\\": \\\"rebooked freight\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accounts-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 13500,\\n    \\\"memo\\\": \\\"settle goods payable\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"carrier-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 1110,\\n    \\\"memo\\\": \\\"settle carriers\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-08\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-labor\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"settle labor\\\"\\n  }\\n]\\n\"}",
+        "id": 14,
+        "result_json": "{\"bytes_written\":1475}",
+        "run_id": 4,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:57",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-304/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-304\\\"}\\n\"}",
+        "id": 15,
+        "result_json": "{\"bytes_written\":66}",
+        "run_id": 4,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:57",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-304/result.json\"}",
+        "id": 16,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-304\\\"}\\n\"}",
+        "run_id": 4,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:57",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-304",
+      "task_spec_hash": "c27040ee87e8017cb04bf24d3010b2adc8519099942203511946c726d1c03d68",
+      "attempt_id": "attempt-ORD-304",
+      "resource_id": "dock-a",
+      "context_hash": "09c5a01b88b21f0b4470f6aa69b658d88f4d0245a3b0d5b363500537d1ce2203",
+      "result_digest": "13d12e05bb51955031a4b6488205a3f1898c6b5223aa1ba4ab4015ad3d0b5caf",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-304/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 247
+    }
+  },
+  {
+    "work_item": "ORD-305",
+    "run_id": 5,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "75c0a3f3-6cde-4669-9fbd-e87d5a441fa9",
+      "approved_plan_digest": "10a622341ad75517f0e648d9c928a3c763f1972e1639a85aa28cc0b4960439e0",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-supply-chain-cycle:ORD-305:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":881}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1475}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":66}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-305\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-305/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"pickup-window-missed\\\",\\\"resource\\\":\\\"carrier-a\\\",\\\"start\\\":\\\"14:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"15:00\\\",\\\"event\\\":\\\"recovery-window\\\",\\\"resource\\\":\\\"carrier-b\\\",\\\"start\\\":\\\"09:00\\\"}],\\\"cycle_id\\\":\\\"logistics-supply-chain-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"allocated\\\":1,\\\"day\\\":\\\"day-1\\\",\\\"open\\\":2,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0},{\\\"allocated\\\":3,\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":2},{\\\"allocated\\\":4,\\\"day\\\":\\\"day-3\\\",\\\"open\\\":3,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":4},{\\\"allocated\\\":0,\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"reduced-capacity\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dock-a\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"normal-capacity\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dock-a\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-2\\\",\\\"execution_resource\\\":\\\"carrier-b\\\",\\\"id\\\":\\\"ORD-305\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 17,
+        "result_json": "{\"bytes_written\":881}",
+        "run_id": 5,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:58",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-305/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 5400,\\n    \\\"memo\\\": \\\"synthetic goods allocated\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 420,\\n    \\\"memo\\\": \\\"carrier booking\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 8100,\\n    \\\"memo\\\": \\\"additional goods\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"warehouse-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-labor\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"dock labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 690,\\n    \\\"memo\\\": \\\"rebooked freight\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accounts-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 13500,\\n    \\\"memo\\\": \\\"settle goods payable\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"carrier-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 1110,\\n    \\\"memo\\\": \\\"settle carriers\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-08\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-labor\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"settle labor\\\"\\n  }\\n]\\n\"}",
+        "id": 18,
+        "result_json": "{\"bytes_written\":1475}",
+        "run_id": 5,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:58",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-305/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-305\\\"}\\n\"}",
+        "id": 19,
+        "result_json": "{\"bytes_written\":66}",
+        "run_id": 5,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:58",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-305/result.json\"}",
+        "id": 20,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-305\\\"}\\n\"}",
+        "run_id": 5,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:58",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-305",
+      "task_spec_hash": "ae5883f8a008d5ee5b945dc6ac40320114e3b4eaf658f51e1e871273dfe61a9e",
+      "attempt_id": "attempt-ORD-305",
+      "resource_id": "carrier-b",
+      "context_hash": "f62fe7f2f455776ca47dd40db25e73af6fdaa241aca558005a3e7b7c8a610ca8",
+      "result_digest": "67bb1c7d9308225cd4bfbcc52878f53c21613181882a33814d51432583ea8f34",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-305/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    }
+  },
+  {
+    "work_item": "ORD-306",
+    "run_id": 6,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "03ce513a-2fc1-45e8-a607-a2509d9552fa",
+      "approved_plan_digest": "7963919ebcb5b56120065f22aea56094856e2d8a55d6bba51d9e7533601a5ab9",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "logistics-supply-chain-cycle:ORD-306:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":882}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1475}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":66}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-306\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-306/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"pickup-window-missed\\\",\\\"resource\\\":\\\"carrier-a\\\",\\\"start\\\":\\\"14:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"15:00\\\",\\\"event\\\":\\\"recovery-window\\\",\\\"resource\\\":\\\"carrier-b\\\",\\\"start\\\":\\\"09:00\\\"}],\\\"cycle_id\\\":\\\"logistics-supply-chain-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"allocated\\\":1,\\\"day\\\":\\\"day-1\\\",\\\"open\\\":2,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0},{\\\"allocated\\\":3,\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":2},{\\\"allocated\\\":4,\\\"day\\\":\\\"day-3\\\",\\\"open\\\":3,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":4},{\\\"allocated\\\":0,\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"orders\\\",\\\"ship_ready\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"reduced-capacity\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dock-a\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"normal-capacity\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dock-a\\\"}],\\\"work_item\\\":{\\\"carryover\\\":false,\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-3\\\",\\\"execution_resource\\\":\\\"carrier-a\\\",\\\"id\\\":\\\"ORD-306\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 21,
+        "result_json": "{\"bytes_written\":882}",
+        "run_id": 6,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:58",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-306/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 5400,\\n    \\\"memo\\\": \\\"synthetic goods allocated\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 420,\\n    \\\"memo\\\": \\\"carrier booking\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"inventory-expense\\\",\\n    \\\"credit_account\\\": \\\"accounts-payable\\\",\\n    \\\"amount_usd\\\": 8100,\\n    \\\"memo\\\": \\\"additional goods\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"warehouse-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-labor\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"dock labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"freight-expense\\\",\\n    \\\"credit_account\\\": \\\"carrier-payable\\\",\\n    \\\"amount_usd\\\": 690,\\n    \\\"memo\\\": \\\"rebooked freight\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accounts-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 13500,\\n    \\\"memo\\\": \\\"settle goods payable\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"carrier-payable\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 1110,\\n    \\\"memo\\\": \\\"settle carriers\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-08\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-labor\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 360,\\n    \\\"memo\\\": \\\"settle labor\\\"\\n  }\\n]\\n\"}",
+        "id": 22,
+        "result_json": "{\"bytes_written\":1475}",
+        "run_id": 6,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:58",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-306/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-306\\\"}\\n\"}",
+        "id": 23,
+        "result_json": "{\"bytes_written\":66}",
+        "run_id": 6,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:58",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-logistics-cycle-001/ORD-306/result.json\"}",
+        "id": 24,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"ORD-306\\\"}\\n\"}",
+        "run_id": 6,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:58",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "logistics-supply-chain-cycle-001:ORD-306",
+      "task_spec_hash": "b5af345f577e16c8c476ea22bdebf005c6b7144af3ae63684e75bb3a853780da",
+      "attempt_id": "attempt-ORD-306",
+      "resource_id": "carrier-a",
+      "context_hash": "9a904c1fc55f5d9968898453d0438e166880d2c1974e74533c1de68d6248bf8b",
+      "result_digest": "ca01c8a0ff1af74fa83ca48118ceca0495d66270bc458ff2b735449e280609d3",
+      "result_ref": "/tmp/axiom-logistics-cycle-001/ORD-306/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 267
+    }
+  }
+]

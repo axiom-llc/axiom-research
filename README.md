@@ -7,11 +7,23 @@ Keep durable theory, source-grounded implementation research, architecture
 decisions, and reusable research programs here. Product code and transient
 implementation notes belong in their owning repositories.
 
+## Organizational simulation evidence program
+
+The approved [`simulations/`](./simulations/) program connects domain/process research to synthetic organization models, actual AXIOM execution evidence, deterministic evaluation, retained findings, executable demonstrations, and evidence-traceable public claims. Canonical evidence remains in Research; runtime authority remains in the owning AXIOM components. Simulations never imply production deployment or autonomous licensed/professional authority.
+
 ## Research artifacts
 
 | File                                                   | Role                                                                                | Current interpretation                                                                                                              |
 | ------------------------------------------------------ | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `ai-loop-architecture-taxonomy.md`                     | Taxonomy of iterative, autonomous, supervised, and learning control loops.          | Architectural taxonomy; workload-specific quantitative claims require empirical validation.                                         |
+| `claude-agent-systems-research-20261002.md`            | Reconciled Claude research on token efficiency, remote execution, input gating, validation, and benchmarking. | Model-output research input; accepted principles are bounded by provenance and require AXIOM measurement before quantitative promotion. |
+| `research-queue.json`                                  | Canonical prioritized queue for manual Claude/Gemini/ChatGPT researcher prompts. | Operational research state only; prompts do not grant implementation authority and `ISSUED` means rendered for manual submission, not externally delivered. |
+| `security/2026-10-04-agent-security-incident-boundary-review.md` | Source-grounded review of real-world agent security incidents against current AXIOM boundaries. | Confirms strong offline-mode controls but identifies destination-unbounded normal APEX networking and related secondary gaps; research only. |
+| `security/2026-10-04-autonomous-agent-egress-boundary-evaluation.md` | Focused evaluation of unauthorized autonomous network probing and egress containment. | Recommends testing a minimal destination-scoped default-deny egress capability; no active probing or implementation authorized. |
+| `research-workflow.md`                                 | Repeatable researcher + ChatGPT Research-Manager lifecycle and recursive-improvement boundary. | Canonical research-process contract; validated research may feed Director `learn`/`optimize`, but cannot self-apply system changes. |
+| `2026-10-03-long-horizon-agent-reliability-claude.md` | Refreshed long-horizon reliability, failure-localization, verification, and recovery research. | Accepted research input; prioritize measurement of root failure, detection latency, recovery, and claimed-vs-verified completion before architecture expansion. |
+| `2026-10-03-persistent-agent-memory-gemini.md`         | Reconciled causal/temporal memory research with 2026 citation repair. | Accepted with follow-up; test minimal validity/supersession semantics against current structured state before event-sourcing or graph complexity. |
+| `2026-10-03-agent-compute-routing-chatgpt.md`          | Refreshed compute economics, verification, retry, context, and adaptive-routing research. | Accepted research input; static minimum-capable routing remains the control baseline until adaptive policies beat it on held-out validated-work efficiency. |
 | `apex-transactional-effects-research.md`               | Source-grounded APEX/ASON effect-durability and recovery research.                  | Historical design input; APEX now has a durable effect ledger, but broader compensation remains constrained.                        |
 | `write-file-compensation-readiness.md`                 | Audit of `write_file` compensation requirements.                                    | Automatic `write_file` compensation remains blocked pending authority, preimage, concurrency/version, and reconciliation contracts. |
 | `rag-crash-consistency-architecture.md`                | Single-owner RAG persistence, journaling, and recovery design.                      | Core process-crash design has been implemented in `axiom-rag`; host-power-loss guarantees remain explicitly out of scope.           |
@@ -20,6 +32,7 @@ implementation notes belong in their owning repositories.
 | `independent-review-target.md`                          | Bounded reproducible review target for execution and storage evidence.             | Review packet only; it is not independent review, certification, or production evidence.                                           |
 | `j-space-research.md`                                  | Falsifiable J-space research program and epistemic boundaries.                      | Research agenda/toy formalization, not evidence about hidden model internals.                                                       |
 | `recursive-hyper-optimization.md`                      | Computability-grounded recursive self-optimization analysis.                        | Theory; ordinary APEX execution is not itself recursive hyper-optimization.                                                         |
+| zero-cost-compute-harness-research.md | Primary-source revalidation of zero-cost inference/compute pools and scheduler evidence boundaries. | Current 2026-09-22 provider snapshot; Lightning recurring-GPU claim corrected, Scaleway cadence unresolved, runtime account evidence still required. |
 | `temporal-state-resolution.md`                         | Epistemic latency versus physical/dynamical time.                                   | Conceptual synthesis grounded in stated physical/computational constraints.                                                         |
 | `tacon2026-apex-deterministic-execution-contracts.md`  | Diffable transcript of the June 2026 APEX paper.                                    | Historical publication; later source-grounded findings override conflicting implementation descriptions.                            |
 | `tacon2026_apex_deterministic_execution_contracts.pdf` | Original June 2026 publication.                                                     | Historical source artifact.                                                                                                         |
@@ -29,7 +42,12 @@ implementation notes belong in their owning repositories.
 ### ASON → APEX
 
 ASON validates caller-supplied plans against caller-supplied policy and submits
-the approved tool sequence to APEX without probabilistic replanning. APEX is the
+the approved tool sequence to APEX without probabilistic replanning. The current
+ASON→APEX path durably binds authorization identity, caller authority reference,
+policy digest/reference, and exact approved-plan digest to the APEX run before
+dispatch; recovery preserves that binding and rejects substitution. This is
+application-level provenance, not cryptographic attestation or independent
+human-identity proof. APEX is the
 bounded deterministic execution substrate.
 
 The submission boundary is verified. Do not reopen that design question without

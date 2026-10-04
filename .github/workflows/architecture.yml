@@ -6,6 +6,10 @@ on:
       - main
     paths:
       - "architecture/**"
+      - "research-queue.json"
+      - "research-workflow.md"
+      - "research_queue_check.py"
+      - "README.md"
       - ".github/workflows/architecture.yml"
   pull_request:
     branches:
@@ -31,7 +35,10 @@ jobs:
       - name: Install architecture validation dependency
         run: python -m pip install --disable-pip-version-check -r architecture/tests/requirements.txt
 
-      - name: Validate architecture change
+      - name: Validate research queue
+        run: python research_queue_check.py research-queue.json
+
+      - name: Validate architecture and changed-file whitespace
         shell: bash
         run: |
           set -euo pipefail
@@ -44,4 +51,10 @@ jobs:
             fi
           fi
           python architecture/tests/check.py --base "$base" --head "$GITHUB_SHA"
-          git diff --check "$base" "$GITHUB_SHA" -- architecture .github/workflows/architecture.yml
+          git diff --check "$base" "$GITHUB_SHA" -- \
+            architecture \
+            .github/workflows/architecture.yml \
+            README.md \
+            research-queue.json \
+            research-workflow.md \
+            research_queue_check.py

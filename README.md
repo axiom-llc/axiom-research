@@ -144,11 +144,16 @@ or a production deployment.
 
 ## Validation
 
-Research Markdown should remain internally consistent and whitespace-clean:
+Validate the canonical research queue and changed-file whitespace:
 
 ```bash
+python research_queue_check.py research-queue.json
 git diff --check
 ```
+
+Architecture changes additionally use `python architecture/tests/check.py`.
+The required GitHub `validate` check runs queue validation on every pull request
+and on pushes that change research-governance state.
 
 Any implementation claim should additionally be revalidated in its owning
 runtime repository.

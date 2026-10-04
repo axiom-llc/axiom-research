@@ -1,0 +1,22 @@
+{
+  "schema": "axiom-simulation/fixture-manifest-v1",
+  "fixture_id": "logistics-supply-chain-fixtures-001",
+  "scenario_id": "logistics-supply-chain-e2e-001",
+  "synthetic": true,
+  "generation_method": "deterministic hand-authored synthetic fixture",
+  "seed": 1,
+  "source_refs": [
+    "NIST manufacturing digital-thread / traceability research, https://www.nist.gov/programs-projects/digital-thread-smart-manufacturing"
+  ],
+  "assumptions": [
+    "Synthetic inventory, order, and carrier state only",
+    "No real shipment, booking, purchasing, or customer commitment",
+    "Operational exception authority remains explicit"
+  ],
+  "contains_private_data": false,
+  "artifact_hashes": {
+    "order.json": "d2dbbc8a5ada8d68f37fa9a0b5b3a1fb0c25c40bad563f76ee596809607e7017",
+    "inventory.json": "53dab9851156586f2bf0abd558c1341aef35e698f928d6ee302b4b73c2407b31",
+    "carriers.json": "d5ea982a12c70d0c38735ed4b23af1e1088f3c5b7aefeb715e3b24c2f87ce3be"
+  }
+}

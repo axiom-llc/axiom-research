@@ -1,0 +1,677 @@
+{
+  "schema": "axiom-simulation/operational-fidelity-v1",
+  "record_id": "logistics-supply-chain-day-001",
+  "actors": [
+    {
+      "id": "order-coordinator",
+      "role": "Order coordinator",
+      "authority": []
+    },
+    {
+      "id": "inventory-planner",
+      "role": "Inventory planner",
+      "authority": [
+        "substitution-approval"
+      ]
+    },
+    {
+      "id": "warehouse-tech",
+      "role": "Warehouse technician",
+      "authority": []
+    },
+    {
+      "id": "transport-planner",
+      "role": "Transport planner",
+      "authority": [
+        "carrier-booking"
+      ]
+    },
+    {
+      "id": "ops-manager",
+      "role": "Operations manager",
+      "authority": [
+        "exception-release"
+      ]
+    },
+    {
+      "id": "carrier-a",
+      "role": "Synthetic carrier service",
+      "authority": []
+    },
+    {
+      "id": "carrier-b",
+      "role": "Synthetic alternate carrier",
+      "authority": []
+    }
+  ],
+  "resources": [
+    {
+      "id": "order-system",
+      "kind": "order-system",
+      "state": {
+        "open": 1
+      }
+    },
+    {
+      "id": "warehouse",
+      "kind": "warehouse",
+      "state": {
+        "SKU-A": 0,
+        "SKU-B": 5
+      }
+    },
+    {
+      "id": "dock",
+      "kind": "dock",
+      "state": {
+        "slots": 1
+      }
+    },
+    {
+      "id": "carrier-capacity",
+      "kind": "transport",
+      "state": {
+        "A": 1,
+        "B": 1
+      }
+    },
+    {
+      "id": "shipment-ledger",
+      "kind": "shipment-ledger",
+      "state": {
+        "planned": 0
+      }
+    }
+  ],
+  "schedules": [
+    {
+      "id": "sched-pick",
+      "owner": "warehouse-tech",
+      "start": "10:00Z",
+      "end": "11:00Z"
+    },
+    {
+      "id": "sched-pickup-a",
+      "owner": "carrier-a",
+      "start": "13:00Z",
+      "end": "13:30Z"
+    },
+    {
+      "id": "sched-pickup-b",
+      "owner": "carrier-b",
+      "start": "15:00Z",
+      "end": "15:30Z"
+    }
+  ],
+  "queues": [
+    {
+      "id": "q-orders",
+      "kind": "orders",
+      "items": [
+        "ORD-501"
+      ]
+    },
+    {
+      "id": "q-pick",
+      "kind": "warehouse-pick",
+      "items": []
+    },
+    {
+      "id": "q-ship",
+      "kind": "shipment",
+      "items": []
+    },
+    {
+      "id": "q-exception",
+      "kind": "exceptions",
+      "items": []
+    }
+  ],
+  "decisions": [
+    {
+      "id": "d-sub",
+      "actor": "inventory-planner",
+      "decision": "substitute SKU-B for unavailable SKU-A"
+    },
+    {
+      "id": "d-carrier",
+      "actor": "transport-planner",
+      "decision": "book carrier A"
+    },
+    {
+      "id": "d-rebook",
+      "actor": "transport-planner",
+      "decision": "rebook carrier B"
+    },
+    {
+      "id": "d-release",
+      "actor": "ops-manager",
+      "decision": "release exception shipment"
+    }
+  ],
+  "communications": [
+    {
+      "id": "c-order",
+      "from_actor": "order-coordinator",
+      "to": [
+        "inventory-planner"
+      ],
+      "channel": "order-system",
+      "message": "ORD-501 ready"
+    },
+    {
+      "id": "c-stockout",
+      "from_actor": "inventory-planner",
+      "to": [
+        "ops-manager"
+      ],
+      "channel": "exception",
+      "message": "SKU-A stockout"
+    },
+    {
+      "id": "c-carrier-fail",
+      "from_actor": "carrier-a",
+      "to": [
+        "transport-planner"
+      ],
+      "channel": "carrier-status",
+      "message": "pickup missed"
+    },
+    {
+      "id": "c-rebook",
+      "from_actor": "transport-planner",
+      "to": [
+        "ops-manager"
+      ],
+      "channel": "exception",
+      "message": "carrier B rebooked"
+    },
+    {
+      "id": "c-delivery",
+      "from_actor": "carrier-b",
+      "to": [
+        "order-coordinator"
+      ],
+      "channel": "delivery-status",
+      "message": "delivered simulated"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "t-goods",
+      "kind": "synthetic-goods",
+      "amount_usd": 480.0
+    },
+    {
+      "id": "t-pick",
+      "kind": "synthetic-labor",
+      "amount_usd": 45.0
+    },
+    {
+      "id": "t-freight-a",
+      "kind": "synthetic-freight-cancelled",
+      "amount_usd": 0.0
+    },
+    {
+      "id": "t-freight-b",
+      "kind": "synthetic-freight",
+      "amount_usd": 132.0
+    },
+    {
+      "id": "t-exception",
+      "kind": "synthetic-handling",
+      "amount_usd": 35.0
+    }
+  ],
+  "inventory_movements": [
+    {
+      "id": "i-reserve",
+      "sku": "SKU-B",
+      "lot": "LOT-B-17",
+      "from": "warehouse-available",
+      "to": "reserved",
+      "quantity": 2
+    },
+    {
+      "id": "i-pick",
+      "sku": "SKU-B",
+      "lot": "LOT-B-17",
+      "from": "reserved",
+      "to": "picked",
+      "quantity": 2
+    },
+    {
+      "id": "i-stage",
+      "sku": "SKU-B",
+      "lot": "LOT-B-17",
+      "from": "picked",
+      "to": "dock",
+      "quantity": 2
+    },
+    {
+      "id": "i-ship",
+      "sku": "SKU-B",
+      "lot": "LOT-B-17",
+      "from": "dock",
+      "to": "carrier-b",
+      "quantity": 2
+    },
+    {
+      "id": "i-deliver",
+      "sku": "SKU-B",
+      "lot": "LOT-B-17",
+      "from": "carrier-b",
+      "to": "customer-simulated",
+      "quantity": 2
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc-order",
+      "kind": "sales-order"
+    },
+    {
+      "id": "doc-sub",
+      "kind": "substitution-record"
+    },
+    {
+      "id": "doc-pick",
+      "kind": "pick-list"
+    },
+    {
+      "id": "doc-book",
+      "kind": "booking"
+    },
+    {
+      "id": "doc-exception",
+      "kind": "exception-record"
+    },
+    {
+      "id": "doc-rebook",
+      "kind": "rebooking"
+    },
+    {
+      "id": "doc-pod",
+      "kind": "proof-of-delivery"
+    }
+  ],
+  "events": [
+    {
+      "id": "e-order",
+      "kind": "order-received"
+    },
+    {
+      "id": "e-stockout",
+      "kind": "stockout"
+    },
+    {
+      "id": "e-sub",
+      "kind": "substitution"
+    },
+    {
+      "id": "e-pick",
+      "kind": "picked"
+    },
+    {
+      "id": "e-missed",
+      "kind": "pickup-missed"
+    },
+    {
+      "id": "e-rebook",
+      "kind": "rebooked"
+    },
+    {
+      "id": "e-delivery",
+      "kind": "delivery-simulated"
+    }
+  ],
+  "situations": [
+    {
+      "id": "sit-stockout",
+      "status": "SKU-A unavailable"
+    },
+    {
+      "id": "sit-missed",
+      "status": "carrier A missed pickup"
+    },
+    {
+      "id": "sit-dock",
+      "status": "dock slot preserved"
+    }
+  ],
+  "issues": [
+    {
+      "id": "issue-stockout",
+      "status": "resolved",
+      "recovery": "approved substitution"
+    },
+    {
+      "id": "issue-pickup",
+      "status": "resolved",
+      "recovery": "alternate carrier rebook"
+    }
+  ],
+  "approvals": [
+    {
+      "id": "a-sub",
+      "actor": "inventory-planner",
+      "authority": "substitution-approval",
+      "decision": "APPROVED"
+    },
+    {
+      "id": "a-book",
+      "actor": "transport-planner",
+      "authority": "carrier-booking",
+      "decision": "APPROVED"
+    },
+    {
+      "id": "a-exception",
+      "actor": "ops-manager",
+      "authority": "exception-release",
+      "decision": "APPROVED"
+    }
+  ],
+  "state_transitions": [
+    {
+      "id": "st-01",
+      "from": "NEW",
+      "to": "ORDER_ACCEPTED"
+    },
+    {
+      "id": "st-02",
+      "from": "ORDER_ACCEPTED",
+      "to": "STOCKOUT"
+    },
+    {
+      "id": "st-03",
+      "from": "STOCKOUT",
+      "to": "SUBSTITUTED"
+    },
+    {
+      "id": "st-04",
+      "from": "SUBSTITUTED",
+      "to": "ALLOCATED"
+    },
+    {
+      "id": "st-05",
+      "from": "ALLOCATED",
+      "to": "PICKED"
+    },
+    {
+      "id": "st-06",
+      "from": "PICKED",
+      "to": "BOOKED"
+    },
+    {
+      "id": "st-07",
+      "from": "BOOKED",
+      "to": "PICKUP_MISSED"
+    },
+    {
+      "id": "st-08",
+      "from": "PICKUP_MISSED",
+      "to": "REBOOKED"
+    },
+    {
+      "id": "st-09",
+      "from": "REBOOKED",
+      "to": "RELEASED"
+    },
+    {
+      "id": "st-10",
+      "from": "RELEASED",
+      "to": "SHIPPED_SIMULATED"
+    },
+    {
+      "id": "st-11",
+      "from": "SHIPPED_SIMULATED",
+      "to": "DELIVERED_SIMULATED"
+    },
+    {
+      "id": "st-12",
+      "from": "DELIVERED_SIMULATED",
+      "to": "CLOSED"
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "o-delivery",
+      "status": "DELIVERED_SIMULATED"
+    },
+    {
+      "id": "o-close",
+      "status": "ORDER_CLOSED"
+    }
+  ],
+  "operations": [
+    {
+      "id": "op01",
+      "at": "08:05Z",
+      "actor_ref": "order-coordinator",
+      "causes": [],
+      "refs": [
+        "q-orders",
+        "doc-order",
+        "e-order",
+        "c-order"
+      ],
+      "result_ref": "doc-order",
+      "kind": "observe"
+    },
+    {
+      "id": "op02",
+      "at": "08:20Z",
+      "actor_ref": "inventory-planner",
+      "causes": [
+        "op01"
+      ],
+      "refs": [
+        "warehouse",
+        "e-stockout",
+        "sit-stockout",
+        "issue-stockout",
+        "c-stockout"
+      ],
+      "result_ref": "e-stockout",
+      "kind": "inspect"
+    },
+    {
+      "id": "op03",
+      "at": "08:30Z",
+      "actor_ref": "inventory-planner",
+      "causes": [
+        "op02"
+      ],
+      "refs": [
+        "d-sub",
+        "a-sub",
+        "doc-sub",
+        "e-sub"
+      ],
+      "result_ref": "a-sub",
+      "kind": "approve"
+    },
+    {
+      "id": "op04",
+      "at": "08:40Z",
+      "actor_ref": "inventory-planner",
+      "causes": [
+        "op03"
+      ],
+      "refs": [
+        "i-reserve",
+        "t-goods",
+        "q-pick"
+      ],
+      "result_ref": "i-reserve",
+      "kind": "allocate"
+    },
+    {
+      "id": "op05",
+      "at": "10:00Z",
+      "actor_ref": "warehouse-tech",
+      "causes": [
+        "op04"
+      ],
+      "refs": [
+        "sched-pick",
+        "doc-pick",
+        "t-pick",
+        "i-pick",
+        "e-pick"
+      ],
+      "result_ref": "i-pick",
+      "kind": "produce"
+    },
+    {
+      "id": "op06",
+      "at": "10:30Z",
+      "actor_ref": "warehouse-tech",
+      "causes": [
+        "op05"
+      ],
+      "refs": [
+        "i-stage",
+        "dock"
+      ],
+      "result_ref": "i-stage",
+      "kind": "handoff"
+    },
+    {
+      "id": "op07",
+      "at": "11:00Z",
+      "actor_ref": "transport-planner",
+      "causes": [
+        "op06"
+      ],
+      "refs": [
+        "d-carrier",
+        "a-book",
+        "doc-book",
+        "q-ship"
+      ],
+      "result_ref": "a-book",
+      "kind": "approve"
+    },
+    {
+      "id": "op08",
+      "at": "13:15Z",
+      "actor_ref": "carrier-a",
+      "causes": [
+        "op07"
+      ],
+      "refs": [
+        "sched-pickup-a",
+        "e-missed",
+        "sit-missed",
+        "issue-pickup",
+        "c-carrier-fail",
+        "t-freight-a"
+      ],
+      "result_ref": "e-missed",
+      "kind": "test"
+    },
+    {
+      "id": "op09",
+      "at": "13:30Z",
+      "actor_ref": "transport-planner",
+      "causes": [
+        "op08"
+      ],
+      "refs": [
+        "q-exception",
+        "d-rebook",
+        "doc-rebook",
+        "e-rebook",
+        "c-rebook"
+      ],
+      "result_ref": "doc-rebook",
+      "kind": "recover"
+    },
+    {
+      "id": "op10",
+      "at": "14:00Z",
+      "actor_ref": "ops-manager",
+      "causes": [
+        "op09"
+      ],
+      "refs": [
+        "a-exception",
+        "d-release",
+        "t-exception"
+      ],
+      "result_ref": "a-exception",
+      "kind": "approve"
+    },
+    {
+      "id": "op11",
+      "at": "15:00Z",
+      "actor_ref": "carrier-b",
+      "causes": [
+        "op10"
+      ],
+      "refs": [
+        "sched-pickup-b",
+        "t-freight-b",
+        "i-ship"
+      ],
+      "result_ref": "i-ship",
+      "kind": "handoff"
+    },
+    {
+      "id": "op12",
+      "at": "16:30Z",
+      "actor_ref": "carrier-b",
+      "causes": [
+        "op11"
+      ],
+      "refs": [
+        "i-deliver",
+        "e-delivery",
+        "doc-pod",
+        "c-delivery",
+        "o-delivery"
+      ],
+      "result_ref": "o-delivery",
+      "kind": "handoff"
+    },
+    {
+      "id": "op13",
+      "at": "16:45Z",
+      "actor_ref": "ops-manager",
+      "causes": [
+        "op12"
+      ],
+      "refs": [
+        "o-close"
+      ],
+      "result_ref": "o-close",
+      "kind": "close"
+    }
+  ],
+  "completeness": {
+    "actors": true,
+    "resources": true,
+    "schedules": true,
+    "queues": true,
+    "decisions": true,
+    "communications": true,
+    "transactions": true,
+    "inventory": true,
+    "documents": true,
+    "events": true,
+    "situations": true,
+    "issues": true,
+    "approvals": true,
+    "failures_recovery": true,
+    "state_transitions": true,
+    "outcomes": true
+  },
+  "scenario_id": "logistics-supply-chain-e2e-001",
+  "synthetic": true,
+  "clock": {
+    "start": "2026-09-17T08:00:00Z",
+    "end": "2026-09-17T18:00:00Z",
+    "timezone": "UTC"
+  }
+}

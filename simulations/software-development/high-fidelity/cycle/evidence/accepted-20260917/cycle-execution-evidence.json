@@ -1,0 +1,506 @@
+[
+  {
+    "work_item": "SW-201",
+    "run_id": 1,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "89bf1e74-e00e-4fbd-a011-dbbcf04c441c",
+      "approved_plan_digest": "93cd9faa4c26ef04fbb37b9fe29dc42bb9209caff8a1cc36640368e9df9db9f8",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-development-cycle:SW-201:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":908}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1266}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":65}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-201\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-201/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"18:00\\\",\\\"event\\\":\\\"release-freeze\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"15:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"release-window\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"10:00\\\"}],\\\"cycle_id\\\":\\\"software-development-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"day\\\":\\\"day-1\\\",\\\"open\\\":3,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":2},{\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":2,\\\"ready_review\\\":3},{\\\"day\\\":\\\"day-3\\\",\\\"open\\\":2,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":3,\\\"ready_review\\\":1},{\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"unavailable\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dev-b\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"available\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dev-b\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"contention_probe\\\":\\\"SW-205\\\",\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-1\\\",\\\"execution_resource\\\":\\\"release\\\",\\\"id\\\":\\\"SW-201\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 1,
+        "result_json": "{\"bytes_written\":908}",
+        "run_id": 1,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:52",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-201/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 960,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"ci-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"CI usage\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 1120,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"security-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 240,\\n    \\\"memo\\\": \\\"security review\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"release-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 320,\\n    \\\"memo\\\": \\\"release labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 2640,\\n    \\\"memo\\\": \\\"settle payroll\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"settle cloud\\\"\\n  }\\n]\\n\"}",
+        "id": 2,
+        "result_json": "{\"bytes_written\":1266}",
+        "run_id": 1,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:52",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-201/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-201\\\"}\\n\"}",
+        "id": 3,
+        "result_json": "{\"bytes_written\":65}",
+        "run_id": 1,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:52",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-201/result.json\"}",
+        "id": 4,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-201\\\"}\\n\"}",
+        "run_id": 1,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:52",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-201",
+      "task_spec_hash": "9e137c8977a6a242ae0052b8dd1f2aee3e965ac5cff91eea4e329fdf1c0ed3ca",
+      "attempt_id": "attempt-SW-201",
+      "resource_id": "release",
+      "context_hash": "7d86797ad0afaa782ad2651a93ef5949466e1c1fd76171cab307b34c334707d7",
+      "result_digest": "bf9f21cf4201f5f5a2362f66e6ce9c88318e20fde1db88d7351cf7c0839540c6",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-201/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 217
+    }
+  },
+  {
+    "work_item": "SW-202",
+    "run_id": 2,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "68bf7313-fea9-4130-849a-77e2ede2d6ec",
+      "approved_plan_digest": "3fbcedaab5094b8c1b5833f1efac1b1d809d78fd34f5767f89d703509d45db60",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-development-cycle:SW-202:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":909}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1266}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":65}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-202\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-202/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"18:00\\\",\\\"event\\\":\\\"release-freeze\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"15:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"release-window\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"10:00\\\"}],\\\"cycle_id\\\":\\\"software-development-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"day\\\":\\\"day-1\\\",\\\"open\\\":3,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":2},{\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":2,\\\"ready_review\\\":3},{\\\"day\\\":\\\"day-3\\\",\\\"open\\\":2,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":3,\\\"ready_review\\\":1},{\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"unavailable\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dev-b\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"available\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dev-b\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"contention_probe\\\":\\\"SW-204\\\",\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-1\\\",\\\"execution_resource\\\":\\\"reviewer\\\",\\\"id\\\":\\\"SW-202\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 5,
+        "result_json": "{\"bytes_written\":909}",
+        "run_id": 2,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-202/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 960,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"ci-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"CI usage\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 1120,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"security-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 240,\\n    \\\"memo\\\": \\\"security review\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"release-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 320,\\n    \\\"memo\\\": \\\"release labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 2640,\\n    \\\"memo\\\": \\\"settle payroll\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"settle cloud\\\"\\n  }\\n]\\n\"}",
+        "id": 6,
+        "result_json": "{\"bytes_written\":1266}",
+        "run_id": 2,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-202/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-202\\\"}\\n\"}",
+        "id": 7,
+        "result_json": "{\"bytes_written\":65}",
+        "run_id": 2,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-202/result.json\"}",
+        "id": 8,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-202\\\"}\\n\"}",
+        "run_id": 2,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:53",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-202",
+      "task_spec_hash": "0aa0fc4988d42aae1c823c0ab7364c57c75208daaf7ee6d81d98f863275efa0d",
+      "attempt_id": "attempt-SW-202",
+      "resource_id": "reviewer",
+      "context_hash": "6145712c25a9cdaecd141ac9318e2d8ca53996f44610faf6e0c8db3f77e1ea31",
+      "result_digest": "470b3c17c053141dfb46f66ae062e4577e0b0915b3e05b079464c118eebd9f3e",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-202/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 227
+    }
+  },
+  {
+    "work_item": "SW-203",
+    "run_id": 3,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "1e84569c-5107-4513-b76a-26a8583b14d3",
+      "approved_plan_digest": "3da6601e06b362ac00280a6a69cc482cc4980a09b010331e63c9e87fa0954ea4",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-development-cycle:SW-203:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":878}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1266}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":65}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-203\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-203/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"18:00\\\",\\\"event\\\":\\\"release-freeze\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"15:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"release-window\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"10:00\\\"}],\\\"cycle_id\\\":\\\"software-development-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"day\\\":\\\"day-1\\\",\\\"open\\\":3,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":2},{\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":2,\\\"ready_review\\\":3},{\\\"day\\\":\\\"day-3\\\",\\\"open\\\":2,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":3,\\\"ready_review\\\":1},{\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"unavailable\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dev-b\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"available\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dev-b\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-1\\\",\\\"execution_resource\\\":\\\"dev-a\\\",\\\"id\\\":\\\"SW-203\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 9,
+        "result_json": "{\"bytes_written\":878}",
+        "run_id": 3,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-203/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 960,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"ci-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"CI usage\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 1120,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"security-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 240,\\n    \\\"memo\\\": \\\"security review\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"release-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 320,\\n    \\\"memo\\\": \\\"release labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 2640,\\n    \\\"memo\\\": \\\"settle payroll\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"settle cloud\\\"\\n  }\\n]\\n\"}",
+        "id": 10,
+        "result_json": "{\"bytes_written\":1266}",
+        "run_id": 3,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-203/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-203\\\"}\\n\"}",
+        "id": 11,
+        "result_json": "{\"bytes_written\":65}",
+        "run_id": 3,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:53",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-203/result.json\"}",
+        "id": 12,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-203\\\"}\\n\"}",
+        "run_id": 3,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:53",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-203",
+      "task_spec_hash": "349f96a448434126ae26f9793c3abebfef647e9c86b8ed534025f48e6d667286",
+      "attempt_id": "attempt-SW-203",
+      "resource_id": "dev-a",
+      "context_hash": "afd01550c3afab37c53b81fbba76097039151b0303f6f1369ca12a6c331f8155",
+      "result_digest": "3595735141662983c7571e0603db1f07fd6be7739d7558ab3930f53303825074",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-203/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 237
+    }
+  },
+  {
+    "work_item": "SW-204",
+    "run_id": 4,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "8225741e-ef76-47d9-8628-28761196b73c",
+      "approved_plan_digest": "67c933757aca9aeb773ad25351e665ecde451cfaa3bdabb03d3197b5e9b3a542",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-development-cycle:SW-204:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":881}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1266}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":65}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-204\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-204/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"18:00\\\",\\\"event\\\":\\\"release-freeze\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"15:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"release-window\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"10:00\\\"}],\\\"cycle_id\\\":\\\"software-development-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"day\\\":\\\"day-1\\\",\\\"open\\\":3,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":2},{\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":2,\\\"ready_review\\\":3},{\\\"day\\\":\\\"day-3\\\",\\\"open\\\":2,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":3,\\\"ready_review\\\":1},{\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"unavailable\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dev-b\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"available\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dev-b\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-2\\\",\\\"execution_resource\\\":\\\"reviewer\\\",\\\"id\\\":\\\"SW-204\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 13,
+        "result_json": "{\"bytes_written\":881}",
+        "run_id": 4,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-204/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 960,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"ci-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"CI usage\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 1120,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"security-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 240,\\n    \\\"memo\\\": \\\"security review\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"release-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 320,\\n    \\\"memo\\\": \\\"release labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 2640,\\n    \\\"memo\\\": \\\"settle payroll\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"settle cloud\\\"\\n  }\\n]\\n\"}",
+        "id": 14,
+        "result_json": "{\"bytes_written\":1266}",
+        "run_id": 4,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-204/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-204\\\"}\\n\"}",
+        "id": 15,
+        "result_json": "{\"bytes_written\":65}",
+        "run_id": 4,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-204/result.json\"}",
+        "id": 16,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-204\\\"}\\n\"}",
+        "run_id": 4,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-204",
+      "task_spec_hash": "77f897b5efbb14077d59854c743fd5678f5e7d0c6f3120eb3091bb218dabc748",
+      "attempt_id": "attempt-SW-204",
+      "resource_id": "reviewer",
+      "context_hash": "938ab5560e92d24ac51d571d59ee2d1a10ef17fbb9df25cb0036fcc10cda45f6",
+      "result_digest": "af2fe48db93dc791a2ca0f3d25ee7432a94657f2dfcc49bdb5c4d7f5fc790df4",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-204/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 247
+    }
+  },
+  {
+    "work_item": "SW-205",
+    "run_id": 5,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "d63b60e1-fe24-45e9-95d9-48c08fcdc8cd",
+      "approved_plan_digest": "a74dfde2ba759ca16a3135ebddbf348f835393f55060c9b501051f71b1908346",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-development-cycle:SW-205:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":880}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1266}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":65}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-205\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-205/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"18:00\\\",\\\"event\\\":\\\"release-freeze\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"15:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"release-window\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"10:00\\\"}],\\\"cycle_id\\\":\\\"software-development-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"day\\\":\\\"day-1\\\",\\\"open\\\":3,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":2},{\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":2,\\\"ready_review\\\":3},{\\\"day\\\":\\\"day-3\\\",\\\"open\\\":2,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":3,\\\"ready_review\\\":1},{\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"unavailable\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dev-b\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"available\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dev-b\\\"}],\\\"work_item\\\":{\\\"carryover\\\":true,\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-2\\\",\\\"execution_resource\\\":\\\"release\\\",\\\"id\\\":\\\"SW-205\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 17,
+        "result_json": "{\"bytes_written\":880}",
+        "run_id": 5,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-205/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 960,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"ci-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"CI usage\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 1120,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"security-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 240,\\n    \\\"memo\\\": \\\"security review\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"release-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 320,\\n    \\\"memo\\\": \\\"release labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 2640,\\n    \\\"memo\\\": \\\"settle payroll\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"settle cloud\\\"\\n  }\\n]\\n\"}",
+        "id": 18,
+        "result_json": "{\"bytes_written\":1266}",
+        "run_id": 5,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-205/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-205\\\"}\\n\"}",
+        "id": 19,
+        "result_json": "{\"bytes_written\":65}",
+        "run_id": 5,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-205/result.json\"}",
+        "id": 20,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-205\\\"}\\n\"}",
+        "run_id": 5,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-205",
+      "task_spec_hash": "4f7f56b808ca069a2bd248d0f862b7e509003b41c5c6b21edf7e250823c8cd37",
+      "attempt_id": "attempt-SW-205",
+      "resource_id": "release",
+      "context_hash": "bf9bc9a8d769c6dbfd073824ecd2eaea8d41c73a798fcf26e2a3ab5fcbf2b673",
+      "result_digest": "873632f6f646b8873d55d256fbeb3149358e057ebd760b4f5ead187a0cba8e66",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-205/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    }
+  },
+  {
+    "work_item": "SW-206",
+    "run_id": 6,
+    "authorization_binding": true,
+    "authorization": {
+      "authorization_id": "1454ebab-5009-458b-91bb-eda7c39beaba",
+      "approved_plan_digest": "410a9c38e8a46616411dcc3e74fdc27a27ec53a2387f4bc0acf02e0d0e48bb85",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "software-development-cycle:SW-206:synthetic-approved",
+      "decision": true
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":879}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":1266}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":65}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-206\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-206/context.json\",\"content\":\"{\\\"calendar_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"end\\\":\\\"18:00\\\",\\\"event\\\":\\\"release-freeze\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"15:00\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"end\\\":\\\"16:00\\\",\\\"event\\\":\\\"release-window\\\",\\\"resource\\\":\\\"release\\\",\\\"start\\\":\\\"10:00\\\"}],\\\"cycle_id\\\":\\\"software-development-cycle-001\\\",\\\"queue_snapshots\\\":[{\\\"day\\\":\\\"day-1\\\",\\\"open\\\":3,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":2},{\\\"day\\\":\\\"day-2\\\",\\\"open\\\":5,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":2,\\\"ready_review\\\":3},{\\\"day\\\":\\\"day-3\\\",\\\"open\\\":2,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":3,\\\"ready_review\\\":1},{\\\"day\\\":\\\"day-3-close\\\",\\\"open\\\":0,\\\"queue\\\":\\\"backlog\\\",\\\"ready_release\\\":0,\\\"ready_review\\\":0}],\\\"staffing_events\\\":[{\\\"day\\\":\\\"day-2\\\",\\\"event\\\":\\\"unavailable\\\",\\\"hours\\\":4,\\\"resource\\\":\\\"dev-b\\\"},{\\\"day\\\":\\\"day-3\\\",\\\"event\\\":\\\"available\\\",\\\"hours\\\":8,\\\"resource\\\":\\\"dev-b\\\"}],\\\"work_item\\\":{\\\"carryover\\\":false,\\\"day_completed\\\":\\\"day-3\\\",\\\"day_started\\\":\\\"day-3\\\",\\\"execution_resource\\\":\\\"dev-b\\\",\\\"id\\\":\\\"SW-206\\\",\\\"result\\\":\\\"CLOSED\\\"}}\\n\"}",
+        "id": 21,
+        "result_json": "{\"bytes_written\":879}",
+        "run_id": 6,
+        "step": 0,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-206/ledger.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"le-01\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 960,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-02\\\",\\n    \\\"day\\\": \\\"day-1\\\",\\n    \\\"debit_account\\\": \\\"ci-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"CI usage\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-03\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"engineering-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 1120,\\n    \\\"memo\\\": \\\"engineering labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-04\\\",\\n    \\\"day\\\": \\\"day-2\\\",\\n    \\\"debit_account\\\": \\\"security-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 240,\\n    \\\"memo\\\": \\\"security review\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-05\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"release-expense\\\",\\n    \\\"credit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"amount_usd\\\": 320,\\n    \\\"memo\\\": \\\"release labor\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-06\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-payroll\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 2640,\\n    \\\"memo\\\": \\\"settle payroll\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"le-07\\\",\\n    \\\"day\\\": \\\"day-3\\\",\\n    \\\"debit_account\\\": \\\"accrued-cloud\\\",\\n    \\\"credit_account\\\": \\\"synthetic-cash\\\",\\n    \\\"amount_usd\\\": 42,\\n    \\\"memo\\\": \\\"settle cloud\\\"\\n  }\\n]\\n\"}",
+        "id": 22,
+        "result_json": "{\"bytes_written\":1266}",
+        "run_id": 6,
+        "step": 1,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-206/result.json\",\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-206\\\"}\\n\"}",
+        "id": 23,
+        "result_json": "{\"bytes_written\":65}",
+        "run_id": 6,
+        "step": 2,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-software-cycle-001/SW-206/result.json\"}",
+        "id": 24,
+        "result_json": "{\"content\":\"{\\\"day_completed\\\":\\\"day-3\\\",\\\"status\\\":\\\"CLOSED\\\",\\\"work_item\\\":\\\"SW-206\\\"}\\n\"}",
+        "run_id": 6,
+        "step": 3,
+        "timestamp": "2026-09-17 03:27:54",
+        "tool": "read_file"
+      }
+    ],
+    "receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-206",
+      "task_spec_hash": "6f4b149d1934464503250ebad2beac840ad14a32dceef529391e331004bf48c5",
+      "attempt_id": "attempt-SW-206",
+      "resource_id": "dev-b",
+      "context_hash": "e7e3eb5b94972d5152a972847c52a325688c4fcadd91bc50f47be5ccc6a60f38",
+      "result_digest": "32c095ab3e640b27528d5f3bc41a978e220a3a5304003795af30462a359d33a4",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-206/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 267
+    }
+  }
+]

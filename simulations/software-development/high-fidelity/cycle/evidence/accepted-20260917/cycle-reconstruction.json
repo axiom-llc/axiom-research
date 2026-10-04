@@ -1,0 +1,125 @@
+{
+  "schema": "axiom-simulation/operational-cycle-reconstruction-v1",
+  "cycle_id": "software-development-cycle-001",
+  "domain": "software-development",
+  "result": "ACCEPT",
+  "repository_revisions": {
+    "axiom-research": "7fd0df13bb8d7e43b92dfead337f4ca145f0e1de",
+    "axiom-ason": "0a5779af47db09dd69da4d4739ee963dc4519ae2",
+    "axiom-apex": "59e05e703d62cef24d08f52633a4bf6c70ad593b",
+    "axiom-harness": "1a054f8b4addf9eb1445203d2e61588e20c7ef3a"
+  },
+  "source_sha256": "b6a619e172a1e408a059fce85077fa305ba8bf0e827101d56e3ed944a4c0147b",
+  "audit": {
+    "work_items": 6,
+    "days": 3,
+    "contention_cases": 2,
+    "ledger_entries": 7,
+    "ledger_debits_usd": 5364.0,
+    "ledger_credits_usd": 5364.0,
+    "carryover_items": 5,
+    "queue_peak_open": 5
+  },
+  "authority_gate_ok": true,
+  "contention": [
+    {
+      "holder": "SW-201",
+      "blocked": "SW-205",
+      "resource": "release",
+      "exclusive_lease_blocked": true
+    },
+    {
+      "holder": "SW-202",
+      "blocked": "SW-204",
+      "resource": "reviewer",
+      "exclusive_lease_blocked": true
+    }
+  ],
+  "contention_ok": true,
+  "harness_receipts": [
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-201",
+      "task_spec_hash": "9e137c8977a6a242ae0052b8dd1f2aee3e965ac5cff91eea4e329fdf1c0ed3ca",
+      "attempt_id": "attempt-SW-201",
+      "resource_id": "release",
+      "context_hash": "7d86797ad0afaa782ad2651a93ef5949466e1c1fd76171cab307b34c334707d7",
+      "result_digest": "bf9f21cf4201f5f5a2362f66e6ce9c88318e20fde1db88d7351cf7c0839540c6",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-201/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 217
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-202",
+      "task_spec_hash": "0aa0fc4988d42aae1c823c0ab7364c57c75208daaf7ee6d81d98f863275efa0d",
+      "attempt_id": "attempt-SW-202",
+      "resource_id": "reviewer",
+      "context_hash": "6145712c25a9cdaecd141ac9318e2d8ca53996f44610faf6e0c8db3f77e1ea31",
+      "result_digest": "470b3c17c053141dfb46f66ae062e4577e0b0915b3e05b079464c118eebd9f3e",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-202/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 227
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-203",
+      "task_spec_hash": "349f96a448434126ae26f9793c3abebfef647e9c86b8ed534025f48e6d667286",
+      "attempt_id": "attempt-SW-203",
+      "resource_id": "dev-a",
+      "context_hash": "afd01550c3afab37c53b81fbba76097039151b0303f6f1369ca12a6c331f8155",
+      "result_digest": "3595735141662983c7571e0603db1f07fd6be7739d7558ab3930f53303825074",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-203/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 237
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-204",
+      "task_spec_hash": "77f897b5efbb14077d59854c743fd5678f5e7d0c6f3120eb3091bb218dabc748",
+      "attempt_id": "attempt-SW-204",
+      "resource_id": "reviewer",
+      "context_hash": "938ab5560e92d24ac51d571d59ee2d1a10ef17fbb9df25cb0036fcc10cda45f6",
+      "result_digest": "af2fe48db93dc791a2ca0f3d25ee7432a94657f2dfcc49bdb5c4d7f5fc790df4",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-204/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 247
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-205",
+      "task_spec_hash": "4f7f56b808ca069a2bd248d0f862b7e509003b41c5c6b21edf7e250823c8cd37",
+      "attempt_id": "attempt-SW-205",
+      "resource_id": "release",
+      "context_hash": "bf9bc9a8d769c6dbfd073824ecd2eaea8d41c73a798fcf26e2a3ab5fcbf2b673",
+      "result_digest": "873632f6f646b8873d55d256fbeb3149358e057ebd760b4f5ead187a0cba8e66",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-205/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    },
+    {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "software-development-cycle-001:SW-206",
+      "task_spec_hash": "6f4b149d1934464503250ebad2beac840ad14a32dceef529391e331004bf48c5",
+      "attempt_id": "attempt-SW-206",
+      "resource_id": "dev-b",
+      "context_hash": "e7e3eb5b94972d5152a972847c52a325688c4fcadd91bc50f47be5ccc6a60f38",
+      "result_digest": "32c095ab3e640b27528d5f3bc41a978e220a3a5304003795af30462a359d33a4",
+      "result_ref": "/tmp/axiom-software-cycle-001/SW-206/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 267
+    }
+  ],
+  "authorization_bindings_ok": true,
+  "effect_count": 24,
+  "event_count": 24,
+  "all_effects_succeeded": true,
+  "outcomes": [
+    {
+      "id": "software-cycle-close",
+      "status": "6/6 closed",
+      "backlog_open": 0,
+      "ledger_balanced": true
+    }
+  ]
+}

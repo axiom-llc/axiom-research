@@ -1,0 +1,112 @@
+{
+  "plan": {
+    "steps": [
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/00-order.json",
+          "content": "{\"status\": \"accepted\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/01-inventory-check.json",
+          "content": "{\"status\": \"short\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/02-replenishment.json",
+          "content": "{\"status\": \"delayed\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/03-substitution.json",
+          "content": "{\"status\": \"approved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/04-allocation.json",
+          "content": "{\"status\": \"complete\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/05-pick.json",
+          "content": "{\"status\": \"complete\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/06-carrier-book.json",
+          "content": "{\"status\": \"booked\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/07-pickup.json",
+          "content": "{\"status\": \"missed\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/08-rebook.json",
+          "content": "{\"status\": \"alternate\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/09-exception-release.json",
+          "content": "{\"status\": \"approved\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/10-ship.json",
+          "content": "{\"status\": \"simulated\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/11-delivery.json",
+          "content": "{\"status\": \"simulated\"}"
+        }
+      },
+      {
+        "tool": "write_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/terminal-state.json",
+          "content": "{\"carrier\": \"alternate\", \"inventory_substitution\": \"approved\", \"order\": \"fulfilled-simulated\", \"phase\": \"closed\"}"
+        }
+      },
+      {
+        "tool": "read_file",
+        "args": {
+          "path": "/tmp/axiom-logistics-supply-chain-001/terminal-state.json"
+        }
+      }
+    ]
+  },
+  "policy": {
+    "max_steps": 32,
+    "allowed_tools": [
+      "write_file",
+      "read_file"
+    ],
+    "blast_radius": "local",
+    "rollback_on_failure": false
+  }
+}

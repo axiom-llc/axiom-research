@@ -1,0 +1,336 @@
+{
+  "schema": "axiom-simulation/operational-cycle-v1",
+  "cycle_id": "software-development-cycle-001",
+  "domain": "software-development",
+  "synthetic": true,
+  "days": [
+    {
+      "id": "day-1",
+      "date": "2026-09-18"
+    },
+    {
+      "id": "day-2",
+      "date": "2026-09-19"
+    },
+    {
+      "id": "day-3",
+      "date": "2026-09-20"
+    }
+  ],
+  "entities": [
+    {
+      "id": "SW-201",
+      "kind": "story"
+    },
+    {
+      "id": "SW-202",
+      "kind": "story"
+    },
+    {
+      "id": "SW-203",
+      "kind": "story"
+    },
+    {
+      "id": "SW-204",
+      "kind": "story"
+    },
+    {
+      "id": "SW-205",
+      "kind": "story"
+    },
+    {
+      "id": "SW-206",
+      "kind": "story"
+    }
+  ],
+  "resources": [
+    {
+      "id": "dev-a",
+      "kind": "engineer",
+      "capacity": 1
+    },
+    {
+      "id": "dev-b",
+      "kind": "engineer",
+      "capacity": 1
+    },
+    {
+      "id": "reviewer",
+      "kind": "reviewer",
+      "capacity": 1
+    },
+    {
+      "id": "security",
+      "kind": "security-review",
+      "capacity": 1
+    },
+    {
+      "id": "release",
+      "kind": "release-manager",
+      "capacity": 1
+    }
+  ],
+  "arrivals": [
+    {
+      "day": "day-1",
+      "entity": "SW-201"
+    },
+    {
+      "day": "day-1",
+      "entity": "SW-202"
+    },
+    {
+      "day": "day-1",
+      "entity": "SW-203"
+    },
+    {
+      "day": "day-2",
+      "entity": "SW-204"
+    },
+    {
+      "day": "day-2",
+      "entity": "SW-205"
+    },
+    {
+      "day": "day-3",
+      "entity": "SW-206"
+    }
+  ],
+  "staffing_events": [
+    {
+      "day": "day-2",
+      "resource": "dev-b",
+      "event": "unavailable",
+      "hours": 4
+    },
+    {
+      "day": "day-3",
+      "resource": "dev-b",
+      "event": "available",
+      "hours": 8
+    }
+  ],
+  "calendar_events": [
+    {
+      "day": "day-2",
+      "resource": "release",
+      "event": "release-freeze",
+      "start": "15:00",
+      "end": "18:00"
+    },
+    {
+      "day": "day-3",
+      "resource": "release",
+      "event": "release-window",
+      "start": "10:00",
+      "end": "16:00"
+    }
+  ],
+  "queue_snapshots": [
+    {
+      "day": "day-1",
+      "queue": "backlog",
+      "open": 3,
+      "ready_review": 2,
+      "ready_release": 0
+    },
+    {
+      "day": "day-2",
+      "queue": "backlog",
+      "open": 5,
+      "ready_review": 3,
+      "ready_release": 2
+    },
+    {
+      "day": "day-3",
+      "queue": "backlog",
+      "open": 2,
+      "ready_review": 1,
+      "ready_release": 3
+    },
+    {
+      "day": "day-3-close",
+      "queue": "backlog",
+      "open": 0,
+      "ready_review": 0,
+      "ready_release": 0
+    }
+  ],
+  "resource_contention": [
+    {
+      "id": "cont-review",
+      "day": "day-2",
+      "resource": "reviewer",
+      "holder": "SW-202",
+      "blocked": "SW-204",
+      "expected": "exclusive-lease-block"
+    },
+    {
+      "id": "cont-release",
+      "day": "day-3",
+      "resource": "release",
+      "holder": "SW-201",
+      "blocked": "SW-205",
+      "expected": "exclusive-lease-block"
+    }
+  ],
+  "ledger_entries": [
+    {
+      "id": "le-01",
+      "day": "day-1",
+      "debit_account": "engineering-expense",
+      "credit_account": "accrued-payroll",
+      "amount_usd": 960,
+      "memo": "engineering labor"
+    },
+    {
+      "id": "le-02",
+      "day": "day-1",
+      "debit_account": "ci-expense",
+      "credit_account": "accrued-cloud",
+      "amount_usd": 42,
+      "memo": "CI usage"
+    },
+    {
+      "id": "le-03",
+      "day": "day-2",
+      "debit_account": "engineering-expense",
+      "credit_account": "accrued-payroll",
+      "amount_usd": 1120,
+      "memo": "engineering labor"
+    },
+    {
+      "id": "le-04",
+      "day": "day-2",
+      "debit_account": "security-expense",
+      "credit_account": "accrued-payroll",
+      "amount_usd": 240,
+      "memo": "security review"
+    },
+    {
+      "id": "le-05",
+      "day": "day-3",
+      "debit_account": "release-expense",
+      "credit_account": "accrued-payroll",
+      "amount_usd": 320,
+      "memo": "release labor"
+    },
+    {
+      "id": "le-06",
+      "day": "day-3",
+      "debit_account": "accrued-payroll",
+      "credit_account": "synthetic-cash",
+      "amount_usd": 2640,
+      "memo": "settle payroll"
+    },
+    {
+      "id": "le-07",
+      "day": "day-3",
+      "debit_account": "accrued-cloud",
+      "credit_account": "synthetic-cash",
+      "amount_usd": 42,
+      "memo": "settle cloud"
+    }
+  ],
+  "state_snapshots": [
+    {
+      "day": "day-1",
+      "states": {
+        "SW-201": "REVIEW",
+        "SW-202": "REVIEW",
+        "SW-203": "IMPLEMENTING"
+      }
+    },
+    {
+      "day": "day-2",
+      "states": {
+        "SW-201": "RELEASE_READY",
+        "SW-202": "SECURITY",
+        "SW-203": "REVIEW",
+        "SW-204": "REVIEW",
+        "SW-205": "IMPLEMENTING"
+      }
+    },
+    {
+      "day": "day-3",
+      "states": {
+        "SW-201": "CLOSED",
+        "SW-202": "CLOSED",
+        "SW-203": "CLOSED",
+        "SW-204": "CLOSED",
+        "SW-205": "CLOSED",
+        "SW-206": "CLOSED"
+      }
+    }
+  ],
+  "work_items": [
+    {
+      "id": "SW-201",
+      "day_started": "day-1",
+      "day_completed": "day-3",
+      "execution_resource": "release",
+      "result": "CLOSED",
+      "carryover": true,
+      "contention_probe": "SW-205"
+    },
+    {
+      "id": "SW-202",
+      "day_started": "day-1",
+      "day_completed": "day-3",
+      "execution_resource": "reviewer",
+      "result": "CLOSED",
+      "carryover": true,
+      "contention_probe": "SW-204"
+    },
+    {
+      "id": "SW-203",
+      "day_started": "day-1",
+      "day_completed": "day-3",
+      "execution_resource": "dev-a",
+      "result": "CLOSED",
+      "carryover": true
+    },
+    {
+      "id": "SW-204",
+      "day_started": "day-2",
+      "day_completed": "day-3",
+      "execution_resource": "reviewer",
+      "result": "CLOSED",
+      "carryover": true
+    },
+    {
+      "id": "SW-205",
+      "day_started": "day-2",
+      "day_completed": "day-3",
+      "execution_resource": "release",
+      "result": "CLOSED",
+      "carryover": true
+    },
+    {
+      "id": "SW-206",
+      "day_started": "day-3",
+      "day_completed": "day-3",
+      "execution_resource": "dev-b",
+      "result": "CLOSED",
+      "carryover": false
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "software-cycle-close",
+      "status": "6/6 closed",
+      "backlog_open": 0,
+      "ledger_balanced": true
+    }
+  ],
+  "completeness": {
+    "multi_day_carryover": true,
+    "mixed_workload": true,
+    "shared_resource_contention": true,
+    "queue_backpressure": true,
+    "dynamic_arrivals": true,
+    "staffing_calendar_changes": true,
+    "financial_ledger_cycle": true,
+    "sustained_multi_entity_state": true
+  }
+}

@@ -1,0 +1,354 @@
+[
+  {
+    "phase": "detect-triage",
+    "run_id": 1,
+    "authorization": {
+      "authorization_id": "f7f37063-34c0-4fbf-b60e-fc2f21f3d6dd",
+      "approved_plan_digest": "710878b56159a355f7779fbdd43ca89b0e88cdbdab9060e2f750d33d5151044a",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "soc-operations:detect-triage:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "710878b56159a355f7779fbdd43ca89b0e88cdbdab9060e2f750d33d5151044a",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":995}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":104}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":92}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"detect-triage\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/detect-triage/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op01\\\",\\n    \\\"at\\\": \\\"07:10Z\\\",\\n    \\\"actor_ref\\\": \\\"synthetic-siem\\\",\\n    \\\"kind\\\": \\\"observe\\\",\\n    \\\"refs\\\": [\\n      \\\"q-alert\\\",\\n      \\\"doc-alert\\\",\\n      \\\"e-alert\\\",\\n      \\\"i-alert\\\"\\n    ],\\n    \\\"causes\\\": [],\\n    \\\"result_ref\\\": \\\"doc-alert\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op02\\\",\\n    \\\"at\\\": \\\"07:20Z\\\",\\n    \\\"actor_ref\\\": \\\"analyst\\\",\\n    \\\"kind\\\": \\\"inspect\\\",\\n    \\\"refs\\\": [\\n      \\\"sched-analyst\\\",\\n      \\\"doc-triage\\\",\\n      \\\"d-severity\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op01\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-triage\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op03\\\",\\n    \\\"at\\\": \\\"07:30Z\\\",\\n    \\\"actor_ref\\\": \\\"analyst\\\",\\n    \\\"kind\\\": \\\"retrieve\\\",\\n    \\\"refs\\\": [\\n      \\\"sit-suspicious\\\",\\n      \\\"doc-enrichment\\\",\\n      \\\"t-tools\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op02\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-enrichment\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op04\\\",\\n    \\\"at\\\": \\\"07:45Z\\\",\\n    \\\"actor_ref\\\": \\\"analyst\\\",\\n    \\\"kind\\\": \\\"escalate\\\",\\n    \\\"refs\\\": [\\n      \\\"q-response\\\",\\n      \\\"e-escalate\\\",\\n      \\\"c-escalate\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op03\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"c-escalate\\\"\\n  }\\n]\\n\"}",
+        "id": 1,
+        "result_json": "{\"bytes_written\":995}",
+        "run_id": 1,
+        "step": 0,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/detect-triage/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"detect-triage\\\",\\n  \\\"last_operation\\\": \\\"op04\\\",\\n  \\\"terminal_operation_result\\\": \\\"c-escalate\\\"\\n}\\n\"}",
+        "id": 2,
+        "result_json": "{\"bytes_written\":104}",
+        "run_id": 1,
+        "step": 1,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/detect-triage/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"detect-triage\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 3,
+        "result_json": "{\"bytes_written\":92}",
+        "run_id": 1,
+        "step": 2,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/detect-triage/result.json\"}",
+        "id": 4,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op01\\\",\\\"op02\\\",\\\"op03\\\",\\\"op04\\\"],\\\"phase\\\":\\\"detect-triage\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 1,
+        "step": 3,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "soc-operations-day-001:detect-triage",
+      "task_spec_hash": "ddec10cff472884a5d8b543360df62d134f96289d8e4f56174556435938b1d48",
+      "attempt_id": "attempt-soc-operations-day-001-detect-triage",
+      "resource_id": "soc-desk",
+      "context_hash": "4e5d8e245f6fa646fc04d9c7db706916629a45289e82a5657678837fbe218e1d",
+      "result_digest": "65f69c2cb71277d8c07931a35d469fa3b707db242a7e12aeafe43d1ae48ab63d",
+      "result_ref": "/tmp/axiom-soc-hifi-day-001/detect-triage/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 253
+    }
+  },
+  {
+    "phase": "contain-authorize",
+    "run_id": 2,
+    "authorization": {
+      "authorization_id": "af3bc25d-d2ea-4f56-bd04-8f6284fde8d7",
+      "approved_plan_digest": "5715cd838cda57d5ac8ea19dae53a1c3978edbaa3f8223d1a4e11554124084ee",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "soc-operations:contain-authorize:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "5715cd838cda57d5ac8ea19dae53a1c3978edbaa3f8223d1a4e11554124084ee",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":638}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":107}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":82}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\"],\\\"phase\\\":\\\"contain-authorize\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/contain-authorize/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op05\\\",\\n    \\\"at\\\": \\\"08:10Z\\\",\\n    \\\"actor_ref\\\": \\\"responder\\\",\\n    \\\"kind\\\": \\\"approve\\\",\\n    \\\"refs\\\": [\\n      \\\"sched-responder\\\",\\n      \\\"d-contain\\\",\\n      \\\"a-contain\\\",\\n      \\\"doc-containment\\\",\\n      \\\"t-responder\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op04\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-contain\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op06\\\",\\n    \\\"at\\\": \\\"09:00Z\\\",\\n    \\\"actor_ref\\\": \\\"it-operator\\\",\\n    \\\"kind\\\": \\\"approve\\\",\\n    \\\"refs\\\": [\\n      \\\"sched-change\\\",\\n      \\\"d-isolate\\\",\\n      \\\"a-isolate\\\",\\n      \\\"q-change\\\",\\n      \\\"e-isolate\\\",\\n      \\\"c-contain\\\",\\n      \\\"sit-boundary\\\",\\n      \\\"t-it\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op05\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"a-isolate\\\"\\n  }\\n]\\n\"}",
+        "id": 5,
+        "result_json": "{\"bytes_written\":638}",
+        "run_id": 2,
+        "step": 0,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/contain-authorize/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"contain-authorize\\\",\\n  \\\"last_operation\\\": \\\"op06\\\",\\n  \\\"terminal_operation_result\\\": \\\"a-isolate\\\"\\n}\\n\"}",
+        "id": 6,
+        "result_json": "{\"bytes_written\":107}",
+        "run_id": 2,
+        "step": 1,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/contain-authorize/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\"],\\\"phase\\\":\\\"contain-authorize\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 7,
+        "result_json": "{\"bytes_written\":82}",
+        "run_id": 2,
+        "step": 2,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/contain-authorize/result.json\"}",
+        "id": 8,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op05\\\",\\\"op06\\\"],\\\"phase\\\":\\\"contain-authorize\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 2,
+        "step": 3,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "soc-operations-day-001:contain-authorize",
+      "task_spec_hash": "8715c24e82775e0cfef48f3724c5b5124d33e0a3d28d3a105ee54dcf5d8ae0c6",
+      "attempt_id": "attempt-soc-operations-day-001-contain-authorize",
+      "resource_id": "response-desk",
+      "context_hash": "4bdb9b29b80f314f7ffddef7e1135bc641f702ae0a7ff4471824b94a4df66743",
+      "result_digest": "704ea1ec84ca589c2b7ef44d0a5ff8179faabc821608df934ce8109dc2881c1a",
+      "result_ref": "/tmp/axiom-soc-hifi-day-001/contain-authorize/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 257
+    }
+  },
+  {
+    "phase": "collect-recover",
+    "run_id": 3,
+    "authorization": {
+      "authorization_id": "8ce49da6-d0bc-404a-a1de-4bb6fd5819ef",
+      "approved_plan_digest": "c48ed84a0de466ca69e774f7fcbc551247bb041ff861c36ec9137aee41bbd486",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "soc-operations:collect-recover:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "c48ed84a0de466ca69e774f7fcbc551247bb041ff861c36ec9137aee41bbd486",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":804}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":107}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":87}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op07\\\",\\\"op08\\\",\\\"op09\\\"],\\\"phase\\\":\\\"collect-recover\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/collect-recover/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op07\\\",\\n    \\\"at\\\": \\\"09:30Z\\\",\\n    \\\"actor_ref\\\": \\\"responder\\\",\\n    \\\"kind\\\": \\\"test\\\",\\n    \\\"refs\\\": [\\n      \\\"sit-timeout\\\",\\n      \\\"e-timeout\\\",\\n      \\\"doc-collection-fail\\\",\\n      \\\"issue-timeout\\\",\\n      \\\"c-timeout\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op06\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-collection-fail\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op08\\\",\\n    \\\"at\\\": \\\"10:00Z\\\",\\n    \\\"actor_ref\\\": \\\"responder\\\",\\n    \\\"kind\\\": \\\"recover\\\",\\n    \\\"refs\\\": [\\n      \\\"doc-collection-pass\\\",\\n      \\\"e-collected\\\",\\n      \\\"i-evidence1\\\",\\n      \\\"i-evidence2\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op07\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-collection-pass\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op09\\\",\\n    \\\"at\\\": \\\"10:30Z\\\",\\n    \\\"actor_ref\\\": \\\"responder\\\",\\n    \\\"kind\\\": \\\"produce\\\",\\n    \\\"refs\\\": [\\n      \\\"e-eradicate\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op08\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"e-eradicate\\\"\\n  }\\n]\\n\"}",
+        "id": 9,
+        "result_json": "{\"bytes_written\":804}",
+        "run_id": 3,
+        "step": 0,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/collect-recover/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"collect-recover\\\",\\n  \\\"last_operation\\\": \\\"op09\\\",\\n  \\\"terminal_operation_result\\\": \\\"e-eradicate\\\"\\n}\\n\"}",
+        "id": 10,
+        "result_json": "{\"bytes_written\":107}",
+        "run_id": 3,
+        "step": 1,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/collect-recover/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op07\\\",\\\"op08\\\",\\\"op09\\\"],\\\"phase\\\":\\\"collect-recover\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 11,
+        "result_json": "{\"bytes_written\":87}",
+        "run_id": 3,
+        "step": 2,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/collect-recover/result.json\"}",
+        "id": 12,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op07\\\",\\\"op08\\\",\\\"op09\\\"],\\\"phase\\\":\\\"collect-recover\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 3,
+        "step": 3,
+        "timestamp": "2026-09-17 02:55:56",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "soc-operations-day-001:collect-recover",
+      "task_spec_hash": "a73c2570e2dc8f4909a99dd080e43b68c3d59602f554b63b40351dcb98b9ae3f",
+      "attempt_id": "attempt-soc-operations-day-001-collect-recover",
+      "resource_id": "forensics-desk",
+      "context_hash": "0b77a2779e4063cb5b2dc71ebba7a63b71f5212462baedeb6ca7aa4908939fd1",
+      "result_digest": "19074cf708d20b2d1c042ee35c74326692a2a66fbf38b8350bd96618ce3a5c69",
+      "result_ref": "/tmp/axiom-soc-hifi-day-001/collect-recover/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 259
+    }
+  },
+  {
+    "phase": "validate-close",
+    "run_id": 4,
+    "authorization": {
+      "authorization_id": "09371331-2a1d-4917-b81c-53cac1c3891f",
+      "approved_plan_digest": "f55f0223c705d189df162fa4ef85a8de57f28f2658e8c6db7ee176304c933738",
+      "policy_digest_or_ref": "daace73cce7ac60685d9f8671d7f3a2c0f2d7ad6d47be5cedeed446a763e1967",
+      "authority_ref": "soc-operations:validate-close:synthetic-approved",
+      "decision": true
+    },
+    "authorization_binding": true,
+    "ledger": {
+      "plan_digest": "f55f0223c705d189df162fa4ef85a8de57f28f2658e8c6db7ee176304c933738",
+      "step_count": 5
+    },
+    "effects": [
+      {
+        "result_json": "{\"bytes_written\":765}",
+        "state": "SUCCEEDED",
+        "step": 0
+      },
+      {
+        "result_json": "{\"bytes_written\":102}",
+        "state": "SUCCEEDED",
+        "step": 1
+      },
+      {
+        "result_json": "{\"bytes_written\":86}",
+        "state": "SUCCEEDED",
+        "step": 2
+      },
+      {
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op10\\\",\\\"op11\\\",\\\"op12\\\"],\\\"phase\\\":\\\"validate-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "state": "SUCCEEDED",
+        "step": 3
+      }
+    ],
+    "events": [
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/validate-close/operations.json\",\"content\":\"[\\n  {\\n    \\\"id\\\": \\\"op10\\\",\\n    \\\"at\\\": \\\"11:00Z\\\",\\n    \\\"actor_ref\\\": \\\"analyst\\\",\\n    \\\"kind\\\": \\\"test\\\",\\n    \\\"refs\\\": [\\n      \\\"doc-recovery\\\",\\n      \\\"t-analyst\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op09\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"doc-recovery\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op11\\\",\\n    \\\"at\\\": \\\"11:30Z\\\",\\n    \\\"actor_ref\\\": \\\"it-operator\\\",\\n    \\\"kind\\\": \\\"handoff\\\",\\n    \\\"refs\\\": [\\n      \\\"e-restore\\\",\\n      \\\"c-restore\\\",\\n      \\\"o-recovered\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op10\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"o-recovered\\\"\\n  },\\n  {\\n    \\\"id\\\": \\\"op12\\\",\\n    \\\"at\\\": \\\"12:00Z\\\",\\n    \\\"actor_ref\\\": \\\"commander\\\",\\n    \\\"kind\\\": \\\"approve\\\",\\n    \\\"refs\\\": [\\n      \\\"d-close\\\",\\n      \\\"a-close\\\",\\n      \\\"doc-close\\\",\\n      \\\"e-close\\\",\\n      \\\"c-close\\\",\\n      \\\"o-close\\\"\\n    ],\\n    \\\"causes\\\": [\\n      \\\"op11\\\"\\n    ],\\n    \\\"result_ref\\\": \\\"o-close\\\"\\n  }\\n]\\n\"}",
+        "id": 13,
+        "result_json": "{\"bytes_written\":765}",
+        "run_id": 4,
+        "step": 0,
+        "timestamp": "2026-09-17 02:55:57",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/validate-close/snapshot.json\",\"content\":\"{\\n  \\\"phase\\\": \\\"validate-close\\\",\\n  \\\"last_operation\\\": \\\"op12\\\",\\n  \\\"terminal_operation_result\\\": \\\"o-close\\\"\\n}\\n\"}",
+        "id": 14,
+        "result_json": "{\"bytes_written\":102}",
+        "run_id": 4,
+        "step": 1,
+        "timestamp": "2026-09-17 02:55:57",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/validate-close/result.json\",\"content\":\"{\\\"operation_ids\\\":[\\\"op10\\\",\\\"op11\\\",\\\"op12\\\"],\\\"phase\\\":\\\"validate-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "id": 15,
+        "result_json": "{\"bytes_written\":86}",
+        "run_id": 4,
+        "step": 2,
+        "timestamp": "2026-09-17 02:55:57",
+        "tool": "write_file"
+      },
+      {
+        "args_json": "{\"path\":\"/tmp/axiom-soc-hifi-day-001/validate-close/result.json\"}",
+        "id": 16,
+        "result_json": "{\"content\":\"{\\\"operation_ids\\\":[\\\"op10\\\",\\\"op11\\\",\\\"op12\\\"],\\\"phase\\\":\\\"validate-close\\\",\\\"status\\\":\\\"COMPLETE\\\"}\\n\"}",
+        "run_id": 4,
+        "step": 3,
+        "timestamp": "2026-09-17 02:55:57",
+        "tool": "read_file"
+      }
+    ],
+    "harness_receipt": {
+      "schema": "axiom-harness/receipt-v1",
+      "task_id": "soc-operations-day-001:validate-close",
+      "task_spec_hash": "5acebbd63353170562e93a87184dde52030756a0ae4289437a52bdbd51bdfadb",
+      "attempt_id": "attempt-soc-operations-day-001-validate-close",
+      "resource_id": "incident-command",
+      "context_hash": "b8c9021cc59cda291573bb12aceb58210ed5b408381af2c045f662b62d0ceb49",
+      "result_digest": "ec1e21b52eb235428f00758d66c44f9e0ac90dbf22a94720b9266004458475e8",
+      "result_ref": "/tmp/axiom-soc-hifi-day-001/validate-close/result.json",
+      "outcome": "ACCEPTED",
+      "committed_at": 262
+    }
+  }
+]

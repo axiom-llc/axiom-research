@@ -140,3 +140,15 @@ Bare `research` returns only:
 - durable artifact/state changes actually verified;
 - any newly queued follow-up IDs;
 - system-improvement candidates routed to `learn`/`optimize`, never silently applied.
+## Automation direction
+
+`research-queue.json` remains the single durable pending-research authority. Do not create a parallel `research-pending` queue or repurpose `for-evaluation/` as an editable task queue; `for-evaluation/` is provenance/intake for prompts that have not yet been reconciled into durable research.
+
+The current manual submission step is a capability boundary, not a permanent architecture requirement. When an authorized remote provider/channel exposes the required research capability, is healthy, satisfies the task's evidence requirements, and fits the active incremental-cost ceiling, Director may dispatch a queued item automatically while preserving the same deterministic item identity and state transitions. A failed or ambiguous dispatch must remain explicit; provider memory or task state never becomes canonical.
+
+The target automated lifecycle is:
+
+`research queue -> bounded researcher execution -> Research-Manager reconciliation -> durable evidence -> candidate engineering task -> owning-repository branch/PR -> repository-native validation -> Director classification -> separately authorized merge/release/external effect`
+
+Automation may select, dispatch, retrieve, reconcile, test, and prepare changes within existing authority. Research output must never self-authorize code mutation, merge, release, deployment, spending, publication, credential expansion, or other external effects. Repository protection and approval gates remain authoritative. Do not trigger another research/development cycle solely because the prior cycle completed; require a distinct unresolved question, failed validation, or validated improvement opportunity and stop at convergence.
+

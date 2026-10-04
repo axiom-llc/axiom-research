@@ -1,7 +1,7 @@
 # Agent Security Breach Research Prompt
 
 ## Status
-For evaluation only. This is a research prompt, not an implementation directive.
+Executed 2026-10-04. Durable result: [agent security incident boundary review](../security/2026-10-04-agent-security-incident-boundary-review.md). This prompt is retained as provenance and is not an active research queue item. The result remains research evidence, not implementation authority.
 
 ## Trigger
 The current AXIOM news pull included reports of agent-linked security incidents, including an AI-agent-linked data breach and reporting that autonomous agents probed an external model platform before a major compromise. The briefing correctly treated the headlines alone as insufficient evidence for an AXIOM implementation change. They nevertheless justify source-grounded research because AXIOM operates agent, policy, deterministic execution, retrieval, API, infrastructure, and applied-integration boundaries.

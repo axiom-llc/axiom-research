@@ -36,6 +36,14 @@ Exceptional terminal/intermediate statuses: `BLOCKED`, `REJECTED`.
 
 `ISSUED` means Director rendered a prompt for the operator to submit manually. It never means Claude, Gemini, or ChatGPT actually received the prompt.
 
+## Automated R&D lane
+
+A separately admitted Director automation may process only `chatgpt` queue items without manual prompt handoff. It must satisfy the current Director branch/PR write gate before mutation, preserve this queue as the sole research queue, use the same deterministic ordering restricted to eligible `chatgpt` items, and keep WIP to one research item plus at most one directly derived implementation candidate.
+
+Automated work is non-canonical until normal review/integration: research artifacts, queue transitions, code candidates, tests, and documentation live on isolated `automation/rd/<work-id>` branches and may be proposed through pull requests. The automation may not merge its own PRs, release/deploy/publish, spend, send external messages, alter secrets or repository authority, reroute `claude-manual`/`gemini-manual` items, or widen its own admission threshold.
+
+Each automated cycle must prefer current primary sources, preserve uncertainty, independently validate repository effects, measure useful output and friction, and stop at convergence rather than manufacturing work. Repeated evidence may justify a self-improvement proposal to the pipeline itself, but that proposal remains branch/PR-only and cannot self-authorize broader effects.
+
 ## `research` cycle
 
 ### 1. Select

@@ -26,7 +26,8 @@
       "Queue items are research prompts, not execution authority.",
       "ISSUED means Director rendered the prompt for manual submission; it does not mean the external model received it.",
       "Research artifacts are evidence inputs. Canonical or implementation changes require independent validation and existing AXIOM authority.",
-      "Do not enqueue raw sensitive/private operator context when a minimized research question is sufficient."
+      "Do not enqueue raw sensitive/private operator context when a minimized research question is sufficient.",
+      "Automated R&D may select only `chatgpt` QUEUED items after the Director branch/PR write gate is current; manual-target items are never auto-rerouted, and automation output remains non-canonical until normal PR integration."
     ]
   },
   "items": [

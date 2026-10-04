@@ -1,7 +1,7 @@
 # Verification and Mitigation of Autonomous Agent Boundary Escapes and Unauthorized Network Probing
 
 ## Status
-For evaluation only. This is a research prompt, not an implementation directive.
+Executed 2026-10-04. Durable result: [autonomous-agent egress boundary evaluation](../security/2026-10-04-autonomous-agent-egress-boundary-evaluation.md). This prompt is retained as provenance and is not an active research queue item. The result remains research evidence, not implementation authority.
 
 ## Trigger
 Reuters report claiming OpenAI autonomous agents probed external infrastructure (Hugging Face) prior to a security incident.

@@ -174,6 +174,257 @@
         "charge routing overhead",
         "no online deployment"
       ]
+    },
+    {
+      "id": "RQ-2026-10-04-007",
+      "priority": 0,
+      "value_score": 99,
+      "status": "QUEUED",
+      "target": "claude-manual",
+      "created_at": "2026-10-04",
+      "title": "Destination-scoped agent egress capability",
+      "question": "What is the smallest destination-aware network authorization contract that prevents unauthorized agent egress while remaining robust to redirects, DNS rebinding, private/link-local/metadata addresses, proxies, numeric IP forms, and dual-stack resolution?",
+      "objective": "Specify a minimal egress capability and synthetic validation suite that can integrate with ASON/APEX without a broad architecture rewrite.",
+      "deliverable": [
+        "primary-source synthesis",
+        "minimal capability schema",
+        "enforcement-point decision",
+        "adversarial synthetic test matrix",
+        "compatibility costs",
+        "promotion and rejection criteria"
+      ],
+      "constraints": [
+        "no active external scanning",
+        "default deny",
+        "preserve current ASON/APEX authority separation",
+        "remote-only zero-cost validation"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-008",
+      "priority": 0,
+      "value_score": 97,
+      "status": "QUEUED",
+      "target": "chatgpt",
+      "created_at": "2026-10-04",
+      "title": "Minimal sequence-aware exfiltration policy",
+      "question": "What is the smallest practical policy for blocking unsafe read-to-network and credential-to-network tool sequences without introducing a general-purpose taint-tracking system?",
+      "objective": "Determine whether a compact data/effect classification and sequence rule materially improves AXIOM security over tool-level authorization alone.",
+      "deliverable": [
+        "threat model",
+        "minimal policy candidates",
+        "false-positive and false-negative cases",
+        "synthetic adversarial tests",
+        "complexity comparison",
+        "rejection criteria"
+      ],
+      "constraints": [
+        "KISS",
+        "no broad information-flow rewrite",
+        "no live exfiltration",
+        "remote-only zero-cost experiments"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-009",
+      "priority": 0,
+      "value_score": 95,
+      "status": "QUEUED",
+      "target": "claude-manual",
+      "created_at": "2026-10-04",
+      "title": "Unauthorized inter-agent communication containment",
+      "question": "How should an agent platform prevent shared caches, package proxies, artifacts, logs, or other infrastructure from becoming unauthorized inter-agent coordination channels?",
+      "objective": "Derive minimal controls and tests for covert or accidental agent-to-agent communication through shared infrastructure.",
+      "deliverable": [
+        "incident-grounded failure taxonomy",
+        "shared-resource boundary model",
+        "minimal mitigations",
+        "synthetic multi-agent MVE",
+        "detection signals",
+        "rejection criteria"
+      ],
+      "constraints": [
+        "no production probing",
+        "do not prohibit legitimate coordination by default",
+        "prefer deterministic controls",
+        "remote-only zero-cost validation"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-010",
+      "priority": 0,
+      "value_score": 94,
+      "status": "QUEUED",
+      "target": "claude-manual",
+      "created_at": "2026-10-04",
+      "title": "Spoof-resistant tool result validation",
+      "question": "How should persistent agents distinguish self-reported tool outputs, model-visible transcripts, execution receipts, and independently verified external outcomes so spoofed or fabricated tool results cannot become canonical state?",
+      "objective": "Design the smallest evidence hierarchy and validation contract that prevents transcript-level tool-result spoofing from being accepted as execution truth.",
+      "deliverable": [
+        "evidence taxonomy",
+        "trust boundary model",
+        "minimal receipt/verification contract",
+        "failure cases",
+        "synthetic tests",
+        "migration considerations"
+      ],
+      "constraints": [
+        "reuse existing AXIOM receipts where possible",
+        "no cryptographic attestation unless justified",
+        "preserve UNKNOWN semantics",
+        "remote-only"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-011",
+      "priority": 1,
+      "value_score": 92,
+      "status": "QUEUED",
+      "target": "gemini-manual",
+      "created_at": "2026-10-04",
+      "title": "Agent credential discovery and least privilege",
+      "question": "Which minimal credential-isolation, just-in-time access, and exposed-credential controls best prevent autonomous agents from discovering and reusing orphaned or overprivileged credentials?",
+      "objective": "Identify implementable least-privilege patterns compatible with AXIOM's explicit authority and remote execution model.",
+      "deliverable": [
+        "primary-source review",
+        "credential threat model",
+        "minimal control set",
+        "operational tradeoffs",
+        "synthetic validation plan",
+        "rejection criteria"
+      ],
+      "constraints": [
+        "no secrets in research artifacts",
+        "no credential harvesting",
+        "prefer short-lived scoped authority",
+        "zero-cost research"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-012",
+      "priority": 1,
+      "value_score": 90,
+      "status": "QUEUED",
+      "target": "chatgpt",
+      "created_at": "2026-10-04",
+      "title": "Agentic MCP and tool supply-chain identity",
+      "question": "What minimal identity/version binding should complement tool-schema digests so an agent can detect MCP or remote-tool implementation changes, endpoint substitution, and rug-pull behavior without requiring heavyweight attestation?",
+      "objective": "Determine the smallest deployable control that closes material schema-only trust gaps for high-risk remote tools.",
+      "deliverable": [
+        "current standards evidence",
+        "threat model",
+        "minimal binding options",
+        "compatibility analysis",
+        "synthetic tests",
+        "promotion gate"
+      ],
+      "constraints": [
+        "preserve current fail-closed unclassified-tool behavior",
+        "avoid speculative PKI",
+        "remote-only zero-cost experiments"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-013",
+      "priority": 1,
+      "value_score": 89,
+      "status": "QUEUED",
+      "target": "chatgpt",
+      "created_at": "2026-10-04",
+      "title": "Machine-speed anomaly halt policy",
+      "question": "Which low-complexity telemetry signals and stopping rules can detect and halt abnormal agent network/tool behavior at machine speed without excessive false shutdowns?",
+      "objective": "Define a small anomaly-control baseline around destination novelty, request rate, denied actions, tool-chain patterns, and authorization drift.",
+      "deliverable": [
+        "signal definitions",
+        "simple stopping baselines",
+        "false-positive analysis",
+        "offline replay plan",
+        "promotion thresholds",
+        "rejection criteria"
+      ],
+      "constraints": [
+        "prevention remains separate from monitoring",
+        "no ML anomaly detector unless simple baselines fail",
+        "use existing telemetry where possible",
+        "remote-only"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-014",
+      "priority": 1,
+      "value_score": 87,
+      "status": "QUEUED",
+      "target": "gemini-manual",
+      "created_at": "2026-10-04",
+      "title": "RAG indirect prompt injection boundary",
+      "question": "Which structural separation and validation techniques measurably reduce indirect prompt-injection risk from retrieved documents without pretending untrusted natural-language content can be perfectly sanitized?",
+      "objective": "Produce falsifiable RAG integrity tests and minimal boundary improvements for current AXIOM retrieval/generation flows.",
+      "deliverable": [
+        "primary-source synthesis",
+        "attack taxonomy",
+        "minimal structural controls",
+        "adversarial corpus design",
+        "evaluation metrics",
+        "rejection criteria"
+      ],
+      "constraints": [
+        "no claim of perfect prompt-injection prevention",
+        "preserve source provenance",
+        "no tool authority from retrieved content",
+        "zero-cost remote tests"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-015",
+      "priority": 2,
+      "value_score": 82,
+      "status": "QUEUED",
+      "target": "gemini-manual",
+      "created_at": "2026-10-04",
+      "title": "Defensive incident-analysis model readiness",
+      "question": "How should a resource-constrained organization prepare reliable AI-assisted incident forensics when hosted models may refuse exploit-like defensive material or impose unsuitable data-boundary constraints?",
+      "objective": "Define a minimal readiness strategy for defensive analysis without deploying unrestricted offensive capability or incurring unapproved hosted cost.",
+      "deliverable": [
+        "current evidence",
+        "defensive use-case requirements",
+        "provider/self-host trade study",
+        "data-boundary controls",
+        "zero-cost readiness MVE",
+        "rejection criteria"
+      ],
+      "constraints": [
+        "defensive analysis only",
+        "no weaponization or active exploitation",
+        "$0 incremental hosted spend",
+        "do not assume local workstation routing"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-016",
+      "priority": 0,
+      "value_score": 100,
+      "status": "QUEUED",
+      "target": "chatgpt",
+      "created_at": "2026-10-04",
+      "title": "Fully automated research-to-development control loop",
+      "question": "What is the smallest safe architecture that can automate AXIOM research selection, evidence acquisition, Research-Manager reconciliation, candidate engineering, repository validation, and continuation while preserving explicit authority and preventing research output from self-authorizing code, merges, releases, spending, or external effects?",
+      "objective": "Design an ASAP automation path that reuses the existing research queue and Director execution interfaces rather than creating a parallel R&D authority.",
+      "deliverable": [
+        "end-to-end state machine",
+        "capability and authority gates",
+        "provider/channel routing contract",
+        "failure/recovery semantics",
+        "GitHub branch/PR validation flow",
+        "zero-cost incremental implementation plan",
+        "stop-at-convergence criteria"
+      ],
+      "constraints": [
+        "research-queue.json remains sole research work queue",
+        "remote-only",
+        "$0 incremental hosted spend unless separately authorized",
+        "no recursive self-authorization",
+        "reuse existing Director/Harness/APEX/ASON controls where sufficient"
+      ]
     }
   ]
 }

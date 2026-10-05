@@ -404,7 +404,7 @@
       "id": "RQ-2026-10-04-016",
       "priority": 0,
       "value_score": 100,
-      "status": "QUEUED",
+      "status": "COMPLETE",
       "target": "chatgpt",
       "created_at": "2026-10-04",
       "title": "Fully automated research-to-development control loop",
@@ -425,7 +425,16 @@
         "$0 incremental hosted spend unless separately authorized",
         "no recursive self-authorization",
         "reuse existing Director/Harness/APEX/ASON controls where sufficient"
-      ]
+      ],
+      "issued_at": "2026-10-04T22:51:04Z",
+      "completed_at": "2026-10-04T23:57:00Z",
+      "artifact": "2026-10-04-automated-rd-control-loop-chatgpt.md",
+      "automation": {
+        "lane": "chatgpt",
+        "branch": "automation/rd/RQ-2026-10-04-016",
+        "artifact_commit": "0bea7833cf441343a5a5e9445c8ae26d3b63f6fc",
+        "recovery_note": "Recovered incomplete automated R&D cycle after artifact read-back; no canonical merge performed."
+      }
     }
   ]
 }

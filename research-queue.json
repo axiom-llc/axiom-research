@@ -86,7 +86,7 @@
       "id": "RQ-2026-10-03-003",
       "priority": 0,
       "value_score": 96,
-      "status": "ISSUED",
+      "status": "COMPLETE",
       "target": "chatgpt",
       "created_at": "2026-10-03",
       "title": "Validated-work efficiency metric design",
@@ -106,7 +106,15 @@
         "$0 incremental hosted spend",
         "remote-only"
       ],
-      "issued_at": "2026-10-05T21:24:41.814Z"
+      "issued_at": "2026-10-05T21:24:41.814Z",
+      "completed_at": "2026-10-05T21:24:42.803Z",
+      "artifact": "2026-10-05-validated-work-efficiency-metrics-chatgpt.md",
+      "automation": {
+        "lane": "chatgpt",
+        "branch": "automation/rd/RQ-2026-10-03-003",
+        "artifact_commit": "1189df7bcec2b789ffc0c8b000d0d2973efe2561",
+        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
+      }
     },
     {
       "id": "RQ-2026-10-03-004",

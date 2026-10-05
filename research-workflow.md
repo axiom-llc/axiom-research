@@ -36,13 +36,13 @@ Exceptional terminal/intermediate statuses: `BLOCKED`, `REJECTED`.
 
 `ISSUED` means Director rendered a prompt for the operator to submit manually. It never means Claude, Gemini, or ChatGPT actually received the prompt.
 
-## Automated R&D lane
+## Hosted Research lane — BROKEN / WITHDRAWN
 
-A standing Owner-authorized Director automation may process only `chatgpt` queue items without manual prompt handoff. Director `rd-preflight` and autonomy-health receipts are advisory telemetry, not freshness gates on isolated research branch writes: missing, stale, failed, or `READ_ONLY` telemetry alone must not force the lane read-only. Mutation may proceed when current repository state is readable/writable, the selected item is eligible or recovered in-scope WIP, and the branch/PR scope rules below are satisfied. Preserve this queue as the sole research queue, use the same deterministic ordering restricted to eligible `chatgpt` items, and keep WIP to one research item plus at most one directly derived implementation candidate.
+Effective 2026-10-05 by explicit Owner/Operator instruction, the hosted `AXIOM R&D Loop` and `Research Scheduler Guard` are paused and removed from active execution routing. Do not dispatch this lane, revive its guard, re-enable either task, or treat the historical contract below as current execution authority. The scheduled worker disabled itself contrary to its prompt; enforced per-worker scheduler isolation is unavailable, and the exact research-write rejection remains unresolved. Track diagnosis in [Director issue #28](https://github.com/axiom-llc/axiom-director/issues/28).
 
-Automated work is non-canonical until validation/integration: research artifacts, queue transitions, code candidates, tests, and documentation live on isolated `automation/rd/<work-id>` branches and are proposed through pull requests. The user has explicitly pre-authorized **research-only** automation PRs to squash-merge into `axiom-research/main` after exact-head required CI/status checks succeed, the PR is mergeable, and its changed files are limited to research artifacts, `research-queue.json`, and ordinary research documentation. Any PR changing workflows, permissions, secrets, branch protection, authority controls, execution code, or another repository must remain unmerged by the automation. Implementation PRs remain non-self-merging unless separately authorized. The automation may not release/deploy/publish, spend, send external messages, alter secrets or repository authority, reroute `claude-manual`/`gemini-manual` items, or widen its own effect authority.
+The research queue, completed artifacts, branches/PR history, manual `research` workflow, independent GitHub validation, CIE and Image R&D remain intact. Restoration requires explicit Owner authorization after enforced scheduler isolation and durable scheduled research writes are verified.
 
-Each automated cycle must prefer current primary sources, preserve uncertainty, independently validate repository effects, measure useful output and friction, and stop at convergence rather than manufacturing work. Repeated evidence may justify a self-improvement proposal to the pipeline itself, but that proposal remains branch/PR-only and cannot self-authorize broader effects.
+Historical automated contract: [Director withdrawn lane](https://github.com/axiom-llc/axiom-director/blob/main/modules/workflows/rd-loop.md). The automation direction below describes a future lifecycle, not an active hosted route.
 
 ## `research` cycle
 

@@ -86,7 +86,7 @@
       "id": "RQ-2026-10-03-003",
       "priority": 0,
       "value_score": 96,
-      "status": "QUEUED",
+      "status": "ISSUED",
       "target": "chatgpt",
       "created_at": "2026-10-03",
       "title": "Validated-work efficiency metric design",
@@ -105,7 +105,8 @@
         "no routing behavior change",
         "$0 incremental hosted spend",
         "remote-only"
-      ]
+      ],
+      "issued_at": "2026-10-05T21:24:41.814Z"
     },
     {
       "id": "RQ-2026-10-03-004",

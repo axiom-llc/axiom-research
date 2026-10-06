@@ -552,7 +552,7 @@
       "id": "RQ-2026-10-06-019",
       "priority": 0,
       "value_score": 95,
-      "status": "ISSUED",
+      "status": "COMPLETE",
       "target": "chatgpt",
       "created_at": "2026-10-06",
       "title": "Canonical verified-execution transaction boundary",
@@ -575,8 +575,12 @@
       "issued_at": "2026-10-06T09:24:33.242Z",
       "automation": {
         "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-06-019"
-      }
+        "branch": "automation/rd/RQ-2026-10-06-019",
+        "artifact_commit": "0bbb15a3c789f61770c67a2ede6e135c75fdec3e",
+        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
+      },
+      "completed_at": "2026-10-06T09:25:58.689Z",
+      "artifact": "2026-10-06-canonical-verified-execution-boundary-chatgpt.md"
     }
   ]
 }

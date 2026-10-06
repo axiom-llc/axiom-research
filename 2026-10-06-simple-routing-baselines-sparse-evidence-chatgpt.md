@@ -164,9 +164,7 @@ Choose a maximum tolerable loss (delta_s ge 0) before viewing the holdout. The c
 
 Per logical transaction include:
 
-[
-C = C_{model} + C_{tool} + C_{validation} + C_{retry} + C_{latency} + C_{human} + C_{router}
-]
+`C_total = C_model + C_tool + C_validation + C_retry + C_latency + C_human + C_router`
 
 Keep each coordinate visible even if an explicit policy later converts some coordinates to a common unit. `C_router` includes classification/inference, telemetry, calibration, evaluation, incident diagnosis, and maintenance overhead. Amortized fixed cost must name its horizon; it cannot be silently omitted.
 

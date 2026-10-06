@@ -514,6 +514,39 @@
       },
       "completed_at": "2026-10-06T07:23:56.424Z",
       "artifact": "2026-10-06-routing-telemetry-coverage-headroom-audit-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-06-018",
+      "priority": 0,
+      "value_score": 96,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-06",
+      "title": "Execution telemetry composition boundary",
+      "question": "Which current AXIOM Director entrypoint can own durable ExecutionMetric persistence, and which current independent verification result can supply addressable validation evidence without changing routing behavior?",
+      "objective": "Identify an actual composition root and independent validator evidence source, or prove they are absent at the bound revision, then define the smallest non-speculative decision needed before telemetry schema v3 implementation.",
+      "deliverable": [
+        "repository-wide call graph evidence",
+        "composition-root candidate comparison",
+        "independent validation evidence matrix",
+        "integration readiness decision",
+        "bounded next-step validation"
+      ],
+      "constraints": [
+        "current repository evidence only",
+        "no routing behavior change",
+        "do not fabricate runtime wiring or validation evidence",
+        "remote-only zero-cost analysis"
+      ],
+      "issued_at": "2026-10-06T08:23:43.015Z",
+      "automation": {
+        "lane": "chatgpt",
+        "branch": "automation/rd/RQ-2026-10-06-018",
+        "artifact_commit": "e90bf01abed103b2ff00155dcf35f3aa8a3283da",
+        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
+      },
+      "completed_at": "2026-10-06T08:25:16.105Z",
+      "artifact": "2026-10-06-execution-telemetry-composition-boundary-chatgpt.md"
     }
   ]
 }

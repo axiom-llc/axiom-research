@@ -188,7 +188,7 @@
       "automation": {
         "lane": "chatgpt",
         "branch": "automation/rd/RQ-2026-10-03-006",
-        "artifact_commit": "264f808d1abf792afbfa434f971a173f461fe831",
+        "artifact_commit": "36d4ba1cead78304553b8199b70bc7ec9691a1c4",
         "manager_classification": "ACCEPT_WITH_FOLLOWUP"
       },
       "completed_at": "2026-10-06T04:20:53.323Z",

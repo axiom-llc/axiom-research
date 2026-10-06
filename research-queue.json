@@ -480,6 +480,31 @@
         "artifact_commit": "0bea7833cf441343a5a5e9445c8ae26d3b63f6fc",
         "recovery_note": "Recovered incomplete automated R&D cycle after artifact read-back; no canonical merge performed."
       }
+    },
+    {
+      "id": "RQ-2026-10-06-017",
+      "priority": 1,
+      "value_score": 84,
+      "status": "QUEUED",
+      "target": "chatgpt",
+      "created_at": "2026-10-06",
+      "title": "Routing telemetry coverage and headroom audit",
+      "question": "What evidence does current AXIOM Director telemetry actually expose for evaluating static minimum-capable and validator-triggered escalation baselines, and what smallest evidence gap must close before any adaptive-routing trial is justified?",
+      "objective": "Audit current Director telemetry and persistence against the accepted validated-work and sparse-routing contracts, then define the smallest zero-cost evidence-collection step.",
+      "deliverable": [
+        "current-state telemetry coverage matrix",
+        "routing-headroom feasibility decision",
+        "minimal additive evidence contract",
+        "zero-cost remote MVE",
+        "promotion and rejection criteria"
+      ],
+      "constraints": [
+        "current repository evidence only",
+        "no provider calls or incremental hosted spend",
+        "no online deployment or routing behavior change",
+        "preserve static minimum-capable control",
+        "do not infer unobserved counterfactual outcomes"
+      ]
     }
   ]
 }

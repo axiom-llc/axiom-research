@@ -485,7 +485,7 @@
       "id": "RQ-2026-10-06-017",
       "priority": 1,
       "value_score": 84,
-      "status": "ISSUED",
+      "status": "COMPLETE",
       "target": "chatgpt",
       "created_at": "2026-10-06",
       "title": "Routing telemetry coverage and headroom audit",
@@ -511,7 +511,9 @@
         "branch": "automation/rd/RQ-2026-10-06-017",
         "artifact_commit": "4cc5b08d3c4e510e730b80631380bce2e91e1a81",
         "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      }
+      },
+      "completed_at": "2026-10-06T07:23:56.424Z",
+      "artifact": "2026-10-06-routing-telemetry-coverage-headroom-audit-chatgpt.md"
     }
   ]
 }

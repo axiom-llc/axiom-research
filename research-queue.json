@@ -166,7 +166,7 @@
       "id": "RQ-2026-10-03-006",
       "priority": 1,
       "value_score": 85,
-      "status": "QUEUED",
+      "status": "COMPLETE",
       "target": "chatgpt",
       "created_at": "2026-10-03",
       "title": "Simple routing baselines under sparse evidence",
@@ -183,7 +183,16 @@
         "static minimum-capable remains control",
         "charge routing overhead",
         "no online deployment"
-      ]
+      ],
+      "issued_at": "2026-10-06T04:20:44.759Z",
+      "automation": {
+        "lane": "chatgpt",
+        "branch": "automation/rd/RQ-2026-10-03-006",
+        "artifact_commit": "36d4ba1cead78304553b8199b70bc7ec9691a1c4",
+        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
+      },
+      "completed_at": "2026-10-06T04:20:53.323Z",
+      "artifact": "2026-10-06-simple-routing-baselines-sparse-evidence-chatgpt.md"
     },
     {
       "id": "RQ-2026-10-04-007",

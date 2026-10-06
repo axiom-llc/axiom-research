@@ -152,13 +152,11 @@ Do not promote on token price alone. Evaluate a vector with lexicographic gates.
 
 ### Gate 1 — Validated outcome
 
-For candidate (c) and control (b), within each predeclared task/risk stratum:
+For candidate `c` and control `b`, within each predeclared task/risk stratum:
 
-[
-Delta_{success} = p_c(	ext{validated success}) - p_b(	ext{validated success})
-]
+`delta_success = p_c(validated success) - p_b(validated success)`
 
-Choose a maximum tolerable loss (delta_s ge 0) before viewing the holdout. The candidate must establish that its plausible downside is no worse than (-delta_s). Serious authority or safety failures have a zero-tolerance gate unless an external policy explicitly says otherwise.
+Choose a maximum tolerable loss `delta_s >= 0` before viewing the holdout. The candidate must establish that its plausible downside is no worse than `-delta_s`. Serious authority or safety failures have a zero-tolerance gate unless an external policy explicitly says otherwise.
 
 ### Gate 2 — Total measured resource cost
 

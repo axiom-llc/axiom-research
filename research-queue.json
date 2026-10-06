@@ -323,7 +323,7 @@
       "id": "RQ-2026-10-04-012",
       "priority": 1,
       "value_score": 90,
-      "status": "ISSUED",
+      "status": "COMPLETE",
       "target": "chatgpt",
       "created_at": "2026-10-04",
       "title": "Agentic MCP and tool supply-chain identity",
@@ -348,7 +348,9 @@
         "branch": "automation/rd/RQ-2026-10-04-012",
         "artifact_commit": "d9a97d76ac87189478b6b52f63e34351adac634c",
         "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      }
+      },
+      "completed_at": "2026-10-06T02:29:41.602Z",
+      "artifact": "2026-10-05-agentic-mcp-tool-supply-chain-identity-chatgpt.md"
     },
     {
       "id": "RQ-2026-10-04-013",

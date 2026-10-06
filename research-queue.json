@@ -547,6 +547,36 @@
       },
       "completed_at": "2026-10-06T08:25:16.105Z",
       "artifact": "2026-10-06-execution-telemetry-composition-boundary-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-06-019",
+      "priority": 0,
+      "value_score": 95,
+      "status": "ISSUED",
+      "target": "chatgpt",
+      "created_at": "2026-10-06",
+      "title": "Canonical verified-execution transaction boundary",
+      "question": "What is the smallest Director-owned composition contract that can sequence authorized dispatch, caller-owned independent validation, and durable observation without changing channel selection or activating a new runtime?",
+      "objective": "Choose one canonical transaction boundary and exact interfaces that unblock a bounded contract-only implementation while preserving provider, authority, validation, and persistence separation.",
+      "deliverable": [
+        "architecture decision",
+        "typed interface contract",
+        "failure and evidence semantics",
+        "bounded implementation slice",
+        "repository-native validation plan"
+      ],
+      "constraints": [
+        "current repository evidence only",
+        "no route-selection behavior change",
+        "no runtime activation or schema migration",
+        "no self-reported validation promotion",
+        "remote-only zero-cost analysis"
+      ],
+      "issued_at": "2026-10-06T09:24:33.242Z",
+      "automation": {
+        "lane": "chatgpt",
+        "branch": "automation/rd/RQ-2026-10-06-019"
+      }
     }
   ]
 }

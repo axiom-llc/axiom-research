@@ -108,7 +108,7 @@
       ],
       "issued_at": "2026-10-05T21:24:41.814Z",
       "completed_at": "2026-10-05T21:24:42.803Z",
-      "artifact": "2026-10-05-validated-work-efficiency-metrics-chatgpt.md",
+      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-05-validated-work-efficiency-metrics-chatgpt.md",
       "automation": {
         "lane": "chatgpt",
         "branch": "automation/rd/RQ-2026-10-03-003",
@@ -192,7 +192,7 @@
         "manager_classification": "ACCEPT_WITH_FOLLOWUP"
       },
       "completed_at": "2026-10-06T04:20:53.323Z",
-      "artifact": "2026-10-06-simple-routing-baselines-sparse-evidence-chatgpt.md"
+      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-06-simple-routing-baselines-sparse-evidence-chatgpt.md"
     },
     {
       "id": "RQ-2026-10-04-007",
@@ -473,7 +473,7 @@
       ],
       "issued_at": "2026-10-04T22:51:04Z",
       "completed_at": "2026-10-04T23:57:00Z",
-      "artifact": "2026-10-04-automated-rd-control-loop-chatgpt.md",
+      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-04-automated-rd-control-loop-chatgpt.md",
       "automation": {
         "lane": "chatgpt",
         "branch": "automation/rd/RQ-2026-10-04-016",

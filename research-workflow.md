@@ -36,13 +36,13 @@ Exceptional terminal/intermediate statuses: `BLOCKED`, `REJECTED`.
 
 `ISSUED` means Director rendered a prompt for the operator to submit manually. It never means Claude, Gemini, or ChatGPT actually received the prompt.
 
-## Hosted Research lane — BROKEN / WITHDRAWN
+## Hosted Research lane — authorized, runtime-conditional
 
-Effective 2026-10-05 by explicit Owner/Operator instruction, the hosted `AXIOM R&D Loop` and `Research Scheduler Guard` are paused and removed from active execution routing. Do not dispatch this lane, revive its guard, re-enable either task, or treat the historical contract below as current execution authority. The scheduled worker disabled itself contrary to its prompt; enforced per-worker scheduler isolation is unavailable, and the exact research-write rejection remains unresolved. Track diagnosis in [Director issue #28](https://github.com/axiom-llc/axiom-director/issues/28).
+On 2026-10-05 the Owner/Operator authorized restarting hosted R&D, superseding the earlier withdrawal. The prior scheduler-self-disable and scheduled GitHub-write failures remain regression evidence, not a permanent routing prohibition. Director issue #28 was closed as retired historical tracking on 2026-10-09; closure does not prove those failures were fixed.
 
-The research queue, completed artifacts, branches/PR history, manual `research` workflow, independent GitHub validation, CIE and Image R&D remain intact. Restoration requires explicit Owner authorization after enforced scheduler isolation and durable scheduled research writes are verified.
+**Liveness is separate from authorization.** The Director's last recorded provider check on 2026-10-09 found no enabled hosted tasks. Historical task schedules, including the October 6 R&D cadence, do not prove current execution. Before hosted dispatch, check the live task registry and verify repository access, eligible queue work, permission boundaries, and validation. Do not create, enable, reschedule, or otherwise mutate hosted scheduler tasks as a side effect of research, startup, or optimization; those effects require separate scheduling authorization. Workers must never mutate scheduler state.
 
-Historical automated contract: [Director withdrawn lane](https://github.com/axiom-llc/axiom-director/blob/main/modules/workflows/rd-loop.md). The automation direction below describes a future lifecycle, not an active hosted route.
+The manual `research` workflow, canonical queue, retained artifacts, and independent GitHub CI/PR paths remain available regardless of hosted task liveness. The [Director hosted R&D contract](https://github.com/axiom-llc/axiom-director/blob/main/modules/workflows/rd-loop.md) owns automated research admission and narrow research-only merge authority; this document does not independently authorize dispatch or merge.
 
 ## `research` cycle
 

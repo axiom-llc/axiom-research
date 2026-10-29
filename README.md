@@ -2,11 +2,11 @@
 
 **Terminology:** SI denotes AXIOM's super-intelligence research direction, not evidence that any published agent achieves superhuman performance. Historical research names and citations retain their original meanings.
 
-# AXIOM Research — Deprecated
+# AXIOM Research
 
-> **DEPRECATED — phased migration, 2026-10-08.** Sixteen evidence files were transferred with identical Git blob identities to owning repositories and removed from this repository's current tree: eight to [APEX research](https://github.com/axiom-llc/axiom-apex/tree/main/research), three to [RAG research](https://github.com/axiom-llc/axiom-rag/tree/main/research), and five to [Director research](https://github.com/axiom-llc/axiom-director/tree/main/research). Original revisions remain recoverable from Git history. Owner/Operator retention directive (2026-10-08): shared architecture, organizational simulations, cross-repository research governance/queue, and cross-cutting evidence **remain canonical in this repository**. These assets are **not pending relocation**; do not move, delete, or archive them without a new explicit Owner/Operator direction. Deprecation applies to duplicated, domain-specific research intake, not the retained cross-repository research assets or their validation contracts.
+> **Retained research authority; domain-specific migration, 2026-10-08.** Sixteen evidence files were transferred with identical Git blob identities to owning repositories and removed from this repository's current tree: eight to [APEX research](https://github.com/axiom-llc/axiom-apex/tree/main/research), three to [RAG research](https://github.com/axiom-llc/axiom-rag/tree/main/research), and five to [Director research](https://github.com/axiom-llc/axiom-director/tree/main/research). Original revisions remain recoverable from Git history. Owner/Operator retention directive (2026-10-08): shared architecture, organizational simulations, cross-repository research governance/queue, and cross-cutting evidence **remain canonical in this repository**. These assets are **not pending relocation**; do not move, delete, or archive them without a new explicit Owner/Operator direction. Deprecation applies to duplicated, domain-specific research intake, not the retained cross-repository research assets or their validation contracts.
 
-Historical research workspace for the AXIOM execution ecosystem. New work must be created in the relevant owning repository rather than here.
+Canonical shared architecture, organizational simulations, and cross-repository research governance for the AXIOM execution ecosystem. New domain-specific implementation research belongs in its owning repository; retained cross-cutting work continues here.
 
 Keep durable theory, source-grounded implementation research, architecture
 decisions, and reusable research programs here. Product code and transient

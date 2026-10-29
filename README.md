@@ -1,12 +1,8 @@
-
-
-**Terminology:** SI denotes AXIOM's super-intelligence research direction, not evidence that any published agent achieves superhuman performance. Historical research names and citations retain their original meanings.
-
-# AXIOM Research
+# AXIOM Research — Advanced AI and Superintelligence
 
 > **Retained research authority; domain-specific migration, 2026-10-08.** Sixteen evidence files were transferred with identical Git blob identities to owning repositories and removed from this repository's current tree: eight to [APEX research](https://github.com/axiom-llc/axiom-apex/tree/main/research), three to [RAG research](https://github.com/axiom-llc/axiom-rag/tree/main/research), and five to [Director research](https://github.com/axiom-llc/axiom-director/tree/main/research). Original revisions remain recoverable from Git history. Owner/Operator retention directive (2026-10-08): shared architecture, organizational simulations, cross-repository research governance/queue, and cross-cutting evidence **remain canonical in this repository**. These assets are **not pending relocation**; do not move, delete, or archive them without a new explicit Owner/Operator direction. Deprecation applies to duplicated, domain-specific research intake, not the retained cross-repository research assets or their validation contracts.
 
-Canonical shared architecture, organizational simulations, and cross-repository research governance for the AXIOM execution ecosystem. New domain-specific implementation research belongs in its owning repository; retained cross-cutting work continues here.
+Advanced AI and superintelligence research spanning shared architecture, organizational simulations and cross-repository engineering governance. New domain-specific implementation research belongs in its owning repository; retained cross-cutting work continues here.
 
 Keep durable theory, source-grounded implementation research, architecture
 decisions, and reusable research programs here. Product code and transient
@@ -34,7 +30,7 @@ The approved [`simulations/`](./simulations/) program connects domain/process re
 | [`rag-crash-consistency-architecture.md`](https://github.com/axiom-llc/axiom-rag/blob/main/research/rag-crash-consistency-architecture.md)                | Single-owner RAG persistence, journaling, and recovery design.                      | Core process-crash design has been implemented in `axiom-rag`; host-power-loss guarantees remain explicitly out of scope.           |
 | [`rag-http-compatibility-contract.md`](https://github.com/axiom-llc/axiom-rag/blob/main/research/rag-http-compatibility-contract.md)                   | Caller/server compatibility analysis for HTTP-only RAG storage access.              | Defines the compatibility requirements that led to the versioned RAG HTTP surface.                                                  |
 | [`rag-http-decision-resolution.md`](https://github.com/axiom-llc/axiom-rag/blob/main/research/rag-http-decision-resolution.md)                      | Resolution of namespace, provider/configuration, and raw-vector/identity authority. | Accepted decision input for the RAG 1.4 HTTP compatibility implementation.                                                          |
-| `independent-review-target.md`                          | Bounded reproducible review target for execution and storage evidence.             | Review packet only; it is not independent review, certification, or production evidence.                                           |
+| `independent-review-target.md`                          | Bounded reproducible review target for execution and storage evidence.             | Reproducible review inputs, revision-bound checks and execution/storage evidence.                                           |
 | `j-space-research.md`                                  | Falsifiable J-space research program and epistemic boundaries.                      | Research agenda/toy formalization, not evidence about hidden model internals.                                                       |
 | `recursive-hyper-optimization.md`                      | Computability-grounded recursive self-optimization analysis.                        | Theory; ordinary APEX execution is not itself recursive hyper-optimization.                                                         |
 | zero-cost-compute-harness-research.md | Primary-source revalidation of zero-cost inference/compute pools and scheduler evidence boundaries. | Current 2026-09-22 provider snapshot; Lightning recurring-GPU claim corrected, Scaleway cadence unresolved, runtime account evidence still required. |
@@ -141,7 +137,7 @@ or a production deployment.
    any separately authorized release or deployment.
 2. Keep evaluators local and preserve the explicit mapping and single-owner
    boundary; evaluator HTTP migration remains a separate scope. Treat the local
-   Compose integration as validated, not as a production deployment.
+   Compose integration with its recorded validation evidence.
 3. Keep `write_file` compensation blocked until its authority, inverse/preimage,
    version-safety, and reconciliation contracts are approved.
 4. Continue research only when it provides a falsifiable experiment, a durable

@@ -172,3 +172,7 @@ runtime repository.
 * [AXIOM Demos](https://github.com/axiom-llc/axiom-demos) — applied integrations.
 * [AXIOM API](https://github.com/axiom-llc/axiom-api) — reusable HTTP client base.
 * [AXIOM LLC](https://axiom-llc.github.io/) — public project site.
+
+## Software license and content rights
+
+AXIOM-authored software is covered by the scoped [MIT License](LICENSE). Research/content, artwork, trademarks and third-party materials retain their separate rights; the software license is not a blanket license to those materials.

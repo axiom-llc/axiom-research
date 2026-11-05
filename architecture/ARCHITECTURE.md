@@ -158,6 +158,8 @@ human intervention
 
 Dependency reduction is evidence-driven rather than absolute. External supply remains valid where it is safer, more reliable, lower-cost, or otherwise higher-value. Increased independence changes capability and dependency structure only; it never grants authority to change objectives, constraints, approval requirements, execution boundaries, or safety policy.
 
+**Strategic design decision — hardware-agnostic, interface-driven evolution:** Preserve AXIOM's existing authority, orchestration, execution, and evidence boundaries independently of particular hardware, model providers, or platforms. Integrate future physical systems, potentially including spacecraft, through narrow, versioned platform adapters and independently owned safety/control interfaces. Change core logic only when validated workload, real-time, fault-tolerance, or assurance requirements demonstrate that the existing interfaces cannot satisfy them. This preserves future integration optionality; it does not establish an autonomous spacecraft-development objective, authorize safety-critical deployment, or relax Owner/Operator authority.
+
 Reusable robotics primitives are owned by private `axiom-robotics`. Vehicle-specific robotics behavior remains owned by private `axiom-automotive`. Shared control contracts have exactly one canonical owner; domain repositories reference or consume them rather than copying divergent variants.
 
 ## Director

@@ -89,9 +89,9 @@ Apply these rules:
 8. Public repository changes must not introduce live credentials, private account state, or sensitive personal state.
 9. Contract changes must pass all applicable acceptance gates before becoming canonical.
 
-## AI and agent workflow
+## SI-oriented and agent workflow
 
-AI/agent optimization is permitted as a proposal-and-validation mechanism, not as an independent authority.
+SI-oriented agent optimization is permitted as a proposal-and-validation mechanism, not as an independent authority.
 
 For each architecture iteration:
 

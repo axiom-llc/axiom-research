@@ -1,14 +1,14 @@
-# 2. Material changes
+# Architecture changelog — public edition
 
-1. **Integrated compute/account state into resource routing.** Quota, rate limits, free allowance, current usage, billing period, pricing reference, and hard spend ceiling are now explicit resource-state concerns.
-2. **Set the unaudited `gxy` envelope to zero incremental cash by policy.** Unknown quota or pricing cannot be interpreted as usable capacity.
-3. **Separated model/provider compute from execution authority.** APEX may use different planning resources without changing its role as bounded machine executor.
-4. **Defined host harnesses separately from AXIOM Harness.** `codex`, `agy`, and `opencode` remain subordinate execution/development environments and gain no scheduling or canonical-completion authority.
-5. **Made direct APEX the integration baseline.** Nested harness→APEX execution is adopted only when measurement shows positive global value.
-6. **Reused APEX's existing CLI/HTTP/MCP surfaces before permitting bespoke harness adapters.**
-7. **Added execution-profile identity.** Provider, model, context, endpoint, runtime, host, and configuration are part of benchmark equivalence.
-8. **Added `ApexValidationRecord` as a Research artifact.** This captures reproducible model/account/harness results without introducing another runtime state owner.
-9. **Made workload acceptance—not endpoint availability—the production criterion for local models.**
-10. **Added explicit no-hidden-paid-fallback invariant.**
-11. **Required authorized direct-profile validation and account/resource verification ahead of speculative providers, host harnesses, or adapters.**
-12. **Preserved all prior authority, APEX/ASON, retry, recovery, acceptance, RAG, repository, and Harness-promotion boundaries required for correctness.**
+This file records externally relevant changes to the public architecture contract. The complete original engineering decision history and operational reasoning are preserved in verified private retention.
+
+## Version 1.0.0
+
+- Defined 33 stable governing invariants covering human authority, component boundaries, validation, failure handling, and evidence-based completion.
+- Established consistent schema identities for task, resource, work-intent, attempt, context, authorization-validation, and completion records.
+- Clarified the distinction between strategic prioritization, durable task progression, policy authorization, bounded execution, and retrieval.
+- Added explicit interoperability and reproducibility expectations for independent component validation.
+- Formalized conservative treatment of ambiguous execution outcomes and the requirement for affirmative evidence before retry or promotion.
+- Established public-safe evaluation boundaries for provider-neutral, capability-aware execution and synthetic workload evidence.
+
+Detailed provider configurations, capacity/account handling, route selection, benchmark profiles, internal composition, and unpublished policy decisions remain private. The public [architecture](ARCHITECTURE.md), [schemas](schemas/), and [tests](tests/) are the reproducible publication surface. Validation of a public contract does not establish a deployed system or unrestricted autonomous authority.

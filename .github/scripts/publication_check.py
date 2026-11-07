@@ -38,6 +38,31 @@ CONTENT_RULES = {
 }
 
 
+REDACTED_PUBLIC_ABSTRACTS = {
+    "2026-10-05-agentic-mcp-tool-supply-chain-identity-chatgpt.md",
+    "2026-10-05-machine-speed-anomaly-halt-policy-chatgpt.md",
+    "2026-10-05-minimal-sequence-aware-exfiltration-policy-chatgpt.md",
+    "2026-10-06-canonical-verified-execution-boundary-chatgpt.md",
+    "2026-10-06-execution-telemetry-composition-boundary-chatgpt.md",
+    "2026-10-06-routing-telemetry-coverage-headroom-audit-chatgpt.md",
+    "security/2026-10-04-agent-security-incident-boundary-review.md",
+    "security/2026-10-04-autonomous-agent-egress-boundary-evaluation.md",
+    "security/2026-11-04-change-triggered-security-validation-feasibility.md",
+    "security/2026-11-05-commercial-verification-and-privacy-opportunities.md",
+    "for-evaluation/agent-security-breach-research-prompt.md",
+    "for-evaluation/autonomous-agent-unauthorized-network-probing-controls.md",
+    "for-evaluation/runtime-ai-misbehavior-telemetry-and-disclosure-framework.md",
+    "autonomous-organizations-agentmail-chatgpt-research-20261003.md",
+    "zero-cost-compute-harness-research.md",
+    "j-space-research.md",
+    "recursive-hyper-optimization.md",
+    "temporal-state-resolution.md",
+    "ai-loop-architecture-taxonomy.md",
+    "claude-agent-systems-research-20261002.md",
+    "2026-10-03-long-horizon-agent-reliability-claude.md",
+}
+
+
 def main() -> int:
     paths = subprocess.check_output(["git", "ls-files", "-z"]).split(b"\0")
     failures: list[str] = []
@@ -61,6 +86,32 @@ def main() -> int:
                 continue  # Scanner's own rule definition is not personal evidence.
             if pattern.search(data):
                 failures.append(f"{path}: {rule}")
+    # Fail closed when a formerly restricted public abstract is replaced
+    # with a new full-length implementation or manuscript.
+    tracked = {raw.decode("utf-8", errors="surrogateescape") for raw in paths if raw}
+    for path in sorted(REDACTED_PUBLIC_ABSTRACTS):
+        if path not in tracked:
+            failures.append(f"{path}: missing reviewed public abstract")
+            continue
+        data = Path(path).read_bytes()
+        if b"Disclosure class: REDACT" not in data or len(data) > 3000:
+            failures.append(f"{path}: restricted source may have replaced public abstract")
+    # The queue must remain an explicitly public-safe view of research intake.
+    import json
+
+    try:
+        queue = json.loads(Path("research-queue.json").read_text(encoding="utf-8"))
+        if any(
+            "automation" in item
+            or not item.get("question", "").startswith("What independently verifiable public evidence")
+            or not item.get("objective", "").startswith("Assess the public research literature")
+            for item in queue.get("items", [])
+        ):
+            failures.append("research-queue.json: unreviewed internal research intake")
+        if "public disclosure-safe" not in " ".join(queue.get("policy", {}).get("notes", [])):
+            failures.append("research-queue.json: missing public-scope policy")
+    except (OSError, ValueError, TypeError, KeyError):
+        failures.append("research-queue.json: cannot verify public-scope format")
     if failures:
         for item in failures:
             print(f"PUBLICATION BLOCKED: {item}", file=sys.stderr)

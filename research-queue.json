@@ -23,11 +23,11 @@
     "manager_target": "chatgpt",
     "incremental_hosted_cost_usd": 0,
     "notes": [
-      "Queue items are research prompts, not execution authority.",
-      "ISSUED means Director rendered the prompt for manual submission; it does not mean the external model received it.",
-      "Research artifacts are evidence inputs. Canonical or implementation changes require independent validation and existing AXIOM authority.",
-      "Do not enqueue raw sensitive/private operator context when a minimized research question is sufficient.",
-      "Automated R&D may select only `chatgpt` QUEUED items after the Director branch/PR write gate is current; manual-target items are never auto-rerouted, and automation output remains non-canonical until normal PR integration."
+      "This is the public disclosure-safe research queue. Complete internal research prompts are retained in verified private storage.",
+      "Queue items are research prompts without execution authority.",
+      "Only public-source research is admissible here; confidential AXIOM state, security detail, customer data, and proprietary methodology must remain private.",
+      "ISSUED means a prompt was prepared for manual submission; it does not establish delivery or execution.",
+      "Automation must pass publication screening, exact-head validation, and existing authorization boundaries before acceptance."
     ]
   },
   "items": [
@@ -39,22 +39,17 @@
       "target": "claude-manual",
       "created_at": "2026-10-03",
       "title": "Long-horizon failure localization policy",
-      "question": "How should a persistent autonomous agent choose checkpoint placement and failure-localization effort as task horizon, consequence, reversibility, and validator cost vary?",
-      "objective": "Derive a falsifiable, implementation-relevant policy that minimizes root-to-detection wasted work while preserving validated completion.",
+      "question": "What independently verifiable public evidence is relevant to long-horizon failure localization policy?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for long-horizon failure localization policy, without using AXIOM-internal designs.",
       "deliverable": [
-        "evidence synthesis",
-        "decision model",
-        "simple baselines",
-        "5-10 falsifiable hypotheses",
-        "zero-cost remote MVE",
-        "rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "primary/current sources preferred",
-        "separate evidence from synthesis",
-        "no architecture rewrite",
-        "$0 incremental hosted spend",
-        "remote-only AXIOM experiments"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -65,21 +60,17 @@
       "target": "gemini-manual",
       "created_at": "2026-10-03",
       "title": "Minimal temporal state semantics",
-      "question": "What is the smallest temporal/supersession state model that captures most stale-fact and contradiction benefits for long-running agents without event-sourcing or graph-database complexity?",
-      "objective": "Identify the minimum schema and transition semantics worth testing against AXIOM structured state.",
+      "question": "What independently verifiable public evidence is relevant to minimal temporal state semantics?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for minimal temporal state semantics, without using AXIOM-internal designs.",
       "deliverable": [
-        "primary-source review",
-        "minimal schema candidates",
-        "failure cases",
-        "comparative complexity",
-        "zero-cost remote MVE",
-        "rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "KISS",
-        "do not assume bitemporal/event-sourced architecture is needed",
-        "$0 incremental hosted spend",
-        "remote-only experiments"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -90,31 +81,21 @@
       "target": "chatgpt",
       "created_at": "2026-10-03",
       "title": "Validated-work efficiency metric design",
-      "question": "Which minimal telemetry schema and derived metrics best estimate validated useful work per unit of model, tool, latency, and human-attention cost?",
-      "objective": "Produce a small provider-neutral metric set that can support routing research without Goodharting on token minimization.",
+      "question": "What independently verifiable public evidence is relevant to validated-work efficiency metric design?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for validated-work efficiency metric design, without using AXIOM-internal designs.",
       "deliverable": [
-        "metric definitions",
-        "failure modes",
-        "minimal telemetry fields",
-        "historical-analysis plan",
-        "zero-cost remote MVE",
-        "promotion gates"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "build on existing AXIOM telemetry",
-        "no routing behavior change",
-        "$0 incremental hosted spend",
-        "remote-only"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ],
       "issued_at": "2026-10-05T21:24:41.814Z",
       "completed_at": "2026-10-05T21:24:42.803Z",
-      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-05-validated-work-efficiency-metrics-chatgpt.md",
-      "automation": {
-        "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-03-003",
-        "artifact_commit": "1189df7bcec2b789ffc0c8b000d0d2973efe2561",
-        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      }
+      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-05-validated-work-efficiency-metrics-chatgpt.md"
     },
     {
       "id": "RQ-2026-10-03-004",
@@ -124,19 +105,17 @@
       "target": "claude-manual",
       "created_at": "2026-10-03",
       "title": "Research artifact epistemic quality",
-      "question": "How should an autonomous research pipeline score provenance, freshness, replication, benchmark validity, vendor conflicts, and unsupported precision before research becomes durable architectural input?",
-      "objective": "Design a minimal evidence-quality contract that prevents model-generated research errors from recursively contaminating AXIOM.",
+      "question": "What independently verifiable public evidence is relevant to research artifact epistemic quality?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for research artifact epistemic quality, without using AXIOM-internal designs.",
       "deliverable": [
-        "evidence taxonomy",
-        "quality gates",
-        "citation verification protocol",
-        "adversarial cases",
-        "zero-cost MVE"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "must preserve uncertainty",
-        "no single scalar score unless justified",
-        "primary sources preferred"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -147,19 +126,17 @@
       "target": "gemini-manual",
       "created_at": "2026-10-03",
       "title": "Context externalization and compaction",
-      "question": "When can long-horizon agents safely remove reasoning/history after derived state is externalized, and what information must remain addressable to preserve recovery and auditability?",
-      "objective": "Derive testable compaction rules that reduce context cost without losing constraints, causality, or recovery evidence.",
+      "question": "What independently verifiable public evidence is relevant to context externalization and compaction?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for context externalization and compaction, without using AXIOM-internal designs.",
       "deliverable": [
-        "current evidence",
-        "safe/unsafe deletion taxonomy",
-        "addressability requirements",
-        "MVE",
-        "rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "no hidden-state claims without evidence",
-        "prefer reversible/auditable mechanisms",
-        "remote-only zero-cost experiments"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -170,27 +147,19 @@
       "target": "chatgpt",
       "created_at": "2026-10-03",
       "title": "Simple routing baselines under sparse evidence",
-      "question": "Under low data volume and model/provider drift, which simple routing policies are hardest to beat and how should AXIOM decide that adaptive routing is not yet justified?",
-      "objective": "Define a conservative routing benchmark and statistical promotion gate suitable for sparse AXIOM telemetry.",
+      "question": "What independently verifiable public evidence is relevant to simple routing baselines under sparse evidence?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for simple routing baselines under sparse evidence, without using AXIOM-internal designs.",
       "deliverable": [
-        "baseline policies",
-        "time-split evaluation",
-        "sample-size caveats",
-        "promotion/rejection thresholds",
-        "remote MVE"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "static minimum-capable remains control",
-        "charge routing overhead",
-        "no online deployment"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ],
       "issued_at": "2026-10-06T04:20:44.759Z",
-      "automation": {
-        "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-03-006",
-        "artifact_commit": "36d4ba1cead78304553b8199b70bc7ec9691a1c4",
-        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      },
       "completed_at": "2026-10-06T04:20:53.323Z",
       "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-06-simple-routing-baselines-sparse-evidence-chatgpt.md"
     },
@@ -202,21 +171,17 @@
       "target": "claude-manual",
       "created_at": "2026-10-04",
       "title": "Destination-scoped agent egress capability",
-      "question": "What is the smallest destination-aware network authorization contract that prevents unauthorized agent egress while remaining robust to redirects, DNS rebinding, private/link-local/metadata addresses, proxies, numeric IP forms, and dual-stack resolution?",
-      "objective": "Specify a minimal egress capability and synthetic validation suite that can integrate with ASON/APEX without a broad architecture rewrite.",
+      "question": "What independently verifiable public evidence is relevant to destination-scoped agent egress capability?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for destination-scoped agent egress capability, without using AXIOM-internal designs.",
       "deliverable": [
-        "primary-source synthesis",
-        "minimal capability schema",
-        "enforcement-point decision",
-        "adversarial synthetic test matrix",
-        "compatibility costs",
-        "promotion and rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "no active external scanning",
-        "default deny",
-        "preserve current ASON/APEX authority separation",
-        "remote-only zero-cost validation"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -227,29 +192,19 @@
       "target": "chatgpt",
       "created_at": "2026-10-04",
       "title": "Minimal sequence-aware exfiltration policy",
-      "question": "What is the smallest practical policy for blocking unsafe read-to-network and credential-to-network tool sequences without introducing a general-purpose taint-tracking system?",
-      "objective": "Determine whether a compact data/effect classification and sequence rule materially improves AXIOM security over tool-level authorization alone.",
+      "question": "What independently verifiable public evidence is relevant to minimal sequence-aware exfiltration policy?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for minimal sequence-aware exfiltration policy, without using AXIOM-internal designs.",
       "deliverable": [
-        "threat model",
-        "minimal policy candidates",
-        "false-positive and false-negative cases",
-        "synthetic adversarial tests",
-        "complexity comparison",
-        "rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "KISS",
-        "no broad information-flow rewrite",
-        "no live exfiltration",
-        "remote-only zero-cost experiments"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ],
       "issued_at": "2026-10-05T22:18:10.453Z",
-      "automation": {
-        "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-04-008",
-        "artifact_commit": "64021e116e3289c6e9e7aafdd98a93b0f8418b82",
-        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      },
       "completed_at": "2026-10-05T22:19:47.581Z",
       "artifact": "2026-10-05-minimal-sequence-aware-exfiltration-policy-chatgpt.md"
     },
@@ -261,21 +216,17 @@
       "target": "claude-manual",
       "created_at": "2026-10-04",
       "title": "Unauthorized inter-agent communication containment",
-      "question": "How should an agent platform prevent shared caches, package proxies, artifacts, logs, or other infrastructure from becoming unauthorized inter-agent coordination channels?",
-      "objective": "Derive minimal controls and tests for covert or accidental agent-to-agent communication through shared infrastructure.",
+      "question": "What independently verifiable public evidence is relevant to unauthorized inter-agent communication containment?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for unauthorized inter-agent communication containment, without using AXIOM-internal designs.",
       "deliverable": [
-        "incident-grounded failure taxonomy",
-        "shared-resource boundary model",
-        "minimal mitigations",
-        "synthetic multi-agent MVE",
-        "detection signals",
-        "rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "no production probing",
-        "do not prohibit legitimate coordination by default",
-        "prefer deterministic controls",
-        "remote-only zero-cost validation"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -286,21 +237,17 @@
       "target": "claude-manual",
       "created_at": "2026-10-04",
       "title": "Spoof-resistant tool result validation",
-      "question": "How should persistent agents distinguish self-reported tool outputs, model-visible transcripts, execution receipts, and independently verified external outcomes so spoofed or fabricated tool results cannot become canonical state?",
-      "objective": "Design the smallest evidence hierarchy and validation contract that prevents transcript-level tool-result spoofing from being accepted as execution truth.",
+      "question": "What independently verifiable public evidence is relevant to spoof-resistant tool result validation?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for spoof-resistant tool result validation, without using AXIOM-internal designs.",
       "deliverable": [
-        "evidence taxonomy",
-        "trust boundary model",
-        "minimal receipt/verification contract",
-        "failure cases",
-        "synthetic tests",
-        "migration considerations"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "reuse existing AXIOM receipts where possible",
-        "no cryptographic attestation unless justified",
-        "preserve UNKNOWN semantics",
-        "remote-only"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -311,21 +258,17 @@
       "target": "gemini-manual",
       "created_at": "2026-10-04",
       "title": "Agent credential discovery and least privilege",
-      "question": "Which minimal credential-isolation, just-in-time access, and exposed-credential controls best prevent autonomous agents from discovering and reusing orphaned or overprivileged credentials?",
-      "objective": "Identify implementable least-privilege patterns compatible with AXIOM's explicit authority and remote execution model.",
+      "question": "What independently verifiable public evidence is relevant to agent credential discovery and least privilege?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for agent credential discovery and least privilege, without using AXIOM-internal designs.",
       "deliverable": [
-        "primary-source review",
-        "credential threat model",
-        "minimal control set",
-        "operational tradeoffs",
-        "synthetic validation plan",
-        "rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "no secrets in research artifacts",
-        "no credential harvesting",
-        "prefer short-lived scoped authority",
-        "zero-cost research"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -336,28 +279,19 @@
       "target": "chatgpt",
       "created_at": "2026-10-04",
       "title": "Agentic MCP and tool supply-chain identity",
-      "question": "What minimal identity/version binding should complement tool-schema digests so an agent can detect MCP or remote-tool implementation changes, endpoint substitution, and rug-pull behavior without requiring heavyweight attestation?",
-      "objective": "Determine the smallest deployable control that closes material schema-only trust gaps for high-risk remote tools.",
+      "question": "What independently verifiable public evidence is relevant to agentic mcp and tool supply-chain identity?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for agentic mcp and tool supply-chain identity, without using AXIOM-internal designs.",
       "deliverable": [
-        "current standards evidence",
-        "threat model",
-        "minimal binding options",
-        "compatibility analysis",
-        "synthetic tests",
-        "promotion gate"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "preserve current fail-closed unclassified-tool behavior",
-        "avoid speculative PKI",
-        "remote-only zero-cost experiments"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ],
       "issued_at": "2026-10-06T02:29:31.842Z",
-      "automation": {
-        "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-04-012",
-        "artifact_commit": "d9a97d76ac87189478b6b52f63e34351adac634c",
-        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      },
       "completed_at": "2026-10-06T02:29:41.602Z",
       "artifact": "2026-10-05-agentic-mcp-tool-supply-chain-identity-chatgpt.md"
     },
@@ -369,29 +303,19 @@
       "target": "chatgpt",
       "created_at": "2026-10-04",
       "title": "Machine-speed anomaly halt policy",
-      "question": "Which low-complexity telemetry signals and stopping rules can detect and halt abnormal agent network/tool behavior at machine speed without excessive false shutdowns?",
-      "objective": "Define a small anomaly-control baseline around destination novelty, request rate, denied actions, tool-chain patterns, and authorization drift.",
+      "question": "What independently verifiable public evidence is relevant to machine-speed anomaly halt policy?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for machine-speed anomaly halt policy, without using AXIOM-internal designs.",
       "deliverable": [
-        "signal definitions",
-        "simple stopping baselines",
-        "false-positive analysis",
-        "offline replay plan",
-        "promotion thresholds",
-        "rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "prevention remains separate from monitoring",
-        "no ML anomaly detector unless simple baselines fail",
-        "use existing telemetry where possible",
-        "remote-only"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ],
       "issued_at": "2026-10-06T03:23:47.145Z",
-      "automation": {
-        "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-04-013",
-        "artifact_commit": "58fca8f3ab9c18c62c9b1362674f70aef7e7c313",
-        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      },
       "completed_at": "2026-10-06T03:23:48.370Z",
       "artifact": "2026-10-05-machine-speed-anomaly-halt-policy-chatgpt.md"
     },
@@ -403,21 +327,17 @@
       "target": "gemini-manual",
       "created_at": "2026-10-04",
       "title": "RAG indirect prompt injection boundary",
-      "question": "Which structural separation and validation techniques measurably reduce indirect prompt-injection risk from retrieved documents without pretending untrusted natural-language content can be perfectly sanitized?",
-      "objective": "Produce falsifiable RAG integrity tests and minimal boundary improvements for current AXIOM retrieval/generation flows.",
+      "question": "What independently verifiable public evidence is relevant to rag indirect prompt injection boundary?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for rag indirect prompt injection boundary, without using AXIOM-internal designs.",
       "deliverable": [
-        "primary-source synthesis",
-        "attack taxonomy",
-        "minimal structural controls",
-        "adversarial corpus design",
-        "evaluation metrics",
-        "rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "no claim of perfect prompt-injection prevention",
-        "preserve source provenance",
-        "no tool authority from retrieved content",
-        "zero-cost remote tests"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -428,21 +348,17 @@
       "target": "gemini-manual",
       "created_at": "2026-10-04",
       "title": "Defensive incident-analysis model readiness",
-      "question": "How should a resource-constrained organization prepare reliable AI-assisted incident forensics when hosted models may refuse exploit-like defensive material or impose unsuitable data-boundary constraints?",
-      "objective": "Define a minimal readiness strategy for defensive analysis without deploying unrestricted offensive capability or incurring unapproved hosted cost.",
+      "question": "What independently verifiable public evidence is relevant to defensive incident-analysis model readiness?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for defensive incident-analysis model readiness, without using AXIOM-internal designs.",
       "deliverable": [
-        "current evidence",
-        "defensive use-case requirements",
-        "provider/self-host trade study",
-        "data-boundary controls",
-        "zero-cost readiness MVE",
-        "rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "defensive analysis only",
-        "no weaponization or active exploitation",
-        "$0 incremental hosted spend",
-        "do not assume local workstation routing"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ]
     },
     {
@@ -453,33 +369,21 @@
       "target": "chatgpt",
       "created_at": "2026-10-04",
       "title": "Fully automated research-to-development control loop",
-      "question": "What is the smallest safe architecture that can automate AXIOM research selection, evidence acquisition, Research-Manager reconciliation, candidate engineering, repository validation, and continuation while preserving explicit authority and preventing research output from self-authorizing code, merges, releases, spending, or external effects?",
-      "objective": "Design an ASAP automation path that reuses the existing research queue and Director execution interfaces rather than creating a parallel R&D authority.",
+      "question": "What independently verifiable public evidence is relevant to fully automated research-to-development control loop?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for fully automated research-to-development control loop, without using AXIOM-internal designs.",
       "deliverable": [
-        "end-to-end state machine",
-        "capability and authority gates",
-        "provider/channel routing contract",
-        "failure/recovery semantics",
-        "GitHub branch/PR validation flow",
-        "zero-cost incremental implementation plan",
-        "stop-at-convergence criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "research-queue.json remains sole research work queue",
-        "remote-only",
-        "$0 incremental hosted spend unless separately authorized",
-        "no recursive self-authorization",
-        "reuse existing Director/Harness/APEX/ASON controls where sufficient"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ],
       "issued_at": "2026-10-04T22:51:04Z",
       "completed_at": "2026-10-04T23:57:00Z",
-      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-04-automated-rd-control-loop-chatgpt.md",
-      "automation": {
-        "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-04-016",
-        "artifact_commit": "0bea7833cf441343a5a5e9445c8ae26d3b63f6fc",
-        "recovery_note": "Recovered incomplete automated R&D cycle after artifact read-back; no canonical merge performed."
-      }
+      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-04-automated-rd-control-loop-chatgpt.md"
     },
     {
       "id": "RQ-2026-10-06-017",
@@ -489,29 +393,19 @@
       "target": "chatgpt",
       "created_at": "2026-10-06",
       "title": "Routing telemetry coverage and headroom audit",
-      "question": "What evidence does current AXIOM Director telemetry actually expose for evaluating static minimum-capable and validator-triggered escalation baselines, and what smallest evidence gap must close before any adaptive-routing trial is justified?",
-      "objective": "Audit current Director telemetry and persistence against the accepted validated-work and sparse-routing contracts, then define the smallest zero-cost evidence-collection step.",
+      "question": "What independently verifiable public evidence is relevant to routing telemetry coverage and headroom audit?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for routing telemetry coverage and headroom audit, without using AXIOM-internal designs.",
       "deliverable": [
-        "current-state telemetry coverage matrix",
-        "routing-headroom feasibility decision",
-        "minimal additive evidence contract",
-        "zero-cost remote MVE",
-        "promotion and rejection criteria"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "current repository evidence only",
-        "no provider calls or incremental hosted spend",
-        "no online deployment or routing behavior change",
-        "preserve static minimum-capable control",
-        "do not infer unobserved counterfactual outcomes"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ],
       "issued_at": "2026-10-06T07:23:46.178Z",
-      "automation": {
-        "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-06-017",
-        "artifact_commit": "4cc5b08d3c4e510e730b80631380bce2e91e1a81",
-        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      },
       "completed_at": "2026-10-06T07:23:56.424Z",
       "artifact": "2026-10-06-routing-telemetry-coverage-headroom-audit-chatgpt.md"
     },
@@ -523,28 +417,19 @@
       "target": "chatgpt",
       "created_at": "2026-10-06",
       "title": "Execution telemetry composition boundary",
-      "question": "Which current AXIOM Director entrypoint can own durable ExecutionMetric persistence, and which current independent verification result can supply addressable validation evidence without changing routing behavior?",
-      "objective": "Identify an actual composition root and independent validator evidence source, or prove they are absent at the bound revision, then define the smallest non-speculative decision needed before telemetry schema v3 implementation.",
+      "question": "What independently verifiable public evidence is relevant to execution telemetry composition boundary?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for execution telemetry composition boundary, without using AXIOM-internal designs.",
       "deliverable": [
-        "repository-wide call graph evidence",
-        "composition-root candidate comparison",
-        "independent validation evidence matrix",
-        "integration readiness decision",
-        "bounded next-step validation"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "current repository evidence only",
-        "no routing behavior change",
-        "do not fabricate runtime wiring or validation evidence",
-        "remote-only zero-cost analysis"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ],
       "issued_at": "2026-10-06T08:23:43.015Z",
-      "automation": {
-        "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-06-018",
-        "artifact_commit": "e90bf01abed103b2ff00155dcf35f3aa8a3283da",
-        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      },
       "completed_at": "2026-10-06T08:25:16.105Z",
       "artifact": "2026-10-06-execution-telemetry-composition-boundary-chatgpt.md"
     },
@@ -556,29 +441,19 @@
       "target": "chatgpt",
       "created_at": "2026-10-06",
       "title": "Canonical verified-execution transaction boundary",
-      "question": "What is the smallest Director-owned composition contract that can sequence authorized dispatch, caller-owned independent validation, and durable observation without changing channel selection or activating a new runtime?",
-      "objective": "Choose one canonical transaction boundary and exact interfaces that unblock a bounded contract-only implementation while preserving provider, authority, validation, and persistence separation.",
+      "question": "What independently verifiable public evidence is relevant to canonical verified-execution transaction boundary?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for canonical verified-execution transaction boundary, without using AXIOM-internal designs.",
       "deliverable": [
-        "architecture decision",
-        "typed interface contract",
-        "failure and evidence semantics",
-        "bounded implementation slice",
-        "repository-native validation plan"
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
       ],
       "constraints": [
-        "current repository evidence only",
-        "no route-selection behavior change",
-        "no runtime activation or schema migration",
-        "no self-reported validation promotion",
-        "remote-only zero-cost analysis"
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
       ],
       "issued_at": "2026-10-06T09:24:33.242Z",
-      "automation": {
-        "lane": "chatgpt",
-        "branch": "automation/rd/RQ-2026-10-06-019",
-        "artifact_commit": "0bbb15a3c789f61770c67a2ede6e135c75fdec3e",
-        "manager_classification": "ACCEPT_WITH_FOLLOWUP"
-      },
       "completed_at": "2026-10-06T09:25:58.689Z",
       "artifact": "2026-10-06-canonical-verified-execution-boundary-chatgpt.md"
     }

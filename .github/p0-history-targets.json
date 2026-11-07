@@ -1,0 +1,191 @@
+{
+  "schema": "p0-restricted-paths-v1",
+  "assets": [
+    {
+      "path": "2026-10-03-long-horizon-agent-reliability-claude.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "049a89ee9c513bd85a0ff8fed8ab7ef055491fee",
+      "source_blob": null
+    },
+    {
+      "path": "2026-10-05-agentic-mcp-tool-supply-chain-identity-chatgpt.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "2ed61da0ed322de40b5f42bf309d03db9fa80c1a",
+      "source_blob": null
+    },
+    {
+      "path": "2026-10-05-machine-speed-anomaly-halt-policy-chatgpt.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "2ea490ea312aa5cc205235847f15554c3fd514db",
+      "source_blob": null
+    },
+    {
+      "path": "2026-10-05-minimal-sequence-aware-exfiltration-policy-chatgpt.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "80b6c8a9f36cfcfd90564f434bc708a43368e46b",
+      "source_blob": null
+    },
+    {
+      "path": "2026-10-06-canonical-verified-execution-boundary-chatgpt.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "12844d79e338acb12f93d54a23f49302c77534a4",
+      "source_blob": null
+    },
+    {
+      "path": "2026-10-06-execution-telemetry-composition-boundary-chatgpt.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "0bfe1646cde7148d59793ec4765da68a2a8a8731",
+      "source_blob": null
+    },
+    {
+      "path": "2026-10-06-routing-telemetry-coverage-headroom-audit-chatgpt.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "eab9916cfab8b4b31a31f72340692467475e14f4",
+      "source_blob": null
+    },
+    {
+      "path": "2026-10-20-psychiatric-classification-autonomy.md",
+      "action": "removed_from_default_branch",
+      "current_blob": null,
+      "source_blob": null
+    },
+    {
+      "path": "ai-loop-architecture-taxonomy.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "3a22563319f9d26f71bbeb6ddb87c450c78bfe1d",
+      "source_blob": null
+    },
+    {
+      "path": "architecture/ARCHITECTURE.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "8bf59d63a938061fbe0839f051531956b861005c",
+      "source_blob": null
+    },
+    {
+      "path": "architecture/CHANGELOG.md",
+      "action": "public_summary_with_verified_private_original",
+      "current_blob": "1f92bbd02de465bf6b24c3a5f0b940b528d9b547",
+      "source_blob": null
+    },
+    {
+      "path": "architecture/README.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "8a75312caea72b5e77a800f3017b41c994aa5d05",
+      "source_blob": null
+    },
+    {
+      "path": "architecture/STATUS.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "071245ef818f6c8d9e181b62c2fcde5df8984835",
+      "source_blob": null
+    },
+    {
+      "path": "autonomous-organizations-agentmail-chatgpt-research-20261003.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "4df1bf195207d47334ead6cfb78a7edf3789fbc9",
+      "source_blob": null
+    },
+    {
+      "path": "claude-agent-systems-research-20261002.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "6957cd8225c16f7f8ef2a0b05f3fda27c1f9c79d",
+      "source_blob": null
+    },
+    {
+      "path": "for-evaluation/agent-security-breach-research-prompt.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "2de93989a8e4f0db67273a4e199a3fb97039b790",
+      "source_blob": null
+    },
+    {
+      "path": "for-evaluation/autonomous-agent-unauthorized-network-probing-controls.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "9a51ddc9a9799ded51ae1f92e872eb079bfced52",
+      "source_blob": null
+    },
+    {
+      "path": "for-evaluation/runtime-ai-misbehavior-telemetry-and-disclosure-framework.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "291dba2b79203dce738bf081a13f27e49729370c",
+      "source_blob": null
+    },
+    {
+      "path": "independent-review-target.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "ad6641b149895984a48aa28e62381c563e632f8b",
+      "source_blob": null
+    },
+    {
+      "path": "j-space-research.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "902143c11d3189523aa013ac32229a67f1aaea11",
+      "source_blob": null
+    },
+    {
+      "path": "manuscripts/edge-dwelling/opening.md",
+      "action": "removed_from_default_branch",
+      "current_blob": null,
+      "source_blob": null
+    },
+    {
+      "path": "README.md",
+      "action": "public_summary_with_verified_private_original",
+      "current_blob": "ad0d9c2d9ca91ff00c071ed167c1e5a55f203dd7",
+      "source_blob": null
+    },
+    {
+      "path": "recursive-hyper-optimization.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "ae51187aba08d427f21427464fb4a2e0953d9d05",
+      "source_blob": null
+    },
+    {
+      "path": "research-queue.json",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "1678570badbec86b0b25de43465bb340c60589db",
+      "source_blob": null
+    },
+    {
+      "path": "research-workflow.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "0ddf74ce57c748308722c8e42d7038832dab5101",
+      "source_blob": null
+    },
+    {
+      "path": "security/2026-10-04-agent-security-incident-boundary-review.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "2d2711bdf16fbaf13a457becbfd69fa6fdbba653",
+      "source_blob": null
+    },
+    {
+      "path": "security/2026-10-04-autonomous-agent-egress-boundary-evaluation.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "5d70a1a45b8a84bf305a4f58a729ae20306a2197",
+      "source_blob": null
+    },
+    {
+      "path": "security/2026-11-04-change-triggered-security-validation-feasibility.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "bac6dd7f4e0f314786edd76e8b3b2864229865e7",
+      "source_blob": null
+    },
+    {
+      "path": "security/2026-11-05-commercial-verification-and-privacy-opportunities.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "01cc0f0eeaf40c49335793722f0841e4e1e99b6e",
+      "source_blob": null
+    },
+    {
+      "path": "temporal-state-resolution.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "c00ee94ef6666542046891bb0fef316c52573bf3",
+      "source_blob": null
+    },
+    {
+      "path": "zero-cost-compute-harness-research.md",
+      "action": "public_abstract_with_verified_private_original",
+      "current_blob": "aedd71af22abd3aa6cf7bc6238e468999e550f42",
+      "source_blob": null
+    }
+  ]
+}

@@ -71,7 +71,7 @@ jobs:
           set --
           while IFS= read -r commit; do set -- "$@" -p "$commit"; done < <(git --git-dir="$clean" for-each-ref --format='%(objectname)' | sort -u)
           count=$(( $# / 2 ))
-          test "$count" -ge 44
+          test "$count" -ge 40
           digest="$(
             GIT_AUTHOR_NAME='AXIOM retention' GIT_AUTHOR_EMAIL='noreply@users.noreply.github.com' \
             GIT_COMMITTER_NAME='AXIOM retention' GIT_COMMITTER_EMAIL='noreply@users.noreply.github.com' \

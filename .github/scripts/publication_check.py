@@ -57,6 +57,8 @@ def main() -> int:
             failures.append(f"{path}: binary requires separate publication review")
             continue
         for rule, pattern in CONTENT_RULES.items():
+            if path == ".github/scripts/publication_check.py" and rule == "first-person family or clinical record":
+                continue  # Scanner's own rule definition is not personal evidence.
             if pattern.search(data):
                 failures.append(f"{path}: {rule}")
     if failures:

@@ -15,5 +15,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Screen entire tracked tree
+        with:
+          fetch-depth: 0
+
+      - name: Screen complete tracked working tree
         run: python3 .github/scripts/publication_check.py
+
+      - name: Test ancestry disclosure regression cases
+        run: python3 -m unittest discover -s .github/tests -p "test_*.py" -v
+
+      - name: Screen newly introduced Git objects, including deleted intermediates
+        if: github.event_name != 'workflow_dispatch'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$BASE_SHA" || -z "$HEAD_SHA" ]]; then
+            echo "Missing required Git ancestry boundary" >&2
+            exit 1
+          fi
+          if [[ "$BASE_SHA" =~ ^0+$ ]]; then
+            BASE_SHA="$(git rev-list --max-parents=0 "$HEAD_SHA" | head -n 1)"
+          fi
+          python3 .github/scripts/publication_history_check.py --base "$BASE_SHA" --head "$HEAD_SHA"

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Block newly introduced sensitive Git blobs, including add-then-delete commits.
 
-Unlike a working-tree scan, this checks every blob reachable from the proposed
-commit range that was not reachable from its declared base. It does not make
+Unlike a working-tree scan, this checks every blob introduced in the proposed commit range. When the
+GitHub event's base is unavailable after an authorized history rewrite, it
+conservatively scans every blob reachable from the new head. It does not make
 older public history safe or authorize a history rewrite.
 """
 from __future__ import annotations
@@ -24,10 +25,16 @@ def git(*args: str) -> bytes:
 
 
 def check(base: str, head: str) -> list[str]:
-    for ref in (base, head):
-        git("rev-parse", "--verify", f"{ref}^{{commit}}")
+    git("rev-parse", "--verify", f"{head}^{{commit}}")
+    try:
+        git("rev-parse", "--verify", f"{base}^{{commit}}")
+        revision_range = f"{base}..{head}"
+    except RuntimeError:
+        # Force-with-lease history remediation can make github.event.before
+        # unreachable. Scan every reachable object instead of bypassing review.
+        revision_range = head
     failures: list[str] = []
-    objects = git("rev-list", "--objects", f"{base}..{head}").splitlines()
+    objects = git("rev-list", "--objects", revision_range).splitlines()
     for entry in objects:
         if b" " not in entry:
             continue  # Commit or tree, with no associated path.

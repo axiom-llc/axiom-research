@@ -49,6 +49,20 @@ class PublicationAncestryTests(unittest.TestCase):
         self.commit_file("docs/public.md", "Synthetic, non-identifying public summary.\n")
         self.assertEqual(0, self.scan().returncode)
 
+    def test_unreachable_base_scans_entire_clean_history(self) -> None:
+        self.commit_file("docs/public.md", "Synthetic non-identifying report.\\n")
+        self.base = "0" * 40
+        self.assertEqual(0, self.scan().returncode)
+
+    def test_unreachable_base_fails_on_historical_sensitive_blob(self) -> None:
+        path = "manuscripts/edge-dwelling/opening.md"
+        self.commit_file(path, "A synthetic withheld draft.\\n")
+        self.remove_file(path)
+        self.base = "0" * 40
+        result = self.scan()
+        self.assertEqual(1, result.returncode)
+        self.assertIn("restricted historical path", result.stderr)
+
     def test_removed_manuscript_still_detected(self) -> None:
         path = "manuscripts/edge-dwelling/opening.md"
         self.commit_file(path, "Unpublished draft, retained only in a test repository.\n")

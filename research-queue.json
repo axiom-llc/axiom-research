@@ -1,0 +1,461 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "owner_repo": "axiom-llc/axiom-research",
+    "ordering": [
+      "priority asc",
+      "value_score desc",
+      "created_at asc",
+      "id asc"
+    ],
+    "statuses": [
+      "QUEUED",
+      "ISSUED",
+      "COMPLETE",
+      "BLOCKED",
+      "REJECTED"
+    ],
+    "researcher_targets": [
+      "claude-manual",
+      "gemini-manual",
+      "chatgpt"
+    ],
+    "manager_target": "chatgpt",
+    "incremental_hosted_cost_usd": 0,
+    "notes": [
+      "This is the public disclosure-safe research queue. Complete internal research prompts are retained in verified private storage.",
+      "Queue items are research prompts without execution authority.",
+      "Only public-source research is admissible here; confidential AXIOM state, security detail, customer data, and proprietary methodology must remain private.",
+      "ISSUED means a prompt was prepared for manual submission; it does not establish delivery or execution.",
+      "Automation must pass publication screening, exact-head validation, and existing authorization boundaries before acceptance."
+    ]
+  },
+  "items": [
+    {
+      "id": "RQ-2026-10-03-001",
+      "priority": 0,
+      "value_score": 100,
+      "status": "QUEUED",
+      "target": "claude-manual",
+      "created_at": "2026-10-03",
+      "title": "Long-horizon failure localization policy",
+      "question": "What independently verifiable public evidence is relevant to long-horizon failure localization policy?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for long-horizon failure localization policy, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-03-002",
+      "priority": 0,
+      "value_score": 98,
+      "status": "QUEUED",
+      "target": "gemini-manual",
+      "created_at": "2026-10-03",
+      "title": "Minimal temporal state semantics",
+      "question": "What independently verifiable public evidence is relevant to minimal temporal state semantics?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for minimal temporal state semantics, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-03-003",
+      "priority": 0,
+      "value_score": 96,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-03",
+      "title": "Validated-work efficiency metric design",
+      "question": "What independently verifiable public evidence is relevant to validated-work efficiency metric design?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for validated-work efficiency metric design, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ],
+      "issued_at": "2026-10-05T21:24:41.814Z",
+      "completed_at": "2026-10-05T21:24:42.803Z",
+      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-05-validated-work-efficiency-metrics-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-03-004",
+      "priority": 1,
+      "value_score": 90,
+      "status": "QUEUED",
+      "target": "claude-manual",
+      "created_at": "2026-10-03",
+      "title": "Research artifact epistemic quality",
+      "question": "What independently verifiable public evidence is relevant to research artifact epistemic quality?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for research artifact epistemic quality, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-03-005",
+      "priority": 1,
+      "value_score": 88,
+      "status": "QUEUED",
+      "target": "gemini-manual",
+      "created_at": "2026-10-03",
+      "title": "Context externalization and compaction",
+      "question": "What independently verifiable public evidence is relevant to context externalization and compaction?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for context externalization and compaction, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-03-006",
+      "priority": 1,
+      "value_score": 85,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-03",
+      "title": "Simple routing baselines under sparse evidence",
+      "question": "What independently verifiable public evidence is relevant to simple routing baselines under sparse evidence?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for simple routing baselines under sparse evidence, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ],
+      "issued_at": "2026-10-06T04:20:44.759Z",
+      "completed_at": "2026-10-06T04:20:53.323Z",
+      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-06-simple-routing-baselines-sparse-evidence-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-04-007",
+      "priority": 0,
+      "value_score": 99,
+      "status": "QUEUED",
+      "target": "claude-manual",
+      "created_at": "2026-10-04",
+      "title": "Destination-scoped agent egress capability",
+      "question": "What independently verifiable public evidence is relevant to destination-scoped agent egress capability?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for destination-scoped agent egress capability, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-008",
+      "priority": 0,
+      "value_score": 97,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-04",
+      "title": "Minimal sequence-aware exfiltration policy",
+      "question": "What independently verifiable public evidence is relevant to minimal sequence-aware exfiltration policy?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for minimal sequence-aware exfiltration policy, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ],
+      "issued_at": "2026-10-05T22:18:10.453Z",
+      "completed_at": "2026-10-05T22:19:47.581Z",
+      "artifact": "2026-10-05-minimal-sequence-aware-exfiltration-policy-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-04-009",
+      "priority": 0,
+      "value_score": 95,
+      "status": "QUEUED",
+      "target": "claude-manual",
+      "created_at": "2026-10-04",
+      "title": "Unauthorized inter-agent communication containment",
+      "question": "What independently verifiable public evidence is relevant to unauthorized inter-agent communication containment?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for unauthorized inter-agent communication containment, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-010",
+      "priority": 0,
+      "value_score": 94,
+      "status": "QUEUED",
+      "target": "claude-manual",
+      "created_at": "2026-10-04",
+      "title": "Spoof-resistant tool result validation",
+      "question": "What independently verifiable public evidence is relevant to spoof-resistant tool result validation?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for spoof-resistant tool result validation, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-011",
+      "priority": 1,
+      "value_score": 92,
+      "status": "QUEUED",
+      "target": "gemini-manual",
+      "created_at": "2026-10-04",
+      "title": "Agent credential discovery and least privilege",
+      "question": "What independently verifiable public evidence is relevant to agent credential discovery and least privilege?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for agent credential discovery and least privilege, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-012",
+      "priority": 1,
+      "value_score": 90,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-04",
+      "title": "Agentic MCP and tool supply-chain identity",
+      "question": "What independently verifiable public evidence is relevant to agentic mcp and tool supply-chain identity?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for agentic mcp and tool supply-chain identity, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ],
+      "issued_at": "2026-10-06T02:29:31.842Z",
+      "completed_at": "2026-10-06T02:29:41.602Z",
+      "artifact": "2026-10-05-agentic-mcp-tool-supply-chain-identity-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-04-013",
+      "priority": 1,
+      "value_score": 89,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-04",
+      "title": "Machine-speed anomaly halt policy",
+      "question": "What independently verifiable public evidence is relevant to machine-speed anomaly halt policy?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for machine-speed anomaly halt policy, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ],
+      "issued_at": "2026-10-06T03:23:47.145Z",
+      "completed_at": "2026-10-06T03:23:48.370Z",
+      "artifact": "2026-10-05-machine-speed-anomaly-halt-policy-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-04-014",
+      "priority": 1,
+      "value_score": 87,
+      "status": "QUEUED",
+      "target": "gemini-manual",
+      "created_at": "2026-10-04",
+      "title": "RAG indirect prompt injection boundary",
+      "question": "What independently verifiable public evidence is relevant to rag indirect prompt injection boundary?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for rag indirect prompt injection boundary, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-015",
+      "priority": 2,
+      "value_score": 82,
+      "status": "QUEUED",
+      "target": "gemini-manual",
+      "created_at": "2026-10-04",
+      "title": "Defensive incident-analysis model readiness",
+      "question": "What independently verifiable public evidence is relevant to defensive incident-analysis model readiness?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for defensive incident-analysis model readiness, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ]
+    },
+    {
+      "id": "RQ-2026-10-04-016",
+      "priority": 0,
+      "value_score": 100,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-04",
+      "title": "Fully automated research-to-development control loop",
+      "question": "What independently verifiable public evidence is relevant to fully automated research-to-development control loop?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for fully automated research-to-development control loop, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ],
+      "issued_at": "2026-10-04T22:51:04Z",
+      "completed_at": "2026-10-04T23:57:00Z",
+      "artifact": "https://github.com/axiom-llc/axiom-director/blob/main/research/2026-10-04-automated-rd-control-loop-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-06-017",
+      "priority": 1,
+      "value_score": 84,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-06",
+      "title": "Routing telemetry coverage and headroom audit",
+      "question": "What independently verifiable public evidence is relevant to routing telemetry coverage and headroom audit?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for routing telemetry coverage and headroom audit, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ],
+      "issued_at": "2026-10-06T07:23:46.178Z",
+      "completed_at": "2026-10-06T07:23:56.424Z",
+      "artifact": "2026-10-06-routing-telemetry-coverage-headroom-audit-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-06-018",
+      "priority": 0,
+      "value_score": 96,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-06",
+      "title": "Execution telemetry composition boundary",
+      "question": "What independently verifiable public evidence is relevant to execution telemetry composition boundary?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for execution telemetry composition boundary, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ],
+      "issued_at": "2026-10-06T08:23:43.015Z",
+      "completed_at": "2026-10-06T08:25:16.105Z",
+      "artifact": "2026-10-06-execution-telemetry-composition-boundary-chatgpt.md"
+    },
+    {
+      "id": "RQ-2026-10-06-019",
+      "priority": 0,
+      "value_score": 95,
+      "status": "COMPLETE",
+      "target": "chatgpt",
+      "created_at": "2026-10-06",
+      "title": "Canonical verified-execution transaction boundary",
+      "question": "What independently verifiable public evidence is relevant to canonical verified-execution transaction boundary?",
+      "objective": "Assess the public research literature and falsifiable evaluation options for canonical verified-execution transaction boundary, without using AXIOM-internal designs.",
+      "deliverable": [
+        "Primary-source evidence",
+        "Limitations and competing explanations",
+        "Public-safe evaluation plan"
+      ],
+      "constraints": [
+        "Use public sources and synthetic examples only",
+        "Do not expose internal implementation, telemetry, configurations, or private research",
+        "No deployment, spending, account changes, or external effects"
+      ],
+      "issued_at": "2026-10-06T09:24:33.242Z",
+      "completed_at": "2026-10-06T09:25:58.689Z",
+      "artifact": "2026-10-06-canonical-verified-execution-boundary-chatgpt.md"
+    }
+  ]
+}

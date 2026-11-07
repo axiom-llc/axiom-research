@@ -1,0 +1,92 @@
+name: P0 stage sanitized Research Git graph
+
+on:
+  push:
+    branches: [security/p0-history-cleanup-worker]
+    paths:
+      - .github/workflows/p0-history-cleanup-worker.yml
+      - .github/scripts/p0-history-prepare.py
+      - .github/p0-history-targets.json
+      - .github/p0-history-expected.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: p0-research-public-history-stage
+  cancel-in-progress: false
+
+jobs:
+  stage-verified-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install pinned history filter
+        run: python3 -m pip install --disable-pip-version-check git-filter-repo==2.47.0
+      - name: Rebuild sanitized graph from live public refs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet --mirror https://github.com/axiom-llc/axiom-research.git "$RUNNER_TEMP/live-source.git"
+          test "$(git --git-dir="$RUNNER_TEMP/live-source.git" rev-parse refs/heads/main)" = 62e5582a0f0ff90f5a9ef3dedb85757c86ffd42f
+          git --git-dir="$RUNNER_TEMP/live-source.git" bundle create "$RUNNER_TEMP/live-source.bundle" --all
+          python3 .github/scripts/p0-history-prepare.py \
+            "$RUNNER_TEMP/live-source.bundle" .github/p0-history-targets.json "$RUNNER_TEMP/candidate"
+          python3 - <<'PY'
+          import json, os, pathlib
+          root=pathlib.Path(os.environ["RUNNER_TEMP"])
+          expected=json.loads(pathlib.Path(".github/p0-history-expected.json").read_text())
+          actual=json.loads((root/"candidate/sanitized-report.json").read_text())
+          assert actual["sanitized_main"]==expected["expected_sanitized_main"],"main identity differs"
+          assert actual["sanitized_main_tree"]==expected["original_main_tree"],"public tree differs"
+          original=expected["expected_rewritten_refs"]
+          found=actual["sanitized_refs"]
+          assert all(found.get(k)==v for k,v in original.items()),"ref identities differ from private preflight"
+          assert set(found)-set(original)=={"refs/heads/security/p0-history-cleanup-worker"},"unexpected additional refs"
+          print("PRIVATE_PREFLIGHT_MATCH:",len(original),"ref identities")
+          PY
+      - name: Validate sanitized public main
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/candidate/checkout"
+          python3 -m pip install --disable-pip-version-check -r architecture/tests/requirements.txt -r simulations/tests/requirements.txt
+          python3 research_queue_check.py research-queue.json
+          python3 architecture/tests/check.py
+          python3 simulations/tests/validate.py
+          python3 .github/scripts/publication_check.py
+      - name: Stage complete sanitized graph without modifying existing refs
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          clean="$RUNNER_TEMP/candidate/rewritten.git"
+          head="$(git --git-dir="$clean" rev-parse refs/heads/main)"
+          tree="$(git --git-dir="$clean" rev-parse 'refs/heads/main^{tree}')"
+          test "$head" = 10d6dfe0c90b13316336f5d3895d20e224ee6726
+          set --
+          while IFS= read -r commit; do set -- "$@" -p "$commit"; done < <(git --git-dir="$clean" for-each-ref --format='%(objectname)' | sort -u)
+          count=$(( $# / 2 ))
+          test "$count" -ge 44
+          digest="$(
+            GIT_AUTHOR_NAME='AXIOM retention' GIT_AUTHOR_EMAIL='noreply@users.noreply.github.com' \
+            GIT_COMMITTER_NAME='AXIOM retention' GIT_COMMITTER_EMAIL='noreply@users.noreply.github.com' \
+            GIT_AUTHOR_DATE='2026-11-07T02:46:00 +0000' GIT_COMMITTER_DATE='2026-11-07T02:46:00 +0000' \
+            git --git-dir="$clean" commit-tree "$tree" "$@" \
+              <<<'security: transient delivery root for independently validated sanitized refs'
+          )"
+          git --git-dir="$clean" fsck --full --no-reflogs
+          url=https://github.com/axiom-llc/axiom-research.git
+          basic="$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          existing="$(git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $basic" ls-remote "$url" refs/heads/security/p0-sanitized-graph)"
+          test -z "$existing"
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $basic" \
+            --git-dir="$clean" push "$url" "$digest:refs/heads/security/p0-sanitized-graph"
+          remote="$(git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $basic" \
+            ls-remote "$url" refs/heads/security/p0-sanitized-graph | awk '{print $1}')"
+          test "$remote" = "$digest"
+          printf 'SANITIZED_GRAPH_STAGED stage_commit=%s main_clean=%s parent_refs=%s\n' "$digest" "$head" "$count"

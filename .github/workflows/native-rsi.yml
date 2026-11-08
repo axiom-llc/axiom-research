@@ -27,18 +27,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Validate canonical queue
         run: python research_queue_check.py research-queue.json
-      - name: Test native generation and rollback
-        run: python -m unittest rsi.test_native -v
+      - name: Test native generation, rollback and current-queue acceptance
+        run: python -m unittest rsi.test_native rsi.test_representative -v
       - name: Generate authenticated source-derived candidate
         run: python -m rsi.native --output "$RUNNER_TEMP/candidates.json"
       - name: Measure fixed synthetic before and after workload
         run: python -m rsi.benchmark --output "$RUNNER_TEMP/benchmark.json"
+      - name: Independently measure the current public canonical queue
+        run: python -m rsi.representative --output "$RUNNER_TEMP/representative.json"
       - name: Retain bounded native RSI evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -47,5 +50,13 @@ jobs:
           path: |
             ${{ runner.temp }}/candidates.json
             ${{ runner.temp }}/benchmark.json
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Retain separate actual-queue acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-current-queue-${{ matrix.python-version }}
+          path: ${{ runner.temp }}/representative.json
           retention-days: 14
           if-no-files-found: warn

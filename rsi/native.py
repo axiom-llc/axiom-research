@@ -43,7 +43,7 @@ def validate_rule(rule: dict) -> None:
         or not rule["benchmark"].startswith("rsi/")):
         raise GenerationError("invalid rule identity or benchmark")
     if (not isinstance(rule["tests"], list) or not rule["tests"]
-        or any(not isinstance(t, str) or not t.startswith("tests/test_")
+        or any(not isinstance(t, str) or not t.startswith(("tests/test_", "rsi/test_"))
                or not t.endswith(".py") for t in rule["tests"])):
         raise GenerationError("invalid regression contract")
     old, new = rule["before"], rule["after"]

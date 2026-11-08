@@ -1,0 +1,16 @@
+{
+  "schema": "axiom-native-rsi/v1",
+  "repository": "axiom-llc/axiom-research",
+  "rules": [
+    {
+      "id": "queue-missing-fields-without-intermediate-set",
+      "path": "research_queue_check.py",
+      "before": "        missing = REQUIRED - set(item)\n",
+      "after": "        missing = REQUIRED.difference(item)\n",
+      "benchmark": "rsi/benchmark.py",
+      "tests": [
+        "rsi/test_native.py"
+      ]
+    }
+  ]
+}

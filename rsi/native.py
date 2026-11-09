@@ -27,6 +27,15 @@ def _git(root: Path, *args: str) -> str:
     return p.stdout.strip()
 
 
+
+def _require_clean_tracked(root: Path, path: str) -> None:
+    """Require an exact committed source path without staged or working changes."""
+    if _git(root, "ls-files", "--error-unmatch", "--", path) != path:
+        raise GenerationError("tracked source path mismatch")
+    if _git(root, "diff", "--name-only", "HEAD", "--", path):
+        raise GenerationError("dirty revision-bound source")
+
+
 def validate_rule(rule: dict) -> None:
     if (not isinstance(rule, dict) or set(rule) !=
         {"id", "path", "before", "after", "benchmark", "tests"}):
@@ -98,6 +107,7 @@ def generate(root: Path, revision: str | None = None) -> dict:
         raise GenerationError("source revision mismatch")
     if _git(root, "rev-parse", "--show-toplevel") != str(root):
         raise GenerationError("repository root mismatch")
+    _require_clean_tracked(root, "rsi/generators.json")
     manifest = json.loads((root / "rsi" / "generators.json").read_text())
     if (set(manifest) != {"schema", "repository", "rules"}
         or manifest["schema"] != SCHEMA or manifest["repository"] != REPOSITORY
@@ -113,8 +123,7 @@ def generate(root: Path, revision: str | None = None) -> dict:
         file = root / rule["path"]
         if file.is_symlink() or not file.is_file() or not file.resolve().is_relative_to(root):
             raise GenerationError("invalid source file")
-        if _git(root, "diff", "--name-only", "HEAD", "--", rule["path"]):
-            raise GenerationError("dirty source file")
+        _require_clean_tracked(root, rule["path"])
         source = file.read_text(encoding="utf-8")
         if len(source) > 1_000_000:
             raise GenerationError("source too large")

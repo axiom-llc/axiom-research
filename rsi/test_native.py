@@ -47,6 +47,34 @@ class NativeRSITests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "missing"):
                 b(path)
 
+    def test_untracked_source_and_dirty_registry_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            registry = root / "rsi/generators.json"
+            registry.parent.mkdir(parents=True)
+            rule = {**RULE, "path": "candidate.py",
+                    "before": "answer = 1\\n", "after": "answer = 2\\n"}
+            registry.write_text(json.dumps({
+                "schema": "axiom-native-rsi/v1",
+                "repository": "axiom-llc/axiom-research",
+                "rules": [rule],
+            }))
+            subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+            subprocess.run(["git", "add", "rsi/generators.json"], cwd=root, check=True)
+            commit = ["git", "-c", "user.name=CI",
+                      "-c", "user.email=ci@example.invalid", "commit", "-qm"]
+            subprocess.run([*commit, "registry"], cwd=root, check=True)
+            source = root / "candidate.py"
+            source.write_text("answer = 1\\n")
+            with self.assertRaises(GenerationError):
+                generate(root)
+            subprocess.run(["git", "add", "candidate.py"], cwd=root, check=True)
+            subprocess.run([*commit, "source"], cwd=root, check=True)
+            self.assertEqual(generate(root)["status"], "GENERATED")
+            registry.write_text(registry.read_text().replace("answer = 2", "answer = 3"))
+            with self.assertRaises(GenerationError):
+                generate(root)
+
     def test_git_patch_reversal_recovers_exact_bytes(self):
         patch=propose(SOURCE,RULE,"a"*40)["patch"]
         with tempfile.TemporaryDirectory() as d:

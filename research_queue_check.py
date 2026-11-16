@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 from datetime import date
 import json
+from math import isfinite
 from pathlib import Path
 import re
 
@@ -69,16 +70,22 @@ def validate(path: Path) -> dict:
 
         if isinstance(item["priority"], bool) or not isinstance(item["priority"], int) or item["priority"] < 0:
             fail(f"{item_id}: priority must be a non-negative integer")
-        if isinstance(item["value_score"], bool) or not isinstance(item["value_score"], (int, float)):
-            fail(f"{item_id}: value_score must be numeric")
+        if (isinstance(item["value_score"], bool)
+                or not isinstance(item["value_score"], (int, float))
+                or not isfinite(item["value_score"])):
+            fail(f"{item_id}: value_score must be finite numeric")
         if item["status"] not in STATUSES:
             fail(f"{item_id}: invalid status")
         if item["target"] not in TARGETS:
             fail(f"{item_id}: invalid target")
 
+        created_at = item["created_at"]
+        if (not isinstance(created_at, str)
+                or re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", created_at) is None):
+            fail(f"{item_id}: created_at must be ISO YYYY-MM-DD")
         try:
-            date.fromisoformat(item["created_at"])
-        except (TypeError, ValueError):
+            date.fromisoformat(created_at)
+        except ValueError:
             fail(f"{item_id}: created_at must be ISO YYYY-MM-DD")
 
         for field in ("title", "question", "objective"):

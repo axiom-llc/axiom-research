@@ -30,7 +30,15 @@ Never infer production performance, regulatory compliance, autonomous profession
 
 The current deterministic acceptance contract can require successful APEX completion, durable authorization/plan binding, exact terminal-state equality, and named evidence such as the effect ledger. A simulation should have its APEX plan produce its terminal-state JSON artifact; the runner reads that artifact after execution. This keeps organizational modeling, AXIOM execution, and acceptance separate.
 
-## Initial approved portfolio
+## Public validation and integrated-execution boundary
+
+The standalone [fixture and schema validator](tests/validate.py) checks published contracts and synthetic positive/negative examples. It does **not** replay previously accepted runtime effects or require external accounts.
+
+By contrast, [`runner.py`](runner.py) is an integration adapter: it expects the sibling `axiom-ason` implementation, an accessible APEX service, explicit authorization, and a configured execution request. The retained [portfolio summary](portfolio-summary.json), evidence files, and evaluations record historical synthetic executions at identified revisions. Running public schema checks today does not independently reproduce those integrated runs.
+
+For employers or clients, start with the [case studies](case-studies/), inspect their recorded acceptance evidence, and use the repository's [independent evaluation guide](../independent-review-target.md) to distinguish modeled capability from production proof.
+
+## Accepted synthetic portfolio
 
 1. Robotics production — flagship: requirements through engineering, procurement, inventory, planning, assembly, firmware/software, test, quality, defect handling, release, deployment simulation, and field feedback.
 2. Software-development organization.

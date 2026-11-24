@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from rsi.native import GenerationError, generate, propose, validate_rule
 from rsi.benchmark import fixture, load
+from research_queue_check import validate as validate_queue
 
 ROOT = Path(__file__).resolve().parents[1]
 RULE = json.loads((ROOT / "rsi/generators.json").read_text())["rules"][0]
@@ -74,6 +75,27 @@ class NativeRSITests(unittest.TestCase):
             registry.write_text(registry.read_text().replace("answer = 2", "answer = 3"))
             with self.assertRaises(GenerationError):
                 generate(root)
+
+    def test_reject_noncanonical_dates_and_nonfinite_scores(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "queue.json"
+            valid = fixture(1)
+            path.write_text(json.dumps(valid))
+            self.assertEqual(validate_queue(path)["items"], 1)
+            for value in ("20261108", "2026-W45-7"):
+                with self.subTest(created_at=value):
+                    invalid = fixture(1)
+                    invalid["items"][0]["created_at"] = value
+                    path.write_text(json.dumps(invalid))
+                    with self.assertRaisesRegex(ValueError, "created_at"):
+                        validate_queue(path)
+            for value in (float("nan"), float("inf"), float("-inf")):
+                with self.subTest(value_score=str(value)):
+                    invalid = fixture(1)
+                    invalid["items"][0]["value_score"] = value
+                    path.write_text(json.dumps(invalid))
+                    with self.assertRaisesRegex(ValueError, "value_score"):
+                        validate_queue(path)
 
     def test_git_patch_reversal_recovers_exact_bytes(self):
         patch=propose(SOURCE,RULE,"a"*40)["patch"]
